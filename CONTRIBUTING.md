@@ -44,6 +44,24 @@ status) are on the [methodology page](https://sddobservatory.com/methodology/).
 - Drift ratings compare spec-directory activity against code activity — say what you compared and when.
 - Prefer the framework's own vocabulary for workflow steps (real command names, real phase names).
 
+## Licensing of contributions
+
+The code in this repository is licensed under the [MIT License](LICENSE); the curated content in `src/content/`
+is licensed under [CC BY-SA 4.0](LICENSE-CONTENT.md).
+
+By submitting a contribution (via pull request, issue form, or otherwise), you agree that:
+
+1. Your contribution is licensed under the license covering the part of the repository it modifies — MIT for
+   code, CC BY-SA 4.0 for content.
+2. You additionally grant the project maintainer a perpetual, worldwide, non-exclusive, royalty-free,
+   irrevocable, sublicensable, and transferable license to use, reproduce, modify, distribute, and build upon
+   your contribution for any purpose, including commercial purposes.
+3. You have the right to grant these licenses for the material you contribute.
+
+The deal, stated plainly: the observatory's content is and will remain freely available under CC BY-SA 4.0.
+The maintainer may build commercial offerings around the observatory (for example reports, sponsorships, or
+services). Contributing means you're comfortable with both halves of that arrangement.
+
 ## Development setup
 
 ```sh
