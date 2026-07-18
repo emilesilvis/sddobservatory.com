@@ -85,11 +85,6 @@ body:
     validations:
       required: true
   - type: textarea
-    id: example-repos
-    attributes:
-      label: Example repositories
-      description: Public repos that use the framework, `owner/name` — one per line.
-  - type: textarea
     id: sources
     attributes:
       label: Sources

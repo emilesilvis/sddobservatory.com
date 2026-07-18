@@ -21,7 +21,6 @@ const frameworks = defineCollection({
     maturity: z.enum(MATURITY_LEVELS),
     strengths: z.array(z.string()).min(1),
     limitations: z.array(z.string()).min(1),
-    exampleRepos: z.array(repoId).default([]),
     added: z.coerce.date(),
     lastReviewed: z.coerce.date(),
     featured: z.boolean().default(false),

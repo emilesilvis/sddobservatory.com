@@ -43,10 +43,6 @@ limitations:
   - "Requires a Python/uv toolchain for the Specify CLI on top of the coding agent itself"
   - "Dogfooding is partial — the repo's own `.specify/` holds only a constitution, with no in-tree feature specs"
   - "The template/override stack (core vs extension vs preset vs local) adds configuration complexity"
-exampleRepos:
-  - debrief/debrief
-  - neo4j-labs/arrows.app
-  - cloudposse/docs
 added: 2026-07-18
 lastReviewed: 2026-07-18
 featured: true

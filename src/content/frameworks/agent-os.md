@@ -34,8 +34,6 @@ limitations:
   - "Least active of the tracked frameworks — no release since v3.0.0 in January 2026"
   - "No longer covers implementation or orchestration, so it depends on external tools to complete the SDD loop"
   - "Smallest community of the tracked frameworks, with an adopter base that skews to small personal repos"
-exampleRepos:
-  - artisan-build/dogfood
 added: 2026-07-18
 lastReviewed: 2026-07-18
 featured: false

@@ -42,10 +42,6 @@ limitations:
   - "The Stores multi-repo feature is still in beta"
   - "Requires Node.js 20.19+ and a global npm install"
   - "The spec-delta format (ADDED/MODIFIED requirement blocks) has its own conventions to learn"
-exampleRepos:
-  - akkadotnet/akka.net
-  - farm-fe/farm
-  - Fission-AI/OpenSpec
 added: 2026-07-18
 lastReviewed: 2026-07-18
 featured: true

@@ -71,21 +71,6 @@ const hasBody = Boolean(framework.body?.trim());
   </div>
 
   {
-    data.exampleRepos.length > 0 && (
-      <>
-        <h2>Example repositories</h2>
-        <ul>
-          {data.exampleRepos.map((repo) => (
-            <li>
-              <a href={`https://github.com/${repo}`}>{repo}</a>
-            </li>
-          ))}
-        </ul>
-      </>
-    )
-  }
-
-  {
     usedBy.length > 0 && (
       <>
         <h2>Tracked projects using {data.name}</h2>
