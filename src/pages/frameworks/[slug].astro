@@ -5,9 +5,10 @@ import Badge from '../../components/Badge.astro';
 import MetricsPanel from '../../components/MetricsPanel.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import RichText from '../../components/RichText.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getMetrics } from '../../lib/metrics';
 import { maturityTone } from '../../lib/labels';
-import { formatDate } from '../../lib/format';
+import { formatDate, reviewAge } from '../../lib/format';
 
 export async function getStaticPaths() {
   const frameworks = await getCollection('frameworks');
@@ -25,15 +26,20 @@ const usedBy = (await getCollection('projects')).filter(
   (project) => project.data.framework.id === framework.id,
 );
 const hasBody = Boolean(framework.body?.trim());
+const review = reviewAge(data.lastReviewed);
 ---
 
 <BaseLayout title={data.name} description={data.summary}>
+  <Breadcrumbs items={[{ label: 'Frameworks', href: '/frameworks/' }, { label: data.name }]} />
   <header class="page-header">
     <h1>
       {data.name}
       <Badge label={data.maturity} tone={maturityTone(data.maturity)} />
     </h1>
     <p><RichText text={data.summary} /></p>
+    <p class:list={['freshness', { stale: review.stale }]}>
+      {review.stale ? `Review due · last reviewed ${formatDate(data.lastReviewed)}` : `${review.label} · ${formatDate(data.lastReviewed)}`}
+    </p>
     <p class="links">
       {data.website && <a href={data.website}>Website</a>}
       {data.repo && <a href={`https://github.com/${data.repo}`}>GitHub · {data.repo}</a>}
@@ -114,6 +120,15 @@ const hasBody = Boolean(framework.body?.trim());
     display: flex;
     gap: 1.25rem;
     flex-wrap: wrap;
+  }
+
+  .freshness {
+    font-size: 0.9rem;
+  }
+
+  .freshness.stale {
+    color: var(--warn);
+    font-weight: 650;
   }
 
   .columns {

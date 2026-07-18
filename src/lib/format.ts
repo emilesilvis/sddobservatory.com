@@ -28,6 +28,16 @@ export function relativeDate(value: string | Date): string {
   return 'today';
 }
 
+export function reviewAge(value: string | Date): { label: string; stale: boolean; timestamp: number } {
+  const date = typeof value === 'string' ? new Date(value) : value;
+  const ageInDays = (Date.now() - date.getTime()) / 86400000;
+  return {
+    label: `Reviewed ${relativeDate(date)}`,
+    stale: ageInDays > 180,
+    timestamp: date.getTime(),
+  };
+}
+
 /** "2.5 years" / "8 months" since a repo's createdAt. */
 export function ageSince(value: string | Date): string {
   const date = typeof value === 'string' ? new Date(value) : value;

@@ -1,0 +1,165 @@
+---
+interface Option {
+  value: string;
+  label: string;
+}
+
+interface Filter {
+  key: string;
+  label: string;
+  options: Option[];
+}
+
+interface Props {
+  itemLabel: string;
+  filters: Filter[];
+  sorts: Option[];
+  defaultSort: string;
+}
+
+const { itemLabel, filters, sorts, defaultSort } = Astro.props;
+---
+
+<section class="directory-controls" aria-label={`Filter and sort ${itemLabel}`} data-directory-controls>
+  <div class="field search-field">
+    <label for="directory-search">Search</label>
+    <input id="directory-search" type="search" placeholder={`Search ${itemLabel}…`} autocomplete="off" data-search />
+  </div>
+  {filters.map((filter) => (
+    <div class="field">
+      <label for={`filter-${filter.key}`}>{filter.label}</label>
+      <select id={`filter-${filter.key}`} data-filter={filter.key}>
+        <option value="">All</option>
+        {filter.options.map((option) => <option value={option.value}>{option.label}</option>)}
+      </select>
+    </div>
+  ))}
+  <div class="field">
+    <label for="directory-sort">Sort by</label>
+    <select id="directory-sort" data-sort>
+      {sorts.map((option) => <option value={option.value} selected={option.value === defaultSort}>{option.label}</option>)}
+    </select>
+  </div>
+  <button type="button" class="reset" data-reset>Reset</button>
+  <p class="results" aria-live="polite" aria-atomic="true" data-results></p>
+</section>
+
+<script>
+  const controls = document.querySelector<HTMLElement>('[data-directory-controls]');
+  const grid = document.querySelector<HTMLElement>('[data-directory-grid]');
+
+  if (controls && grid) {
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(':scope > li'));
+    const search = controls.querySelector<HTMLInputElement>('[data-search]');
+    const filterElements = Array.from(controls.querySelectorAll<HTMLSelectElement>('[data-filter]'));
+    const sort = controls.querySelector<HTMLSelectElement>('[data-sort]');
+    const results = controls.querySelector<HTMLElement>('[data-results]');
+    const reset = controls.querySelector<HTMLButtonElement>('[data-reset]');
+    const params = new URLSearchParams(location.search);
+
+    const syncFromUrl = () => {
+      if (search) search.value = params.get('q') ?? '';
+      filterElements.forEach((filter) => { filter.value = params.get(filter.dataset.filter ?? '') ?? ''; });
+      if (sort && params.get('sort')) sort.value = params.get('sort') ?? sort.value;
+    };
+
+    const apply = () => {
+      const query = search?.value.trim().toLocaleLowerCase() ?? '';
+      let visible = cards.filter((card) => {
+        const matchesQuery = !query || (card.dataset.search ?? card.textContent ?? '').toLocaleLowerCase().includes(query);
+        return matchesQuery && filterElements.every((filter) => {
+          const value = filter.value;
+          if (!value) return true;
+          const values = (card.dataset[filter.dataset.filter ?? ''] ?? '').split('|');
+          return values.includes(value);
+        });
+      });
+
+      visible.sort((a, b) => {
+        const key = sort?.value ?? '';
+        if (key === 'name') return (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '');
+        const difference = Number(b.dataset[key] ?? 0) - Number(a.dataset[key] ?? 0);
+        return difference || (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '');
+      });
+
+      cards.forEach((card) => { card.hidden = true; });
+      visible.forEach((card) => { card.hidden = false; grid.append(card); });
+      if (results) results.textContent = `${visible.length} ${visible.length === 1 ? grid.dataset.singular : grid.dataset.plural}`;
+
+      const next = new URLSearchParams();
+      if (query) next.set('q', search?.value.trim() ?? '');
+      filterElements.forEach((filter) => { if (filter.value) next.set(filter.dataset.filter ?? '', filter.value); });
+      if (sort?.value && sort.value !== grid.dataset.defaultSort) next.set('sort', sort.value);
+      history.replaceState(null, '', `${location.pathname}${next.size ? `?${next}` : ''}`);
+    };
+
+    syncFromUrl();
+    controls.addEventListener('input', apply);
+    controls.addEventListener('change', apply);
+    reset?.addEventListener('click', () => {
+      search && (search.value = '');
+      filterElements.forEach((filter) => { filter.value = ''; });
+      if (sort) sort.value = grid.dataset.defaultSort ?? '';
+      apply();
+      search?.focus();
+    });
+    apply();
+  }
+</script>
+
+<style>
+  .directory-controls {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .field {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .search-field {
+    flex: 1 1 15rem;
+  }
+
+  label {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  input,
+  select,
+  button {
+    border: 1px solid #a8b0bd;
+    border-radius: 0.4rem;
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0.5rem 0.65rem;
+    font: inherit;
+    font-size: 0.9rem;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .reset {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .results {
+    flex-basis: 100%;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

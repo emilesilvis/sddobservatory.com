@@ -5,9 +5,10 @@ import Badge from '../../components/Badge.astro';
 import MetricsPanel from '../../components/MetricsPanel.astro';
 import Timeline from '../../components/Timeline.astro';
 import RichText from '../../components/RichText.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getMetrics } from '../../lib/metrics';
 import { driftTone, statusTone } from '../../lib/labels';
-import { formatDate } from '../../lib/format';
+import { formatDate, reviewAge } from '../../lib/format';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -23,15 +24,20 @@ const { Content } = await render(project);
 const metrics = getMetrics(data.repo);
 const framework = await getEntry(data.framework);
 const hasBody = Boolean(project.body?.trim());
+const review = reviewAge(data.lastReviewed);
 ---
 
 <BaseLayout title={data.name} description={data.summary}>
+  <Breadcrumbs items={[{ label: 'Projects', href: '/projects/' }, { label: data.name }]} />
   <header class="page-header">
     <h1>
       {data.name}
       {data.status !== 'active' && <Badge label={data.status} tone={statusTone(data.status)} />}
     </h1>
     <p><RichText text={data.summary} /></p>
+    <p class:list={['freshness', { stale: review.stale }]}>
+      {review.stale ? `Review due · last reviewed ${formatDate(data.lastReviewed)}` : `${review.label} · ${formatDate(data.lastReviewed)}`}
+    </p>
     <p class="links">
       <a href={`https://github.com/${data.repo}`}>GitHub · {data.repo}</a>
       {
@@ -107,6 +113,15 @@ const hasBody = Boolean(project.body?.trim());
     display: flex;
     gap: 1.25rem;
     flex-wrap: wrap;
+  }
+
+  .freshness {
+    font-size: 0.9rem;
+  }
+
+  .freshness.stale {
+    color: var(--warn);
+    font-weight: 650;
   }
 
   .spec-structure {

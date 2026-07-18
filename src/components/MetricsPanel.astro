@@ -31,6 +31,10 @@ const barGap = 2;
 const sparkHeight = 36;
 const weekMs = 7 * 24 * 60 * 60 * 1000;
 const totalCommits = spark ? spark.reduce((sum, n) => sum + n, 0) : 0;
+const weeklyData = spark?.map((count, i) => ({
+  count,
+  weekStart: new Date(new Date(metrics!.fetchedAt).getTime() - (spark.length - i) * weekMs),
+})) ?? [];
 ---
 
 {
@@ -74,6 +78,21 @@ const totalCommits = spark ? spark.reduce((sum, n) => sum + n, 0) : 0;
             })}
           </svg>
           <figcaption>Commits per week, last 12 months · {formatCount(totalCommits)} total</figcaption>
+          <details>
+            <summary>View weekly commit data</summary>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr><th scope="col">Week starting</th><th scope="col">Commits</th></tr>
+                </thead>
+                <tbody>
+                  {weeklyData.map((week) => (
+                    <tr><td>{formatDate(week.weekStart)}</td><td>{formatCount(week.count)}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
         </figure>
       )}
       <p class="updated">Metrics updated {formatDate(metrics.fetchedAt)} · collected automatically from the GitHub API</p>
@@ -133,6 +152,37 @@ const totalCommits = spark ? spark.reduce((sum, n) => sum + n, 0) : 0;
     font-size: 0.78rem;
     color: var(--muted);
     margin-top: 0.35rem;
+  }
+
+  details {
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  summary {
+    width: fit-content;
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .table-scroll {
+    max-height: 18rem;
+    overflow: auto;
+    margin-top: 0.65rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th,
+  td {
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
   }
 
   .updated {

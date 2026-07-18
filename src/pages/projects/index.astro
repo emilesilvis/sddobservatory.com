@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import DirectoryControls from '../../components/DirectoryControls.astro';
 import { getMetrics } from '../../lib/metrics';
 
 const frameworks = await getCollection('frameworks');
@@ -26,10 +27,35 @@ const projects = (await getCollection('projects')).sort((a, b) => {
     </p>
   </header>
 
-  <ul class="card-grid">
+  <DirectoryControls
+    itemLabel="projects"
+    filters={[
+      { key: 'framework', label: 'Framework', options: frameworks.sort((a, b) => a.data.name.localeCompare(b.data.name)).map((framework) => ({ value: framework.id, label: framework.data.name })) },
+      { key: 'status', label: 'Status', options: ['active', 'paused', 'archived'].map((value) => ({ value, label: value })) },
+      { key: 'drift', label: 'Drift', options: ['none', 'low', 'moderate', 'high', 'unknown'].map((value) => ({ value, label: value })) },
+      { key: 'review', label: 'Review state', options: [{ value: 'due', label: 'Review due' }, { value: 'current', label: 'Current' }] },
+    ]}
+    sorts={[
+      { value: 'activity', label: 'Recently active' },
+      { value: 'reviewed', label: 'Recently reviewed' },
+      { value: 'name', label: 'Name' },
+    ]}
+    defaultSort="activity"
+  />
+
+  <ul class="card-grid" data-directory-grid data-singular="project" data-plural="projects" data-default-sort="activity">
     {
       projects.map((project) => (
-        <li>
+        <li
+          data-name={project.data.name.toLocaleLowerCase()}
+          data-search={`${project.data.name} ${project.data.summary} ${project.data.repo}`}
+          data-framework={project.data.framework.id}
+          data-status={project.data.status}
+          data-drift={project.data.drift}
+          data-review={(Date.now() - project.data.lastReviewed.getTime()) / 86400000 > 180 ? 'due' : 'current'}
+          data-activity={getMetrics(project.data.repo)?.pushedAt ? new Date(getMetrics(project.data.repo)!.pushedAt).getTime() : 0}
+          data-reviewed={project.data.lastReviewed.getTime()}
+        >
           <ProjectCard
             project={project}
             frameworkName={frameworkNames.get(project.data.framework.id) ?? project.data.framework.id}
