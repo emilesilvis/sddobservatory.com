@@ -1,0 +1,149 @@
+---
+import type { RepoMetrics } from '../lib/metrics-schema';
+import { ageSince, formatCount, formatDate, relativeDate } from '../lib/format';
+
+interface Props {
+  metrics: RepoMetrics | undefined;
+}
+
+const { metrics } = Astro.props;
+
+const tiles = metrics
+  ? [
+      { label: 'Stars', value: formatCount(metrics.stars) },
+      { label: 'Contributors', value: metrics.contributors === null ? '—' : formatCount(metrics.contributors) },
+      { label: 'Open issues', value: formatCount(metrics.openIssues) },
+      { label: 'Age', value: ageSince(metrics.createdAt) },
+      { label: 'Last push', value: relativeDate(metrics.pushedAt) },
+      {
+        label: 'Latest release',
+        value: metrics.latestRelease ? metrics.latestRelease.tag : '—',
+        detail: metrics.latestRelease?.publishedAt ? formatDate(metrics.latestRelease.publishedAt) : undefined,
+      },
+    ]
+  : [];
+
+// Tiny 52-week commit strip; native <title> gives each week a hover tooltip.
+const spark = metrics?.weeklyCommits?.length ? metrics.weeklyCommits : null;
+const sparkMax = spark ? Math.max(...spark, 1) : 1;
+const barWidth = 6;
+const barGap = 2;
+const sparkHeight = 36;
+const weekMs = 7 * 24 * 60 * 60 * 1000;
+const totalCommits = spark ? spark.reduce((sum, n) => sum + n, 0) : 0;
+---
+
+{
+  metrics ? (
+    <section class="panel" aria-label="Repository metrics">
+      <dl class="tiles">
+        {tiles.map((tile) => (
+          <div class="tile">
+            <dt>{tile.label}</dt>
+            <dd>
+              {tile.value}
+              {tile.detail && <span class="detail">{tile.detail}</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      {spark && (
+        <figure class="spark">
+          <svg
+            width={spark.length * (barWidth + barGap)}
+            height={sparkHeight}
+            viewBox={`0 0 ${spark.length * (barWidth + barGap)} ${sparkHeight}`}
+            role="img"
+            aria-label={`${formatCount(totalCommits)} commits in the last 52 weeks`}
+          >
+            {spark.map((count, i) => {
+              const h = Math.max(2, Math.round((count / sparkMax) * (sparkHeight - 4)));
+              const weekStart = new Date(new Date(metrics.fetchedAt).getTime() - (spark.length - i) * weekMs);
+              return (
+                <rect
+                  x={i * (barWidth + barGap)}
+                  y={sparkHeight - h}
+                  width={barWidth}
+                  height={h}
+                  rx="1.5"
+                  fill={count === 0 ? 'var(--line)' : 'var(--accent)'}
+                >
+                  <title>{`Week of ${formatDate(weekStart)}: ${count} commit${count === 1 ? '' : 's'}`}</title>
+                </rect>
+              );
+            })}
+          </svg>
+          <figcaption>Commits per week, last 12 months · {formatCount(totalCommits)} total</figcaption>
+        </figure>
+      )}
+      <p class="updated">Metrics updated {formatDate(metrics.fetchedAt)} · collected automatically from the GitHub API</p>
+    </section>
+  ) : (
+    <section class="panel pending" aria-label="Repository metrics">
+      <p>Metrics pending — repository stats are collected automatically once a day.</p>
+    </section>
+  )
+}
+
+<style>
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .tile dt {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .tile dd {
+    margin: 0.15rem 0 0;
+    font-size: 1.35rem;
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .tile .detail {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .spark {
+    margin: 1.25rem 0 0;
+    overflow-x: auto;
+  }
+
+  .spark figcaption {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+
+  .updated {
+    margin: 1rem 0 0;
+    font-size: 0.78rem;
+    color: var(--faint);
+  }
+
+  .pending p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+</style>

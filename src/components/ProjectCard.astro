@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { RepoMetrics } from '../lib/metrics-schema';
+import { driftTone, statusTone } from '../lib/labels';
+import { formatCount, relativeDate } from '../lib/format';
+import Badge from './Badge.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  frameworkName: string;
+  metrics: RepoMetrics | undefined;
+}
+
+const { project, frameworkName, metrics } = Astro.props;
+const { data } = project;
+---
+
+<a class="card" href={`/projects/${project.id}/`}>
+  <header>
+    <h3>{data.name}</h3>
+    <span class="badges">
+      {data.status !== 'active' && <Badge label={data.status} tone={statusTone(data.status)} />}
+      <Badge label={`drift: ${data.drift}`} tone={driftTone(data.drift)} title="Spec-to-code drift" />
+    </span>
+  </header>
+  <p class="summary">{data.summary}</p>
+  <p class="meta">
+    <code>{data.repo}</code> · using {frameworkName}
+    {metrics && (
+      <>
+        {' '}· ★ {formatCount(metrics.stars)} · pushed {relativeDate(metrics.pushedAt)}
+      </>
+    )}
+  </p>
+</a>
+
+<style>
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .badges {
+    display: inline-flex;
+    gap: 0.35rem;
+  }
+
+  .summary {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0.4rem 0 0.8rem;
+  }
+
+  .meta {
+    margin: 0.8rem 0 0;
+    font-size: 0.82rem;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .meta code {
+    font-size: 0.78rem;
+  }
+</style>

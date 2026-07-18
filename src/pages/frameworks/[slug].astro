@@ -1,6 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/Badge.astro';
+import MetricsPanel from '../../components/MetricsPanel.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getMetrics } from '../../lib/metrics';
+import { maturityTone } from '../../lib/labels';
+import { formatDate } from '../../lib/format';
 
 export async function getStaticPaths() {
   const frameworks = await getCollection('frameworks');
@@ -11,8 +17,130 @@ export async function getStaticPaths() {
 }
 
 const { framework } = Astro.props;
+const { data } = framework;
+const { Content } = await render(framework);
+const metrics = getMetrics(data.repo);
+const usedBy = (await getCollection('projects')).filter(
+  (project) => project.data.framework.id === framework.id,
+);
+const hasBody = Boolean(framework.body?.trim());
 ---
 
-<BaseLayout title={framework.data.name}>
-  <h1>{framework.data.name}</h1>
+<BaseLayout title={data.name} description={data.summary}>
+  <header class="page-header">
+    <h1>
+      {data.name}
+      <Badge label={data.maturity} tone={maturityTone(data.maturity)} />
+    </h1>
+    <p>{data.summary}</p>
+    <p class="links">
+      {data.website && <a href={data.website}>Website</a>}
+      {data.repo && <a href={`https://github.com/${data.repo}`}>GitHub · {data.repo}</a>}
+    </p>
+  </header>
+
+  {data.repo && <MetricsPanel metrics={metrics} />}
+
+  <h2>Core approach</h2>
+  <p>{data.coreApproach}</p>
+
+  <h2>Workflow</h2>
+  <ol>
+    {data.workflow.map((step) => <li>{step}</li>)}
+  </ol>
+
+  <h2>Supported tools</h2>
+  <ul class="chip-list">
+    {data.supportedTools.map((tool) => <li class="chip">{tool}</li>)}
+  </ul>
+
+  <div class="columns">
+    <section>
+      <h2>Strengths</h2>
+      <ul>
+        {data.strengths.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+    <section>
+      <h2>Limitations</h2>
+      <ul>
+        {data.limitations.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+  </div>
+
+  {
+    data.exampleRepos.length > 0 && (
+      <>
+        <h2>Example repositories</h2>
+        <ul>
+          {data.exampleRepos.map((repo) => (
+            <li>
+              <a href={`https://github.com/${repo}`}>{repo}</a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    usedBy.length > 0 && (
+      <>
+        <h2>Tracked projects using {data.name}</h2>
+        <ul class="card-grid">
+          {usedBy.map((project) => (
+            <li>
+              <ProjectCard
+                project={project}
+                frameworkName={data.name}
+                metrics={getMetrics(project.data.repo)}
+              />
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    hasBody && (
+      <>
+        <h2>Notes</h2>
+        <Content />
+      </>
+    )
+  }
+
+  <p class="review-meta">
+    Added {formatDate(data.added)} · Assessment last reviewed {formatDate(data.lastReviewed)} ·
+    <a href="/methodology/">How we track</a>
+  </p>
 </BaseLayout>
+
+<style>
+  h1 :global(.badge) {
+    margin-left: 0.5rem;
+    vertical-align: 0.35em;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 0 2.5rem;
+  }
+
+  .review-meta {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+</style>

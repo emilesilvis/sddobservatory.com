@@ -1,7 +1,122 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/site';
+
+const frameworkTemplate = `---
+name: Framework Name
+website: https://example.com/
+repo: owner/name            # omit if there is no public repo
+summary: >-
+  One-sentence description shown on cards.
+coreApproach: >-
+  One or two sentences on the methodology.
+workflow:
+  - "Step 1 — as the framework's own docs define it"
+  - "Step 2 — ..."
+supportedTools:
+  - Claude Code
+  - Cursor
+maturity: emerging          # experimental | emerging | established | mature
+strengths:
+  - "..."
+limitations:
+  - "..."
+exampleRepos:
+  - owner/name
+added: ${new Date().toISOString().slice(0, 10)}
+lastReviewed: ${new Date().toISOString().slice(0, 10)}
+featured: false
 ---
 
-<BaseLayout title="Submit">
-  <h1>Submit</h1>
+Optional free-form analysis notes go here.`;
+
+const projectTemplate = `---
+name: Project Name
+repo: owner/name
+framework: openspec         # slug of a framework file in src/content/frameworks/
+summary: >-
+  One-sentence description of what the project is.
+status: active              # active | paused | archived
+specStructure:
+  location: openspec/       # where the spec artifacts live in the repo
+  formats:
+    - Markdown
+  notes: >-
+    What's inside the spec directory.
+drift: unknown              # none | low | moderate | high | unknown
+timeline:
+  - date: ${new Date().toISOString().slice(0, 10)}
+    title: Framework adopted
+    description: First commit to the spec directory.
+added: ${new Date().toISOString().slice(0, 10)}
+lastReviewed: ${new Date().toISOString().slice(0, 10)}
+---
+
+## Spec-to-code drift
+
+What you observed, with dates. "Not yet assessed." is fine.
+
+## Defects and rework
+
+Not yet assessed.
+
+## Maintenance outcomes
+
+Not yet assessed.`;
+---
+
+<BaseLayout
+  title="Submit"
+  description="Submit a spec-driven development framework or a real-world project for tracking — via a GitHub issue form or a pull request."
+>
+  <header class="page-header">
+    <h1>Submit a framework or project</h1>
+    <p>
+      The observatory runs on community submissions and community tracking. Everything is a Markdown file in a
+      public repo — you can open a structured issue and let a maintainer add it, or send the file yourself as a
+      pull request. Repository metrics are fetched automatically once your entry is merged; you never need to fill
+      in stars or commit counts.
+    </p>
+  </header>
+
+  <h2>Inclusion criteria</h2>
+  <ul>
+    <li>
+      <strong>Frameworks</strong> need a publicly documented, usable-today methodology for driving AI-assisted
+      development from specifications — public docs, and ideally a public repo.
+    </li>
+    <li>
+      <strong>Projects</strong> need a public repository with observable spec artifacts in-tree (a spec directory
+      that can be watched over time). Real projects are strongly preferred over demos; a vendor's own showcase is
+      acceptable when labeled as such.
+    </li>
+    <li>Every claim on a page should be verifiable from a linked public source.</li>
+  </ul>
+
+  <h2>Submit a framework</h2>
+  <p>
+    <a class="button" href={`${SITE.repoUrl}/issues/new?template=submit-framework.yml`}>Open the framework issue form</a>
+  </p>
+  <p>
+    Or add the file directly: create <code>src/content/frameworks/&lt;slug&gt;.md</code> in a fork and open a pull
+    request. Template:
+  </p>
+  <pre><code>{frameworkTemplate}</code></pre>
+
+  <h2>Submit a project</h2>
+  <p>
+    <a class="button" href={`${SITE.repoUrl}/issues/new?template=submit-project.yml`}>Open the project issue form</a>
+  </p>
+  <p>
+    Or create <code>src/content/projects/&lt;slug&gt;.md</code> in a fork and open a pull request. The three
+    <code>##</code> body sections are required (write "Not yet assessed." where honest). Template:
+  </p>
+  <pre><code>{projectTemplate}</code></pre>
+
+  <h2>Help with tracking</h2>
+  <p>
+    Just as valuable as new entries: pick an existing page whose "last reviewed" date has gone stale, re-check the
+    project against its spec directory, and send a PR updating the drift rating, the narrative sections, and
+    <code>lastReviewed</code>. See the <a href="/methodology/">methodology</a> for how ratings are defined.
+  </p>
 </BaseLayout>

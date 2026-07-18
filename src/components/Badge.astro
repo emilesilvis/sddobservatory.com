@@ -1,0 +1,56 @@
+---
+import type { Tone } from '../lib/labels';
+
+interface Props {
+  label: string;
+  tone?: Tone;
+  title?: string;
+}
+
+const { label, tone = 'neutral', title } = Astro.props;
+---
+
+<span class={`badge ${tone}`} title={title}>{label}</span>
+
+<style>
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 650;
+    line-height: 1;
+    padding: 0.3em 0.7em;
+    border-radius: 999px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .ok {
+    color: var(--ok);
+    background: var(--ok-soft);
+  }
+
+  .info {
+    color: var(--info);
+    background: var(--info-soft);
+  }
+
+  .warn {
+    color: var(--warn);
+    background: var(--warn-soft);
+  }
+
+  .bad {
+    color: var(--bad);
+    background: var(--bad-soft);
+  }
+
+  .neutral {
+    color: var(--neutral);
+    background: var(--neutral-soft);
+  }
+
+  .special {
+    color: var(--special);
+    background: var(--special-soft);
+  }
+</style>

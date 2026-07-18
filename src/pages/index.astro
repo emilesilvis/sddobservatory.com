@@ -1,8 +1,128 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import FrameworkCard from '../components/FrameworkCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getMetrics } from '../lib/metrics';
+import { SITE } from '../lib/site';
+
+const frameworks = await getCollection('frameworks');
+const projects = await getCollection('projects');
+const frameworkNames = new Map(frameworks.map((f) => [f.id, f.data.name]));
+
+const featured = frameworks
+  .filter((f) => f.data.featured)
+  .sort((a, b) => (getMetrics(b.data.repo)?.stars ?? 0) - (getMetrics(a.data.repo)?.stars ?? 0));
+
+const lastActivity = (project: (typeof projects)[number]): number => {
+  const pushedAt = getMetrics(project.data.repo)?.pushedAt;
+  return pushedAt ? new Date(pushedAt).getTime() : project.data.added.getTime();
+};
+const recentProjects = [...projects].sort((a, b) => lastActivity(b) - lastActivity(a)).slice(0, 3);
 ---
 
 <BaseLayout>
-  <h1>SDD Observatory</h1>
-  <p>Tracking spec-driven development in the wild.</p>
+  <section class="hero">
+    <h1>Tracking spec-driven development <em>in the wild</em></h1>
+    <p>{SITE.description}</p>
+    <p class="actions">
+      <a class="button" href="/frameworks/">Browse frameworks</a>
+      <a class="button secondary" href="/submit/">Submit a framework or project</a>
+    </p>
+  </section>
+
+  {
+    featured.length > 0 && (
+      <section>
+        <h2>Featured frameworks</h2>
+        <ul class="card-grid">
+          {featured.map((framework) => (
+            <li>
+              <FrameworkCard framework={framework} metrics={getMetrics(framework.data.repo)} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    recentProjects.length > 0 && (
+      <section>
+        <h2>Recently active tracked projects</h2>
+        <ul class="card-grid">
+          {recentProjects.map((project) => (
+            <li>
+              <ProjectCard
+                project={project}
+                frameworkName={frameworkNames.get(project.data.framework.id) ?? project.data.framework.id}
+                metrics={getMetrics(project.data.repo)}
+              />
+            </li>
+          ))}
+        </ul>
+        <p>
+          <a href="/projects/">All tracked projects →</a>
+        </p>
+      </section>
+    )
+  }
+
+  <section class="cta">
+    <h2>Help track SDD in the wild</h2>
+    <p>
+      This observatory is community-maintained. Repository metrics update automatically every day; the qualitative
+      assessments — spec structure, drift, rework, maintenance outcomes — need human eyes. Submit a framework or
+      project, or help review an existing one. Read <a href="/methodology/">how we track</a> to see what goes into
+      each page.
+    </p>
+    <p>
+      <a class="button" href="/submit/">Submit</a>
+    </p>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    padding: 3.5rem 0 1.5rem;
+    max-width: 44rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 2.9rem);
+  }
+
+  .hero h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .cta {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.75rem 2rem;
+    margin-top: 3rem;
+    max-width: 46rem;
+  }
+
+  .cta h2 {
+    margin-top: 0;
+  }
+
+  .cta p:last-child {
+    margin: 0;
+  }
+</style>

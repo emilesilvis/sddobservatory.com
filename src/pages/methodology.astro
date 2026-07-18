@@ -1,7 +1,103 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/site';
 ---
 
-<BaseLayout title="Methodology">
-  <h1>Methodology</h1>
+<BaseLayout
+  title="Methodology"
+  description="How SDD Observatory collects its data: automated repository metrics, human-curated assessments, and the definitions behind maturity and drift ratings."
+>
+  <header class="page-header">
+    <h1>Methodology</h1>
+    <p>
+      The observatory's goal is to evaluate how effective different spec-driven development approaches are in
+      practice — by watching real projects over time, not by quoting marketing pages. That only works if it's clear
+      where each number and each judgment comes from.
+    </p>
+  </header>
+
+  <h2>What we track</h2>
+  <p>
+    <strong>Frameworks</strong> are documented methodologies for driving AI-assisted development from specifications
+    — their approach, workflow, supported tools, maturity, and limitations.
+    <strong>Projects</strong> are public repositories that use one of those frameworks, tracked over time: how their
+    specs are structured, how actively they're developed, whether specs and code stay in sync, and how maintenance
+    plays out.
+  </p>
+
+  <h2>Data sources</h2>
+  <ul>
+    <li>Public GitHub repositories (via the GitHub API)</li>
+    <li>Framework documentation and release notes</li>
+    <li>Maintainer submissions</li>
+    <li>Manually verified case studies</li>
+  </ul>
+
+  <h2>Automated vs. curated data</h2>
+  <p>Every page mixes two kinds of data, and the split is strict:</p>
+  <ul>
+    <li>
+      <strong>Automated metrics</strong> — stars, forks, contributors, open issues, repository age, push activity,
+      releases, and weekly commit counts — are fetched from the GitHub API by a scheduled job once a day and written
+      to <code>data/metrics/</code> in the site's repository. Humans never edit these files.
+    </li>
+    <li>
+      <strong>Curated assessments</strong> — framework descriptions, spec structure, spec-to-code drift ratings,
+      defect and rework narratives, maintenance outcomes, and timelines — are written by people and live in
+      <code>src/content/</code>. Bots never edit these files. Each page shows when its assessment was last reviewed.
+    </li>
+  </ul>
+  <p>
+    Both live in the same <a href={SITE.repoUrl}>public repository</a>, so every change to either is reviewable in
+    the git history.
+  </p>
+
+  <h2>Definitions</h2>
+
+  <h3>Maturity (frameworks)</h3>
+  <ul>
+    <li><strong>experimental</strong> — early stage; core workflow still changing; little real-world usage.</li>
+    <li><strong>emerging</strong> — real adoption and active development, but conventions still evolving.</li>
+    <li><strong>established</strong> — stable core workflow, meaningful adoption, actively maintained.</li>
+    <li><strong>mature</strong> — widely adopted, stable over multiple release cycles, proven in production use.</li>
+  </ul>
+
+  <h3>Spec-to-code drift (projects)</h3>
+  <p>
+    A human judgment of whether the project's specs still describe its code, based on comparing recent code changes
+    against the spec artifacts:
+  </p>
+  <ul>
+    <li><strong>none</strong> — specs are updated alongside code; spot checks find no divergence.</li>
+    <li><strong>low</strong> — minor gaps; specs trail code slightly but remain a reliable guide.</li>
+    <li><strong>moderate</strong> — specs noticeably lag; parts of the codebase are no longer described.</li>
+    <li><strong>high</strong> — specs are stale or abandoned while code moves on.</li>
+    <li><strong>unknown</strong> — not yet assessed.</li>
+  </ul>
+
+  <h3>Tracking status (projects)</h3>
+  <ul>
+    <li><strong>active</strong> — under regular development and regular review here.</li>
+    <li><strong>paused</strong> — development or our tracking is temporarily on hold.</li>
+    <li><strong>archived</strong> — the project is finished or abandoned; kept for the historical record.</li>
+  </ul>
+
+  <h2>Cadence</h2>
+  <p>
+    Automated metrics refresh daily; each metrics panel shows its fetch date. Curated assessments are reviewed on a
+    best-effort basis by maintainers and contributors — the "last reviewed" date on each page tells you how fresh
+    the judgment is. Stale assessments are a known failure mode; <a href="/submit/">flagging or refreshing one</a>
+    is one of the most useful contributions.
+  </p>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>Stars and commit counts measure attention and activity, not quality or productivity.</li>
+    <li>Drift ratings are informed human judgment, not a computed diff, and can lag reality between reviews.</li>
+    <li>The sample is small and self-selected: submitted projects skew toward teams proud of their process.</li>
+    <li>
+      Frameworks differ in what they call a spec, so cross-framework comparisons should be read as directional, not
+      precise.
+    </li>
+  </ul>
 </BaseLayout>

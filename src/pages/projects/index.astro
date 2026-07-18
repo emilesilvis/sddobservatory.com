@@ -1,7 +1,42 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getMetrics } from '../../lib/metrics';
+
+const frameworks = await getCollection('frameworks');
+const frameworkNames = new Map(frameworks.map((f) => [f.id, f.data.name]));
+
+const projects = (await getCollection('projects')).sort((a, b) => {
+  const aPush = getMetrics(a.data.repo)?.pushedAt;
+  const bPush = getMetrics(b.data.repo)?.pushedAt;
+  return (bPush ? new Date(bPush).getTime() : 0) - (aPush ? new Date(aPush).getTime() : 0);
+});
 ---
 
-<BaseLayout title="Projects">
-  <h1>Projects</h1>
+<BaseLayout
+  title="Projects"
+  description="Real-world projects tracked over time: which SDD framework they use, how their specs are structured, and how specs and code evolve together."
+>
+  <header class="page-header">
+    <h1>Tracked projects</h1>
+    <p>
+      Real repositories using spec-driven development, tracked over time: spec structure, activity, spec-to-code
+      drift, and maintenance outcomes. Know a project we should track? <a href="/submit/">Submit it</a>.
+    </p>
+  </header>
+
+  <ul class="card-grid">
+    {
+      projects.map((project) => (
+        <li>
+          <ProjectCard
+            project={project}
+            frameworkName={frameworkNames.get(project.data.framework.id) ?? project.data.framework.id}
+            metrics={getMetrics(project.data.repo)}
+          />
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

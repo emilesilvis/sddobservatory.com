@@ -1,7 +1,35 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FrameworkCard from '../../components/FrameworkCard.astro';
+import { getMetrics } from '../../lib/metrics';
+
+const frameworks = (await getCollection('frameworks')).sort(
+  (a, b) =>
+    (getMetrics(b.data.repo)?.stars ?? 0) - (getMetrics(a.data.repo)?.stars ?? 0) ||
+    a.data.name.localeCompare(b.data.name),
+);
 ---
 
-<BaseLayout title="Frameworks">
-  <h1>Frameworks</h1>
+<BaseLayout
+  title="Frameworks"
+  description="A directory of spec-driven development frameworks: their approach, workflow, supported tools, maturity, and real-world usage."
+>
+  <header class="page-header">
+    <h1>Frameworks</h1>
+    <p>
+      Spec-driven development frameworks we track: how each one works, which tools it supports, how mature it is, and
+      which real projects use it. Missing one? <a href="/submit/">Submit it</a>.
+    </p>
+  </header>
+
+  <ul class="card-grid">
+    {
+      frameworks.map((framework) => (
+        <li>
+          <FrameworkCard framework={framework} metrics={getMetrics(framework.data.repo)} />
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

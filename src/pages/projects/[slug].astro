@@ -1,6 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/Badge.astro';
+import MetricsPanel from '../../components/MetricsPanel.astro';
+import Timeline from '../../components/Timeline.astro';
+import { getMetrics } from '../../lib/metrics';
+import { driftTone, statusTone } from '../../lib/labels';
+import { formatDate } from '../../lib/format';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -11,8 +17,124 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+const metrics = getMetrics(data.repo);
+const framework = await getEntry(data.framework);
+const hasBody = Boolean(project.body?.trim());
 ---
 
-<BaseLayout title={project.data.name}>
-  <h1>{project.data.name}</h1>
+<BaseLayout title={data.name} description={data.summary}>
+  <header class="page-header">
+    <h1>
+      {data.name}
+      {data.status !== 'active' && <Badge label={data.status} tone={statusTone(data.status)} />}
+    </h1>
+    <p>{data.summary}</p>
+    <p class="links">
+      <a href={`https://github.com/${data.repo}`}>GitHub · {data.repo}</a>
+      {
+        framework && (
+          <span>
+            using <a href={`/frameworks/${framework.id}/`}>{framework.data.name}</a>
+          </span>
+        )
+      }
+    </p>
+  </header>
+
+  <MetricsPanel metrics={metrics} />
+
+  <h2>Spec structure</h2>
+  <dl class="spec-structure">
+    <div>
+      <dt>Location</dt>
+      <dd><code>{data.specStructure.location}</code></dd>
+    </div>
+    {
+      data.specStructure.formats && (
+        <div>
+          <dt>Formats</dt>
+          <dd>{data.specStructure.formats.join(', ')}</dd>
+        </div>
+      )
+    }
+    {
+      data.specStructure.notes && (
+        <div>
+          <dt>Notes</dt>
+          <dd>{data.specStructure.notes}</dd>
+        </div>
+      )
+    }
+  </dl>
+
+  <h2>
+    Assessment
+    <Badge label={`drift: ${data.drift}`} tone={driftTone(data.drift)} title="Spec-to-code drift" />
+  </h2>
+  {hasBody ? <Content /> : <p class="muted">Not yet assessed — <a href="/submit/">help us review this project</a>.</p>}
+
+  {
+    data.timeline.length > 0 && (
+      <>
+        <h2>Timeline</h2>
+        <Timeline events={data.timeline} />
+      </>
+    )
+  }
+
+  <p class="review-meta">
+    {metrics && <>Metrics updated {formatDate(metrics.fetchedAt)} · </>}
+    Assessment last reviewed {formatDate(data.lastReviewed)} · Added {formatDate(data.added)} ·
+    <a href="/methodology/">How we track</a>
+  </p>
 </BaseLayout>
+
+<style>
+  h1 :global(.badge) {
+    margin-left: 0.5rem;
+    vertical-align: 0.35em;
+  }
+
+  h2 :global(.badge) {
+    margin-left: 0.5rem;
+    vertical-align: 0.2em;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .spec-structure {
+    display: grid;
+    gap: 0.6rem;
+    margin: 1rem 0;
+  }
+
+  .spec-structure div {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+  }
+
+  .spec-structure dt {
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .spec-structure dd {
+    margin: 0;
+  }
+
+  .review-meta {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+</style>

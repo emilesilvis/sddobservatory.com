@@ -1,0 +1,70 @@
+---
+import { formatDate } from '../lib/format';
+
+interface Event {
+  date: Date;
+  title: string;
+  description?: string;
+  link?: string;
+}
+
+interface Props {
+  events: Event[];
+}
+
+const { events } = Astro.props;
+const sorted = [...events].sort((a, b) => b.date.getTime() - a.date.getTime());
+---
+
+<ol class="timeline">
+  {
+    sorted.map((event) => (
+      <li>
+        <time datetime={event.date.toISOString().slice(0, 10)}>{formatDate(event.date)}</time>
+        <div>
+          <strong>{event.link ? <a href={event.link}>{event.title}</a> : event.title}</strong>
+          {event.description && <p>{event.description}</p>}
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    border-left: 2px solid var(--line);
+  }
+
+  .timeline li {
+    position: relative;
+    padding: 0 0 1.4rem 1.5rem;
+  }
+
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0.45em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .timeline time {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .timeline p {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+</style>
