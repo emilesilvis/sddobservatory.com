@@ -44,7 +44,8 @@ status) are on the [methodology page](https://sddobservatory.com/methodology/).
 - Drift ratings compare spec-directory activity against code activity — say what you compared and when.
 - Prefer the framework's own vocabulary for workflow steps (real command names, real phase names).
 - Wrap commands, file names, and paths in backticks — in frontmatter strings (`summary`, `workflow`,
-  `strengths`, …) as well as body text, they render as inline code on the site.
+  `strengths`, …) as well as body text, they render as inline code on the site. This is enforced for
+  slash commands: `npm run build` (and CI on every PR) fails if a bare `/command` is found in content.
 
 ## Licensing of contributions
 

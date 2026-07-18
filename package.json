@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run lint:content && astro build",
+    "lint:content": "tsx scripts/lint-content.ts",
     "preview": "astro preview",
     "astro": "astro",
     "metrics": "tsx scripts/fetch-metrics.ts"
