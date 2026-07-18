@@ -15,16 +15,20 @@ permissions:
   pull-requests: write # draft PR
   id-token: write # claude-code-action OIDC exchange (Claude GitHub App)
 
-concurrency:
-  group: validate-submission-${{ github.event.issue.number }}
-  cancel-in-progress: true # rapid edits: only the latest run survives
-
 jobs:
   validate:
     # Only open issues with the `submission` label; on `labeled`, only fire for
     # the `submission` label itself (issue forms apply submission+project/framework
     # together — this avoids double runs). Removing and re-adding `submission` is
     # the maintainer's manual re-trigger.
+    #
+    # Concurrency lives on the job, not the workflow: a job skipped by the `if:`
+    # never enters the group, so the no-op run for a `framework`/`project` label
+    # event can't cancel the real `submission` run when both labels are added at
+    # once. Rapid edits still cancel stale runs: only the latest survives.
+    concurrency:
+      group: validate-submission-${{ github.event.issue.number }}
+      cancel-in-progress: true
     if: >
       github.event.issue.state == 'open' &&
       contains(github.event.issue.labels.*.name, 'submission') &&
