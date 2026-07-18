@@ -30,9 +30,6 @@ limitations:
   - "Credit-metered pricing, where model choice changes credit burn"
   - "Spec artifacts follow Kiro's own structure, making them less portable than tool-agnostic frameworks"
   - "Internals can't be inspected or extended by the community"
-exampleRepos:
-  - kirodotdev/spirit-of-kiro
-  - kirodotdev/Kiro
 added: 2026-07-18
 lastReviewed: 2026-07-18
 featured: false

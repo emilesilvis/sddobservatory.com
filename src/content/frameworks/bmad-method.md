@@ -35,8 +35,6 @@ limitations:
   - "V6 was a breaking restructure; upgrading from v4/v5 requires a dedicated migration guide"
   - "Prerequisites span Node.js 20.12+, Python 3.10+, and uv"
   - "The repo does not visibly dogfood its own story/PRD artifacts in-tree, and BMAD/BMad are trademarks with usage restrictions"
-exampleRepos:
-  - advancedlogic/GoOse
 added: 2026-07-18
 lastReviewed: 2026-07-18
 featured: true
