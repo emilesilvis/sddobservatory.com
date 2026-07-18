@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="82%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#1c2a4a"/>
+      <stop offset="60%" stop-color="#131c30"/>
+      <stop offset="100%" stop-color="#0e1526"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- decorative orbit rings behind the text -->
+  <circle cx="985" cy="315" r="310" fill="none" stroke="#243354" stroke-width="2"/>
+  <circle cx="985" cy="315" r="240" fill="none" stroke="#2a3a5c" stroke-width="2"/>
+
+  <!-- observatory motif (scaled favicon) -->
+  <circle cx="985" cy="315" r="150" fill="none" stroke="#7aa2ff" stroke-width="26"/>
+  <circle cx="985" cy="315" r="58" fill="#7aa2ff"/>
+  <line x1="1092" y1="208" x2="1168" y2="132" stroke="#7aa2ff" stroke-width="30" stroke-linecap="round"/>
+
+  <!-- small stars -->
+  <circle cx="180" cy="120" r="4" fill="#3d4f78"/>
+  <circle cx="640" cy="90" r="3" fill="#3d4f78"/>
+  <circle cx="90" cy="480" r="3" fill="#3d4f78"/>
+  <circle cx="740" cy="540" r="4" fill="#3d4f78"/>
+  <circle cx="1120" cy="560" r="3" fill="#3d4f78"/>
+
+  <text x="80" y="308" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="82" font-weight="bold" letter-spacing="-1" fill="#ffffff">SDD <tspan fill="#7aa2ff">Observatory</tspan></text>
+
+  <text x="80" y="372" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="33" fill="#a8b4ca">Tracking spec-driven development in the wild.</text>
+
+  <text x="80" y="556" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" font-weight="500" fill="#5c6e94">sddobservatory.com</text>
+</svg>
