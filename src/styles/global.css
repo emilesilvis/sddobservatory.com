@@ -130,6 +130,7 @@ hr {
 }
 
 .card {
+  position: relative;
   display: block;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -139,9 +140,40 @@ hr {
   transition: border-color 120ms ease;
 }
 
-a.card:hover {
+/* Stretched link: makes the whole card clickable while leaving room for
+   secondary links (e.g. the GitHub repo link), which sit above it via
+   position: relative. */
+.card-link {
+  color: inherit;
+}
+
+.card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.card-link:hover {
   text-decoration: none;
+}
+
+.card:has(.card-link:hover),
+.card:has(.card-link:focus-visible) {
   border-color: var(--accent);
+}
+
+.card .repo {
+  position: relative;
+  color: inherit;
+}
+
+.card .repo:hover {
+  color: var(--accent);
+}
+
+.card .repo svg {
+  vertical-align: -0.125em;
+  margin-right: 0.2em;
 }
 
 .card-grid {
