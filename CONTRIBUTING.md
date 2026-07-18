@@ -22,6 +22,22 @@ Inclusion criteria and copy-paste frontmatter templates live on the
 [`src/content.config.ts`](src/content.config.ts) — the build fails with a precise error if frontmatter doesn't
 match.
 
+## What happens after you submit an issue
+
+A validator agent (see [`.github/prompts/validate-submission.md`](.github/prompts/validate-submission.md))
+checks every issue carrying the `submission` label and comments with its findings:
+
+- **`needs-info`** — something is missing or invalid; the comment says exactly what. Edit the issue to re-run
+  the check (the same comment updates in place).
+- **`possible-duplicate`** — it may duplicate an existing entry or another open submission. The issue is left
+  open for a maintainer to judge; the agent never closes anything.
+- **`ready-for-review`** — everything checks out, and the agent has opened a draft PR with the content file for
+  a maintainer to review.
+
+A human maintainer reviews every submission before anything is published. Maintainers can opt a free-form
+(non-form) issue into validation by adding the `submission` label plus `project` or `framework`, and re-trigger
+a run by removing and re-adding `submission`.
+
 ## Project pages: required body sections
 
 Every project page's Markdown body must contain these three `##` sections, in this order:

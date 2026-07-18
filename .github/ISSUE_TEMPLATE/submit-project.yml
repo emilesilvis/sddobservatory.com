@@ -2,6 +2,8 @@ name: Submit a project
 description: Propose a real-world project for the tracker
 title: "[Project] "
 labels: ["submission", "project"]
+# KEEP IN SYNC: field labels below are parsed by the validator agent —
+# see .github/prompts/validate-submission.md. Change both together.
 body:
   - type: markdown
     attributes:
@@ -10,7 +12,8 @@ body:
         a maintainer will turn your answers into a page, or you can skip this form and
         [open a PR directly](https://sddobservatory.com/submit/). Inclusion criteria: a public repository with
         observable spec artifacts in-tree. Stars, activity, and other repo stats are fetched automatically —
-        don't fill them in.
+        don't fill them in. An automated check reviews your submission within a few minutes and comments with
+        anything missing; if everything checks out it opens a draft PR that a maintainer reviews before publishing.
   - type: input
     id: name
     attributes:
