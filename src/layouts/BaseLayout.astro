@@ -1,0 +1,138 @@
+---
+import '../styles/global.css';
+import { SITE } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+
+const nav = [
+  { href: '/frameworks/', label: 'Frameworks' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/methodology/', label: 'Methodology' },
+  { href: '/submit/', label: 'Submit' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <header>
+      <div class="container bar">
+        <a class="brand" href="/">SDD <span>Observatory</span></a>
+        <nav>
+          {
+            nav.map((item) => (
+              <a href={item.href} aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>{SITE.name} — {SITE.tagline}</p>
+        <p>
+          Community-maintained. Data and site source on
+          <a href={SITE.repoUrl}>GitHub</a> · <a href="/methodology/">Methodology</a> ·
+          <a href="/submit/">Submit a framework or project</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+  }
+
+  .brand {
+    font-weight: 750;
+    font-size: 1.1rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .brand span {
+    color: var(--accent);
+  }
+
+  .brand:hover {
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: var(--muted);
+    font-weight: 550;
+    font-size: 0.95rem;
+  }
+
+  nav a:hover {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--accent);
+  }
+
+  main {
+    min-height: 60vh;
+    padding-bottom: 4rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0 3rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    background: var(--surface);
+  }
+
+  footer p {
+    margin: 0 0 0.4rem;
+  }
+</style>
