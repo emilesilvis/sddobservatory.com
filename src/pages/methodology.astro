@@ -1,6 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
 import { SITE } from '../lib/site';
+import { maturityTone, driftTone, statusTone } from '../lib/labels';
+
+const maturityScale = [
+  { label: 'experimental', meaning: 'Early stage; core workflow still changing; little real-world usage.' },
+  { label: 'emerging', meaning: 'Real adoption and active development, but conventions still evolving.' },
+  { label: 'established', meaning: 'Stable core workflow, meaningful adoption, actively maintained.' },
+  { label: 'mature', meaning: 'Widely adopted, stable over multiple release cycles, proven in production use.' },
+];
+
+const driftScale = [
+  { label: 'none', meaning: 'Specs are updated alongside code; spot checks find no divergence.' },
+  { label: 'low', meaning: 'Minor gaps; specs trail code slightly but remain a reliable guide.' },
+  { label: 'moderate', meaning: 'Specs noticeably lag; parts of the codebase are no longer described.' },
+  { label: 'high', meaning: 'Specs are stale or abandoned while the code moves on.' },
+  { label: 'unknown', meaning: 'Not yet assessed.' },
+];
+
+const statusScale = [
+  { label: 'active', meaning: 'Under regular development and regular review here.' },
+  { label: 'paused', meaning: 'Development, or our tracking of it, is temporarily on hold.' },
+  { label: 'archived', meaning: 'Finished or abandoned; kept for the historical record.' },
+];
 ---
 
 <BaseLayout
@@ -10,85 +33,136 @@ import { SITE } from '../lib/site';
   <header class="page-header">
     <h1>Methodology</h1>
     <p>
-      The observatory's goal is to evaluate how effective different spec-driven development approaches are in
-      practice — by watching real projects over time, not by quoting marketing pages. That only works if it's clear
-      where each number and each judgment comes from.
+      The observatory evaluates how well spec-driven development approaches work in practice by watching real
+      projects over time — not by quoting marketing pages. Everything on the site comes from one of two places: an
+      automated metrics pipeline that humans never edit, or a curated human assessment that bots never edit. This
+      page explains what we track, where each number comes from, and how to read the ratings.
     </p>
   </header>
 
   <h2>What we track</h2>
-  <p>
-    <strong>Frameworks</strong> are documented methodologies for driving AI-assisted development from specifications
-    — their approach, workflow, supported tools, maturity, and limitations.
-    <strong>Projects</strong> are public repositories that use one of those frameworks, tracked over time: how their
-    specs are structured, how actively they're developed, whether specs and code stay in sync, and how maintenance
-    plays out.
-  </p>
+  <div class="track-grid">
+    <div class="card">
+      <h3>Frameworks</h3>
+      <p>
+        Documented methodologies for driving AI-assisted development from specifications. Each page records the
+        framework's approach, workflow, supported tools, maturity, strengths, and limitations.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Projects</h3>
+      <p>
+        Public repositories that use one of those frameworks. Each page tracks how the specs are structured, how
+        actively the code is developed, whether specs and code stay in sync, and how maintenance plays out over
+        time.
+      </p>
+    </div>
+  </div>
 
-  <h2>Data sources</h2>
-  <ul>
-    <li>Public GitHub repositories (via the GitHub API)</li>
-    <li>Framework documentation and release notes</li>
-    <li>Maintainer submissions</li>
-    <li>Manually verified case studies</li>
-  </ul>
-
-  <h2>Automated vs. curated data</h2>
+  <h2>Where the data comes from</h2>
   <p>Every page mixes two kinds of data, and the split is strict:</p>
-  <ul>
-    <li>
-      <strong>Automated metrics</strong> — stars, forks, contributors, open issues, repository age, push activity,
-      releases, and weekly commit counts — are fetched from the GitHub API by a scheduled job once a day and written
-      to <code>data/metrics/</code> in the site's repository. Humans never edit these files.
-    </li>
-    <li>
-      <strong>Curated assessments</strong> — framework descriptions, spec structure, spec-to-code drift ratings,
-      defect and rework narratives, maintenance outcomes, and timelines — are written by people and live in
-      <code>src/content/</code>. Bots never edit these files. Each page shows when its assessment was last reviewed.
-    </li>
-  </ul>
+  <div class="track-grid">
+    <div class="card">
+      <h3>Automated metrics</h3>
+      <p class="rule">Fetched by machines. Humans never edit them.</p>
+      <dl>
+        <dt>What</dt>
+        <dd>Stars, forks, contributors, open issues, repository age, push activity, releases, weekly commits.</dd>
+        <dt>Source</dt>
+        <dd>The GitHub API, via a scheduled job.</dd>
+        <dt>Lives in</dt>
+        <dd><code>data/metrics/</code></dd>
+        <dt>Refreshed</dt>
+        <dd>Daily. Each metrics panel shows its fetch date.</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <h3>Curated assessments</h3>
+      <p class="rule">Written by people. Bots never edit them.</p>
+      <dl>
+        <dt>What</dt>
+        <dd>
+          Framework descriptions, spec structure, drift ratings, defect and rework narratives, maintenance
+          outcomes, timelines.
+        </dd>
+        <dt>Source</dt>
+        <dd>
+          Maintainers and contributors, drawing on framework documentation, release notes, maintainer submissions,
+          and manually verified case studies.
+        </dd>
+        <dt>Lives in</dt>
+        <dd><code>src/content/</code></dd>
+        <dt>Refreshed</dt>
+        <dd>Best-effort review. Each page shows its "last reviewed" date.</dd>
+      </dl>
+    </div>
+  </div>
   <p>
-    Both live in the same <a href={SITE.repoUrl}>public repository</a>, so every change to either is reviewable in
-    the git history.
+    Both live in the same <a href={SITE.repoUrl}>public repository</a>, so every change — a bot commit or a human
+    judgment — is reviewable in the git history. Stale assessments are a known failure mode: the "last reviewed"
+    date tells you how fresh a judgment is, and <a href="/submit/">flagging or refreshing one</a> is one of the
+    most useful contributions.
   </p>
 
-  <h2>Definitions</h2>
-
-  <h3>Maturity (frameworks)</h3>
-  <ul>
-    <li><strong>experimental</strong> — early stage; core workflow still changing; little real-world usage.</li>
-    <li><strong>emerging</strong> — real adoption and active development, but conventions still evolving.</li>
-    <li><strong>established</strong> — stable core workflow, meaningful adoption, actively maintained.</li>
-    <li><strong>mature</strong> — widely adopted, stable over multiple release cycles, proven in production use.</li>
-  </ul>
-
-  <h3>Spec-to-code drift (projects)</h3>
+  <h2>How to read the ratings</h2>
   <p>
-    A human judgment of whether the project's specs still describe its code, based on comparing recent code changes
-    against the spec artifacts:
+    Three rating scales appear on cards and pages across the site. All three are curated human judgments, not
+    computed values; the badges below are the exact ones you'll see.
   </p>
-  <ul>
-    <li><strong>none</strong> — specs are updated alongside code; spot checks find no divergence.</li>
-    <li><strong>low</strong> — minor gaps; specs trail code slightly but remain a reliable guide.</li>
-    <li><strong>moderate</strong> — specs noticeably lag; parts of the codebase are no longer described.</li>
-    <li><strong>high</strong> — specs are stale or abandoned while code moves on.</li>
-    <li><strong>unknown</strong> — not yet assessed.</li>
-  </ul>
 
-  <h3>Tracking status (projects)</h3>
-  <ul>
-    <li><strong>active</strong> — under regular development and regular review here.</li>
-    <li><strong>paused</strong> — development or our tracking is temporarily on hold.</li>
-    <li><strong>archived</strong> — the project is finished or abandoned; kept for the historical record.</li>
-  </ul>
+  <h3>Maturity <span class="applies">— frameworks</span></h3>
+  <p>How settled the framework's methodology is.</p>
+  <table class="scale">
+    <tbody>
+      {
+        maturityScale.map(({ label, meaning }) => (
+          <tr>
+            <th scope="row">
+              <Badge label={label} tone={maturityTone(label)} />
+            </th>
+            <td>{meaning}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
 
-  <h2>Cadence</h2>
+  <h3>Spec-to-code drift <span class="applies">— projects</span></h3>
   <p>
-    Automated metrics refresh daily; each metrics panel shows its fetch date. Curated assessments are reviewed on a
-    best-effort basis by maintainers and contributors — the "last reviewed" date on each page tells you how fresh
-    the judgment is. Stale assessments are a known failure mode; <a href="/submit/">flagging or refreshing one</a>
-    is one of the most useful contributions.
+    Whether the project's specs still describe its code, judged by comparing recent code changes against the spec
+    artifacts.
   </p>
+  <table class="scale">
+    <tbody>
+      {
+        driftScale.map(({ label, meaning }) => (
+          <tr>
+            <th scope="row">
+              <Badge label={label} tone={driftTone(label)} />
+            </th>
+            <td>{meaning}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h3>Tracking status <span class="applies">— projects</span></h3>
+  <p>Whether the project is still being watched.</p>
+  <table class="scale">
+    <tbody>
+      {
+        statusScale.map(({ label, meaning }) => (
+          <tr>
+            <th scope="row">
+              <Badge label={label} tone={statusTone(label)} />
+            </th>
+            <td>{meaning}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
 
   <h2>Limitations</h2>
   <ul>
@@ -101,3 +175,69 @@ import { SITE } from '../lib/site';
     </li>
   </ul>
 </BaseLayout>
+
+<style>
+  .track-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .track-grid h3 {
+    margin-top: 0;
+  }
+
+  .rule {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .track-grid dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+  }
+
+  .track-grid dt {
+    color: var(--faint);
+    font-size: 0.8rem;
+    font-weight: 650;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 0.15rem;
+  }
+
+  .track-grid dd {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .applies {
+    color: var(--faint);
+    font-weight: 500;
+  }
+
+  .scale {
+    border-collapse: collapse;
+    margin: 0 0 1.5rem;
+  }
+
+  .scale th {
+    text-align: left;
+    padding: 0.45rem 1.25rem 0.45rem 0;
+    vertical-align: top;
+  }
+
+  .scale td {
+    padding: 0.45rem 0;
+    vertical-align: top;
+  }
+
+  .scale tr + tr th,
+  .scale tr + tr td {
+    border-top: 1px solid var(--line);
+  }
+</style>
