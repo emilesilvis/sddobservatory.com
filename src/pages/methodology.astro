@@ -93,14 +93,18 @@ const statusScale = [
         <dt>Lives in</dt>
         <dd><code>src/content/</code></dd>
         <dt>Refreshed</dt>
-        <dd>Best-effort review. Each page shows its "last reviewed" date.</dd>
+        <dd>
+          Best-effort review. Each page shows its "last reviewed" date; after 180 days the site marks the assessment
+          as "Review due."
+        </dd>
       </dl>
     </div>
   </div>
   <p>
     Both live in the same <a href={SITE.repoUrl}>public repository</a>, so every change — a bot commit or a human
     judgment — is reviewable in the git history. Stale assessments are a known failure mode: the "last reviewed"
-    date tells you how fresh a judgment is, and <a href="/submit/">flagging or refreshing one</a> is one of the
+    date tells you how fresh a judgment is. Assessments older than 180 days are marked "Review due" and can be
+    found with the project directory's review-state filter. <a href="/submit/">Flagging or refreshing one</a> is one of the
     most useful contributions.
   </p>
 

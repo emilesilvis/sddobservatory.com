@@ -90,7 +90,7 @@ a:hover {
   outline-offset: 3px;
 }
 
-main :where(p, li, dd) a:not(.button),
+main :where(p, li, dd) a:not(.button, .card-link, .repo),
 footer a {
   text-decoration: underline;
   text-decoration-thickness: 0.08em;

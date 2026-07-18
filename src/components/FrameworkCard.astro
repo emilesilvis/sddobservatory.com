@@ -2,9 +2,10 @@
 import type { CollectionEntry } from 'astro:content';
 import type { RepoMetrics } from '../lib/metrics-schema';
 import { maturityTone } from '../lib/labels';
-import { formatCount, relativeDate, reviewAge } from '../lib/format';
+import { formatCount, relativeDate } from '../lib/format';
 import Badge from './Badge.astro';
 import RichText from './RichText.astro';
+import ReviewFreshness from './ReviewFreshness.astro';
 
 interface Props {
   framework: CollectionEntry<'frameworks'>;
@@ -15,7 +16,6 @@ const { framework, metrics } = Astro.props;
 const { data } = framework;
 const tools = data.supportedTools.slice(0, 4);
 const moreTools = data.supportedTools.length - tools.length;
-const review = reviewAge(data.lastReviewed);
 ---
 
 <article class="card">
@@ -24,7 +24,7 @@ const review = reviewAge(data.lastReviewed);
     <Badge label={data.maturity} tone={maturityTone(data.maturity)} />
   </header>
   <p class="summary"><RichText text={data.summary} /></p>
-  <p class:list={['review', { stale: review.stale }]}>{review.stale ? 'Review due' : review.label}</p>
+  <ReviewFreshness date={data.lastReviewed} />
   <ul class="chip-list">
     {tools.map((tool) => <li class="chip">{tool}</li>)}
     {moreTools > 0 && <li class="chip">+{moreTools} more</li>}
@@ -77,17 +77,6 @@ const review = reviewAge(data.lastReviewed);
     font-size: 0.82rem;
     color: var(--faint);
     font-variant-numeric: tabular-nums;
-  }
-
-  .review {
-    margin: 0 0 0.75rem;
-    color: var(--muted);
-    font-size: 0.82rem;
-  }
-
-  .review.stale {
-    color: var(--warn);
-    font-weight: 650;
   }
 
   .view {

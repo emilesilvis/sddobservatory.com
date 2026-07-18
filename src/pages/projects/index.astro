@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import DirectoryControls from '../../components/DirectoryControls.astro';
 import { getMetrics } from '../../lib/metrics';
+import { reviewAge } from '../../lib/format';
 
 const frameworks = await getCollection('frameworks');
 const frameworkNames = new Map(frameworks.map((f) => [f.id, f.data.name]));
@@ -52,7 +53,7 @@ const projects = (await getCollection('projects')).sort((a, b) => {
           data-framework={project.data.framework.id}
           data-status={project.data.status}
           data-drift={project.data.drift}
-          data-review={(Date.now() - project.data.lastReviewed.getTime()) / 86400000 > 180 ? 'due' : 'current'}
+          data-review={reviewAge(project.data.lastReviewed).state}
           data-activity={getMetrics(project.data.repo)?.pushedAt ? new Date(getMetrics(project.data.repo)!.pushedAt).getTime() : 0}
           data-reviewed={project.data.lastReviewed.getTime()}
         >

@@ -28,12 +28,13 @@ export function relativeDate(value: string | Date): string {
   return 'today';
 }
 
-export function reviewAge(value: string | Date): { label: string; stale: boolean; timestamp: number } {
+export function reviewAge(value: string | Date): { label: string; stale: boolean; state: 'due' | 'current'; timestamp: number } {
   const date = typeof value === 'string' ? new Date(value) : value;
   const ageInDays = (Date.now() - date.getTime()) / 86400000;
   return {
     label: `Reviewed ${relativeDate(date)}`,
     stale: ageInDays > 180,
+    state: ageInDays > 180 ? 'due' : 'current',
     timestamp: date.getTime(),
   };
 }
