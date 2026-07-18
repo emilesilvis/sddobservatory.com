@@ -33,3 +33,12 @@ GITHUB_TOKEN=$(gh auth token) npm run metrics   # refresh data/metrics/ locally
 
 Note for the maintainer's setup: if your clone lives inside Dropbox on macOS, exclude the churn-heavy dirs once
 with `xattr -w com.dropbox.ignored 1 node_modules dist .astro`.
+
+## License
+
+- **Code** — [MIT](LICENSE)
+- **Content** (`src/content/`) — [CC BY-SA 4.0](LICENSE-CONTENT.md): reuse freely with attribution to
+  SDD Observatory, share adaptations alike
+- **Metrics** (`data/metrics/`) — factual data collected from the GitHub API, provided as-is
+
+Contribution licensing terms are in [CONTRIBUTING.md](CONTRIBUTING.md#licensing-of-contributions).
