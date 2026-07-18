@@ -2,6 +2,8 @@ name: Submit a framework
 description: Propose a spec-driven development framework for the directory
 title: "[Framework] "
 labels: ["submission", "framework"]
+# KEEP IN SYNC: field labels below are parsed by the validator agent —
+# see .github/prompts/validate-submission.md. Change both together.
 body:
   - type: markdown
     attributes:
@@ -9,7 +11,9 @@ body:
         Thanks for contributing! These fields mirror the frontmatter of `src/content/frameworks/<slug>.md` —
         a maintainer will turn your answers into a page, or you can skip this form and
         [open a PR directly](https://sddobservatory.com/submit/). Inclusion criteria: a publicly documented,
-        usable-today methodology for driving AI-assisted development from specifications.
+        usable-today methodology for driving AI-assisted development from specifications. An automated check
+        reviews your submission within a few minutes and comments with anything missing; if everything checks
+        out it opens a draft PR that a maintainer reviews before publishing.
   - type: input
     id: name
     attributes:

@@ -15,3 +15,6 @@ content, frontmatter or body. Run `npm run lint:content` before committing conte
 
 Humans (and agents) edit `src/content/`; the metrics bot edits `data/metrics/`. Never edit
 metrics files or copy stats into content frontmatter. See CONTRIBUTING.md for the rest.
+
+The submission validator agent (`.github/prompts/validate-submission.md`) drafts content from
+issue submissions; its rules are a superset of this one.

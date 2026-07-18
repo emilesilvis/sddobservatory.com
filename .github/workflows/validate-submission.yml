@@ -1,0 +1,60 @@
+name: Validate submission
+
+# Runs the submission validator agent on issues created from the submission
+# forms (.github/ISSUE_TEMPLATE/submit-*.yml). The agent's instructions live in
+# .github/prompts/validate-submission.md — the two must stay in sync with the
+# issue-form field labels.
+
+on:
+  issues:
+    types: [opened, edited, reopened, labeled]
+
+permissions:
+  contents: write # push submission/* branches
+  issues: write # sticky comment + labels
+  pull-requests: write # draft PR
+  id-token: write # claude-code-action OIDC exchange (Claude GitHub App)
+
+concurrency:
+  group: validate-submission-${{ github.event.issue.number }}
+  cancel-in-progress: true # rapid edits: only the latest run survives
+
+jobs:
+  validate:
+    # Only open issues with the `submission` label; on `labeled`, only fire for
+    # the `submission` label itself (issue forms apply submission+project/framework
+    # together — this avoids double runs). Removing and re-adding `submission` is
+    # the maintainer's manual re-trigger.
+    if: >
+      github.event.issue.state == 'open' &&
+      contains(github.event.issue.labels.*.name, 'submission') &&
+      (github.event.action != 'labeled' || github.event.label.name == 'submission')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # agent branches off origin/main and force-pushes
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci # so the agent can run lint:content/build without setup turns
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # If the Claude GitHub App is not installed, uncomment and provide a
+          # fine-grained PAT instead (and drop `id-token: write` above):
+          # github_token: ${{ secrets.SUBMISSION_BOT_TOKEN }}
+          #
+          # Never interpolate issue title/body here — untrusted user input stays
+          # out of ${{ }} expressions. The agent fetches the issue itself.
+          prompt: |
+            You are the submission validator for this repository.
+            Read the file .github/prompts/validate-submission.md and follow it exactly.
+            Issue number: ${{ github.event.issue.number }}
+            Event action: ${{ github.event.action }}
+            Repository: ${{ github.repository }}
+          claude_args: |
+            --allowedTools "Read,Glob,Grep,Write,Edit,WebFetch,Bash(gh issue view:*),Bash(gh issue list:*),Bash(gh issue comment:*),Bash(gh issue edit:*),Bash(gh api:*),Bash(gh pr create:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh label create:*),Bash(gh search:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git fetch:*),Bash(git checkout:*),Bash(git switch:*),Bash(git add:*),Bash(git commit:*),Bash(git config:*),Bash(git push origin submission/*),Bash(npm run lint:content),Bash(npm run build),Bash(date:*)"
+            --max-turns 80
