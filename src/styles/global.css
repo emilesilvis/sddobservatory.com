@@ -54,6 +54,7 @@ h4 {
   line-height: 1.2;
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 h1 {
@@ -72,6 +73,7 @@ h3 {
 
 p {
   margin: 0 0 1em;
+  text-wrap: pretty;
 }
 
 a {
@@ -165,6 +167,11 @@ hr {
 .card .repo {
   position: relative;
   color: inherit;
+  white-space: nowrap;
+}
+
+.card .nowrap {
+  white-space: nowrap;
 }
 
 .card .repo:hover {
@@ -187,6 +194,16 @@ hr {
 
 .card-grid > li {
   display: grid;
+  min-width: 0;
+}
+
+/* Grid rows stretch cards to equal height; lay each card out as a column so
+   the slack lands after the summary instead of pooling below the last line.
+   min-width: 0 keeps a long nowrap chip from widening the whole grid track. */
+.card-grid .card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .page-header {
@@ -196,6 +213,7 @@ hr {
 .page-header p {
   color: var(--muted);
   max-width: 46rem;
+  text-wrap: balance;
 }
 
 .button {
@@ -234,4 +252,7 @@ hr {
   padding: 0.15rem 0.6rem;
   border-radius: 999px;
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
