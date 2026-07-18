@@ -2,6 +2,7 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Badge from '../../components/Badge.astro';
+import GitHubIcon from '../../components/GitHubIcon.astro';
 import MetricsPanel from '../../components/MetricsPanel.astro';
 import Timeline from '../../components/Timeline.astro';
 import RichText from '../../components/RichText.astro';
@@ -33,7 +34,9 @@ const hasBody = Boolean(project.body?.trim());
     </h1>
     <p><RichText text={data.summary} /></p>
     <p class="links">
-      <a href={`https://github.com/${data.repo}`}>GitHub · {data.repo}</a>
+      <a href={`https://github.com/${data.repo}`}>
+        <GitHubIcon size={14} /> GitHub · {data.repo}
+      </a>
       {
         framework && (
           <span>
@@ -107,6 +110,10 @@ const hasBody = Boolean(project.body?.trim());
     display: flex;
     gap: 1.25rem;
     flex-wrap: wrap;
+  }
+
+  .links a :global(svg) {
+    vertical-align: -0.125em;
   }
 
   .spec-structure {
