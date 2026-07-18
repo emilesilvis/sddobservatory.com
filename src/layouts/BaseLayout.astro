@@ -12,6 +12,7 @@ const { title, description = SITE.description } = Astro.props;
 const plainDescription = description.replaceAll('`', '');
 const fullTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const ogImage = new URL('/og.png', Astro.site ?? Astro.url);
 
 const nav = [
   { href: '/frameworks/', label: 'Frameworks' },
@@ -33,6 +34,14 @@ const currentPath = Astro.url.pathname;
     <meta property="og:description" content={plainDescription} />
     <meta property="og:type" content="website" />
     {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${SITE.name} — ${SITE.tagline}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={plainDescription} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="a05d69af-c2af-47e8-af40-9044508071bc"></script>
