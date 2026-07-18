@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Badge from '../../components/Badge.astro';
 import MetricsPanel from '../../components/MetricsPanel.astro';
 import Timeline from '../../components/Timeline.astro';
+import RichText from '../../components/RichText.astro';
 import { getMetrics } from '../../lib/metrics';
 import { driftTone, statusTone } from '../../lib/labels';
 import { formatDate } from '../../lib/format';
@@ -30,7 +31,7 @@ const hasBody = Boolean(project.body?.trim());
       {data.name}
       {data.status !== 'active' && <Badge label={data.status} tone={statusTone(data.status)} />}
     </h1>
-    <p>{data.summary}</p>
+    <p><RichText text={data.summary} /></p>
     <p class="links">
       <a href={`https://github.com/${data.repo}`}>GitHub · {data.repo}</a>
       {
@@ -63,7 +64,7 @@ const hasBody = Boolean(project.body?.trim());
       data.specStructure.notes && (
         <div>
           <dt>Notes</dt>
-          <dd>{data.specStructure.notes}</dd>
+          <dd><RichText text={data.specStructure.notes} /></dd>
         </div>
       )
     }

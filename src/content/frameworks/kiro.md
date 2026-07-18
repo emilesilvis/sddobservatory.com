@@ -3,16 +3,16 @@ name: Kiro
 website: https://kiro.dev/
 summary: >-
   AWS's agentic IDE where specs are a native feature: requirements, design, and
-  task artifacts with approval gates, living in .kiro/ inside the repo.
+  task artifacts with approval gates, living in `.kiro/` inside the repo.
 coreApproach: >-
   Specs are a first-class IDE feature rather than a bolt-on process. Work is
   structured into requirements, design, and task artifacts with approval gates
   before implementation, complemented by steering files and hooks. Spec
-  artifacts live in .kiro/specs/<feature>/ in the repository.
+  artifacts live in `.kiro/specs/<feature>/` in the repository.
 workflow:
-  - "Requirements phase — requirements.md with user stories and acceptance criteria (or bugfix.md for bug analysis)"
-  - "Design phase — design.md with architecture, sequence diagrams, and implementation approach"
-  - "Tasks phase — tasks.md with discrete executable tasks and real-time status tracking; dependency-graph waves enable parallel execution"
+  - "Requirements phase — `requirements.md` with user stories and acceptance criteria (or `bugfix.md` for bug analysis)"
+  - "Design phase — `design.md` with architecture, sequence diagrams, and implementation approach"
+  - "Tasks phase — `tasks.md` with discrete executable tasks and real-time status tracking; dependency-graph waves enable parallel execution"
   - "Variants: Feature Specs (requirements-first or design-first), Quick Plan (no approval gates), and Bugfix Specs"
 supportedTools:
   - Kiro IDE

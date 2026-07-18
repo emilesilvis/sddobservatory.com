@@ -12,11 +12,11 @@ coreApproach: >-
   and implementation orchestration, deferring to native tool features like
   Claude Code's plan mode.
 workflow:
-  - "/discover-standards — surface and document patterns from the codebase"
-  - "/index-standards — keep standards organized and discoverable"
-  - "/inject-standards — deploy relevant standards into any context: conversations, plans, skills"
-  - "/plan-product — establish product mission and planning docs"
-  - "/shape-spec — enhance plan mode with targeted questions informed by standards and mission; the resulting plan is saved to the Agent OS spec folder"
+  - "`/discover-standards` — surface and document patterns from the codebase"
+  - "`/index-standards` — keep standards organized and discoverable"
+  - "`/inject-standards` — deploy relevant standards into any context: conversations, plans, skills"
+  - "`/plan-product` — establish product mission and planning docs"
+  - "`/shape-spec` — enhance plan mode with targeted questions informed by standards and mission; the resulting plan is saved to the Agent OS spec folder"
 supportedTools:
   - Claude Code
   - Cursor

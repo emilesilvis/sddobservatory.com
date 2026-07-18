@@ -11,10 +11,10 @@ specStructure:
   formats:
     - Markdown
   notes: >-
-    changes/ holds around eight active change folders (e.g.
-    artery-tcp-remoting, modernize-akka-io-tcp,
-    internal-serializers-messagepack-v2) plus an archive, an
-    IMPLEMENTATION_ORDER.md, and a milestone-runner automation file.
+    `changes/` holds around eight active change folders (e.g.
+    `artery-tcp-remoting`, `modernize-akka-io-tcp`,
+    `internal-serializers-messagepack-v2`) plus an archive, an
+    `IMPLEMENTATION_ORDER.md`, and a milestone-runner automation file.
 drift: none
 timeline:
   - date: 2026-05-10

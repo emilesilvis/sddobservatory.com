@@ -4,6 +4,7 @@ import type { RepoMetrics } from '../lib/metrics-schema';
 import { driftTone, statusTone } from '../lib/labels';
 import { formatCount, relativeDate } from '../lib/format';
 import Badge from './Badge.astro';
+import RichText from './RichText.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -23,7 +24,7 @@ const { data } = project;
       <Badge label={`drift: ${data.drift}`} tone={driftTone(data.drift)} title="Spec-to-code drift" />
     </span>
   </header>
-  <p class="summary">{data.summary}</p>
+  <p class="summary"><RichText text={data.summary} /></p>
   <p class="meta">
     <code>{data.repo}</code> · using {frameworkName}
     {metrics && (

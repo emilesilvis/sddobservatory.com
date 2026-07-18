@@ -10,7 +10,7 @@ coreApproach: >-
   Simulates an agile team of 12+ specialized AI agent personas (PM, Architect,
   Developer, UX, and more) that facilitate structured workflows across a
   four-phase lifecycle. Planning depth auto-adjusts to project complexity,
-  from bug fixes to enterprise systems. Installed via npx as a module
+  from bug fixes to enterprise systems. Installed via `npx` as a module
   ecosystem with 34+ workflows in the core module.
 workflow:
   - "Phase 1 · Analysis (optional) — brainstorming, idea forging, domain/market/technical research, product brief"

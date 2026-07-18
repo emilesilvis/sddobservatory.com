@@ -6,18 +6,18 @@ summary: >-
   Change-folder-based SDD for AI coding assistants — fluid, iterative, and
   explicitly built for brownfield codebases, not just greenfield.
 coreApproach: >-
-  Each unit of work is a change folder under openspec/changes/ containing a
+  Each unit of work is a change folder under `openspec/changes/` containing a
   proposal, requirement deltas (ADDED/MODIFIED blocks with WHEN/THEN
   scenarios), a design doc, and a task list. On completion the change is
-  archived and its deltas merge into living specs under openspec/specs/. The
+  archived and its deltas merge into living specs under `openspec/specs/`. The
   workflow was recently rebuilt around the artifact-guided "OPSX" commands.
 workflow:
-  - "/opsx:explore — optional no-stakes thinking partner to shape the idea"
-  - "/opsx:propose — create openspec/changes/<id>/ with proposal, spec deltas, design, and tasks"
-  - "/opsx:apply — implement the task checklist"
-  - "/opsx:sync — reconcile artifacts with reality"
-  - "/opsx:archive — archive the change and update the living specs"
-  - "Expanded profile adds /opsx:new, /opsx:continue, /opsx:ff, /opsx:verify, /opsx:bulk-archive, /opsx:onboard"
+  - "`/opsx:explore` — optional no-stakes thinking partner to shape the idea"
+  - "`/opsx:propose` — create `openspec/changes/<id>/` with proposal, spec deltas, design, and tasks"
+  - "`/opsx:apply` — implement the task checklist"
+  - "`/opsx:sync` — reconcile artifacts with reality"
+  - "`/opsx:archive` — archive the change and update the living specs"
+  - "Expanded profile adds `/opsx:new`, `/opsx:continue`, `/opsx:ff`, `/opsx:verify`, `/opsx:bulk-archive`, `/opsx:onboard`"
 supportedTools:
   - Claude Code
   - Cursor

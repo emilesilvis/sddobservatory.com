@@ -11,9 +11,9 @@ specStructure:
   formats:
     - Markdown
   notes: >-
-    specs/ holds 36 capability spec directories (e.g. cli-init,
-    artifact-graph); changes/ holds in-flight change folders plus an archive;
-    also config.yaml, explorations/, initiatives/, and work/.
+    `specs/` holds 36 capability spec directories (e.g. `cli-init`,
+    `artifact-graph`); `changes/` holds in-flight change folders plus an
+    archive; also `config.yaml`, `explorations/`, `initiatives/`, and `work/`.
 drift: none
 timeline:
   - date: 2025-08-05

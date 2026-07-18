@@ -1,0 +1,13 @@
+---
+// Renders a plain-text content field, with `backtick spans` as inline <code>.
+// This is the only inline markup frontmatter strings support.
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const parts = text.split(/(`[^`]+`)/g);
+const isCode = (part: string) => /^`[^`]+`$/.test(part);
+---
+
+{parts.map((part) => (isCode(part) ? <code>{part.slice(1, -1)}</code> : part))}
