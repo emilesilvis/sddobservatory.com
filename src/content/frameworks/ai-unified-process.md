@@ -13,16 +13,16 @@ coreApproach: >-
   and maintained by requirements engineers for the life of the system. AI
   agents generate and regenerate code, tests, and documentation from them,
   with comprehensive tests protecting behavior across regenerations. Delivered
-  as a Claude Code plugin marketplace: a stack-agnostic aiup-core plus
+  as a Claude Code plugin marketplace: a stack-agnostic `aiup-core` plus
   technology-specific implementation plugins.
 workflow:
-  - "/requirements — create the requirements catalog (aiup-core)"
-  - "/entity-model — create the entity model with ER diagrams"
-  - "/use-case-diagram — generate a PlantUML system use case diagram"
-  - "/use-case-spec — write a detailed use case specification"
-  - "/reverse-engineer — brownfield entry point: recover AIUP artifacts from an existing codebase"
-  - "/implement — generate the implementation from a use case (stack plugin: aiup-vaadin-jooq or aiup-angular-jpa)"
-  - "Stack-plugin test commands (/browserless-test, /playwright-test, /spring-boot-test, /vitest-test) lock in behavior before regeneration"
+  - "`/requirements` — create the requirements catalog (`aiup-core`)"
+  - "`/entity-model` — create the entity model with ER diagrams"
+  - "`/use-case-diagram` — generate a PlantUML system use case diagram"
+  - "`/use-case-spec` — write a detailed use case specification"
+  - "`/reverse-engineer` — brownfield entry point: recover AIUP artifacts from an existing codebase"
+  - "`/implement` — generate the implementation from a use case (stack plugin: `aiup-vaadin-jooq` or `aiup-angular-jpa`)"
+  - "Stack-plugin test commands (`/browserless-test`, `/playwright-test`, `/spring-boot-test`, `/vitest-test`) lock in behavior before regeneration"
 supportedTools:
   - Claude Code
   - Codex CLI
@@ -33,9 +33,9 @@ supportedTools:
 maturity: emerging
 strengths:
   - "Only framework tracked here rooted in the requirements-engineering tradition — specs describe system behavior and are owned by requirements engineers, not developer prompts discarded after implementation"
-  - "First-class brownfield workflow: /reverse-engineer recovers entity models and use case specs from existing code before iteration begins"
-  - "Real enterprise adoption signals — named practitioner testimonials, a third-party-contributed stack plugin (aiup-angular-jpa), and a companion IntelliJ plugin linking @UseCase-annotated tests to their UC-XXX specs"
-  - "Distributed via open standards: Claude Code plugin marketplace plus SKILL.md skills installable through Tessl into Codex, Cursor, Copilot, Gemini CLI, and OpenCode"
+  - "First-class brownfield workflow: `/reverse-engineer` recovers entity models and use case specs from existing code before iteration begins"
+  - "Real enterprise adoption signals — named practitioner testimonials, a third-party-contributed stack plugin (`aiup-angular-jpa`), and a companion IntelliJ plugin linking `@UseCase`-annotated tests to their UC-XXX specs"
+  - "Distributed via open standards: Claude Code plugin marketplace plus `SKILL.md` skills installable through Tessl into Codex, Cursor, Copilot, Gemini CLI, and OpenCode"
 limitations:
   - "Young and small — the marketplace repo dates from February 2026 and has under 100 stars"
   - "The full generate-and-test workflow is deepest on Java stacks (Vaadin + jOOQ, Spring Boot + Angular); other stacks get only the stack-agnostic core commands"

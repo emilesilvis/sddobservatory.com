@@ -45,10 +45,12 @@ body:
     id: workflow
     attributes:
       label: Workflow
-      description: The ordered steps/phases as the framework's own docs define them — one per line.
+      description: >-
+        The ordered steps/phases as the framework's own docs define them — one per line. Wrap slash
+        commands (and any file names or paths) in backticks so they render as inline code.
       placeholder: |
-        /specify — define what to build
-        /plan — technical implementation plan
+        `/specify` — define what to build
+        `/plan` — technical implementation plan
     validations:
       required: true
   - type: textarea
