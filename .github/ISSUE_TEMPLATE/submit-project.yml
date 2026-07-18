@@ -1,0 +1,86 @@
+name: Submit a project
+description: Propose a real-world project for the tracker
+title: "[Project] "
+labels: ["submission", "project"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! These fields mirror the frontmatter of `src/content/projects/<slug>.md` —
+        a maintainer will turn your answers into a page, or you can skip this form and
+        [open a PR directly](https://sddobservatory.com/submit/). Inclusion criteria: a public repository with
+        observable spec artifacts in-tree. Stars, activity, and other repo stats are fetched automatically —
+        don't fill them in.
+  - type: input
+    id: name
+    attributes:
+      label: Project name
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repository
+      placeholder: owner/name
+    validations:
+      required: true
+  - type: input
+    id: framework
+    attributes:
+      label: Framework used
+      description: One of the frameworks at https://sddobservatory.com/frameworks/ (submit the framework first if it's missing).
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One sentence on what the project is.
+    validations:
+      required: true
+  - type: input
+    id: spec-location
+    attributes:
+      label: Spec location
+      description: The directory holding the spec artifacts.
+      placeholder: "openspec/ or .specify/ or .kiro/"
+    validations:
+      required: true
+  - type: textarea
+    id: spec-notes
+    attributes:
+      label: Spec structure notes
+      description: What's inside the spec directory — formats, layout, anything notable.
+  - type: dropdown
+    id: drift
+    attributes:
+      label: Spec-to-code drift
+      description: Your honest judgment per https://sddobservatory.com/methodology/ — pick "unknown" if you haven't assessed it.
+      options:
+        - unknown
+        - none
+        - low
+        - moderate
+        - high
+    validations:
+      required: true
+  - type: textarea
+    id: drift-evidence
+    attributes:
+      label: Drift evidence
+      description: What you observed, with dates (e.g. "spec dir last touched 2026-02-07, code moved through 2026-06-21").
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Timeline
+      description: Significant dated events — one per line, `YYYY-MM-DD — event`.
+      placeholder: |
+        2026-05-10 — First commit to openspec/
+        2026-07-10 — v1.6.0 released
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links backing the claims above (commits, releases, directories).
+    validations:
+      required: true

@@ -1,0 +1,98 @@
+name: Submit a framework
+description: Propose a spec-driven development framework for the directory
+title: "[Framework] "
+labels: ["submission", "framework"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! These fields mirror the frontmatter of `src/content/frameworks/<slug>.md` —
+        a maintainer will turn your answers into a page, or you can skip this form and
+        [open a PR directly](https://sddobservatory.com/submit/). Inclusion criteria: a publicly documented,
+        usable-today methodology for driving AI-assisted development from specifications.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Website
+      placeholder: https://…
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub repository
+      description: "`owner/name` — leave blank if there is no public repo. Metrics are fetched automatically from it."
+      placeholder: owner/name
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One sentence, shown on cards.
+    validations:
+      required: true
+  - type: textarea
+    id: core-approach
+    attributes:
+      label: Core approach
+      description: One or two sentences on the methodology.
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow
+      description: The ordered steps/phases as the framework's own docs define them — one per line.
+      placeholder: |
+        /specify — define what to build
+        /plan — technical implementation plan
+    validations:
+      required: true
+  - type: textarea
+    id: supported-tools
+    attributes:
+      label: Supported tools
+      description: AI coding agents/IDEs it supports per its docs — one per line.
+    validations:
+      required: true
+  - type: dropdown
+    id: maturity
+    attributes:
+      label: Maturity
+      description: See the definitions on https://sddobservatory.com/methodology/
+      options:
+        - experimental
+        - emerging
+        - established
+        - mature
+    validations:
+      required: true
+  - type: textarea
+    id: strengths
+    attributes:
+      label: Strengths
+      description: 2–4 genuine strengths, grounded in docs or observable evidence — one per line.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations
+      description: 2–4 genuine limitations — one per line.
+    validations:
+      required: true
+  - type: textarea
+    id: example-repos
+    attributes:
+      label: Example repositories
+      description: Public repos that use the framework, `owner/name` — one per line.
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links backing the claims above (docs, README, release notes).
+    validations:
+      required: true

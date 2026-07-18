@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Methodology
+    url: https://sddobservatory.com/methodology/
+    about: How data is collected, and what the maturity and drift ratings mean.
+  - name: Submission guide
+    url: https://sddobservatory.com/submit/
+    about: Inclusion criteria and copy-paste PR templates.
