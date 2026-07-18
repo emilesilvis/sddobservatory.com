@@ -11,9 +11,9 @@ specStructure:
   formats:
     - Markdown
   notes: >-
-    .specify/ holds Spec Kit's memory/, scripts/, and templates/; a root
-    specs/ directory contains numbered feature folders such as
-    001-document-debrief-algorithms. Default branch is develop.
+    `.specify/` holds Spec Kit's `memory/`, `scripts/`, and `templates/`; a
+    root `specs/` directory contains numbered feature folders such as
+    `001-document-debrief-algorithms`. Default branch is `develop`.
 drift: moderate
 timeline:
   - date: 2026-01-09

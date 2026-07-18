@@ -43,6 +43,8 @@ status) are on the [methodology page](https://sddobservatory.com/methodology/).
 - Every claim should be verifiable from a linked public source (a commit, a release, a directory, a doc page).
 - Drift ratings compare spec-directory activity against code activity — say what you compared and when.
 - Prefer the framework's own vocabulary for workflow steps (real command names, real phase names).
+- Wrap commands, file names, and paths in backticks — in frontmatter strings (`summary`, `workflow`,
+  `strengths`, …) as well as body text, they render as inline code on the site.
 
 ## Development setup
 

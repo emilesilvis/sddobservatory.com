@@ -4,6 +4,7 @@ import type { RepoMetrics } from '../lib/metrics-schema';
 import { maturityTone } from '../lib/labels';
 import { formatCount, relativeDate } from '../lib/format';
 import Badge from './Badge.astro';
+import RichText from './RichText.astro';
 
 interface Props {
   framework: CollectionEntry<'frameworks'>;
@@ -21,7 +22,7 @@ const moreTools = data.supportedTools.length - tools.length;
     <h3>{data.name}</h3>
     <Badge label={data.maturity} tone={maturityTone(data.maturity)} />
   </header>
-  <p class="summary">{data.summary}</p>
+  <p class="summary"><RichText text={data.summary} /></p>
   <ul class="chip-list">
     {tools.map((tool) => <li class="chip">{tool}</li>)}
     {moreTools > 0 && <li class="chip">+{moreTools} more</li>}

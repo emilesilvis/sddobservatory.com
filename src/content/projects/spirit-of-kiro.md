@@ -11,10 +11,10 @@ specStructure:
   formats:
     - Markdown
   notes: >-
-    Currently contains only steering/ (steering files); no specs/ directory
+    Currently contains only `steering/` (steering files); no `specs/` directory
     remains on the default branch. Kiro's spec dogfooding is better observed
-    in kirodotdev/Kiro, whose .kiro/specs/github-issue-automation/ holds
-    requirements.md, design.md, and tasks.md.
+    in kirodotdev/Kiro, whose `.kiro/specs/github-issue-automation/` holds
+    `requirements.md`, `design.md`, and `tasks.md`.
 drift: high
 timeline:
   - date: 2025-05-09

@@ -8,6 +8,8 @@ interface Props {
 }
 
 const { title, description = SITE.description } = Astro.props;
+// Content strings may carry `backtick` code spans; meta tags want plain text.
+const plainDescription = description.replaceAll('`', '');
 const fullTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 
@@ -25,10 +27,10 @@ const currentPath = Astro.url.pathname;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={plainDescription} />
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={plainDescription} />
     <meta property="og:type" content="website" />
     {canonical && <meta property="og:url" content={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
