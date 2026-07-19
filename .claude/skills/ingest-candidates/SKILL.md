@@ -24,6 +24,13 @@ body must then note that the project was ingested under the small-framework exce
 flags (`name-looks-demo`, `config-collection?`) also need explicit user opt-in — they usually
 mean "not a real project".
 
+**Language.** The spec corpus must be followable by an English reader — check during research by
+sampling 3–5 spec documents. English-led corpora pass. Bilingual corpora (English structure,
+headings, and identifiers with non-English prose mixed in) pass, but the drafted page's
+`specStructure.notes` must disclose the mix. Corpora whose prose is non-English-dominant are
+refused, with no exception: readers must be able to verify the assessment against the primary
+sources.
+
 ## 2. Skip what's already tracked
 
 Skip any candidate whose repo already appears (case-insensitively) in a `repo:` frontmatter field
