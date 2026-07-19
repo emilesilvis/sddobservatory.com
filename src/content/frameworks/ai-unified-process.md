@@ -25,7 +25,7 @@ workflow:
   - "Stack-plugin test commands (`/browserless-test`, `/playwright-test`, `/spring-boot-test`, `/vitest-test`) lock in behavior before regeneration"
 supportedTools:
   - Claude Code
-  - Codex CLI
+  - Codex
   - Cursor
   - GitHub Copilot
   - Gemini CLI

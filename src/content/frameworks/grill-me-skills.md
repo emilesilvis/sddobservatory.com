@@ -25,8 +25,8 @@ workflow:
   - "`/wayfinder` — optional upstream step for efforts too big for one session: chart a map of investigation tickets first"
 supportedTools:
   - Claude Code
-  - Codex CLI
-  - Any Agent Skills-compatible agent (via skills.sh)
+  - Codex
+  - Any skills-compatible agent
 maturity: emerging
 strengths:
   - "Small, composable, editable skills instead of a phase-gated pipeline — the user keeps control of the process and can debug it"

@@ -32,7 +32,7 @@ supportedTools:
   - GitHub Copilot
   - Cursor
   - Gemini CLI
-  - Codex CLI
+  - Codex
   - Qwen Code
   - Windsurf
 maturity: experimental

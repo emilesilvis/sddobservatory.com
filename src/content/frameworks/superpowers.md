@@ -26,12 +26,11 @@ workflow:
   - "`superpowers:finishing-a-development-branch` — hard stop unless tests pass, then merge, push for PR, keep, or discard"
 supportedTools:
   - Claude Code
-  - Codex CLI
-  - Codex App
+  - Codex
   - Cursor
   - Antigravity
   - Factory Droid
-  - GitHub Copilot CLI
+  - GitHub Copilot
   - Kimi Code
   - OpenCode
   - Pi
