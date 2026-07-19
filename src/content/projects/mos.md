@@ -17,6 +17,8 @@ specStructure:
     (thirteen implementation plans — ten matching the specs plus kickoff and
     follow-up docs — up to 119 KB). Spec and plan commits land in pairs per
     feature, with iterative review commits folding in agent-review rounds.
+    Design docs and commit messages mix Chinese prose with English structure
+    and identifiers.
 drift: low
 timeline:
   - date: 2026-03-16
