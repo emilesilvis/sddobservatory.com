@@ -116,20 +116,27 @@ or **WARNING** (reported, does not block).
     judgment needs stated evidence).
 11. WARNING — timeline lines that don't parse as `YYYY-MM-DD — event`
     (unparseable lines are skipped in the draft).
+12. ERROR — the spec corpus is followable by an English reader: fetch 3–5
+    documents from the spec location. English-led passes. Bilingual (English
+    structure, headings, and identifiers with non-English prose mixed in)
+    passes, but the draft's `specStructure.notes` must disclose the mix and
+    the report should note it. Non-English-dominant prose is an ERROR — the
+    directory requires English-led or bilingual specs so readers can verify
+    assessments against the primary sources.
 
 ### Frameworks only
 
-12. ERROR — Website, if provided, is a syntactically valid URL (the schema is
+13. ERROR — Website, if provided, is a syntactically valid URL (the schema is
     `z.url().optional()`). WARNING if it doesn't resolve.
-13. ERROR — repo, if provided, must pass checks 2–3. (Repo is optional for
+14. ERROR — repo, if provided, must pass checks 2–3. (Repo is optional for
     frameworks.)
-14. ERROR — workflow or supported-tools empty (schema requires ≥1 entry).
+15. ERROR — workflow or supported-tools empty (schema requires ≥1 entry).
     WARNING — strengths or limitations outside the 2–4 range the form asks
     for.
 
 ### Duplicates (flag — NEVER close anything)
 
-15. Existing content, same collection only: an exact case-insensitive match of
+16. Existing content, same collection only: an exact case-insensitive match of
     the submitted repo against `repo:` frontmatter in
     `src/content/<collection>/*.md` is a blocking finding — apply
     `possible-duplicate`, link the existing page, no PR. A close match of the
@@ -137,12 +144,12 @@ or **WARNING** (reported, does not block).
     lowercase, punctuation stripped) is a WARNING + `possible-duplicate`, also
     no PR. The same repo in the *other* collection is explicitly fine —
     OpenSpec is legitimately both a framework and a project.
-16. Other open `submission` issues (`gh issue list --label submission
+17. Other open `submission` issues (`gh issue list --label submission
     --state open`, excluding this one): the same repo or clearly the same name
     → `possible-duplicate` plus a report line linking the sibling issue, no
     PR.
 
-A slug collision (Step 5.1) with an existing file is treated as finding 15.
+A slug collision (Step 5.1) with an existing file is treated as finding 16.
 
 ## Step 3 — sticky report comment
 
