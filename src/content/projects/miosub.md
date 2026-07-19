@@ -15,7 +15,8 @@ specStructure:
     specs (`chunk-processing/spec.md` with seven requirements, `batch-operations/spec.md` with
     two), and `changes/archive/` with two completed change folders from 2026-01-14
     (`refactor-generation-pipeline`, `replace-fix-timestamps-with-regenerate`), each holding
-    `proposal.md`, `design.md`, and `tasks.md`. No active change folders.
+    `proposal.md`, `design.md`, and `tasks.md`. No active change folders. Permanent capability
+    specs are English; the archived change docs mix some Chinese prose.
 drift: high
 timeline:
   - date: 2026-01-14
