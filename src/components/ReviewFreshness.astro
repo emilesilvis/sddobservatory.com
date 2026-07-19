@@ -1,0 +1,36 @@
+---
+import { formatDate, reviewAge } from '../lib/format';
+
+interface Props {
+  date: Date;
+  variant?: 'card' | 'detail';
+}
+
+const { date, variant = 'card' } = Astro.props;
+const review = reviewAge(date);
+const due = review.state === 'due';
+const text = variant === 'detail'
+  ? due
+    ? `Review due · last reviewed ${formatDate(date)}`
+    : `${review.label} · ${formatDate(date)}`
+  : due ? 'Review due' : review.label;
+---
+
+<p class:list={['freshness', variant, { due }]}>{text}</p>
+
+<style>
+  .freshness {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .card {
+    margin: 0 0 0.75rem;
+    font-size: 0.82rem;
+  }
+
+  .due {
+    color: var(--warn);
+    font-weight: 650;
+  }
+</style>

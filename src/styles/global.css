@@ -5,13 +5,14 @@
   --surface: #ffffff;
   --ink: #1a2438;
   --muted: #5c6a80;
-  --faint: #8a94a6;
+  --faint: #667287;
   --line: #e4e2db;
+  --line-strong: #a8b0bd; /* form-control borders: keeps the 3:1 UI contrast --line can't */
   --accent: #2450c8;
   --accent-ink: #ffffff;
   --accent-soft: #e9eefb;
 
-  --ok: #1e7e46;
+  --ok: #176b3a;
   --ok-soft: #e2f3e8;
   --warn: #955e11;
   --warn-soft: #fbeed6;
@@ -83,6 +84,18 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+main :where(p, li, dd) a:not(.button, .card-link, .repo),
+footer a {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
 }
 
 code {
@@ -164,6 +177,19 @@ hr {
   border-color: var(--accent);
 }
 
+/* Move the focus ring from the stretched link to the whole card; browsers
+   without :has() skip this block and keep the default ring on the link. */
+@supports selector(.card:has(a:focus-visible)) {
+  .card:has(.card-link:focus-visible) {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .card-link:focus-visible {
+    outline: none;
+  }
+}
+
 .card .repo {
   position: relative;
   color: inherit;
@@ -224,6 +250,13 @@ hr {
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.95rem;
+}
+
+.button,
+button,
+select,
+input:not([type='checkbox'], [type='radio']) {
+  min-height: 2.75rem;
 }
 
 .button:hover {

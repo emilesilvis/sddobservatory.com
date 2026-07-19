@@ -75,6 +75,10 @@ Not yet assessed.`;
       pull request. Repository metrics are fetched automatically once your entry is merged; you never need to fill
       in stars or commit counts.
     </p>
+    <p class="account-note">
+      Submissions use GitHub and require a free GitHub account. The structured issue forms usually take 5–10 minutes;
+      you do not need to edit code or know YAML.
+    </p>
   </header>
 
   <h2>Inclusion criteria</h2>
@@ -92,24 +96,31 @@ Not yet assessed.`;
   </ul>
 
   <h2>Submit a framework</h2>
+  <p>Answer a short set of questions about the framework and include links that let maintainers verify it.</p>
   <p>
     <a class="button" href={`${SITE.repoUrl}/issues/new?template=submit-framework.yml`}>Open the framework issue form</a>
   </p>
-  <p>
-    Or add the file directly: create <code>src/content/frameworks/&lt;slug&gt;.md</code> in a fork and open a pull
-    request. Template:
-  </p>
-  <pre><code>{frameworkTemplate}</code></pre>
+  <details>
+    <summary>Submit a framework via pull request</summary>
+    <p>
+      Create <code>src/content/frameworks/&lt;slug&gt;.md</code> in a fork and open a pull request using this template:
+    </p>
+    <pre><code>{frameworkTemplate}</code></pre>
+  </details>
 
   <h2>Submit a project</h2>
+  <p>Share the public repository, the framework it uses, and where its specification artifacts live.</p>
   <p>
     <a class="button" href={`${SITE.repoUrl}/issues/new?template=submit-project.yml`}>Open the project issue form</a>
   </p>
-  <p>
-    Or create <code>src/content/projects/&lt;slug&gt;.md</code> in a fork and open a pull request. The three
-    <code>##</code> body sections are required (write "Not yet assessed." where honest). Template:
-  </p>
-  <pre><code>{projectTemplate}</code></pre>
+  <details>
+    <summary>Submit a project via pull request</summary>
+    <p>
+      Create <code>src/content/projects/&lt;slug&gt;.md</code> in a fork and open a pull request. The three
+      <code>##</code> body sections are required (write "Not yet assessed." where honest).
+    </p>
+    <pre><code>{projectTemplate}</code></pre>
+  </details>
 
   <h2>Help with tracking</h2>
   <p>
@@ -117,4 +128,37 @@ Not yet assessed.`;
     project against its spec directory, and send a PR updating the drift rating, the narrative sections, and
     <code>lastReviewed</code>. See the <a href="/methodology/">methodology</a> for how ratings are defined.
   </p>
+  <p>
+    Found an incorrect or stale entry? <a href={`${SITE.repoUrl}/issues/new?template=report-correction.yml`}>Report a correction</a>
+    with the page URL, what should change, and a public source that supports the correction.
+  </p>
 </BaseLayout>
+
+<style>
+  /* .page-header prefix outweighs the global `.page-header p` muted color. */
+  .page-header .account-note {
+    padding: 0.8rem 1rem;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+
+  details {
+    margin: 1rem 0 2rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  details[open] summary {
+    margin-bottom: 1rem;
+  }
+</style>

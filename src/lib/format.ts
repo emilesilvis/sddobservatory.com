@@ -28,6 +28,19 @@ export function relativeDate(value: string | Date): string {
   return 'today';
 }
 
+/** Assessments older than this are flagged "Review due"; also documented in /methodology. */
+export const REVIEW_DUE_DAYS = 180;
+
+/** Evaluated at build time, like relativeDate — the daily metrics rebuild keeps it fresh. */
+export function reviewAge(value: string | Date): { label: string; state: 'due' | 'current' } {
+  const date = typeof value === 'string' ? new Date(value) : value;
+  const ageInDays = (Date.now() - date.getTime()) / 86400000;
+  return {
+    label: `Reviewed ${relativeDate(date)}`,
+    state: ageInDays > REVIEW_DUE_DAYS ? 'due' : 'current',
+  };
+}
+
 /** "2.5 years" / "8 months" since a repo's createdAt. */
 export function ageSince(value: string | Date): string {
   const date = typeof value === 'string' ? new Date(value) : value;

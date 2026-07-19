@@ -1,0 +1,41 @@
+name: Report a correction
+description: Flag incorrect or stale information on an existing page
+title: "[Correction] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the observatory accurate. Please identify the page, explain what should change,
+        and include a public source that lets a maintainer verify the correction.
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://sddobservatory.com/projects/example/
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should change?
+      description: Quote or summarize the current information and provide the corrected version.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence
+      description: Link to documentation, commits, releases, or another source that supports the correction.
+    validations:
+      required: true
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Type of correction
+      options:
+        - Factually incorrect
+        - Stale assessment
+        - Broken link
+        - Other
+    validations:
+      required: true

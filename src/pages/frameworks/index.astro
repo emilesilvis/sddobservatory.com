@@ -2,13 +2,16 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FrameworkCard from '../../components/FrameworkCard.astro';
+import DirectoryControls from '../../components/DirectoryControls.astro';
 import { getMetrics } from '../../lib/metrics';
+import { MATURITY_LEVELS } from '../../content.config';
 
 const frameworks = (await getCollection('frameworks')).sort(
   (a, b) =>
     (getMetrics(b.data.repo)?.stars ?? 0) - (getMetrics(a.data.repo)?.stars ?? 0) ||
     a.data.name.localeCompare(b.data.name),
 );
+const tools = [...new Set(frameworks.flatMap((framework) => framework.data.supportedTools))].sort();
 ---
 
 <BaseLayout
@@ -23,10 +26,31 @@ const frameworks = (await getCollection('frameworks')).sort(
     </p>
   </header>
 
-  <ul class="card-grid">
+  <DirectoryControls
+    itemLabel="frameworks"
+    filters={[
+      { key: 'maturity', label: 'Maturity', options: MATURITY_LEVELS.map((value) => ({ value, label: value })) },
+      { key: 'supportedTools', label: 'Supported tool', options: tools.map((value) => ({ value, label: value })) },
+    ]}
+    sorts={[
+      { value: 'stars', label: 'GitHub stars' },
+      { value: 'reviewed', label: 'Recently reviewed' },
+      { value: 'name', label: 'Name' },
+    ]}
+    defaultSort="stars"
+  />
+
+  <ul class="card-grid" data-directory-grid data-singular="framework" data-plural="frameworks">
     {
       frameworks.map((framework) => (
-        <li>
+        <li
+          data-name={framework.data.name.toLocaleLowerCase()}
+          data-search={`${framework.data.name} ${framework.data.summary} ${framework.data.supportedTools.join(' ')}`}
+          data-maturity={framework.data.maturity}
+          data-supported-tools={framework.data.supportedTools.join('|')}
+          data-stars={getMetrics(framework.data.repo)?.stars ?? 0}
+          data-reviewed={framework.data.lastReviewed.getTime()}
+        >
           <FrameworkCard framework={framework} metrics={getMetrics(framework.data.repo)} />
         </li>
       ))

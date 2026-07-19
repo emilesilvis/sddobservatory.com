@@ -6,6 +6,7 @@ import { formatCount, relativeDate } from '../lib/format';
 import Badge from './Badge.astro';
 import GitHubIcon from './GitHubIcon.astro';
 import RichText from './RichText.astro';
+import ReviewFreshness from './ReviewFreshness.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -26,6 +27,7 @@ const { data } = project;
     </span>
   </header>
   <p class="summary"><RichText text={data.summary} /></p>
+  <ReviewFreshness date={data.lastReviewed} />
   <p class="meta">
     <a class="repo" href={`https://github.com/${data.repo}`} title="View on GitHub">
       <GitHubIcon />
@@ -39,6 +41,7 @@ const { data } = project;
       </>
     )}
   </p>
+  <span class="view" aria-hidden="true">View project →</span>
 </article>
 
 <style>
@@ -72,5 +75,12 @@ const { data } = project;
     font-size: 0.82rem;
     color: var(--faint);
     font-variant-numeric: tabular-nums;
+  }
+
+  .view {
+    margin-top: 0.7rem;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 650;
   }
 </style>

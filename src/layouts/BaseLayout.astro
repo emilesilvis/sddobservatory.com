@@ -48,10 +48,11 @@ const currentPath = Astro.url.pathname;
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="a05d69af-c2af-47e8-af40-9044508071bc"></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header>
       <div class="container bar">
         <a class="brand" href="/">SDD <span>Observatory</span></a>
-        <nav>
+        <nav aria-label="Primary">
           {
             nav.map((item) => (
               <a href={item.href} aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}>
@@ -59,14 +60,14 @@ const currentPath = Astro.url.pathname;
               </a>
             ))
           }
-          <a class="github-link" href={SITE.repoUrl} target="_blank" rel="noopener" aria-label="View source on GitHub">
+          <a class="github-link" href={SITE.repoUrl} aria-label="View source on GitHub">
             <GitHubIcon size={20} />
           </a>
         </nav>
       </div>
     </header>
 
-    <main class="container">
+    <main id="main-content" class="container" tabindex="-1">
       <slot />
     </main>
 
@@ -92,6 +93,23 @@ const currentPath = Astro.url.pathname;
   header {
     border-bottom: 1px solid var(--line);
     background: var(--surface);
+  }
+
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.65rem 1rem;
+    border-radius: 0.35rem;
+    background: var(--ink);
+    color: var(--surface);
+    font-weight: 700;
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
   }
 
   .bar {
@@ -126,6 +144,9 @@ const currentPath = Astro.url.pathname;
   }
 
   nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
     color: var(--muted);
     font-weight: 550;
     font-size: 0.95rem;
@@ -145,6 +166,8 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     padding-left: 1.2rem;
     border-left: 1px solid var(--line);
+    min-width: 2.75rem;
+    justify-content: flex-end;
   }
 
   .github-link :global(svg) {
@@ -166,5 +189,22 @@ const currentPath = Astro.url.pathname;
 
   footer p {
     margin: 0 0 0.4rem;
+  }
+
+  @media (max-width: 42rem) {
+    .bar {
+      align-items: flex-start;
+    }
+
+    nav {
+      width: 100%;
+      gap: 0 1rem;
+      border-top: 1px solid var(--line);
+      padding-top: 0.35rem;
+    }
+
+    .github-link {
+      margin-left: auto;
+    }
   }
 </style>
