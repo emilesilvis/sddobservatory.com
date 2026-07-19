@@ -19,8 +19,8 @@ specStructure:
     `2026-03-25-multiraft-library-implementation.md`), `reports/` (11 analysis
     and verification reports), `runbooks/` (7 operational runbooks), and
     `perf/` (benchmark captures as `.txt` baselines plus Markdown notes). Files
-    follow a `YYYY-MM-DD-topic` naming convention; most specs are written in
-    Chinese.
+    follow a `YYYY-MM-DD-topic` naming convention; roughly a third of sampled
+    specs mix Chinese prose with English identifiers, the rest are English.
 drift: none
 timeline:
   - date: 2026-04-02
