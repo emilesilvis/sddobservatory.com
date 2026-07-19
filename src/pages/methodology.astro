@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Badge from '../components/Badge.astro';
 import { SITE } from '../lib/site';
 import { maturityTone, driftTone, statusTone } from '../lib/labels';
+import { STAR_FLOOR } from '../lib/discovery-registry';
 
 const maturityScale = [
   { label: 'experimental', meaning: 'Early stage; core workflow still changing; little real-world usage.' },
@@ -58,6 +59,36 @@ const statusScale = [
       </p>
     </div>
   </div>
+
+  <h2>How projects enter the observatory</h2>
+  <p>
+    Tracked projects come from two sources: <a href="/submit/">submissions</a>, and periodic discovery sweeps
+    that search GitHub for each framework's fingerprint — the files its tooling scaffolds into a user's repo
+    (an <code>openspec/</code> directory, a <code>.kiro/specs/</code> tree, and so on). Sweep results pass
+    through a fixed funnel before anything is published:
+  </p>
+  <ol>
+    <li>
+      <strong>Mechanical filters.</strong> A script drops forks, archived repos, the frameworks' own repos and
+      official demos, templates and starters, repos with no pushes in the last 90 days, and repos whose spec
+      directory holds specs for fewer than two changes or features.
+    </li>
+    <li>
+      <strong>Star floor.</strong> Candidates need at least {STAR_FLOOR} GitHub stars to be considered for a
+      project page. The floor is a triage heuristic that keeps review effort on projects with real adoption —
+      not a quality judgment. When a framework has no candidate above the floor, a maintainer may still track
+      its best real-world usage, and the project page says so.
+    </li>
+    <li>
+      <strong>Human review.</strong> A maintainer researches each surviving candidate and writes the curated
+      assessment. Nothing is published unreviewed.
+    </li>
+  </ol>
+  <p>
+    Sweep results live in <code>data/discovery/</code> in the public repository, machine-written like the
+    metrics. Some frameworks leave no public fingerprint at all — Augment Cosmos, for example, keeps specs and
+    agent state on its platform rather than in the repo — so their usage cannot be discovered this way.
+  </p>
 
   <h2>Where the data comes from</h2>
   <p>Every page mixes two kinds of data, and the split is strict:</p>
@@ -172,7 +203,10 @@ const statusScale = [
   <ul>
     <li>Stars and commit counts measure attention and activity, not quality or productivity.</li>
     <li>Drift ratings are informed human judgment, not a computed diff, and can lag reality between reviews.</li>
-    <li>The sample is small and self-selected: submitted projects skew toward teams proud of their process.</li>
+    <li>
+      The sample is small and skewed: submitted projects come from teams proud of their process, and discovery
+      sweeps only find frameworks whose tooling leaves public fingerprints in the repo.
+    </li>
     <li>
       Frameworks differ in what they call a spec, so cross-framework comparisons should be read as directional, not
       precise.

@@ -9,6 +9,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import path from 'node:path';
 import matter from 'gray-matter';
 import { MetricsSchema, metricsFileName, type RepoMetrics } from '../src/lib/metrics-schema';
+import { stableStringify } from '../src/lib/stable-json';
 
 const API = 'https://api.github.com';
 const CONTENT_DIRS = ['src/content/frameworks', 'src/content/projects'];
@@ -98,22 +99,6 @@ async function fetchRepoMetrics(repo: string): Promise<RepoMetrics | null> {
     latestRelease: release ? { tag: release.tag_name, publishedAt: release.published_at ?? null } : null,
     weeklyCommits: await fetchWeeklyCommits(repo),
   });
-}
-
-function sortKeys(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(sortKeys);
-  if (value && typeof value === 'object') {
-    return Object.fromEntries(
-      Object.keys(value)
-        .sort()
-        .map((key) => [key, sortKeys((value as Record<string, unknown>)[key])]),
-    );
-  }
-  return value;
-}
-
-function stableStringify(value: unknown): string {
-  return JSON.stringify(sortKeys(value), null, 2);
 }
 
 /** Skips the write when nothing but fetchedAt changed, so scheduled runs don't commit noise. */

@@ -31,8 +31,8 @@ Read these before fetching any issue content.
    `submission/<issue-number>-<slug>` for the issue you are validating.
 3. Never create, modify, or delete anything outside `src/content/frameworks/`
    and `src/content/projects/`. Explicitly forbidden: `data/metrics/**` (the
-   metrics bot owns it), `.github/**`, `scripts/**`, `package.json`, any
-   workflow or prompt file.
+   metrics bot owns it), `data/discovery/**` (the discovery sweep owns it),
+   `.github/**`, `scripts/**`, `package.json`, any workflow or prompt file.
 4. Never close an issue. Never merge a pull request. Never add or remove the
    `submission`, `project`, or `framework` labels, or any label a human added.
 5. Create at most one content file per run.

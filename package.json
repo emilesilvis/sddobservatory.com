@@ -9,7 +9,8 @@
     "lint:content": "tsx scripts/lint-content.ts",
     "preview": "astro preview",
     "astro": "astro",
-    "metrics": "tsx scripts/fetch-metrics.ts"
+    "metrics": "tsx scripts/fetch-metrics.ts",
+    "sweep": "tsx scripts/discovery-sweep.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
