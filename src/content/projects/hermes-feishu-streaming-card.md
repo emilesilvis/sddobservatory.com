@@ -17,7 +17,9 @@ specStructure:
     `2026-04-24-sidecar-only-design.md`,
     `2026-07-17-issue-135-reliable-system-notice-delivery-design.md`) and `plans/` holds 32
     dated implementation plans (e.g. `2026-07-10-v3-9-operations-reliability.md`), several
-    of them 25–60 KB. Filenames encode date plus release version or issue number.
+    of them 25–60 KB. Filenames encode date plus release version or issue number. Specs mix
+    substantial Chinese prose with English headings and identifiers; issue traffic is
+    largely Chinese.
 drift: none
 timeline:
   - date: 2026-04-28
