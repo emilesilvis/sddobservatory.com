@@ -223,6 +223,12 @@ hr {
   min-width: 0;
 }
 
+/* display: grid above outranks the UA's [hidden] rule, which would leave
+   filtered-out directory cards visible. */
+.card-grid > li[hidden] {
+  display: none;
+}
+
 /* Grid rows stretch cards to equal height; lay each card out as a column so
    the slack lands after the summary instead of pooling below the last line.
    min-width: 0 keeps a long nowrap chip from widening the whole grid track. */
