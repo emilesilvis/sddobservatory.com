@@ -18,7 +18,8 @@ specStructure:
     `2026-04-27-gpt-researcher-integration-design.md`) and `plans/` holds four
     implementation plans, including
     `2026-06-28-desktop-packaging-final-acceptance.md` and a companion
-    scoring-rubric plan.
+    scoring-rubric plan. The repo's public docs are Chinese-first; the spec
+    corpus itself is English, with one design doc mixing Chinese prose.
 drift: moderate
 timeline:
   - date: 2026-04-26
