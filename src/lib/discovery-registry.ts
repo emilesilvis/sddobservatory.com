@@ -13,7 +13,7 @@
  * explicit maintainer exception. Applied at ingest, not discovery: the sweep
  * records everything and flags candidates below the floor. Displayed on the
  * methodology page — keep the exported value the only copy of this number. */
-export const STAR_FLOOR = 25;
+export const STAR_FLOOR = 500;
 
 export type DepthCheck =
   /** Count entries in dir (optionally trying fallbackDir when dir is absent). */
