@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FrameworkCard from '../components/FrameworkCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Badge from '../components/Badge.astro';
+import { formatDate } from '../lib/format';
 import { getMetrics } from '../lib/metrics';
 import { SITE } from '../lib/site';
 
@@ -19,6 +21,13 @@ const lastActivity = (project: (typeof projects)[number]): number => {
   return pushedAt ? new Date(pushedAt).getTime() : project.data.added.getTime();
 };
 const recentProjects = [...projects].sort((a, b) => lastActivity(b) - lastActivity(a)).slice(0, 3);
+
+const recentAdditions = [
+  ...frameworks.map((f) => ({ kind: 'Framework', href: `/frameworks/${f.id}/`, name: f.data.name, added: f.data.added })),
+  ...projects.map((p) => ({ kind: 'Project', href: `/projects/${p.id}/`, name: p.data.name, added: p.data.added })),
+]
+  .sort((a, b) => b.added.getTime() - a.added.getTime() || a.name.localeCompare(b.name))
+  .slice(0, 5);
 ---
 
 <BaseLayout>
@@ -68,6 +77,26 @@ const recentProjects = [...projects].sort((a, b) => lastActivity(b) - lastActivi
     )
   }
 
+  {
+    recentAdditions.length > 0 && (
+      <section>
+        <h2>Recently added</h2>
+        <ul class="additions">
+          {recentAdditions.map((item) => (
+            <li>
+              <Badge label={item.kind} />
+              <a href={item.href}>{item.name}</a>
+              <time datetime={item.added.toISOString().slice(0, 10)}>{formatDate(item.added)}</time>
+            </li>
+          ))}
+        </ul>
+        <p>
+          <a href="/feed.xml">Subscribe via RSS</a> to hear about new frameworks and projects.
+        </p>
+      </section>
+    )
+  }
+
   <section class="cta">
     <h2>Help track SDD in the wild</h2>
     <p>
@@ -107,6 +136,28 @@ const recentProjects = [...projects].sort((a, b) => lastActivity(b) - lastActivi
     gap: 0.7rem;
     flex-wrap: wrap;
     margin-top: 1.5rem;
+  }
+
+  .additions {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    max-width: 44rem;
+  }
+
+  .additions li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .additions time {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
   }
 
   .cta {
