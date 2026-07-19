@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import GitHubIcon from '../components/GitHubIcon.astro';
+import RSSIcon from '../components/RSSIcon.astro';
 import { SITE } from '../lib/site';
 
 interface Props {
@@ -63,6 +64,9 @@ const currentPath = Astro.url.pathname;
           }
           <a class="github-link" href={SITE.repoUrl} aria-label="View source on GitHub">
             <GitHubIcon size={20} />
+          </a>
+          <a class="feed-link" href="/feed.xml" aria-label="Subscribe to the RSS feed">
+            <RSSIcon size={18} />
           </a>
         </nav>
       </div>
@@ -172,6 +176,17 @@ const currentPath = Astro.url.pathname;
   }
 
   .github-link :global(svg) {
+    display: block;
+  }
+
+  .feed-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+  }
+
+  .feed-link :global(svg) {
     display: block;
   }
 
