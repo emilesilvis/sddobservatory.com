@@ -27,14 +27,14 @@ workflow:
   - "Optional: `/kiro-steering` for project memory, `/kiro-validate-gap` for brownfield gap analysis, `/kiro-spec-batch` for parallel multi-spec creation with cross-spec review"
 supportedTools:
   - Claude Code
-  - Codex CLI
+  - Codex
   - Cursor
   - GitHub Copilot
   - Windsurf
   - OpenCode
   - Gemini CLI
   - Antigravity
-  - Qwen Code (legacy mode)
+  - Qwen Code
 maturity: emerging
 strengths:
   - "Covers execution, not just planning — the `/kiro-impl` harness runs task-by-task with independent review, bounded debug loops, an evidence gate before success claims, and interruption-safe re-runs"
@@ -45,7 +45,7 @@ strengths:
 limitations:
   - "Effectively a single-maintainer project — a personal GitHub account and sole npm publisher, despite community contributions"
   - "The workflow is not yet settled: three major versions in eight months, with v3.0 deprecating the entire legacy `/kiro:*` command surface in favor of skills — most third-party tutorials already document the outdated flow"
-  - "Six of the eight platform integrations are beta and one is experimental; parity is claimed for the templates but battle-tested mainly on Claude Code and Codex"
+  - "Six of the eight platform integrations are beta and one is experimental; Qwen Code is supported only through the legacy pre-skills mode, and parity is claimed for the templates but battle-tested mainly on Claude Code and Codex"
   - "The community's center of gravity is Japanese (Zenn, Qiita); English-language coverage is modest next to Spec Kit and BMAD"
 added: 2026-07-18
 lastReviewed: 2026-07-18

@@ -15,10 +15,7 @@ workflow:
   - "Tasks phase — `tasks.md` with discrete executable tasks and real-time status tracking; dependency-graph waves enable parallel execution"
   - "Variants: Feature Specs (requirements-first or design-first), Quick Plan (no approval gates), and Bugfix Specs"
 supportedTools:
-  - Kiro IDE
-  - Kiro CLI
-  - Kiro web
-  - Kiro mobile
+  - Kiro
 maturity: established
 strengths:
   - "Spec workflow is built into the IDE with approval gates and live task tracking — no scaffolding step"

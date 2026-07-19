@@ -126,6 +126,16 @@ or **WARNING** (reported, does not block).
 14. ERROR — workflow or supported-tools empty (schema requires ≥1 entry).
     WARNING — strengths or limitations outside the 2–4 range the form asks
     for.
+    Supported tools must use the canonical names in `SUPPORTED_TOOLS`
+    (`src/content.config.ts`) — the schema is an enum, so any other spelling
+    fails the site build. Canonical names are products, not surfaces or
+    modes: map variants onto the product yourself ("Codex CLI" → `Codex`,
+    "Kiro IDE" → `Kiro`, "GitHub Copilot CLI" → `GitHub Copilot`) and record
+    a WARNING telling the submitter what you normalized. A qualifier that
+    carries real information ("Gemini Gems (planning)") moves into the
+    draft's prose, not the frontmatter. A genuinely new tool is a WARNING,
+    not an ERROR: add it to `SUPPORTED_TOOLS` in the draft PR and note the
+    addition in the report.
 
 ### Duplicates (flag — NEVER close anything)
 

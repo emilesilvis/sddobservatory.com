@@ -25,8 +25,8 @@ workflow:
   - "Corrections feed back into Expert memory; Automations fire from Triggers (events, schedules, webhooks) across one repo or thousands"
   - "Project Builder Expert — feature description, human-in-the-loop design, tickets, then orchestrated implementation, making the project rather than the PR the unit of work"
 supportedTools:
-  - Cosmos web app
-  - Auggie CLI
+  - Cosmos
+  - Augment
   - VS Code
   - JetBrains IDEs
   - Vim/Neovim

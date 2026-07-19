@@ -21,13 +21,13 @@ workflow:
 supportedTools:
   - Claude Code
   - Cursor
-  - Codex CLI
-  - Gemini Gems (planning)
-  - ChatGPT Custom GPTs (planning)
+  - Codex
+  - Gemini Gems
+  - ChatGPT Custom GPTs
 maturity: established
 strengths:
   - "Broadest lifecycle coverage of the frameworks tracked here — ideation through retrospective, not just spec-to-code"
-  - "Modular ecosystem (builder, test architect, game dev, creative suite) plus web bundles that offload planning to flat-rate LLM subscriptions"
+  - "Modular ecosystem (builder, test architect, game dev, creative suite) plus web bundles that offload planning to Gemini Gems or ChatGPT Custom GPTs on flat-rate LLM subscriptions"
   - "Scale-adaptive planning depth, with a help workflow that guides users to the next step"
   - "Free and open source with a large, active community and frequent releases"
 limitations:

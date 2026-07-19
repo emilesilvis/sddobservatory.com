@@ -28,7 +28,7 @@ supportedTools:
   - Cursor
   - Windsurf
   - Cline
-  - Codex CLI
+  - Codex
   - Qwen Code
   - Kilo
   - CodeBuddy

@@ -27,7 +27,7 @@ supportedTools:
   - Cursor
   - Codex
   - Gemini CLI
-  - GitHub Copilot (CLI and VS Code)
+  - GitHub Copilot
   - Any MCP-compatible agent
 maturity: emerging
 strengths:

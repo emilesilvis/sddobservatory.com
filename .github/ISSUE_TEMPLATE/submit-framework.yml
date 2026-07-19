@@ -61,7 +61,7 @@ body:
     id: supported-tools
     attributes:
       label: Supported tools
-      description: AI coding agents/IDEs it supports per its docs — one per line.
+      description: AI coding agents/IDEs it supports per its docs — one per line. Use product names ("Codex", "Kiro"), not surfaces ("Codex CLI", "Kiro IDE"); the directory keeps a canonical list in `src/content.config.ts`.
     validations:
       required: true
   - type: dropdown

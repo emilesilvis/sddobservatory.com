@@ -24,12 +24,12 @@ supportedTools:
   - GitHub Copilot
   - Cursor
   - Gemini CLI
-  - Codex CLI
+  - Codex
   - Amp
   - Cline
-  - opencode
+  - OpenCode
   - Qwen Code
-  - Kiro CLI
+  - Kiro
   - Zed
   - Goose
 maturity: established
