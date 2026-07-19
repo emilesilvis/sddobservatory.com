@@ -18,7 +18,8 @@ specStructure:
     `capability-aware-policy-router`), and `changes/` holds 26 active change folders plus an `archive/` of
     about 598 completed ones — each with `proposal.md`, `design.md`, `tasks.md` and spec deltas, often a
     `verification.md` and `.openspec.yaml`. `config.yaml` pins OpenSpec CLI 1.3.x planning context and
-    quality gates; `docs/` holds about 25 dated audit, regression and manual-test-matrix reports.
+    quality gates; `docs/` holds about 25 dated audit, regression and manual-test-matrix reports. Commit
+    messages and some capability specs mix Chinese prose; `project.md` and the spec structure are English.
 drift: none
 timeline:
   - date: 2026-02-11
