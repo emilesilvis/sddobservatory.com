@@ -19,6 +19,7 @@ specStructure:
     phase dirs under `milestones/` across `v0.1`–`v0.5.0` — each milestone
     with its own `REQUIREMENTS.md`, `ROADMAP.md`, and `MILESTONE-AUDIT.md`.
     Sampled phases carry `task_plan.md`, `progress.md`, and `findings.md`.
+    Planning docs mix Chinese prose into an English document structure.
 drift: none
 timeline:
   - date: 2026-03-02
