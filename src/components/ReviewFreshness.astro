@@ -8,14 +8,15 @@ interface Props {
 
 const { date, variant = 'card' } = Astro.props;
 const review = reviewAge(date);
+const due = review.state === 'due';
 const text = variant === 'detail'
-  ? review.stale
+  ? due
     ? `Review due · last reviewed ${formatDate(date)}`
     : `${review.label} · ${formatDate(date)}`
-  : review.stale ? 'Review due' : review.label;
+  : due ? 'Review due' : review.label;
 ---
 
-<p class:list={['freshness', variant, { stale: review.stale }]}>{text}</p>
+<p class:list={['freshness', variant, { due }]}>{text}</p>
 
 <style>
   .freshness {
@@ -28,7 +29,7 @@ const text = variant === 'detail'
     font-size: 0.82rem;
   }
 
-  .stale {
+  .due {
     color: var(--warn);
     font-weight: 650;
   }

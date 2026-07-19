@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
     <header>
       <div class="container bar">
         <a class="brand" href="/">SDD <span>Observatory</span></a>
-        <nav aria-label="Primary navigation">
+        <nav aria-label="Primary">
           {
             nav.map((item) => (
               <a href={item.href} aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}>

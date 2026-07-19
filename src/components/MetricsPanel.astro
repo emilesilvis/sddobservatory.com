@@ -31,9 +31,13 @@ const barGap = 2;
 const sparkHeight = 36;
 const weekMs = 7 * 24 * 60 * 60 * 1000;
 const totalCommits = spark ? spark.reduce((sum, n) => sum + n, 0) : 0;
+// GitHub's commit-activity weeks start on Sunday and end with the current partial
+// week, so anchor the last week to the Sunday on or before the fetch date.
+const fetchDate = metrics ? new Date(metrics.fetchedAt) : null;
+const lastWeekStart = fetchDate ? fetchDate.getTime() - fetchDate.getUTCDay() * (weekMs / 7) : 0;
 const weeklyData = spark?.map((count, i) => ({
   count,
-  weekStart: new Date(new Date(metrics!.fetchedAt).getTime() - (spark.length - i) * weekMs),
+  weekStart: new Date(lastWeekStart - (spark.length - 1 - i) * weekMs),
 })) ?? [];
 ---
 
@@ -60,9 +64,8 @@ const weeklyData = spark?.map((count, i) => ({
             role="img"
             aria-label={`${formatCount(totalCommits)} commits in the last 52 weeks`}
           >
-            {spark.map((count, i) => {
-              const h = Math.max(2, Math.round((count / sparkMax) * (sparkHeight - 4)));
-              const weekStart = new Date(new Date(metrics.fetchedAt).getTime() - (spark.length - i) * weekMs);
+            {weeklyData.map((week, i) => {
+              const h = Math.max(2, Math.round((week.count / sparkMax) * (sparkHeight - 4)));
               return (
                 <rect
                   x={i * (barWidth + barGap)}
@@ -70,9 +73,9 @@ const weeklyData = spark?.map((count, i) => ({
                   width={barWidth}
                   height={h}
                   rx="1.5"
-                  fill={count === 0 ? 'var(--line)' : 'var(--accent)'}
+                  fill={week.count === 0 ? 'var(--line)' : 'var(--accent)'}
                 >
-                  <title>{`Week of ${formatDate(weekStart)}: ${count} commit${count === 1 ? '' : 's'}`}</title>
+                  <title>{`Week of ${formatDate(week.weekStart)}: ${week.count} commit${week.count === 1 ? '' : 's'}`}</title>
                 </rect>
               );
             })}
@@ -86,7 +89,7 @@ const weeklyData = spark?.map((count, i) => ({
                   <tr><th scope="col">Week starting</th><th scope="col">Commits</th></tr>
                 </thead>
                 <tbody>
-                  {weeklyData.map((week) => (
+                  {weeklyData.slice().reverse().map((week) => (
                     <tr><td>{formatDate(week.weekStart)}</td><td>{formatCount(week.count)}</td></tr>
                   ))}
                 </tbody>

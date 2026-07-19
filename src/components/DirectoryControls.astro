@@ -55,6 +55,7 @@ const { itemLabel, filters, sorts, defaultSort } = Astro.props;
     const sort = controls.querySelector<HTMLSelectElement>('[data-sort]');
     const results = controls.querySelector<HTMLElement>('[data-results]');
     const reset = controls.querySelector<HTMLButtonElement>('[data-reset]');
+    const defaultSort = sort?.value ?? '';
     const params = new URLSearchParams(location.search);
 
     const syncFromUrl = () => {
@@ -89,17 +90,18 @@ const { itemLabel, filters, sorts, defaultSort } = Astro.props;
       const next = new URLSearchParams();
       if (query) next.set('q', search?.value.trim() ?? '');
       filterElements.forEach((filter) => { if (filter.value) next.set(filter.dataset.filter ?? '', filter.value); });
-      if (sort?.value && sort.value !== grid.dataset.defaultSort) next.set('sort', sort.value);
-      history.replaceState(null, '', `${location.pathname}${next.size ? `?${next}` : ''}`);
+      if (sort?.value && sort.value !== defaultSort) next.set('sort', sort.value);
+      const queryString = next.toString();
+      history.replaceState(null, '', `${location.pathname}${queryString ? `?${queryString}` : ''}`);
     };
 
     syncFromUrl();
     controls.addEventListener('input', apply);
     controls.addEventListener('change', apply);
     reset?.addEventListener('click', () => {
-      search && (search.value = '');
+      if (search) search.value = '';
       filterElements.forEach((filter) => { filter.value = ''; });
-      if (sort) sort.value = grid.dataset.defaultSort ?? '';
+      if (sort) sort.value = defaultSort;
       apply();
       search?.focus();
     });
@@ -137,7 +139,7 @@ const { itemLabel, filters, sorts, defaultSort } = Astro.props;
   input,
   select,
   button {
-    border: 1px solid #a8b0bd;
+    border: 1px solid var(--line-strong);
     border-radius: 0.4rem;
     background: var(--surface);
     color: var(--ink);

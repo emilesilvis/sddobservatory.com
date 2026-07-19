@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard.astro';
 import DirectoryControls from '../../components/DirectoryControls.astro';
 import { getMetrics } from '../../lib/metrics';
 import { reviewAge } from '../../lib/format';
+import { DRIFT_LEVELS, PROJECT_STATUSES } from '../../content.config';
 
 const frameworks = await getCollection('frameworks');
 const frameworkNames = new Map(frameworks.map((f) => [f.id, f.data.name]));
@@ -32,8 +33,8 @@ const projects = (await getCollection('projects')).sort((a, b) => {
     itemLabel="projects"
     filters={[
       { key: 'framework', label: 'Framework', options: frameworks.sort((a, b) => a.data.name.localeCompare(b.data.name)).map((framework) => ({ value: framework.id, label: framework.data.name })) },
-      { key: 'status', label: 'Status', options: ['active', 'paused', 'archived'].map((value) => ({ value, label: value })) },
-      { key: 'drift', label: 'Drift', options: ['none', 'low', 'moderate', 'high', 'unknown'].map((value) => ({ value, label: value })) },
+      { key: 'status', label: 'Status', options: PROJECT_STATUSES.map((value) => ({ value, label: value })) },
+      { key: 'drift', label: 'Drift', options: DRIFT_LEVELS.map((value) => ({ value, label: value })) },
       { key: 'review', label: 'Review state', options: [{ value: 'due', label: 'Review due' }, { value: 'current', label: 'Current' }] },
     ]}
     sorts={[
@@ -44,26 +45,29 @@ const projects = (await getCollection('projects')).sort((a, b) => {
     defaultSort="activity"
   />
 
-  <ul class="card-grid" data-directory-grid data-singular="project" data-plural="projects" data-default-sort="activity">
+  <ul class="card-grid" data-directory-grid data-singular="project" data-plural="projects">
     {
-      projects.map((project) => (
-        <li
-          data-name={project.data.name.toLocaleLowerCase()}
-          data-search={`${project.data.name} ${project.data.summary} ${project.data.repo}`}
-          data-framework={project.data.framework.id}
-          data-status={project.data.status}
-          data-drift={project.data.drift}
-          data-review={reviewAge(project.data.lastReviewed).state}
-          data-activity={getMetrics(project.data.repo)?.pushedAt ? new Date(getMetrics(project.data.repo)!.pushedAt).getTime() : 0}
-          data-reviewed={project.data.lastReviewed.getTime()}
-        >
-          <ProjectCard
-            project={project}
-            frameworkName={frameworkNames.get(project.data.framework.id) ?? project.data.framework.id}
-            metrics={getMetrics(project.data.repo)}
-          />
-        </li>
-      ))
+      projects.map((project) => {
+        const metrics = getMetrics(project.data.repo);
+        return (
+          <li
+            data-name={project.data.name.toLocaleLowerCase()}
+            data-search={`${project.data.name} ${project.data.summary} ${project.data.repo}`}
+            data-framework={project.data.framework.id}
+            data-status={project.data.status}
+            data-drift={project.data.drift}
+            data-review={reviewAge(project.data.lastReviewed).state}
+            data-activity={metrics?.pushedAt ? new Date(metrics.pushedAt).getTime() : 0}
+            data-reviewed={project.data.lastReviewed.getTime()}
+          >
+            <ProjectCard
+              project={project}
+              frameworkName={frameworkNames.get(project.data.framework.id) ?? project.data.framework.id}
+              metrics={metrics}
+            />
+          </li>
+        );
+      })
     }
   </ul>
 </BaseLayout>

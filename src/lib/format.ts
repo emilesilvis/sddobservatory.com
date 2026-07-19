@@ -28,14 +28,16 @@ export function relativeDate(value: string | Date): string {
   return 'today';
 }
 
-export function reviewAge(value: string | Date): { label: string; stale: boolean; state: 'due' | 'current'; timestamp: number } {
+/** Assessments older than this are flagged "Review due"; also documented in /methodology. */
+export const REVIEW_DUE_DAYS = 180;
+
+/** Evaluated at build time, like relativeDate — the daily metrics rebuild keeps it fresh. */
+export function reviewAge(value: string | Date): { label: string; state: 'due' | 'current' } {
   const date = typeof value === 'string' ? new Date(value) : value;
   const ageInDays = (Date.now() - date.getTime()) / 86400000;
   return {
     label: `Reviewed ${relativeDate(date)}`,
-    stale: ageInDays > 180,
-    state: ageInDays > 180 ? 'due' : 'current',
-    timestamp: date.getTime(),
+    state: ageInDays > REVIEW_DUE_DAYS ? 'due' : 'current',
   };
 }
 

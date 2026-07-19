@@ -135,11 +135,12 @@ Not yet assessed.`;
 </BaseLayout>
 
 <style>
-  .account-note {
+  /* .page-header prefix outweighs the global `.page-header p` muted color. */
+  .page-header .account-note {
     padding: 0.8rem 1rem;
     border-left: 4px solid var(--accent);
     background: var(--accent-soft);
-    color: var(--ink) !important;
+    color: var(--ink);
     font-size: 0.95rem;
   }
 
