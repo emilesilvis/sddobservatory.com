@@ -1,8 +1,8 @@
 {
   "contributors": 251,
   "createdAt": "2025-08-21T22:54:31Z",
-  "fetchedAt": "2026-07-18T09:50:51.254Z",
-  "forks": 10873,
+  "fetchedAt": "2026-07-19T06:13:55.891Z",
+  "forks": 10880,
   "latestRelease": {
     "publishedAt": "2026-07-17T18:58:41Z",
     "tag": "v0.13.0"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-07-17T22:00:27Z",
   "repo": "github/spec-kit",
   "sizeKB": 12926,
-  "stars": 122040,
+  "stars": 122143,
   "weeklyCommits": [
     0,
     0,
