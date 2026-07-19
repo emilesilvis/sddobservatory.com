@@ -123,14 +123,24 @@ or **WARNING** (reported, does not block).
     the report should note it. Non-English-dominant prose is an ERROR — the
     directory requires English-led or bilingual specs so readers can verify
     assessments against the primary sources.
+13. ERROR — exclusion screen, two parts. (a) Purpose: the project's primary
+    purpose must not be abusing or defrauding another service (mass account
+    creation, quota or trial circumvention, bulk redemption automation,
+    spam) — a directory listing reads as a recommendation, so SDD practice
+    quality does not override this. (b) Star authenticity: watchers, forks,
+    contributors, and issue traffic must scale plausibly with stars; when the
+    star count looks promoted (large stars with near-zero watchers, a young
+    owner account, abnormal star velocity for the niche), treat the star
+    signal as unmet. Either failure is an ERROR; state the evidence in the
+    report.
 
 ### Frameworks only
 
-13. ERROR — Website, if provided, is a syntactically valid URL (the schema is
+14. ERROR — Website, if provided, is a syntactically valid URL (the schema is
     `z.url().optional()`). WARNING if it doesn't resolve.
-14. ERROR — repo, if provided, must pass checks 2–3. (Repo is optional for
+15. ERROR — repo, if provided, must pass checks 2–3. (Repo is optional for
     frameworks.)
-15. ERROR — workflow or supported-tools empty (schema requires ≥1 entry).
+16. ERROR — workflow or supported-tools empty (schema requires ≥1 entry).
     WARNING — strengths or limitations outside the 2–4 range the form asks
     for.
     Supported tools must use the canonical names in `SUPPORTED_TOOLS`
@@ -146,7 +156,7 @@ or **WARNING** (reported, does not block).
 
 ### Duplicates (flag — NEVER close anything)
 
-16. Existing content, same collection only: an exact case-insensitive match of
+17. Existing content, same collection only: an exact case-insensitive match of
     the submitted repo against `repo:` frontmatter in
     `src/content/<collection>/*.md` is a blocking finding — apply
     `possible-duplicate`, link the existing page, no PR. A close match of the
@@ -154,12 +164,12 @@ or **WARNING** (reported, does not block).
     lowercase, punctuation stripped) is a WARNING + `possible-duplicate`, also
     no PR. The same repo in the *other* collection is explicitly fine —
     OpenSpec is legitimately both a framework and a project.
-17. Other open `submission` issues (`gh issue list --label submission
+18. Other open `submission` issues (`gh issue list --label submission
     --state open`, excluding this one): the same repo or clearly the same name
     → `possible-duplicate` plus a report line linking the sibling issue, no
     PR.
 
-A slug collision (Step 5.1) with an existing file is treated as finding 16.
+A slug collision (Step 5.1) with an existing file is treated as finding 17.
 
 ## Step 3 — sticky report comment
 

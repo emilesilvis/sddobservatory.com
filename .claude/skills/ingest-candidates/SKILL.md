@@ -31,6 +31,17 @@ headings, and identifiers with non-English prose mixed in) pass, but the drafted
 refused, with no exception: readers must be able to verify the assessment against the primary
 sources.
 
+**Excluded purposes.** A candidate whose primary purpose is abusing or defrauding another
+service — mass account creation, quota or trial circumvention, bulk redemption automation,
+spam — is refused regardless of how good its SDD practice is: a directory listing reads as a
+recommendation. Record the refusal and the evidence in the run summary.
+
+**Star authenticity.** The star floor only works when stars are organic. During research, check
+that watchers, forks, contributors, issue traffic, and releases scale together. When the star
+count that clears the floor looks promoted — large stars with near-zero watchers, a young owner
+account, abnormal star velocity for the niche — refuse the candidate and record why. Genuine
+usage evidence does not override a manufactured floor qualification.
+
 ## 2. Skip what's already tracked
 
 Skip any candidate whose repo already appears (case-insensitively) in a `repo:` frontmatter field
