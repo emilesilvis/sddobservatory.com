@@ -6,8 +6,9 @@ or improving one is a normal pull request. If you'd rather not write the file yo
 
 ## The one rule
 
-**Humans edit `src/content/`; the bot edits `data/metrics/`.** Repository stats (stars, activity, contributors,
-releases) are fetched daily by a scheduled workflow and written to `data/metrics/` — never edit those files, and
+**Humans edit `src/content/`; machines write `data/`.** Repository stats (stars, activity, contributors,
+releases) are fetched daily by a scheduled workflow and written to `data/metrics/`; candidate projects found by
+the discovery sweep (`npm run sweep`) are written to `data/discovery/`. Never hand-edit files under `data/`, and
 never copy stats into content frontmatter. Everything in `src/content/` is human judgment and stays that way.
 
 ## Ways to contribute

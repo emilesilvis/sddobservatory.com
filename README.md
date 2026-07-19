@@ -13,6 +13,9 @@ time to evaluate how effective different approaches are in practice.
 - **Metrics** (`data/metrics/`) are machine-written: a [scheduled workflow](.github/workflows/metrics.yml) pulls
   repo stats from the GitHub API daily, commits changes, and redeploys the site. Humans never edit these files —
   and bots never edit content.
+- **Discovery** (`data/discovery/`) is machine-written too: `npm run sweep` code-searches GitHub for each
+  framework's fingerprint files and records candidate projects, which maintainers review and turn into project
+  pages (a star floor applies — see the [methodology](https://sddobservatory.com/methodology/)).
 - **The site** is [Astro](https://astro.build/), statically built and deployed to GitHub Pages on every push to
   `main`.
 
@@ -29,6 +32,7 @@ npm install
 npm run dev        # localhost:4321
 npm run build
 GITHUB_TOKEN=$(gh auth token) npm run metrics   # refresh data/metrics/ locally
+GITHUB_TOKEN=$(gh auth token) npm run sweep     # discovery sweep -> data/discovery/<date>.json (~10 min)
 ```
 
 Note for the maintainer's setup: if your clone lives inside Dropbox on macOS, exclude the churn-heavy dirs once

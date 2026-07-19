@@ -13,8 +13,10 @@ content, frontmatter or body. Run `npm run lint:content` before committing conte
 
 ## The one content rule
 
-Humans (and agents) edit `src/content/`; the metrics bot edits `data/metrics/`. Never edit
-metrics files or copy stats into content frontmatter. See CONTRIBUTING.md for the rest.
+Humans (and agents) edit `src/content/`; the metrics bot edits `data/metrics/`; the discovery
+sweep (`npm run sweep`) writes `data/discovery/`. Never hand-edit files under `data/`, and never
+copy stats into content frontmatter. Sweep output is read by the `ingest-candidates` skill to
+draft project pages. See CONTRIBUTING.md for the rest.
 
 The submission validator agent (`.github/prompts/validate-submission.md`) drafts content from
 issue submissions; its rules are a superset of this one.
