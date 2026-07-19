@@ -13,6 +13,7 @@
     "sweep": "tsx scripts/discovery-sweep.ts"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.1.1",
     "gray-matter": "^4.0.3",
