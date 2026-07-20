@@ -1,7 +1,7 @@
 {
   "contributors": 6,
   "createdAt": "2025-05-03T05:00:37Z",
-  "fetchedAt": "2026-07-18T09:43:07.429Z",
+  "fetchedAt": "2026-07-20T06:25:43.946Z",
   "forks": 155,
   "latestRelease": null,
   "license": "MIT-0",
@@ -11,7 +11,6 @@
   "sizeKB": 68714,
   "stars": 933,
   "weeklyCommits": [
-    0,
     1,
     0,
     0,
@@ -62,6 +61,7 @@
     0,
     0,
     0,
-    3
+    3,
+    0
   ]
 }
