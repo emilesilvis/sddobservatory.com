@@ -1,18 +1,18 @@
 {
   "contributors": 155,
   "createdAt": "2025-04-13T14:54:25Z",
-  "fetchedAt": "2026-07-20T06:25:20.973Z",
-  "forks": 5840,
+  "fetchedAt": "2026-07-21T06:13:48.720Z",
+  "forks": 5842,
   "latestRelease": {
     "publishedAt": "2026-07-03T23:57:14Z",
     "tag": "v6.10.0"
   },
   "license": "NOASSERTION",
-  "openIssues": 99,
+  "openIssues": 100,
   "pushedAt": "2026-07-19T23:40:47Z",
   "repo": "bmad-code-org/BMAD-METHOD",
   "sizeKB": 47010,
-  "stars": 50835,
+  "stars": 50878,
   "weeklyCommits": [
     9,
     17,
