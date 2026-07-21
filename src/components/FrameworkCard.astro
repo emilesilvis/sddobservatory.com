@@ -25,14 +25,13 @@ const moreTools = data.supportedTools.length - tools.length;
     <Badge label={data.maturity} tone={maturityTone(data.maturity)} />
   </header>
   <p class="summary"><RichText text={data.summary} /></p>
-  <ReviewFreshness date={data.lastReviewed} />
   <ul class="chip-list">
     {tools.map((tool) => <li class="chip">{tool}</li>)}
     {moreTools > 0 && <li class="chip">+{moreTools} more</li>}
   </ul>
-  {
-    data.repo && (
-      <p class="meta">
+  <p class="meta">
+    {data.repo && (
+      <>
         <a class="repo" href={`https://github.com/${data.repo}`} title="View on GitHub">
           <GitHubIcon />
           {data.repo}
@@ -43,9 +42,11 @@ const moreTools = data.supportedTools.length - tools.length;
             <span class="nowrap">pushed {relativeDate(metrics.pushedAt)}</span>
           </>
         )}
-      </p>
-    )
-  }
+        {' '}·{' '}
+      </>
+    )}
+    <ReviewFreshness date={data.lastReviewed} />
+  </p>
   <span class="view" aria-hidden="true">View framework →</span>
 </article>
 
