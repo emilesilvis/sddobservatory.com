@@ -18,9 +18,9 @@ const text = variant === 'detail'
 
 {
   variant === 'detail' ? (
-    <p class:list={['freshness', 'detail', { due }]}>{text}</p>
+    <p class:list={['freshness', { due }]}>{text}</p>
   ) : (
-    <span class:list={['freshness', 'card', { due }]}>{text}</span>
+    <span class:list={['freshness', 'freshness-inline', { due }]}>{text}</span>
   )
 }
 
@@ -30,8 +30,10 @@ const text = variant === 'detail'
     font-size: 0.9rem;
   }
 
-  /* Inline in the card's bottom meta line — inherits its faint, small styling. */
-  .card {
+  /* Inline in the card's bottom meta line — inherits its faint, small styling.
+     Must NOT be class `card`: the global .card rule would box it (border +
+     radius + padding), which is exactly the stray pill this replaced. */
+  .freshness-inline {
     color: var(--faint);
     font-size: inherit;
   }
