@@ -16,7 +16,13 @@ const text = variant === 'detail'
   : due ? 'Review due' : review.label;
 ---
 
-<p class:list={['freshness', variant, { due }]}>{text}</p>
+{
+  variant === 'detail' ? (
+    <p class:list={['freshness', 'detail', { due }]}>{text}</p>
+  ) : (
+    <span class:list={['freshness', 'card', { due }]}>{text}</span>
+  )
+}
 
 <style>
   .freshness {
@@ -24,9 +30,10 @@ const text = variant === 'detail'
     font-size: 0.9rem;
   }
 
+  /* Inline in the card's bottom meta line — inherits its faint, small styling. */
   .card {
-    margin: 0 0 0.75rem;
-    font-size: 0.82rem;
+    color: var(--faint);
+    font-size: inherit;
   }
 
   .due {

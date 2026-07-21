@@ -27,7 +27,6 @@ const { data } = project;
     </span>
   </header>
   <p class="summary"><RichText text={data.summary} /></p>
-  <ReviewFreshness date={data.lastReviewed} />
   <p class="meta">
     <a class="repo" href={`https://github.com/${data.repo}`} title="View on GitHub">
       <GitHubIcon />
@@ -40,6 +39,7 @@ const { data } = project;
         <span class="nowrap">pushed {relativeDate(metrics.pushedAt)}</span>
       </>
     )}
+    {' '}· <ReviewFreshness date={data.lastReviewed} />
   </p>
   <span class="view" aria-hidden="true">View project →</span>
 </article>
