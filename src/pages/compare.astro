@@ -1,0 +1,510 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
+import RichText from '../components/RichText.astro';
+import GitHubIcon from '../components/GitHubIcon.astro';
+import { getMetrics } from '../lib/metrics';
+import { maturityTone } from '../lib/labels';
+import { ageSince, formatCount, relativeDate } from '../lib/format';
+import { buildProfiles, unionTools } from '../lib/compare';
+
+const MIN_SELECTED = 2;
+const MAX_SELECTED = 4;
+
+const frameworkEntries = await getCollection('frameworks');
+const projectEntries = await getCollection('projects');
+
+// One entry per framework, paired with its live GitHub metrics. Column order is
+// stable: featured first, then most-starred, then alphabetical — so the
+// left-to-right layout is predictable regardless of what's selected.
+const columns = buildProfiles(frameworkEntries, projectEntries)
+  .map((profile) => ({ profile, metrics: getMetrics(profile.repo) }))
+  .sort(
+    (a, b) =>
+      Number(b.profile.featured) - Number(a.profile.featured) ||
+      (b.metrics?.stars ?? 0) - (a.metrics?.stars ?? 0) ||
+      a.profile.name.localeCompare(b.profile.name),
+  );
+
+const allTools = unionTools(columns.map((column) => column.profile));
+
+// Default to the first few columns (top featured). Pre-render their visibility
+// so the table doesn't flash all frameworks before the client script runs.
+const defaultSelected = columns.slice(0, MIN_SELECTED + 1).map((column) => column.profile.id);
+const defaultSet = new Set(defaultSelected);
+const defaultTools = new Set(
+  allTools.filter((tool) =>
+    columns.some((column) => defaultSet.has(column.profile.id) && column.profile.supportedTools.includes(tool)),
+  ),
+);
+
+const totalCommits = (weekly: number[] | null | undefined): number | null =>
+  weekly && weekly.length ? weekly.reduce((sum, n) => sum + n, 0) : null;
+---
+
+<BaseLayout
+  title="Compare frameworks"
+  description="Compare spec-driven development frameworks side by side: their approach, supported tools, maturity, activity, and trade-offs."
+>
+  <header class="page-header">
+    <h1>Compare frameworks</h1>
+    <p>
+      Pick {MIN_SELECTED}–{MAX_SELECTED} frameworks to line up their approach, supported tools, maturity, activity, and
+      trade-offs side by side. Your selection is saved in the URL, so you can share the comparison.
+    </p>
+  </header>
+
+  <section class="compare" data-compare data-default={JSON.stringify(defaultSelected)}>
+    <div class="selector" role="group" aria-label="Choose frameworks to compare">
+      {
+        columns.map((column) => (
+          <button
+            type="button"
+            class="pick"
+            data-pick={column.profile.id}
+            aria-pressed={defaultSet.has(column.profile.id) ? 'true' : 'false'}
+          >
+            {column.profile.name}
+          </button>
+        ))
+      }
+    </div>
+    <p class="hint" data-hint aria-live="polite">
+      Select between {MIN_SELECTED} and {MAX_SELECTED} frameworks.
+    </p>
+
+    <div class="compare-scroll">
+      <table data-compare-table>
+        <thead>
+          <tr>
+            <th scope="col" class="corner">Framework</th>
+            {
+              columns.map((column) => (
+                <th scope="col" class="col-head" data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <a href={`/frameworks/${column.profile.id}/`}>{column.profile.name}</a>
+                  <span class="col-links">
+                    {column.profile.website && <a href={column.profile.website}>Website</a>}
+                    {column.profile.repo && (
+                      <a href={`https://github.com/${column.profile.repo}`}>
+                        <GitHubIcon size={13} /> Repo
+                      </a>
+                    )}
+                  </span>
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="group"><td colspan={columns.length + 1}>Overview</td></tr>
+          <tr>
+            <th scope="row" class="row-label">Maturity</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <Badge label={column.profile.maturity} tone={maturityTone(column.profile.maturity)} />
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Summary</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <RichText text={column.profile.summary} />
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Core approach</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <RichText text={column.profile.coreApproach} />
+                </td>
+              ))
+            }
+          </tr>
+
+          <tr class="group"><td colspan={columns.length + 1}>Supported tools</td></tr>
+          {
+            allTools.map((tool) => (
+              <tr data-tool-row data-tool={tool} hidden={!defaultTools.has(tool)}>
+                <th scope="row" class="row-label">{tool}</th>
+                {columns.map((column) => {
+                  const supports = column.profile.supportedTools.includes(tool);
+                  return (
+                    <td
+                      class={`support ${supports ? 'yes' : 'no'}`}
+                      data-framework={column.profile.id}
+                      data-supports={supports ? 'yes' : 'no'}
+                      hidden={!defaultSet.has(column.profile.id)}
+                    >
+                      <span aria-hidden="true">{supports ? '✓' : '—'}</span>
+                      <span class="sr-only">{supports ? `${column.profile.name} supports ${tool}` : 'Not supported'}</span>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          }
+
+          <tr class="group"><td colspan={columns.length + 1}>Activity</td></tr>
+          <tr>
+            <th scope="row" class="row-label">GitHub stars</th>
+            {
+              columns.map((column) => (
+                <td class="num" data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  {column.metrics ? formatCount(column.metrics.stars) : '—'}
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Last push</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  {column.metrics ? relativeDate(column.metrics.pushedAt) : '—'}
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Repo age</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  {column.metrics ? ageSince(column.metrics.createdAt) : '—'}
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Commits (52 wks)</th>
+            {
+              columns.map((column) => {
+                const commits = totalCommits(column.metrics?.weeklyCommits);
+                return (
+                  <td class="num" data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                    {commits === null ? '—' : formatCount(commits)}
+                  </td>
+                );
+              })
+            }
+          </tr>
+
+          <tr class="group"><td colspan={columns.length + 1}>Trade-offs</td></tr>
+          <tr>
+            <th scope="row" class="row-label">Strengths</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <ul class="cell-list">
+                    {column.profile.strengths.map((item) => (
+                      <li><RichText text={item} /></li>
+                    ))}
+                  </ul>
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Limitations</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <ul class="cell-list">
+                    {column.profile.limitations.map((item) => (
+                      <li><RichText text={item} /></li>
+                    ))}
+                  </ul>
+                </td>
+              ))
+            }
+          </tr>
+          <tr>
+            <th scope="row" class="row-label">Tracked projects</th>
+            {
+              columns.map((column) => (
+                <td class="num" data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  {column.profile.adoption > 0 ? column.profile.adoption : '—'}
+                </td>
+              ))
+            }
+          </tr>
+
+          <tr class="group"><td colspan={columns.length + 1}>Workflow</td></tr>
+          <tr>
+            <th scope="row" class="row-label">Steps</th>
+            {
+              columns.map((column) => (
+                <td data-framework={column.profile.id} hidden={!defaultSet.has(column.profile.id)}>
+                  <ol class="cell-list">
+                    {column.profile.workflow.map((step) => (
+                      <li><RichText text={step} /></li>
+                    ))}
+                  </ol>
+                </td>
+              ))
+            }
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      Metrics are collected automatically from the GitHub API once a day; frameworks without a public repository show
+      “—”. Assessments are directional — see <a href="/methodology/">the methodology</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const MIN = 2;
+  const MAX = 4;
+
+  const root = document.querySelector<HTMLElement>('[data-compare]');
+  const table = root?.querySelector<HTMLElement>('[data-compare-table]');
+
+  if (root && table) {
+    const picks = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-pick]'));
+    const hint = root.querySelector<HTMLElement>('[data-hint]');
+    const allIds = picks.map((button) => button.dataset.pick ?? '');
+    let defaults: string[] = [];
+    try {
+      defaults = JSON.parse(root.dataset.default ?? '[]');
+    } catch {
+      defaults = allIds.slice(0, MIN + 1);
+    }
+
+    const readSelection = (): string[] => {
+      const raw = new URLSearchParams(location.search).get('frameworks');
+      const requested = raw
+        ? [...new Set(raw.split(',').map((value) => value.trim()).filter((id) => allIds.includes(id)))]
+        : [];
+      const selection = requested.length >= MIN ? requested : defaults;
+      return selection.slice(0, MAX);
+    };
+
+    let selected = readSelection();
+
+    const apply = () => {
+      const set = new Set(selected);
+
+      table.querySelectorAll<HTMLElement>('[data-framework]').forEach((cell) => {
+        cell.hidden = !set.has(cell.dataset.framework ?? '');
+      });
+
+      table.querySelectorAll<HTMLElement>('[data-tool-row]').forEach((row) => {
+        const anySupport = selected.some(
+          (id) => row.querySelector<HTMLElement>(`[data-framework="${id}"]`)?.dataset.supports === 'yes',
+        );
+        row.hidden = !anySupport;
+      });
+
+      picks.forEach((button) => {
+        const on = set.has(button.dataset.pick ?? '');
+        button.setAttribute('aria-pressed', on ? 'true' : 'false');
+        button.disabled = (!on && selected.length >= MAX) || (on && selected.length <= MIN);
+      });
+
+      if (hint) {
+        hint.textContent =
+          selected.length >= MAX
+            ? `Comparing ${selected.length} frameworks (max ${MAX}). Deselect one to swap.`
+            : `Comparing ${selected.length} frameworks. Pick up to ${MAX}.`;
+      }
+
+      const params = new URLSearchParams(location.search);
+      params.set('frameworks', selected.join(','));
+      history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
+    };
+
+    picks.forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.pick ?? '';
+        const set = new Set(selected);
+        if (set.has(id)) {
+          if (selected.length <= MIN) return;
+          set.delete(id);
+        } else {
+          if (selected.length >= MAX) return;
+          set.add(id);
+        }
+        // Keep columns in their stable DOM order rather than click order.
+        selected = allIds.filter((candidate) => set.has(candidate));
+        apply();
+      });
+    });
+
+    apply();
+  }
+</script>
+
+<style>
+  .selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pick {
+    cursor: pointer;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0.4rem 0.9rem;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 550;
+  }
+
+  .pick[aria-pressed='true'] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .pick:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  .hint {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .compare-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+    min-width: 13rem;
+  }
+
+  th:last-child,
+  td:last-child {
+    border-right: 0;
+  }
+
+  /* Sticky label column stays put while the framework columns scroll. */
+  .row-label,
+  .corner {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--surface);
+    min-width: 11rem;
+    color: var(--muted);
+    font-weight: 650;
+  }
+
+  .corner {
+    z-index: 2;
+    vertical-align: bottom;
+  }
+
+  .col-head {
+    vertical-align: bottom;
+    font-size: 1.05rem;
+  }
+
+  .col-head a {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .col-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+  }
+
+  .col-links a :global(svg) {
+    vertical-align: -0.125em;
+  }
+
+  tr.group td {
+    background: var(--neutral-soft);
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 650;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.8rem;
+    min-width: auto;
+  }
+
+  td.support {
+    text-align: center;
+    font-weight: 650;
+    color: var(--ok);
+    min-width: 8rem;
+  }
+
+  td.support.no {
+    color: var(--faint);
+    font-weight: 400;
+  }
+
+  td.num {
+    font-variant-numeric: tabular-nums;
+    min-width: 8rem;
+  }
+
+  .cell-list {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .cell-list li {
+    margin-bottom: 0.3rem;
+  }
+
+  .cell-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .note {
+    margin: 1rem 0 0;
+    color: var(--faint);
+    font-size: 0.85rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
