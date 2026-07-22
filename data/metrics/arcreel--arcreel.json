@@ -1,8 +1,8 @@
 {
   "contributors": 12,
   "createdAt": "2026-02-07T08:17:10Z",
-  "fetchedAt": "2026-07-21T06:13:21.803Z",
-  "forks": 705,
+  "fetchedAt": "2026-07-22T06:12:13.549Z",
+  "forks": 710,
   "latestRelease": {
     "publishedAt": "2026-07-15T04:25:57Z",
     "tag": "v0.22.0"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-07-21T02:54:22Z",
   "repo": "ArcReel/ArcReel",
   "sizeKB": 27698,
-  "stars": 3509,
+  "stars": 3535,
   "weeklyCommits": [
     0,
     0,
