@@ -1,14 +1,14 @@
 {
   "contributors": 4,
   "createdAt": "2026-04-27T13:46:20Z",
-  "fetchedAt": "2026-07-22T06:13:14.373Z",
+  "fetchedAt": "2026-07-23T06:16:12.238Z",
   "forks": 28,
   "latestRelease": null,
   "license": "MIT",
-  "openIssues": 11,
-  "pushedAt": "2026-07-21T21:58:08Z",
+  "openIssues": 12,
+  "pushedAt": "2026-07-22T22:37:38Z",
   "repo": "joske/yserver",
-  "sizeKB": 11623,
+  "sizeKB": 11862,
   "stars": 504,
   "weeklyCommits": [
     0,
@@ -62,6 +62,6 @@
     41,
     44,
     24,
-    10
+    14
   ]
 }

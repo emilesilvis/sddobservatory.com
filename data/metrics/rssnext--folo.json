@@ -1,18 +1,18 @@
 {
   "contributors": 155,
   "createdAt": "2024-04-08T03:23:35Z",
-  "fetchedAt": "2026-07-22T06:12:27.824Z",
+  "fetchedAt": "2026-07-23T06:15:34.966Z",
   "forks": 2101,
   "latestRelease": {
     "publishedAt": "2026-07-13T05:23:36Z",
     "tag": "desktop/v1.11.0"
   },
   "license": "AGPL-3.0",
-  "openIssues": 380,
+  "openIssues": 381,
   "pushedAt": "2026-07-15T01:00:52Z",
   "repo": "RSSNext/Folo",
   "sizeKB": 76426,
-  "stars": 38695,
+  "stars": 38703,
   "weeklyCommits": [
     42,
     44,
