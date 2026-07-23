@@ -295,3 +295,102 @@ input:not([type='checkbox'], [type='radio']) {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Comparison tables: one column per framework, scrolling sideways inside this
+   wrapper while the attribute column stays pinned. */
+.compare-scroll {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+/* width: 100% + per-cell min-widths means a handful of columns share the
+   container evenly, while a wide selection overflows into the scroller rather
+   than squeezing every column down to a word per line. border-collapse stays
+   `separate`: collapsed borders belong to the table, not the cell, so they
+   don't travel with the sticky column. */
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.compare-table th,
+.compare-table td {
+  vertical-align: top;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.compare-table tr > *:first-child {
+  border-left: 0;
+}
+
+.compare-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.compare-table td {
+  min-width: 15rem;
+}
+
+/* The divider is a shadow, not a border, so it travels with the pinned column
+   while sitting exactly under the neighbouring cell's border-left — a border
+   here would double up whenever that neighbour is a hidden column. */
+.compare-table .row-head {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: 10rem;
+  min-width: 10rem;
+  background: var(--surface);
+  box-shadow: 1px 0 0 var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Table cells default to display: table-cell, which the [hidden] attribute
+   must outrank for the picker to drop a column. */
+.compare-table [hidden] {
+  display: none;
+}
+
+/* On a phone the pinned column would eat half the screen, leaving a column of
+   two-word lines beside it. */
+@media (max-width: 42rem) {
+  .compare-table th,
+  .compare-table td {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .compare-table td {
+    min-width: 13rem;
+  }
+
+  .compare-table .row-head {
+    width: 6.5rem;
+    min-width: 6.5rem;
+    font-size: 0.7rem;
+  }
+}

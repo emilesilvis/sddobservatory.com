@@ -1,0 +1,268 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Badge from './Badge.astro';
+import GitHubIcon from './GitHubIcon.astro';
+import RichText from './RichText.astro';
+import ReviewFreshness from './ReviewFreshness.astro';
+import { getMetrics } from '../lib/metrics';
+import { maturityTone } from '../lib/labels';
+import { ageSince, formatCount, relativeDate } from '../lib/format';
+
+interface Props {
+  frameworks: CollectionEntry<'frameworks'>[];
+  projects: CollectionEntry<'projects'>[];
+  selected: Set<string>;
+}
+
+const { frameworks, projects, selected } = Astro.props;
+
+// Every cell carries its column's slug so the picker can show and hide whole
+// columns client-side; rendering `hidden` on the server means the default
+// comparison arrives without a flash of all fourteen columns.
+const column = (id: string) => ({ 'data-column': id, hidden: !selected.has(id) });
+
+const columns = frameworks.map((framework) => ({
+  framework,
+  data: framework.data,
+  metrics: getMetrics(framework.data.repo),
+  usedBy: projects.filter((project) => project.data.framework.id === framework.id),
+}));
+---
+
+<div class="compare-scroll">
+  <table class="compare-table">
+    <caption class="visually-hidden">
+      Tracked spec-driven development frameworks compared attribute by attribute
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" class="row-head">Framework</th>
+        {
+          columns.map(({ framework, data }) => (
+            <th scope="col" {...column(framework.id)}>
+              <a href={`/frameworks/${framework.id}/`}>{data.name}</a>
+              <Badge label={data.maturity} tone={maturityTone(data.maturity)} />
+            </th>
+          ))
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="row-head">Summary</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <RichText text={data.summary} />
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">GitHub stars</th>
+        {
+          columns.map(({ framework, metrics }) => (
+            <td class="figure" {...column(framework.id)}>
+              {metrics ? `★ ${formatCount(metrics.stars)}` : '—'}
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Contributors</th>
+        {
+          columns.map(({ framework, metrics }) => (
+            <td class="figure" {...column(framework.id)}>
+              {metrics && metrics.contributors !== null ? formatCount(metrics.contributors) : '—'}
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Last push</th>
+        {
+          columns.map(({ framework, metrics }) => (
+            <td {...column(framework.id)}>{metrics ? relativeDate(metrics.pushedAt) : '—'}</td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Repo age</th>
+        {
+          columns.map(({ framework, metrics }) => (
+            <td {...column(framework.id)}>{metrics ? ageSince(metrics.createdAt) : '—'}</td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Latest release</th>
+        {
+          columns.map(({ framework, metrics }) => (
+            <td {...column(framework.id)}>{metrics?.latestRelease ? metrics.latestRelease.tag : '—'}</td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Tracked projects</th>
+        {
+          columns.map(({ framework, usedBy }) => (
+            <td {...column(framework.id)}>
+              {usedBy.length === 0 ? (
+                'None yet'
+              ) : (
+                <ul class="plain">
+                  {usedBy.map((project) => (
+                    <li>
+                      <a href={`/projects/${project.id}/`}>{project.data.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Core approach</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <RichText text={data.coreApproach} />
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Workflow</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <ol>
+                {data.workflow.map((step) => (
+                  <li>
+                    <RichText text={step} />
+                  </li>
+                ))}
+              </ol>
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Supported tools</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              {data.supportedTools.length} {data.supportedTools.length === 1 ? 'tool' : 'tools'} —{' '}
+              <a href="#tool-support">see matrix</a>
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Strengths</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <ul>
+                {data.strengths.map((item) => (
+                  <li>
+                    <RichText text={item} />
+                  </li>
+                ))}
+              </ul>
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Limitations</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <ul>
+                {data.limitations.map((item) => (
+                  <li>
+                    <RichText text={item} />
+                  </li>
+                ))}
+              </ul>
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Assessment</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <ReviewFreshness date={data.lastReviewed} />
+            </td>
+          ))
+        }
+      </tr>
+      <tr>
+        <th scope="row" class="row-head">Links</th>
+        {
+          columns.map(({ framework, data }) => (
+            <td {...column(framework.id)}>
+              <ul class="plain">
+                <li>
+                  <a href={`/frameworks/${framework.id}/`}>Full profile →</a>
+                </li>
+                {data.website && (
+                  <li>
+                    <a href={data.website}>Website</a>
+                  </li>
+                )}
+                {data.repo && (
+                  <li>
+                    <a href={`https://github.com/${data.repo}`}>
+                      <GitHubIcon size={14} /> {data.repo}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </td>
+          ))
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  thead a {
+    font-size: 1rem;
+    font-weight: 650;
+  }
+
+  thead :global(.badge) {
+    margin-left: 0.4rem;
+    vertical-align: 0.1em;
+  }
+
+  .figure {
+    font-variant-numeric: tabular-nums;
+    font-weight: 650;
+  }
+
+  ol,
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+
+  .plain {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .plain :global(svg) {
+    vertical-align: -0.125em;
+  }
+</style>

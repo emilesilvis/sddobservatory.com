@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CompareSelector from '../../components/CompareSelector.astro';
+import CompareTable from '../../components/CompareTable.astro';
+import ToolMatrix from '../../components/ToolMatrix.astro';
+import { getMetrics } from '../../lib/metrics';
+
+const frameworks = (await getCollection('frameworks')).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name),
+);
+const projects = await getCollection('projects');
+
+// The page has to be useful before anyone touches the picker — and for readers
+// without JavaScript, this is the whole comparison — so it ships pre-selected
+// with the most-starred featured frameworks.
+const DEFAULT_COLUMNS = 3;
+const defaults = new Set(
+  frameworks
+    .filter((framework) => framework.data.featured)
+    .sort((a, b) => (getMetrics(b.data.repo)?.stars ?? 0) - (getMetrics(a.data.repo)?.stars ?? 0))
+    .slice(0, DEFAULT_COLUMNS)
+    .map((framework) => framework.id),
+);
+---
+
+<BaseLayout
+  title="Compare frameworks"
+  description="Put spec-driven development frameworks side by side: workflow, supported tools, repository activity, strengths, and limitations."
+>
+  <header class="page-header">
+    <h1>Compare frameworks</h1>
+    <p>
+      Put any of the {frameworks.length} tracked frameworks side by side — how each one works, which agents it drives, how
+      active it is, and where it falls short. The selection lives in the URL, so a comparison is shareable.
+    </p>
+  </header>
+
+  <CompareSelector frameworks={frameworks} selected={defaults} />
+
+  <noscript>
+    {/* Selecting columns needs JavaScript, so without it the page falls back to
+        the full matrix rather than a comparison nobody can change. is:inline
+        keeps the rule out of the global bundle, where it would always apply. */}
+    <style is:inline>
+      [data-compare-picker] { display: none; }
+      .compare-table [data-column][hidden] { display: table-cell; }
+      .tool-matrix tbody tr[data-tool-support][hidden] { display: table-row; }
+    </style>
+    <p class="notice">
+      Choosing which frameworks to compare needs JavaScript. Every tracked framework is shown below instead.
+    </p>
+  </noscript>
+
+  <p class="notice" hidden data-compare-empty>Select at least one framework above to build a comparison.</p>
+
+  <div data-compare-tables>
+    <h2>Side by side</h2>
+    <CompareTable frameworks={frameworks} projects={projects} selected={defaults} />
+
+    <h2 id="tool-support">Tool support</h2>
+    <p>
+      Which AI coding agents and editors each framework drives. Rows appear only when at least one selected framework
+      supports the tool.
+    </p>
+    <ToolMatrix frameworks={frameworks} selected={defaults} />
+  </div>
+
+  <p class="review-meta">
+    Repository figures are collected automatically from the GitHub API; everything else is a human assessment. ·
+    <a href="/methodology/">How we track</a> · <a href="/frameworks/">All frameworks</a>
+  </p>
+</BaseLayout>
+
+<script>
+  const picker = document.querySelector<HTMLElement>('[data-compare-picker]');
+  const tables = document.querySelector<HTMLElement>('[data-compare-tables]');
+
+  if (picker && tables) {
+    const toggles = Array.from(picker.querySelectorAll<HTMLInputElement>('[data-compare-toggle]'));
+    const cells = Array.from(tables.querySelectorAll<HTMLElement>('[data-column]'));
+    const toolRows = Array.from(tables.querySelectorAll<HTMLElement>('[data-tool-support]'));
+    const count = picker.querySelector<HTMLElement>('[data-compare-count]');
+    const selectAll = picker.querySelector<HTMLButtonElement>('[data-compare-all]');
+    const reset = picker.querySelector<HTMLButtonElement>('[data-compare-reset]');
+    const empty = document.querySelector<HTMLElement>('[data-compare-empty]');
+    // The server-rendered checked state is the default the URL is diffed against.
+    const defaults = toggles.filter((toggle) => toggle.checked).map((toggle) => toggle.value);
+
+    // `?f=spec-kit,openspec`; repeated `?f=` params work too.
+    const requested = new URLSearchParams(location.search)
+      .getAll('f')
+      .flatMap((value) => value.split(','))
+      .map((value) => value.trim())
+      .filter(Boolean);
+    if (requested.length > 0) {
+      const wanted = new Set(requested);
+      toggles.forEach((toggle) => { toggle.checked = wanted.has(toggle.value); });
+    }
+
+    const apply = () => {
+      const slugs = toggles.filter((toggle) => toggle.checked).map((toggle) => toggle.value);
+      const selected = new Set(slugs);
+
+      cells.forEach((cell) => { cell.hidden = !selected.has(cell.dataset.column ?? ''); });
+      toolRows.forEach((row) => {
+        row.hidden = !(row.dataset.toolSupport ?? '').split('|').some((id) => selected.has(id));
+      });
+
+      tables.hidden = slugs.length === 0;
+      if (empty) empty.hidden = slugs.length > 0;
+      if (count) {
+        count.textContent = `Comparing ${slugs.length} of ${toggles.length} frameworks`;
+      }
+
+      const isDefault =
+        slugs.length === defaults.length && slugs.every((slug, i) => slug === defaults[i]);
+      const query = isDefault || slugs.length === 0 ? '' : `?f=${slugs.join(',')}`;
+      history.replaceState(null, '', `${location.pathname}${query}`);
+    };
+
+    const set = (slugs: string[]) => {
+      const wanted = new Set(slugs);
+      toggles.forEach((toggle) => { toggle.checked = wanted.has(toggle.value); });
+      apply();
+    };
+
+    picker.addEventListener('change', apply);
+    selectAll?.addEventListener('click', () => set(toggles.map((toggle) => toggle.value)));
+    reset?.addEventListener('click', () => set(defaults));
+    apply();
+  }
+</script>
+
+<style>
+  .notice {
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .review-meta {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+</style>
