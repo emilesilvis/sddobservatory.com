@@ -1,0 +1,121 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  frameworks: CollectionEntry<'frameworks'>[];
+  selected: Set<string>;
+}
+
+const { frameworks, selected } = Astro.props;
+---
+
+<section class="picker" data-compare-picker>
+  <fieldset>
+    <legend>Frameworks to compare</legend>
+    <ul>
+      {
+        frameworks.map((framework) => (
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                value={framework.id}
+                checked={selected.has(framework.id)}
+                data-compare-toggle
+              />
+              {framework.data.name}
+            </label>
+          </li>
+        ))
+      }
+    </ul>
+  </fieldset>
+  <p class="actions">
+    <button type="button" data-compare-all>Select all</button>
+    <button type="button" data-compare-reset>Reset</button>
+    <span class="count" aria-live="polite" aria-atomic="true" data-compare-count></span>
+  </p>
+</section>
+
+<style>
+  .picker {
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    padding: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  input {
+    accent-color: var(--accent);
+    margin: 0;
+  }
+
+  /* Browsers without :has() keep the plain pill — the checkbox still reads
+     the selection, so nothing is lost but the tint. */
+  label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+  }
+
+  button {
+    border: 1px solid var(--line-strong);
+    border-radius: 0.4rem;
+    background: var(--surface);
+    padding: 0.5rem 0.85rem;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 650;
+    color: var(--accent);
+    cursor: pointer;
+  }
+
+  .count {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

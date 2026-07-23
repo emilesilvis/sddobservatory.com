@@ -1,0 +1,101 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  frameworks: CollectionEntry<'frameworks'>[];
+  selected: Set<string>;
+}
+
+const { frameworks, selected } = Astro.props;
+
+const column = (id: string) => ({ 'data-column': id, hidden: !selected.has(id) });
+
+// One row per tool any tracked framework supports. Each row lists the slugs
+// that support it, so the picker can drop rows no selected framework covers
+// instead of leaving a block of empty dashes.
+const rows = [...new Set(frameworks.flatMap((framework) => framework.data.supportedTools))]
+  .sort((a, b) => a.localeCompare(b))
+  .map((tool) => ({
+    tool,
+    supporters: new Set(
+      frameworks
+        .filter((framework) => framework.data.supportedTools.includes(tool))
+        .map((framework) => framework.id),
+    ),
+  }));
+---
+
+<div class="compare-scroll">
+  <table class="compare-table tool-matrix">
+    <caption class="visually-hidden">
+      Which AI coding agents and editors each framework supports
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" class="row-head">Tool</th>
+        {
+          frameworks.map((framework) => (
+            <th scope="col" {...column(framework.id)}>
+              {framework.data.name}
+            </th>
+          ))
+        }
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map(({ tool, supporters }) => (
+          <tr
+            data-tool-support={[...supporters].join('|')}
+            hidden={![...supporters].some((id) => selected.has(id))}
+          >
+            <th scope="row" class="row-head">
+              {tool}
+            </th>
+            {frameworks.map((framework) => (
+              <td class:list={['mark', { yes: supporters.has(framework.id) }]} {...column(framework.id)}>
+                <span aria-hidden="true">{supporters.has(framework.id) ? '✓' : '–'}</span>
+                <span class="visually-hidden">
+                  {supporters.has(framework.id) ? 'Supported' : 'Not supported'}
+                </span>
+              </td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  /* Narrower than the attribute table's prose columns — these cells hold a
+     single glyph. */
+  .tool-matrix thead th,
+  .tool-matrix td {
+    min-width: 8rem;
+  }
+
+  .tool-matrix thead th {
+    font-size: 0.9rem;
+  }
+
+  /* These row headings are product names, not attribute labels — the shared
+     uppercase treatment mangles them ("VIM/NEOVIM"). */
+  .tool-matrix .row-head {
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .tool-matrix td {
+    text-align: center;
+    color: var(--faint);
+  }
+
+  .tool-matrix .yes {
+    color: var(--ok);
+    font-weight: 700;
+  }
+</style>

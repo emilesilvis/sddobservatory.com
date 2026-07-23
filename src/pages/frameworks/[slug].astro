@@ -28,6 +28,15 @@ const usedBy = (await getCollection('projects')).filter(
   (project) => project.data.framework.id === framework.id,
 );
 const hasBody = Boolean(framework.body?.trim());
+
+// Land on a real comparison rather than a one-column table: this framework
+// plus the most-starred featured frameworks it isn't.
+const compareWith = (await getCollection('frameworks'))
+  .filter((other) => other.data.featured && other.id !== framework.id)
+  .sort((a, b) => (getMetrics(b.data.repo)?.stars ?? 0) - (getMetrics(a.data.repo)?.stars ?? 0))
+  .slice(0, 2)
+  .map((other) => other.id);
+const compareHref = `/compare/?f=${[framework.id, ...compareWith].join(',')}`;
 ---
 
 <BaseLayout title={data.name} description={data.summary}>
@@ -48,6 +57,7 @@ const hasBody = Boolean(framework.body?.trim());
           </a>
         )
       }
+      <a href={compareHref}>Compare with other frameworks →</a>
     </p>
   </header>
 
