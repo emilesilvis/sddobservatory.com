@@ -1,8 +1,8 @@
 {
   "contributors": 17,
   "createdAt": "2025-07-17T04:41:37Z",
-  "fetchedAt": "2026-07-23T06:16:05.438Z",
-  "forks": 273,
+  "fetchedAt": "2026-07-24T06:12:12.196Z",
+  "forks": 272,
   "latestRelease": {
     "publishedAt": "2026-04-13T21:25:16Z",
     "tag": "v3.0.2"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-05-20T08:45:14Z",
   "repo": "gotalab/cc-sdd",
   "sizeKB": 7487,
-  "stars": 3582,
+  "stars": 3581,
   "weeklyCommits": [
     6,
     1,
