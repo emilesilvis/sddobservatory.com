@@ -1,14 +1,14 @@
 {
   "contributors": 31,
   "createdAt": "2014-05-19T19:27:32Z",
-  "fetchedAt": "2026-07-19T06:13:54.676Z",
+  "fetchedAt": "2026-07-25T06:07:13.698Z",
   "forks": 24,
   "latestRelease": {
     "publishedAt": "2025-03-07T15:18:02Z",
     "tag": "20250307_3_1_44"
   },
   "license": "EPL-1.0",
-  "openIssues": 628,
+  "openIssues": 629,
   "pushedAt": "2026-06-21T18:57:08Z",
   "repo": "debrief/debrief",
   "sizeKB": 1118729,

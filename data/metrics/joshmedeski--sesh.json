@@ -1,7 +1,7 @@
 {
   "contributors": 57,
   "createdAt": "2023-12-27T22:47:28Z",
-  "fetchedAt": "2026-07-24T06:12:17.758Z",
+  "fetchedAt": "2026-07-25T06:07:26.279Z",
   "forks": 121,
   "latestRelease": {
     "publishedAt": "2026-07-13T16:41:14Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-07-23T21:37:56Z",
   "repo": "joshmedeski/sesh",
   "sizeKB": 4505,
-  "stars": 2710,
+  "stars": 2712,
   "weeklyCommits": [
     1,
     1,
