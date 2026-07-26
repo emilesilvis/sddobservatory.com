@@ -1,7 +1,7 @@
 {
   "contributors": 5,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-07-25T06:06:31.073Z",
+  "fetchedAt": "2026-07-26T06:18:24.489Z",
   "forks": 20,
   "latestRelease": null,
   "license": "Apache-2.0",
@@ -9,9 +9,8 @@
   "pushedAt": "2026-07-20T18:15:02Z",
   "repo": "AI-Unified-Process/marketplace",
   "sizeKB": 449,
-  "stars": 101,
+  "stars": 104,
   "weeklyCommits": [
-    0,
     0,
     0,
     0,
@@ -62,6 +61,7 @@
     0,
     1,
     14,
-    6
+    6,
+    0
   ]
 }
