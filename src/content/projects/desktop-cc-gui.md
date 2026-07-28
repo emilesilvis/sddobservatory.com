@@ -37,7 +37,7 @@ timeline:
     description: "Commit `9da8688`, \"feat(git): 完善多仓库提交工作区\" (refine the multi-repository commit
       workspace), landed the same day as the latest code commits on `main`."
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-07-28
 ---
 
 ## Spec-to-code drift
@@ -61,7 +61,7 @@ change was covered by specs.
 
 ## Maintenance outcomes
 
-Ten contributors have shipped tagged releases through `v0.7.4` at a fast tempo while completing roughly 600
+A steadily growing contributor base has shipped tagged releases through `v0.7.10` at a fast tempo while completing roughly 600
 spec changes between February and July 2026 — several per day on average. Quality gates codified in
 `config.yaml` (`npm run typecheck`, Vitest suites, `cargo test`) apply to every archived change. Adoption is
 only five months old, so long-run maintenance conclusions are premature, but this is currently the highest

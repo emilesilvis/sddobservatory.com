@@ -28,7 +28,7 @@ timeline:
     title: Latest spec activity
     description: "`ci: derive Debian QML deps from code, gate drift in CI + pre-push (#138)` — a spec-and-plan-backed fix for a shipped packaging defect, landed in the same push as the repository's latest activity."
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-07-28
 ---
 
 ## Spec-to-code drift
@@ -52,7 +52,7 @@ hardware-test phases) sit in the same tree.
 
 ## Maintenance outcomes
 
-Early but notable. With three contributors — essentially a solo maintainer — the project sustained roughly 50
+Early but notable. With a handful of contributors around a single primary maintainer, the project sustained roughly 50
 dated spec documents across three months while shipping ten tagged releases (`v0.2.3` through `v0.3.6`) with
 multi-distro packaging. The most recent maintenance change converted a recurring class of packaging drift into a
 generated, CI-checked artifact, which suggests the spec habit is being used to prevent defect classes rather than

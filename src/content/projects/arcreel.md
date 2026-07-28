@@ -40,13 +40,13 @@ timeline:
       and agent sandbox", translated) touched the log-persistence plan and spec; the tree has been
       static since.
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-07-28
 ---
 
 ## Spec-to-code drift
 
-Moderate. The spec tree has been frozen since 2026-05-23 while the project ships at high tempo — four releases
-(`v0.19.1` through `v0.22.0`) landed in the eight weeks since, none adding plans or specs here. The staleness
+Moderate. The spec tree has been frozen since 2026-05-23 while the project ships at high tempo — releases have
+continued through `v0.23.0` in the nine weeks since, none adding plans or specs here. The staleness
 looks like deliberate process migration rather than neglect: a May 2026 curation pass verified the docs and
 deleted ten stale ones, and `AGENTS.md` now routes new design work through `docs/adr/` (active through
 2026-07-17) and spec-labelled GitHub issues, leaving `docs/superpowers/` as an archive of completed work that
@@ -62,8 +62,8 @@ untracked ones is not yet assessed.
 ## Maintenance outcomes
 
 A striking velocity case: from template initialization (2026-02-06) to a released multi-provider product
-(`v0.22.0` by 2026-07-15) in about five months, with roughly 70 design docs covering the buildout across 11
-contributors. The specs stayed load-bearing after implementation — the living `AGENTS.md` architecture guide
+(`v0.23.0` by 2026-07-24) in under six months, with roughly 70 design docs covering the buildout across a
+double-digit contributor base. The specs stayed load-bearing after implementation — the living `AGENTS.md` architecture guide
 cites individual design docs (e.g. `2026-04-13-session-actor-design.md`) as the reference for subsystems. The
 open question is the migration away from the tracked directory: whether ADRs plus issue-tracked specs preserve
 the same spec-to-code traceability.

@@ -24,15 +24,16 @@ workflow:
 supportedTools:
   - Claude
   - Codex
-maturity: established
+maturity: experimental
 strengths:
   - "Reuses familiar Agile and TDD practices rather than introducing a new process"
   - "Feature set spans compression, stack prompting, a dynamic build plan, and a built-in web console"
   - "Lets users define their own best practices for non-Python stacks and configure branding and cosmetics"
 limitations:
-  - "Initial release July 2026"
+  - "Initial release July 2026, with no public adoption signal yet — a single maintainer and no tagged releases in the repository"
+  - "Process claims rest on the author's own preprint rather than on independent case studies"
 added: 2026-07-18
-lastReviewed: 2026-07-18
+lastReviewed: 2026-07-28
 ---
 
 Drydock is a specification-driven software delivery methodology from Ed Barlow / Web Cloud Studio that

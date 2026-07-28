@@ -38,14 +38,14 @@ timeline:
       after disconnect; fail streams fast on pre-open close' landed the same day as the
       `v0.33.0` release."
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-07-28
 ---
 
 ## Spec-to-code drift
 
-None observed. 276 commits have touched `docs/superpowers/` since adoption in March 2026, and the newest one
-landed on the same day as the repository's latest push and the `v0.33.0` release — in a project that ships
-near-daily, the spec path keeps pace exactly. Plans for in-flight work are dated to the current day
+None observed. 276 commits have touched `docs/superpowers/` since adoption in March 2026, and at first assessment
+the newest one landed on the same day as the repository's latest push and the `v0.33.0` release — in a project
+that ships near-daily, the spec path kept pace exactly. Plans for in-flight work were dated to the current day
 (`plans/2026-07-19-soniox-both-single-session.md`), and follow-up fixes update the plan documents in the same
 commits as the code.
 
@@ -58,7 +58,7 @@ paper trail from defect to plan change is unusually legible for a future review.
 
 ## Maintenance outcomes
 
-Too early to score, but the tempo is notable: a small team (seven contributors) has shipped frequent tagged
+Too early to score, but the tempo is notable: a small team has shipped frequent tagged
 releases while routing roughly a plan-plus-spec pair per feature through `docs/superpowers/`, including a
 ten-phase plan decomposition for a native local-inference sidecar that later shipped as its own
 `sidecar-v0.1.x` release line. Whether the plan discipline survives contributor growth is the thing to watch.

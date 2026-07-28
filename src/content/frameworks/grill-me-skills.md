@@ -33,7 +33,7 @@ strengths:
   - "One question at a time with a recommended answer each; questions the codebase can settle are answered by reading, not asking"
   - "`grill-with-docs` leaves durable in-repo artifacts — a `CONTEXT.md` glossary and sparing ADRs — building a DDD-style ubiquitous language that cuts agent verbosity"
   - "Tracer-bullet vertical-slice tickets with explicit blocking edges, so several agents can work the frontier in parallel"
-  - "Explosive adoption (176k+ stars within six months) and two install philosophies: hackable copies via skills.sh, or a managed Claude Code plugin"
+  - "Explosive adoption within six months of launch, and two install philosophies: hackable copies via skills.sh, or a managed Claude Code plugin"
 limitations:
   - "Deliberately not turnkey — you orchestrate the chain yourself, and the interview-driven flow demands sustained human attention per change"
   - "The engineering chain needs per-repo setup (tracker, triage labels, doc locations) before `to-spec` and `to-tickets` work"
@@ -42,7 +42,7 @@ limitations:
 exampleRepos:
   - mattpocock/course-video-manager
 added: 2026-07-18
-lastReviewed: 2026-07-18
+lastReviewed: 2026-07-28
 featured: true
 ---
 

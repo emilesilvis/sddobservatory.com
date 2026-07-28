@@ -26,7 +26,7 @@ timeline:
     title: Follow-up on the spec-driven app
     description: "\"Scout: Regenerate initial migration (#5130)\" — the only commit touching `apps/scout/` since adoption; the spec directory itself is unchanged."
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-07-28
 ---
 
 ## Spec-to-code drift
@@ -47,8 +47,8 @@ no post-merge defect history on the subsystem yet beyond the migration regenerat
 
 ## Maintenance outcomes
 
-Too early to judge, though the adoption pattern is notable: a mature, multi-contributor platform (around 100
-contributors, running since 2016) used `superpowers` to deliver an entire new subsystem — Django models, webhook
+Too early to judge, though the adoption pattern is notable: a mature, many-contributor platform running since
+2016 used `superpowers` to deliver an entire new subsystem — Django models, webhook
 receiver, Celery outreach task, and management commands across 40 files — in a single reviewed PR. The plan names
 the specs as its "source of truth" and targets agentic execution, making this a clean example of spec-first
 feature delivery inside an established codebase rather than a greenfield demo.

@@ -37,7 +37,7 @@ strengths:
   - "Real enterprise adoption signals — named practitioner testimonials, a third-party-contributed stack plugin (`aiup-angular-jpa`), and a companion IntelliJ plugin linking `@UseCase`-annotated tests to their UC-XXX specs"
   - "Distributed via open standards: Claude Code plugin marketplace plus `SKILL.md` skills installable through Tessl into Codex, Cursor, Copilot, Gemini CLI, and OpenCode"
 limitations:
-  - "Young and small — the marketplace repo dates from February 2026 and has under 100 stars"
+  - "Young and small — the marketplace repo dates from February 2026 and adoption remains marginal next to the headline SDD kits"
   - "The full generate-and-test workflow is deepest on Java stacks (Vaadin + jOOQ, Spring Boot + Angular); other stacks get only the stack-agnostic core commands"
   - "Unified Process ceremony (vision documents, BPMN, software architecture document, four phases) can be heavy for small tools and solo projects"
   - "In-the-open dogfooding is still thin — the org's task-manager example carries a requirements catalog and entity model but only a single use case spec in-tree"
@@ -45,7 +45,7 @@ exampleRepos:
   - AI-Unified-Process/task-manager
   - AI-Unified-Process/book-library
 added: 2026-07-18
-lastReviewed: 2026-07-18
+lastReviewed: 2026-07-28
 ---
 
 AIUP is the outlier among the frameworks tracked here: it comes from the requirements-engineering tradition

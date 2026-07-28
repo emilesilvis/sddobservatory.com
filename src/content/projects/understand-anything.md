@@ -30,7 +30,7 @@ timeline:
     description: >-
       `fix(bench): correct unsupported outcomes and add sample report`.
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-07-28
 ---
 
 ## Spec-to-code drift
@@ -45,7 +45,7 @@ Not yet assessed.
 
 ## Maintenance outcomes
 
-Not yet assessed, though this is one to watch: the project grew from creation to a very large community (53
-contributors, eight releases from `v1.2.0` to `v2.9.0`) in about four months with the spec/plan practice in place
+Not yet assessed, though this is one to watch: the project grew from creation to a very large community, across
+eight releases from `v1.2.0` to `v2.9.0`, in about four months with the spec/plan practice in place
 from day one, rather than retrofitted. Forks, contributors, issues, and releases all scale with its popularity,
 consistent with organic growth.
