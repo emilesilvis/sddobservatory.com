@@ -1,17 +1,17 @@
 {
   "contributors": 5,
   "createdAt": "2026-03-25T19:06:46Z",
-  "fetchedAt": "2026-07-29T06:15:59.621Z",
-  "forks": 33,
+  "fetchedAt": "2026-07-30T06:11:48.442Z",
+  "forks": 34,
   "latestRelease": {
     "publishedAt": "2026-07-28T16:55:07Z",
     "tag": "v0.3.7"
   },
   "license": "GPL-3.0",
-  "openIssues": 36,
-  "pushedAt": "2026-07-28T16:51:53Z",
+  "openIssues": 38,
+  "pushedAt": "2026-07-29T13:27:02Z",
   "repo": "mmaher88/logitune",
-  "sizeKB": 29140,
+  "sizeKB": 29142,
   "stars": 608,
   "weeklyCommits": [
     0,
