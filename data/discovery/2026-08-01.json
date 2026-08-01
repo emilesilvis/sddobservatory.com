@@ -1,0 +1,1127 @@
+{
+  "candidates": [
+    {
+      "description": "Tuturuuu is an AI-native, open-source workspace that unifies tasks, scheduling, and team collaboration into a single high-performance ecosystem. Built with Next.js, Flutter, and Supabase, it delivers a seamless and real-time experience across web and mobile platforms for modern teams.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T22:01:09Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "tutur3u/platform",
+      "specCount": 6,
+      "specLocation": "conductor/",
+      "stars": 53
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T21:59:59Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "salmanbappi/AniZen",
+      "specCount": 4,
+      "specLocation": "conductor/",
+      "stars": 168
+    },
+    {
+      "description": "A DeepSeek-powered coding assistant that lives in your terminal.",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-08-01T21:55:50Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "Hermenics/deepseek-code",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 3
+    },
+    {
+      "description": "Plataforma CLI de inteligência em licitações — Monitoramento multi-source de 2.085 órgãos públicos de SC.",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-08-01T21:48:39Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "tjsasakifln/extra-cli",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 2
+    },
+    {
+      "description": "Value of Information analysis with a Rust core and Python, R, and Julia interfaces.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T18:23:16Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "edithatogo/voiage",
+      "specCount": 20,
+      "specLocation": "conductor/",
+      "stars": 2
+    },
+    {
+      "description": "Digital Pāḷi Dictionary",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T14:19:40Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "digitalpalidictionary/dpd-db",
+      "specCount": 5,
+      "specLocation": "conductor/",
+      "stars": 66
+    },
+    {
+      "description": "A quality scanner for websites built for government websites.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-08-01T13:00:25Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "mgifford/vital-core",
+      "specCount": 27,
+      "specLocation": "kitty-specs/",
+      "stars": 3
+    },
+    {
+      "description": "An agent skill that removes signs of AI-generated writing from text",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T12:32:43Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "edithatogo/authentext",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 6
+    },
+    {
+      "description": "Daily accessibility report of the top HHS.gov web pages.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-08-01T11:50:36Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "mgifford/daily-hhs",
+      "specCount": 2,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "Phenotype-org spec-driven development",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-08-01T10:46:46Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "KooshaPari/AgilePlus",
+      "specCount": 65,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "MAG: Memory-Augmented Generation for local agents and MCP clients",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T09:06:08Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "George-RD/mag",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 7
+    },
+    {
+      "description": "CLI tool for searching and retrieving New Zealand legislation data",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T07:12:32Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "edithatogo/legislation",
+      "specCount": 21,
+      "specLocation": "conductor/",
+      "stars": 13
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T06:36:04Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "chris0chris/league-manager",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 6
+    },
+    {
+      "description": null,
+      "flags": [
+        "ai-dlc-unverifiable-depth",
+        "below-star-floor"
+      ],
+      "framework": "ai-dlc-workflows",
+      "pushedAt": "2026-08-01T06:34:07Z",
+      "query": "filename:aidlc-state.md path:aidlc/spaces",
+      "repo": "otomatty/aidlc-guide",
+      "specCount": null,
+      "specLocation": "aidlc/spaces/",
+      "stars": 0
+    },
+    {
+      "description": "Pure Python adaptation of py-earth",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-08-01T06:25:03Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "edithatogo/mars",
+      "specCount": 37,
+      "specLocation": "conductor/",
+      "stars": 5
+    },
+    {
+      "description": "Zero-Friction Knowledge Network. AI-native note-taking app that lets you build knowledge through WikiLinks, AI scaffolding, and date-based organization. React + TypeScript.",
+      "flags": [
+        "ai-dlc-unverifiable-depth",
+        "below-star-floor"
+      ],
+      "framework": "ai-dlc-workflows",
+      "pushedAt": "2026-08-01T05:20:44Z",
+      "query": "filename:aidlc-state.md path:aidlc/spaces",
+      "repo": "otomatty/zedi",
+      "specCount": null,
+      "specLocation": "aidlc/spaces/",
+      "stars": 3
+    },
+    {
+      "description": "Scan URLs with various open source accessibility scanners",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-08-01T03:05:47Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "mgifford/open-scans",
+      "specCount": 2,
+      "specLocation": "kitty-specs/",
+      "stars": 7
+    },
+    {
+      "description": "ML sidecar for the Kenaz developer intelligence daemon",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-08-01T00:29:07Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "kameas-ai/kenaz-ml",
+      "specCount": 8,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "A professional command-line orchestrator for quickly standing up Liferay Portal and DXP environments using Docker Compose.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-31T18:02:49Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "peterrichards-lr/liferay-docker-manager",
+      "specCount": 10,
+      "specLocation": "conductor/",
+      "stars": 4
+    },
+    {
+      "description": "Design the perfect starship layout or multitool build in No Man's Sky. Use smart optimization tools to maximize adjacency bonuses, supercharged slots, and overall performance.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-31T15:44:42Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "jbelew/nms_optimizer-web",
+      "specCount": 14,
+      "specLocation": "conductor/",
+      "stars": 31
+    },
+    {
+      "description": "下一代自主进化智能体平台（GUI/TUI/Service/SDK)",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-31T03:22:26Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "RapidAI/MaClaw",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 132
+    },
+    {
+      "description": "Reference CTS-1 conformance harness for Soul.md RFC-1 — static validation, deterministic composition resolution, and behavioral conformance grading.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-31T03:17:14Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "garrison-hq/muster",
+      "specCount": 15,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "基于 Flutter（Material Design 3）开发的私有种子站点客户端，支持多种PT站点的种子浏览、搜索和下载管理。目前支持M-Team和NexusPHP类型的站点。",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-31T03:00:11Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "JustLookAtNow/pt_mate",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 481
+    },
+    {
+      "description": "🏡 A repo for my homelab setup 🧪",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-30T22:03:46Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "nicholaswilde/homelab",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 4
+    },
+    {
+      "description": "Sistema Celic da Castro Empresarial",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-30T15:06:08Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "fullcontent/sistemacelic",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 1
+    },
+    {
+      "description": "Gemini Agents Manager — Turn your Gemini CLI into a Multi-Persona AI Team — 40+ specialized agents, one command.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-30T02:30:15Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "bl1nk-bot/bl1nk-agents-manager",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 8
+    },
+    {
+      "description": "A collection of higher-level go utility types & functions",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-29T02:25:08Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "TouchBistro/gotham",
+      "specCount": 5,
+      "specLocation": "conductor/",
+      "stars": 0
+    },
+    {
+      "description": "search engine for podcasts subjects",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-28T17:14:22Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "perna/podigger",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 4
+    },
+    {
+      "description": "testando agentes de IA para criar uma aplicação em python para gerenciar gastos",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-28T08:37:07Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "stribus/pygerengastos",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 1
+    },
+    {
+      "description": "Monitoring top US Federal Government websites for accessibility, performance, etc.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-27T22:19:21Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "mgifford/daily-dap",
+      "specCount": 3,
+      "specLocation": "kitty-specs/",
+      "stars": 1
+    },
+    {
+      "description": "A collection of robust, accessible, and responsive Liferay fragments for DXP platforms.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-27T12:56:33Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "peterrichards-lr/liferay-fragments",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 14
+    },
+    {
+      "description": "AI procurement intelligence for Brazil's $500B/year public tender market. DataLake 3.5M+ tenders & contracts, 20-sector GPT classification, <100ms search. Production SaaS · Lei 14.133 · PNCP.",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-27T09:20:25Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "tjsasakifln/SmartLic",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 4
+    },
+    {
+      "description": "kg-automation is an open-ended automation project to build and maintain highly automated personal and business systems with AI. It centralizes governance, scripts, and job contracts to enable agent-ready workflows across Mac, Windows, and cloud.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-27T00:25:38Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "kentonium3/kg-automation",
+      "specCount": 120,
+      "specLocation": "kitty-specs/",
+      "stars": 1
+    },
+    {
+      "description": "Nova versão do do sistema CRM BidFlow",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-26T19:00:07Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "edu-ti/BidFlow-CRM_2.0",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-26T04:44:40Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "lucaspyoshida/Lumon",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "A single-header C++ library of angle-based flattening algorithms",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-25T13:39:18Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "educelab/OpenABF",
+      "specCount": 11,
+      "specLocation": "conductor/",
+      "stars": 60
+    },
+    {
+      "description": "🖼️ A private plugin for TRMNL to display quotes from a Google Sheet 📊",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-25T09:39:25Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "nicholaswilde/trmnl-google-sheet-quote",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 2
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-24T01:06:08Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "Helcio-Nogueira/Painel_Inteligente_Hackaton_2026",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-22T02:13:36Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "clodoaldoperito-droid/ARQUITETURA_JARVIS",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 1
+    },
+    {
+      "description": "Zig-native embedded SQL/vector database for agent memory systems",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-21T20:41:48Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "LynnColeArt/ShovelerDB",
+      "specCount": 8,
+      "specLocation": "kitty-specs/",
+      "stars": 4
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-21T20:10:13Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "Azaameth/jdr-app",
+      "specCount": 5,
+      "specLocation": "kitty-specs/",
+      "stars": 1
+    },
+    {
+      "description": "MaverickMCP - Personal Stock Analysis MCP Server",
+      "flags": [],
+      "framework": "conductor",
+      "pushedAt": "2026-07-21T10:16:54Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "wshobson/maverick-mcp",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 641
+    },
+    {
+      "description": "Design system and branding assets for spec-kitty projects and websites.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-20T06:15:34Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "stijn-dejongh/spec-kitty-design",
+      "specCount": 5,
+      "specLocation": "kitty-specs/",
+      "stars": 1
+    },
+    {
+      "description": "a modern, rebranded, and enhanced fork of TachiyomiSY/Mihon, designed for a immersive and intelligent manga-reading experience.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-19T18:18:20Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "Harrys-HQ/ShinKu",
+      "specCount": 15,
+      "specLocation": "conductor/",
+      "stars": 30
+    },
+    {
+      "description": "An RPG-like Game prototype written in F# and Monogame",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-18T02:03:30Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "AngelMunoz/Kipo",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 20
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-17T21:21:22Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "SplashCodeDex/DeXMart",
+      "specCount": 5,
+      "specLocation": "conductor/",
+      "stars": 3
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-16T23:44:00Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "AlexandrePontesjr/calculadora-Juridica",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-16T19:59:54Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "afsjr/secretaria_escola_csm",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Need a Bun version manager? BVM installs, switches, and isolates Bun versions across Windows, macOS, and Linux.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-16T09:27:05Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "EricLLLLLL/bvm",
+      "specCount": 24,
+      "specLocation": "conductor/",
+      "stars": 3
+    },
+    {
+      "description": "Open-source multi-tenant AI agent platform",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-13T19:42:58Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "zivtech/joyus-ai",
+      "specCount": 14,
+      "specLocation": "kitty-specs/",
+      "stars": 1
+    },
+    {
+      "description": "Desktop companion runtime for the Joyus AI platform — policy enforcement, session handoff, skill & MCP distribution, and managed local environments. Tauri + TypeScript monorepo.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-13T19:42:56Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "zivtech/joyus-desktop",
+      "specCount": 10,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "triade essenza parfum next",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-07-13T18:41:31Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "Ald3b4r4n/triadenext",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Терминальный клиент (TUI) для торговли ценными бумагами на бирже.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-12T12:17:29Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "updevru/finam-terminal",
+      "specCount": 13,
+      "specLocation": "conductor/",
+      "stars": 14
+    },
+    {
+      "description": "A desktop application for managing holiday baking inventory, recipes, and gift package planning",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-10T17:57:45Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "kentonium3/bake-tracker",
+      "specCount": 102,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "[WRAITH] Wire-speed Resilient Authenticated Invisible Transfer Handler ... decentralized secure file transfer protocol with traffic analysis resistance, kernel bypass acceleration, and strong cryptographic guarantees",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-08T06:47:32Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "doublegate/WRAITH-Protocol",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 2
+    },
+    {
+      "description": "Volumetric processing toolkit and C++ libraries for the recovery and restoration of damaged cultural materials",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-07-03T00:32:38Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "educelab/volume-cartographer",
+      "specCount": 4,
+      "specLocation": "conductor/",
+      "stars": 74
+    },
+    {
+      "description": "Remake of my previous PCS scraper + fantasy team optimizer powered by SDD with Spec-Kitty framework",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-07-02T20:39:24Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "egimenos/cycling-fantasy-analyzer-v2",
+      "specCount": 18,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": "General-purpose computer vision framework merging YOLO detection, DINO foundation models, and Parameter-Efficient Fine-Tuning (PEFT).",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-06-28T16:33:26Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "mamdaliof/YoDINO-DINO-is-all-YOLO-needs",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 9
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-06-20T15:59:33Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "google-marketing-solutions/shoppable-video",
+      "specCount": 3,
+      "specLocation": "conductor/",
+      "stars": 5
+    },
+    {
+      "description": "\"Linktree\" of Futami",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-06-20T06:25:48Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "futamiyarn/futami-landing",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 5
+    },
+    {
+      "description": "Modern Java 21 / Spring Boot 3.2 cloud-native stack managed via Terraform, Crossplane, and GitOps (Argo CD)",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-06-19T14:13:30Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "rb1whitney/cloud-boot-app",
+      "specCount": 4,
+      "specLocation": "conductor/",
+      "stars": 2
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-06-17T16:48:59Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "rloisell/DSC-modernization",
+      "specCount": 8,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-06-16T17:36:50Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "workmadmax/Vanussa-Presents",
+      "specCount": 3,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-06-11T06:55:45Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "zohar/communicAid",
+      "specCount": 4,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-06-10T19:53:04Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "wellingtonspdev/WSP-Finance",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Telegram bot for voice message transcription using local Whisper AI",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-06-10T18:37:09Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "konstantinbalakin/telegram-voice2text-bot",
+      "specCount": 16,
+      "specLocation": "conductor/",
+      "stars": 5
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-06-10T18:14:45Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "okubobarros/dalevision-edge-agent",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "CLI tool to help developping Odoo addons with AI",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-06-07T21:53:00Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "akretion/akaidoo",
+      "specCount": 4,
+      "specLocation": "conductor/",
+      "stars": 8
+    },
+    {
+      "description": "Aplicativo destinado a contribuir com a comunidade.",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-06-05T12:55:10Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "Rdinda/FMA_Pontos",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 1
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-29T17:24:02Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "ricardops34/rcg-crm",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Self-hosted 3D print farm management — MES meets SCADA. Bambu Lab, Klipper, Prusa, Elegoo. No cloud required.",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-05-29T16:39:34Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "HughKantsime/runsodin",
+      "specCount": 2,
+      "specLocation": "conductor/",
+      "stars": 3
+    },
+    {
+      "description": "Nexo is a modern self-hosted workspace for project organization, task management, and team collaboration. Built for technical teams that want a clean UX, extensibility, and full control over their data, without enterprise lock-ins or artificial feature paywalls.",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-25T21:26:52Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "igorzanin/nexo",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Maestro OS workflow harness and Fabro automation experiments",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "spec-kitty",
+      "pushedAt": "2026-05-24T02:15:59Z",
+      "query": "filename:config.yaml path:.kittify",
+      "repo": "timkeeeeeen/maestro-os",
+      "specCount": 3,
+      "specLocation": "kitty-specs/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-22T10:21:03Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "edrodrigues/studio",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Arquitetura para utilização de Visão Computacional na análise de CFTV e reconhecimento facial em escolas",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-20T03:47:20Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "edcastanha/Distributed-Services-Face-Detection-Recognition",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "🧲 A qBittorrent MCP server written in Rust 🤖",
+      "flags": [
+        "below-star-floor"
+      ],
+      "framework": "conductor",
+      "pushedAt": "2026-05-19T03:45:16Z",
+      "query": "filename:tracks.md path:conductor",
+      "repo": "nicholaswilde/qbittorrent-mcp-rs",
+      "specCount": 4,
+      "specLocation": "conductor/",
+      "stars": 6
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-17T14:32:45Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "Fiinances/finapp-monorepo",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": "Bloco Vanity Generator",
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-15T22:24:08Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "italoag/bloco-vanity-generator",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 2
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-03T23:17:03Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "faustostangler/BFX",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-03T18:26:10Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "WPHILLIPMACLAYNE/WPM-GESTAO-INTERNA",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 1
+    },
+    {
+      "description": null,
+      "flags": [
+        "below-star-floor",
+        "reversa-unverifiable-depth"
+      ],
+      "framework": "reversa",
+      "pushedAt": "2026-05-03T08:56:48Z",
+      "query": "filename:architecture.md path:_reversa_sdd",
+      "repo": "alexlsilva7/qr_code_pix_generator",
+      "specCount": null,
+      "specLocation": "_reversa_sdd/",
+      "stars": 0
+    }
+  ],
+  "meta": {
+    "frameworks": {
+      "ai-dlc-workflows": {
+        "candidates": 2,
+        "pathVerified": 3,
+        "queries": [
+          "filename:aidlc-state.md path:aidlc/spaces"
+        ],
+        "searchHits": 3
+      },
+      "conductor": {
+        "candidates": 35,
+        "pathVerified": 99,
+        "queries": [
+          "filename:tracks.md path:conductor"
+        ],
+        "searchHits": 966
+      },
+      "reversa": {
+        "candidates": 25,
+        "pathVerified": 25,
+        "queries": [
+          "filename:architecture.md path:_reversa_sdd"
+        ],
+        "searchHits": 31
+      },
+      "spec-kitty": {
+        "candidates": 19,
+        "pathVerified": 61,
+        "queries": [
+          "filename:config.yaml path:.kittify"
+        ],
+        "searchHits": 61
+      }
+    },
+    "notes": [],
+    "pages": 1,
+    "sweepDate": "2026-08-01",
+    "unmeasurable": [
+      {
+        "framework": "augment-cosmos",
+        "reason": "Scaffolds nothing into user repos — specs and agent state live platform-side, so code search cannot detect usage."
+      }
+    ]
+  }
+}

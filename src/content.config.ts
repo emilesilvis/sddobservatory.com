@@ -14,6 +14,7 @@ export const PROJECT_STATUSES = ['active', 'paused', 'archived'] as const;
 // means the Claude models/apps generally — use `Claude Code` for the coding
 // agent. Extend this list deliberately when a framework adds a new tool.
 export const SUPPORTED_TOOLS = [
+  'Aider',
   'Amazon Q Developer',
   'Amp',
   'Antigravity',
@@ -36,6 +37,8 @@ export const SUPPORTED_TOOLS = [
   'Kilo',
   'Kimi Code',
   'Kiro',
+  'Letta Code',
+  'Mistral Vibe',
   'OpenCode',
   'Pi',
   'Qwen Code',

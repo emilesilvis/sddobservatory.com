@@ -225,6 +225,68 @@ export const REGISTRY: RegistryEntry[] = [
     notes: 'No real-world usage found as of 2026-07 — an empty result is expected, not a bug.',
   },
   {
+    slug: 'ai-dlc-workflows',
+    measurable: true,
+    queries: ['filename:aidlc-state.md path:aidlc/spaces'],
+    pathPattern: /(^|\/)aidlc\/spaces\/[^/]+\/intents\/[^/]+\/aidlc-state\.md$/,
+    // Each intent contains many phase/stage artifacts, but its directory name is
+    // generated dynamically and the current depth checker cannot traverse it.
+    depth: null,
+    depthFlag: 'ai-dlc-unverifiable-depth',
+    specLocation: 'aidlc/spaces/',
+    minSpecEntries: 2,
+    knownUsage: ['otomatty/zedi'],
+    authorOrgs: ['awslabs'],
+    notes:
+      'Fingerprints the committed v2 intent state, not the installed `aidlc/` method shell. ' +
+      'Generated artifacts live below a dynamically named intent directory, so depth needs ' +
+      'manual verification.',
+  },
+  {
+    slug: 'conductor',
+    measurable: true,
+    queries: ['filename:tracks.md path:conductor'],
+    pathPattern: /(^|\/)conductor\/tracks\.md$/,
+    depth: { kind: 'dir', dir: 'conductor/tracks' },
+    specLocation: 'conductor/',
+    minSpecEntries: 2,
+    knownUsage: ['wshobson/maverick-mcp'],
+    authorOrgs: ['gemini-cli-extensions'],
+    notes:
+      'The registry is scaffolded by Conductor setup; track directories contain each ' +
+      "feature's `spec.md`, `plan.md`, and `metadata.json`.",
+  },
+  {
+    slug: 'spec-kitty',
+    measurable: true,
+    queries: ['filename:config.yaml path:.kittify'],
+    pathPattern: /(^|\/)\.kittify\/config\.yaml$/,
+    depth: { kind: 'dir', dir: 'kitty-specs' },
+    specLocation: 'kitty-specs/',
+    minSpecEntries: 2,
+    knownUsage: ['LynnColeArt/ShovelerDB'],
+    authorOrgs: ['Priivacy-ai', 'spec-kitty'],
+    notes:
+      'The branded config identifies an initialized project; requiring at least two ' +
+      '`kitty-specs/` mission entries excludes installs with no substantive usage.',
+  },
+  {
+    slug: 'reversa',
+    measurable: true,
+    queries: ['filename:architecture.md path:_reversa_sdd'],
+    pathPattern: /(^|\/)_reversa_sdd\/architecture\.md$/,
+    depth: null,
+    depthFlag: 'reversa-unverifiable-depth',
+    specLocation: '_reversa_sdd/',
+    minSpecEntries: 2,
+    knownUsage: ['perna/podigger'],
+    authorOrgs: ['sandeco'],
+    notes:
+      "Measures projects using Reversa's default output directory. Output layouts can " +
+      'contain component specs, component folders, or forward-change folders, so the ' +
+      'current depth checker cannot prove multiple features; custom paths are undiscoverable.',
+  },
+  {
     slug: 'augment-cosmos',
     measurable: false,
     reason:
