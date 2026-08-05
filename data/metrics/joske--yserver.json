@@ -1,7 +1,7 @@
 {
   "contributors": 6,
   "createdAt": "2026-04-27T13:46:20Z",
-  "fetchedAt": "2026-08-04T06:14:03.016Z",
+  "fetchedAt": "2026-08-05T06:11:45.656Z",
   "forks": 29,
   "latestRelease": {
     "publishedAt": "2026-07-29T06:54:56Z",
@@ -9,10 +9,10 @@
   },
   "license": "MIT",
   "openIssues": 10,
-  "pushedAt": "2026-08-03T21:41:56Z",
+  "pushedAt": "2026-08-04T22:23:41Z",
   "repo": "joske/yserver",
-  "sizeKB": 14605,
-  "stars": 530,
+  "sizeKB": 14747,
+  "stars": 533,
   "weeklyCommits": [
     0,
     0,
@@ -65,6 +65,6 @@
     24,
     21,
     66,
-    2
+    3
   ]
 }

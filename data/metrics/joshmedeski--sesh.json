@@ -1,18 +1,18 @@
 {
-  "contributors": 57,
+  "contributors": 58,
   "createdAt": "2023-12-27T22:47:28Z",
-  "fetchedAt": "2026-08-04T06:14:01.998Z",
+  "fetchedAt": "2026-08-05T06:11:41.572Z",
   "forks": 124,
   "latestRelease": {
     "publishedAt": "2026-07-27T01:04:59Z",
     "tag": "v2.28.0"
   },
   "license": "MIT",
-  "openIssues": 52,
-  "pushedAt": "2026-08-03T15:31:36Z",
+  "openIssues": 49,
+  "pushedAt": "2026-08-04T20:43:21Z",
   "repo": "joshmedeski/sesh",
-  "sizeKB": 4664,
-  "stars": 2737,
+  "sizeKB": 4706,
+  "stars": 2738,
   "weeklyCommits": [
     0,
     0,
@@ -65,6 +65,6 @@
     6,
     5,
     5,
-    0
+    2
   ]
 }
