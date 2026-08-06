@@ -1,7 +1,7 @@
 {
   "contributors": 155,
   "createdAt": "2025-04-13T14:54:25Z",
-  "fetchedAt": "2026-08-05T06:11:19.606Z",
+  "fetchedAt": "2026-08-06T06:13:35.042Z",
   "forks": 5902,
   "latestRelease": {
     "publishedAt": "2026-07-03T23:57:14Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-05T01:45:51Z",
   "repo": "bmad-code-org/BMAD-METHOD",
   "sizeKB": 50835,
-  "stars": 51494,
+  "stars": 51547,
   "weeklyCommits": [
     43,
     12,
