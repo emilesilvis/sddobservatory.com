@@ -1,18 +1,18 @@
 {
   "contributors": 92,
   "createdAt": "2025-08-05T10:37:45Z",
-  "fetchedAt": "2026-08-06T06:13:12.231Z",
-  "forks": 4414,
+  "fetchedAt": "2026-08-07T05:51:31.977Z",
+  "forks": 4424,
   "latestRelease": {
     "publishedAt": "2026-08-05T21:10:13Z",
     "tag": "v1.8.0"
   },
   "license": "MIT",
-  "openIssues": 244,
-  "pushedAt": "2026-08-05T21:48:57Z",
+  "openIssues": 179,
+  "pushedAt": "2026-08-06T20:22:50Z",
   "repo": "Fission-AI/OpenSpec",
-  "sizeKB": 6663,
-  "stars": 63981,
+  "sizeKB": 6738,
+  "stars": 64119,
   "weeklyCommits": [
     73,
     25,

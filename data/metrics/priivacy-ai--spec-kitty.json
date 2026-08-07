@@ -1,18 +1,18 @@
 {
   "contributors": 70,
   "createdAt": "2025-10-09T12:29:47Z",
-  "fetchedAt": "2026-08-06T06:13:14.045Z",
+  "fetchedAt": "2026-08-07T05:51:32.900Z",
   "forks": 136,
   "latestRelease": {
     "publishedAt": "2026-07-08T16:01:14Z",
     "tag": "v3.2.5"
   },
   "license": "MIT",
-  "openIssues": 627,
-  "pushedAt": "2026-08-05T20:50:14Z",
+  "openIssues": 639,
+  "pushedAt": "2026-08-06T20:40:33Z",
   "repo": "Priivacy-ai/spec-kitty",
-  "sizeKB": 95149,
-  "stars": 1487,
+  "sizeKB": 92962,
+  "stars": 1490,
   "weeklyCommits": [
     0,
     12,
@@ -65,6 +65,6 @@
     269,
     291,
     313,
-    279
+    286
   ]
 }
