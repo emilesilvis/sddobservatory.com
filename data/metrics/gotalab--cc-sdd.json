@@ -1,18 +1,18 @@
 {
   "contributors": 17,
   "createdAt": "2025-07-17T04:41:37Z",
-  "fetchedAt": "2026-08-07T05:52:06.029Z",
-  "forks": 273,
+  "fetchedAt": "2026-08-08T05:33:08.732Z",
+  "forks": 274,
   "latestRelease": {
     "publishedAt": "2026-04-13T21:25:16Z",
     "tag": "v3.0.2"
   },
   "license": "MIT",
-  "openIssues": 26,
+  "openIssues": 25,
   "pushedAt": "2026-05-20T08:45:14Z",
   "repo": "gotalab/cc-sdd",
   "sizeKB": 7487,
-  "stars": 3603,
+  "stars": 3605,
   "weeklyCommits": [
     10,
     17,

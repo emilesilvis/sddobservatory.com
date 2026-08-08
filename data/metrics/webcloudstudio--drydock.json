@@ -1,14 +1,14 @@
 {
   "contributors": 1,
   "createdAt": "2026-06-11T01:25:13Z",
-  "fetchedAt": "2026-08-07T05:52:52.521Z",
+  "fetchedAt": "2026-08-08T05:33:57.019Z",
   "forks": 0,
   "latestRelease": null,
   "license": "MIT",
   "openIssues": 0,
-  "pushedAt": "2026-08-07T02:09:56Z",
+  "pushedAt": "2026-08-08T01:58:44Z",
   "repo": "webcloudstudio/Drydock",
-  "sizeKB": 71115,
+  "sizeKB": 73690,
   "stars": 4,
   "weeklyCommits": [
     0,
@@ -62,6 +62,6 @@
     89,
     126,
     77,
-    94
+    138
   ]
 }
