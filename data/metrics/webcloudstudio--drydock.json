@@ -1,8 +1,8 @@
 {
   "contributors": 1,
   "createdAt": "2026-06-11T01:25:13Z",
-  "fetchedAt": "2026-08-08T05:33:57.019Z",
-  "forks": 0,
+  "fetchedAt": "2026-08-09T05:37:48.007Z",
+  "forks": 1,
   "latestRelease": null,
   "license": "MIT",
   "openIssues": 0,
@@ -53,7 +53,6 @@
     0,
     0,
     0,
-    0,
     92,
     146,
     127,
@@ -62,6 +61,7 @@
     89,
     126,
     77,
-    138
+    138,
+    0
   ]
 }
