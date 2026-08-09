@@ -1,0 +1,28 @@
+{
+  "schema_version": "1",
+  "snapshot_time_utc": "2026-08-09T00:00:00Z",
+  "projects": [
+    {"slug":"agentic-context-engine","repository":"kayba-ai/agentic-context-engine","pin_sha":"96f7c9cfea1d7cae74994c391ad7791e6cbf7f6a","pin_time_utc":"2026-06-09T18:06:15Z","scope":"change-scoped","entry_points":[".specify/","specs/"]},
+    {"slug":"akka-net","repository":"akkadotnet/akka.net","pin_sha":"464d75766b9ecf195395981c77fc1b1d6c7c6e22","pin_time_utc":"2026-07-18T03:11:08Z","scope":"change-scoped","entry_points":["openspec/"]},
+    {"slug":"arcreel","repository":"ArcReel/ArcReel","pin_sha":"4270c404d65389c521bc80115e11df87005c0d8e","pin_time_utc":"2026-07-19T02:44:47Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/","openspec/"]},
+    {"slug":"banana-slides","repository":"Anionex/banana-slides","pin_sha":"7b948fb6f2b630b4b9a07b6efa0c1266d298c91e","pin_time_utc":"2026-07-17T05:13:21Z","scope":"change-scoped","entry_points":["docs/specs/","docs/superpowers/specs/"]},
+    {"slug":"debrief","repository":"debrief/debrief","pin_sha":"0696b105cf91c08466562a2ea03e3975034b5d6a","pin_time_utc":"2026-06-21T18:57:05Z","scope":"change-scoped","entry_points":[".specify/","specs/"]},
+    {"slug":"desktop-cc-gui","repository":"zhukunpenglinyutong/desktop-cc-gui","pin_sha":"c1544f8f3f5d7ac1034c4a9276ab44164d56b0f6","pin_time_utc":"2026-07-19T10:45:15Z","scope":"change-scoped","entry_points":[".trellis/spec/","openspec/","docs/superpowers/specs/"]},
+    {"slug":"evalai","repository":"Cloud-CV/EvalAI","pin_sha":"d43da66bab66d7bb526058487fc9fb294ca5740f","pin_time_utc":"2026-07-09T22:21:53Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/","docs/superpowers/plans/"]},
+    {"slug":"folo","repository":"RSSNext/Folo","pin_sha":"773f1bfe218ac349b9fb9b5cbd982c320f6b414f","pin_time_utc":"2026-07-15T01:00:49Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/","docs/superpowers/plans/"]},
+    {"slug":"growi","repository":"growilabs/growi","pin_sha":"01bfdd3e44675fcb9dbe34a07f3c68171c2adf4c","pin_time_utc":"2026-07-18T10:53:16Z","scope":"change-scoped","entry_points":[".kiro/specs/",".kiro/settings/"]},
+    {"slug":"logitune","repository":"mmaher88/logitune","pin_sha":"3232e817eeb8ff0791b6718df6cc822fabd6a3b9","pin_time_utc":"2026-06-19T02:14:07Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/"]},
+    {"slug":"miosub","repository":"corvo007/MioSub","pin_sha":"9c6fee25dd20a88edd8173bdeffbfa1d9b9e2d79","pin_time_utc":"2026-07-18T17:31:59Z","scope":"canonical","entry_points":["openspec/specs/","openspec/changes/"]},
+    {"slug":"mos","repository":"Caldis/Mos","pin_sha":"5dfb2363331cf63f529fdafa27962c41f91feff4","pin_time_utc":"2026-07-09T03:23:47Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/"]},
+    {"slug":"openspec","repository":"Fission-AI/OpenSpec","pin_sha":"46a4d782229ebb104268130a16e85cb7662a2281","pin_time_utc":"2026-07-17T21:41:11Z","scope":"change-scoped","entry_points":["openspec/changes/"]},
+    {"slug":"schematic","repository":"BjoernKW/Schematic","pin_sha":"79e3285716b2d1a0a5845c2208861db4d4799c20","pin_time_utc":"2026-07-09T16:31:34Z","scope":"canonical","entry_points":["docs/requirements.md"]},
+    {"slug":"sesh","repository":"joshmedeski/sesh","pin_sha":"bf5adc733ebf755a0dc47719b8eb79d71568efb5","pin_time_utc":"2026-07-17T21:17:54Z","scope":"change-scoped","entry_points":["docs/specs/","docs/superpowers/specs/"]},
+    {"slug":"sokuji","repository":"kizuna-ai-lab/sokuji","pin_sha":"7c738d6158e1b3cac2615ba3fa78aaa22e4d1f57","pin_time_utc":"2026-07-19T02:49:06Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/"]},
+    {"slug":"spirit-of-kiro","repository":"kirodotdev/spirit-of-kiro","pin_sha":"ff0c8c22cb4026f83df5aa9155e9b7f410809f30","pin_time_utc":"2026-07-15T20:52:08Z","scope":"canonical","entry_points":[".kiro/steering/","docs/ROADMAP.md"]},
+    {"slug":"the-edge-agent","repository":"fabceolin/the_edge_agent","pin_sha":"14b64873fdebd1b7fea6b3c2ef185a89cbaa0963","pin_time_utc":"2026-05-17T02:27:39Z","scope":"change-scoped","entry_points":["_bmad-output/implementation-artifacts/","rust/src/engine/a2a/design.md"]},
+    {"slug":"understand-anything","repository":"Egonex-AI/Understand-Anything","pin_sha":"5c3bc1b7fdefd17b19b44420e89d279ded21dce8","pin_time_utc":"2026-07-19T03:22:01Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/"]},
+    {"slug":"uniclipboard","repository":"UniClipboard/UniClipboard","pin_sha":"1c229e9e19d25839e63300ce75bcde547bb0ad61","pin_time_utc":"2026-07-19T03:49:01Z","scope":"canonical","entry_points":[".planning/REQUIREMENTS.md",".planning/ROADMAP.md"]},
+    {"slug":"wukongim","repository":"WuKongIM/WuKongIM","pin_sha":"462caf0cefdd3e7778b8d6daee93f09eae3fcc15","pin_time_utc":"2026-07-19T10:55:48Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/"]},
+    {"slug":"yserver","repository":"joske/yserver","pin_sha":"055debc4b583e44de865d073a4caa27cbf9b1b3c","pin_time_utc":"2026-07-17T06:57:45Z","scope":"change-scoped","entry_points":["docs/superpowers/specs/"]}
+  ]
+}
