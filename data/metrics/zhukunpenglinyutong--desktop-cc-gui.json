@@ -1,18 +1,18 @@
 {
   "contributors": 16,
   "createdAt": "2026-02-03T15:08:25Z",
-  "fetchedAt": "2026-08-09T05:37:52.700Z",
-  "forks": 338,
+  "fetchedAt": "2026-08-10T05:50:42.729Z",
+  "forks": 341,
   "latestRelease": {
-    "publishedAt": "2026-08-08T13:47:20Z",
-    "tag": "v0.8.4"
+    "publishedAt": "2026-08-10T01:08:03Z",
+    "tag": "v0.8.6"
   },
   "license": "MIT",
-  "openIssues": 251,
-  "pushedAt": "2026-08-09T05:32:48Z",
+  "openIssues": 252,
+  "pushedAt": "2026-08-10T05:10:05Z",
   "repo": "zhukunpenglinyutong/desktop-cc-gui",
-  "sizeKB": 131464,
-  "stars": 3932,
+  "sizeKB": 132821,
+  "stars": 3941,
   "weeklyCommits": [
     0,
     0,
@@ -64,7 +64,7 @@
     190,
     301,
     409,
-    265,
-    0
+    269,
+    32
   ]
 }
