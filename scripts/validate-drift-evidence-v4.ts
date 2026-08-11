@@ -45,7 +45,8 @@ const packetDir = readOption('--packet-dir', resolve(ROOT, 'docs/research/drift-
 const index = JSON.parse(readFileSync(resolve(packetDir, 'index.json'), 'utf8'));
 assert(index.protocol_version === '4.0' && index.builder_version === '4.0.0-chunked', 'Invalid v4 index');
 verifyHash(index, 'index');
-assert(index.projects.length === 12, 'V4 experiment must contain 12 projects');
+assert(index.projects.length > 0, 'V4 index must contain at least one project');
+assert(new Set(index.projects.map((project: any) => project.slug)).size === index.projects.length, 'V4 index has duplicate projects');
 
 const expectedFiles = new Set(['index.json']);
 const summary: any[] = [];

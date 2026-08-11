@@ -18,6 +18,8 @@
     "drift:evidence:v4": "tsx scripts/build-drift-evidence-v4.ts",
     "drift:evidence:v4:validate": "tsx scripts/validate-drift-evidence-v4.ts",
     "drift:stage:v4:validate": "tsx scripts/validate-drift-stage-v4.ts",
+    "drift:assess:v4": "tsx scripts/run-drift-assessment-v4.ts",
+    "drift:assess:v4:test": "tsx --test scripts/drift-assessment-v4.test.ts",
     "drift:assess:v3:validate": "tsx scripts/validate-drift-assessment-v3.ts",
     "drift:assess:v3:compare": "tsx scripts/compare-drift-assessments-v3.ts",
     "metrics": "tsx scripts/fetch-metrics.ts",
@@ -28,6 +30,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.1.1",
     "gray-matter": "^4.0.3",
+    "openai": "^7.4.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

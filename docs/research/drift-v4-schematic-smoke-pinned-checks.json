@@ -1,0 +1,17 @@
+{
+  "protocol_version": "4.0",
+  "chunk_id": "schematic-pinned-checks-0001",
+  "assessments": [
+    {
+      "check_id": "p0001",
+      "status": "contradicted",
+      "claim_segment_ids": [
+        "s0001-g0001"
+      ],
+      "code_segment_ids": [
+        "s0014-g0001"
+      ],
+      "core_claim": false
+    }
+  ]
+}

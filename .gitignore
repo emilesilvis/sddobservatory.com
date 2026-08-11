@@ -9,3 +9,7 @@ dist/
 docs/research/drift-evidence-v3/
 docs/research/drift-evidence-prospective-v1/
 docs/research/drift-evidence-v4/
+
+# Local structured model outputs from automated drift runs. Accepted or
+# review-required bundles are copied into a draft PR explicitly.
+.drift-runs/

@@ -1,0 +1,12 @@
+{
+  "protocol_version": "4.0",
+  "chunk_id": "schematic-materiality-0001",
+  "assessments": [
+    {
+      "candidate_id": "m0001",
+      "materiality": "non_material",
+      "reason": "The evidence only changes the parent dependency version and demonstrates no observable or corpus-governed behavior change.",
+      "behaviors": []
+    }
+  ]
+}

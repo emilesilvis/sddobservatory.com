@@ -13,6 +13,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run drift:evidence:test
+      - run: npm run drift:assess:v4:test
       # Runs the content lint (bare slash commands) and validates all
       # frontmatter against the zod schemas.
       - run: npm run build
