@@ -23,7 +23,14 @@ function fixture() {
       protocol_version: '4.0',
       chunk_id: 'fixture-corpus-claims-0001',
       kind: 'corpus-claims',
-      items: [{ segment_id: 's0001-g0001' }],
+      items: [{
+        segment_id: 's0001-g0001',
+        allowed_scope_anchor_names: ['Requirements'],
+        claim_candidates: [{
+          candidate_id: 's0001-g0001/q0001',
+          statement: 'The feature is available.',
+        }],
+      }],
     },
     {
       protocol_version: '4.0',
@@ -48,24 +55,26 @@ function fixture() {
 }
 
 function answer(task: ModelTask, overrides: {
-  claimStatement?: string;
+  claimLifecycle?: 'live' | 'future' | 'historical';
+  claimDisposition?: 'claim' | 'not_claim';
   material?: boolean;
   pinnedStatus?: 'covered' | 'omitted' | 'contradicted' | 'minor_gap';
   pinnedCore?: boolean;
   driftStatus?: 'covered' | 'omitted' | 'contradicted' | 'minor_gap';
 } = {}) {
   if (task.kind === 'corpus-claims') {
+    const disposition = overrides.claimDisposition ?? 'claim';
     return {
       protocol_version: '4.0',
       chunk_id: task.task_id,
       assessments: [{
         segment_id: 's0001-g0001',
-        claims: [{
-          claim_id: 's0001-g0001/c01',
-          statement: overrides.claimStatement ?? 'The feature is available.',
-          lifecycle: 'live',
+        classifications: [{
+          candidate_id: 's0001-g0001/q0001',
+          disposition,
+          lifecycle: disposition === 'claim' ? overrides.claimLifecycle ?? 'live' : null,
           core_claim: false,
-          scope_anchor_name: 'Requirements',
+          scope_anchor_name: disposition === 'claim' ? 'Requirements' : null,
         }],
       }],
     };
@@ -109,7 +118,7 @@ function answer(task: ModelTask, overrides: {
       scope: 'in_scope',
       scope_anchor_names: ['Requirements'],
       status,
-      claim_ids: status === 'omitted' ? [] : ['s0001-g0001/c01'],
+      claim_ids: status === 'omitted' ? [] : ['s0001-g0001/q0001'],
       core_claim: false,
     }],
   };
@@ -117,8 +126,10 @@ function answer(task: ModelTask, overrides: {
 
 function assessorFor(overrides: (task: ModelTask) => Parameters<typeof answer>[1] = () => ({})) {
   let calls = 0;
+  const tasks: ModelTask[] = [];
   const assessor: ModelAssessor = async (task) => {
     calls += 1;
+    tasks.push(task);
     return {
       output: answer(task, overrides(task)),
       response_id: `response-${calls}`,
@@ -126,7 +137,7 @@ function assessorFor(overrides: (task: ModelTask) => Parameters<typeof answer>[1
       usage: { total_tokens: 10 },
     };
   };
-  return { assessor, calls: () => calls };
+  return { assessor, calls: () => calls, tasks: () => tasks };
 }
 
 test('accepts two matching isolated runs and rolls a non-core contradiction to moderate', async () => {
@@ -154,10 +165,10 @@ test('accepts two matching isolated runs and rolls a non-core contradiction to m
   assert.equal(fake.calls(), 6);
 });
 
-test('fails closed before later stages when claim extraction disagrees', async () => {
+test('fails closed before later stages when claim classification disagrees', async () => {
   const input = fixture();
   const fake = assessorFor((task) => ({
-    claimStatement: task.run_id === 'run-1' ? 'The feature is available.' : 'The feature is enabled.',
+    claimLifecycle: task.run_id === 'run-1' ? 'live' : 'future',
   }));
   const result = await runAutomatedAssessment({
     ...input,
@@ -167,7 +178,7 @@ test('fails closed before later stages when claim extraction disagrees', async (
   });
   assert.equal(result.status, 'unknown');
   assert.equal(result.rating, 'unknown');
-  assert.deepEqual(result.reasons, ['corpus_claim_disagreement']);
+  assert.deepEqual(result.reasons, ['corpus_claim_classification_disagreement']);
   assert.equal(fake.calls(), 2);
 });
 
@@ -202,6 +213,30 @@ test('runs drift matching for material behaviors and rolls complete coverage to 
   assert.equal(result.publication.draft_pr_required, false);
   assert.equal(result.task_budget.projected_per_run, 4);
   assert.equal(fake.calls(), 8);
+});
+
+test('uses compiler-owned claim IDs and source statements for drift matching', async () => {
+  const input = fixture();
+  const fake = assessorFor(() => ({ material: true, pinnedStatus: 'covered', driftStatus: 'covered' }));
+  const result = await runAutomatedAssessment({
+    ...input,
+    assessor: fake.assessor,
+    requestedModel: 'fixture-model',
+    mode: 'fixture',
+  });
+
+  assert.equal(result.status, 'accepted');
+  const driftTasks = fake.tasks().filter((task) => task.kind === 'drift-matching');
+  assert.equal(driftTasks.length, 2);
+  for (const task of driftTasks) {
+    assert.deepEqual(task.task.live_claims, [{
+      claim_id: 's0001-g0001/q0001',
+      segment_id: 's0001-g0001',
+      statement: 'The feature is available.',
+      core_claim: false,
+      scope_anchor_name: 'Requirements',
+    }]);
+  }
 });
 
 test('rolls a core pinned contradiction to high', async () => {

@@ -19,7 +19,7 @@
     "drift:evidence:v4:validate": "tsx scripts/validate-drift-evidence-v4.ts",
     "drift:stage:v4:validate": "tsx scripts/validate-drift-stage-v4.ts",
     "drift:assess:v4": "tsx scripts/run-drift-assessment-v4.ts",
-    "drift:assess:v4:test": "tsx --test scripts/drift-assessment-v4.test.ts",
+    "drift:assess:v4:test": "tsx --test scripts/drift-claim-candidates-v4.test.ts scripts/drift-assessment-v4.test.ts",
     "drift:assess:v3:validate": "tsx scripts/validate-drift-assessment-v3.ts",
     "drift:assess:v3:compare": "tsx scripts/compare-drift-assessments-v3.ts",
     "metrics": "tsx scripts/fetch-metrics.ts",

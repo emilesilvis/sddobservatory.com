@@ -43,7 +43,7 @@ function verifyHash(value: any, label: string): string {
 
 const packetDir = readOption('--packet-dir', resolve(ROOT, 'docs/research/drift-evidence-v4'));
 const index = JSON.parse(readFileSync(resolve(packetDir, 'index.json'), 'utf8'));
-assert(index.protocol_version === '4.0' && index.builder_version === '4.0.0-chunked', 'Invalid v4 index');
+assert(index.protocol_version === '4.0' && index.builder_version === '4.1.0-deterministic-claims', 'Invalid v4 index');
 verifyHash(index, 'index');
 assert(index.projects.length > 0, 'V4 index must contain at least one project');
 assert(new Set(index.projects.map((project: any) => project.slug)).size === index.projects.length, 'V4 index has duplicate projects');
@@ -61,6 +61,7 @@ for (const indexed of index.projects) {
   const referencedSegments = new Set<string>();
   const artifacts = new Map<string, any>();
   const claimSegments = new Set<string>();
+  const claimCandidates = new Set<string>();
   const candidates = new Map<string, any>();
   const exclusions = new Map<string, any>();
   let historyCount = 0;
@@ -101,6 +102,24 @@ for (const indexed of index.projects) {
         assert(item.segment_id === item.evidence_segment.segment_id, `${chunkRef.chunk_id}: claim evidence mismatch`);
         assert(!claimSegments.has(item.segment_id), `${indexed.slug}: duplicate claim segment ${item.segment_id}`);
         assert(item.evidence_segment.content_sha256 === sha256(item.evidence_segment.content), `${item.segment_id}: inline claim evidence hash`);
+        assert(Array.isArray(item.allowed_scope_anchor_names) && new Set(item.allowed_scope_anchor_names).size === item.allowed_scope_anchor_names.length, `${item.segment_id}: allowed scope anchors`);
+        const expectedAnchors = project.corpus.scope_anchors
+          .filter((anchor: any) => anchor.source_ids.includes(item.evidence_segment.source_id))
+          .map((anchor: any) => anchor.name);
+        assert(JSON.stringify(item.allowed_scope_anchor_names) === JSON.stringify(expectedAnchors), `${item.segment_id}: source scope anchors`);
+        assert(Array.isArray(item.claim_candidates), `${item.segment_id}: claim candidates`);
+        for (const [position, candidate] of item.claim_candidates.entries()) {
+          assert(candidate.candidate_id === `${item.segment_id}/q${String(position + 1).padStart(4, '0')}`, `${candidate.candidate_id}: candidate ID/order`);
+          assert(!claimCandidates.has(candidate.candidate_id), `${candidate.candidate_id}: duplicate claim candidate`);
+          const localStart = candidate.char_start - item.evidence_segment.char_start;
+          const localEnd = candidate.char_end - item.evidence_segment.char_start;
+          assert(localStart >= 0 && localEnd > localStart && localEnd <= item.evidence_segment.content.length, `${candidate.candidate_id}: source range`);
+          assert(item.evidence_segment.content.slice(localStart, localEnd) === candidate.statement, `${candidate.candidate_id}: source-preserving statement`);
+          assert(candidate.statement_sha256 === sha256(candidate.statement), `${candidate.candidate_id}: statement hash`);
+          assert(['table_row', 'paragraph'].includes(candidate.unit_kind), `${candidate.candidate_id}: unit kind`);
+          assert(Array.isArray(candidate.section_path) && candidate.section_path.every((section: unknown) => typeof section === 'string' && section.length > 0), `${candidate.candidate_id}: section path`);
+          claimCandidates.add(candidate.candidate_id);
+        }
         claimSegments.add(item.segment_id);
         referencedSegments.add(item.segment_id);
       }
@@ -156,6 +175,7 @@ for (const indexed of index.projects) {
     [...artifacts.values()].flatMap((artifact: any) => artifact.source_segment_ids),
   );
   assert(claimSegments.size === project.counts.corpus_claim_segments && claimSegments.size === expectedClaimSegments.size, `${indexed.slug}: corpus-claim segment completeness`);
+  assert(claimCandidates.size === project.counts.corpus_claim_candidates, `${indexed.slug}: corpus-claim candidate completeness`);
   for (const segmentId of claimSegments) assert(expectedClaimSegments.has(segmentId), `${indexed.slug}: unexpected claim segment ${segmentId}`);
   assert([...artifacts.values()].filter((item) => item.archive_suppressed).length === project.counts.historical_archive_artifacts, `${indexed.slug}: archive count`);
   assert(segments.size === project.counts.source_segments && segmentsBySource.size === project.counts.source_records, `${indexed.slug}: source completeness`);
@@ -163,7 +183,7 @@ for (const indexed of index.projects) {
   assert(candidates.size + exclusions.size === project.counts.first_parent_commits_90d, `${indexed.slug}: commit disposition completeness`);
   assert(historyCount === project.counts.window_history, `${indexed.slug}: window-history completeness`);
   assert(checkCount === project.counts.pinned_checks, `${indexed.slug}: pinned-check completeness`);
-  summary.push({ slug: indexed.slug, chunks: project.chunks.length, artifacts: artifacts.size, archives: project.counts.historical_archive_artifacts, candidates: candidates.size, exclusions: exclusions.size, segments: segments.size });
+  summary.push({ slug: indexed.slug, chunks: project.chunks.length, artifacts: artifacts.size, archives: project.counts.historical_archive_artifacts, claim_candidates: claimCandidates.size, candidates: candidates.size, exclusions: exclusions.size, segments: segments.size });
 }
 
 const actualFiles = new Set(readdirSync(packetDir).filter((file) => file.endsWith('.json')));

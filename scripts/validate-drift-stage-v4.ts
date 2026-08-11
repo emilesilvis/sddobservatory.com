@@ -16,19 +16,24 @@ function idsInOrder(actual: any[], expected: any[], key: string, label: string) 
 
 function validateCorpusClaims(chunk: any, output: any) {
   idsInOrder(output.assessments, chunk.items, 'segment_id', chunk.chunk_id);
+  const items = new Map(chunk.items.map((item: any) => [item.segment_id, item]));
   for (const assessment of output.assessments) {
-    exactKeys(assessment, ['segment_id', 'claims'], `${chunk.chunk_id}:${assessment.segment_id}`);
-    assert(Array.isArray(assessment.claims), `${assessment.segment_id}: claims array`);
-    const claimIds = new Set<string>();
-    for (const [position, claim] of assessment.claims.entries()) {
-      exactKeys(claim, ['claim_id', 'statement', 'lifecycle', 'core_claim', 'scope_anchor_name'], `${assessment.segment_id}:claim`);
-      assert(claim.claim_id === `${assessment.segment_id}/c${String(position + 1).padStart(2, '0')}`, `${claim.claim_id}: claim ID/order`);
-      assert(!claimIds.has(claim.claim_id), `${claim.claim_id}: duplicate`);
-      assert(typeof claim.statement === 'string' && claim.statement.trim().length > 0, `${claim.claim_id}: statement`);
-      assert(['live', 'future', 'historical'].includes(claim.lifecycle), `${claim.claim_id}: lifecycle`);
-      assert(typeof claim.core_claim === 'boolean', `${claim.claim_id}: core_claim`);
-      assert(claim.scope_anchor_name === null || (typeof claim.scope_anchor_name === 'string' && claim.scope_anchor_name.trim().length > 0), `${claim.claim_id}: scope anchor`);
-      claimIds.add(claim.claim_id);
+    exactKeys(assessment, ['segment_id', 'classifications'], `${chunk.chunk_id}:${assessment.segment_id}`);
+    assert(Array.isArray(assessment.classifications), `${assessment.segment_id}: classifications array`);
+    const item = items.get(assessment.segment_id) as any;
+    assert(item && Array.isArray(item.claim_candidates), `${assessment.segment_id}: claim candidates`);
+    idsInOrder(assessment.classifications, item.claim_candidates, 'candidate_id', assessment.segment_id);
+    const allowedAnchors = new Set(item.allowed_scope_anchor_names ?? []);
+    for (const classification of assessment.classifications) {
+      exactKeys(classification, ['candidate_id', 'disposition', 'lifecycle', 'core_claim', 'scope_anchor_name'], `${assessment.segment_id}:classification`);
+      assert(['claim', 'not_claim'].includes(classification.disposition), `${classification.candidate_id}: disposition`);
+      assert(typeof classification.core_claim === 'boolean', `${classification.candidate_id}: core_claim`);
+      if (classification.disposition === 'claim') {
+        assert(['live', 'future', 'historical'].includes(classification.lifecycle), `${classification.candidate_id}: lifecycle`);
+        assert(classification.scope_anchor_name === null || allowedAnchors.has(classification.scope_anchor_name), `${classification.candidate_id}: scope anchor`);
+      } else {
+        assert(classification.lifecycle === null && classification.core_claim === false && classification.scope_anchor_name === null, `${classification.candidate_id}: non-claim fields`);
+      }
     }
   }
 }
