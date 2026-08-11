@@ -49,6 +49,13 @@ function readOption(name: string, fallback: string): string {
   return resolve(process.cwd(), process.argv[index + 1]);
 }
 
+function optionalOption(name: string): string | null {
+  const index = process.argv.indexOf(name);
+  if (index === -1) return null;
+  assert(process.argv[index + 1], `${name} requires a value`);
+  return process.argv[index + 1];
+}
+
 function readPackets(directory: string): Map<string, any> {
   const packets = new Map<string, any>();
   if (!existsSync(directory)) return packets;
@@ -123,6 +130,10 @@ function main() {
   const primaryDir = readOption('--primary-dir', DEFAULT_PRIMARY_DIR);
   const fallbackDir = readOption('--fallback-dir', DEFAULT_FALLBACK_DIR);
   const outputDir = readOption('--output-dir', DEFAULT_OUTPUT_DIR);
+  const requestedSlugs = optionalOption('--slugs')?.split(',').filter(Boolean) ?? null;
+  const targetSlugs = requestedSlugs ? new Set(requestedSlugs) : TARGET_SLUGS;
+  assert(targetSlugs.size > 0, '--slugs must select at least one project');
+  for (const slug of targetSlugs) assert(TARGET_SLUGS.has(slug), `${slug}: not part of the frozen v4 project set`);
   assert(outputDir !== ROOT && outputDir !== resolve(ROOT, 'docs') && /(?:drift.*v4|v4.*drift)/.test(basename(outputDir)), 'Refusing unsafe v4 output directory');
   if (existsSync(outputDir)) rmSync(outputDir, { recursive: true, force: true });
   mkdirSync(outputDir, { recursive: true });
@@ -130,10 +141,10 @@ function main() {
   const primary = readPackets(primaryDir);
   const fallback = readPackets(fallbackDir);
   const packets = [...new Set([...primary.keys(), ...fallback.keys()])]
-    .filter((slug) => TARGET_SLUGS.has(slug))
+    .filter((slug) => targetSlugs.has(slug))
     .map((slug) => fallback.get(slug) ?? primary.get(slug))
     .sort((left, right) => left.identity.order - right.identity.order);
-  assert(packets.length === TARGET_SLUGS.size, `Expected ${TARGET_SLUGS.size} target packets, received ${packets.length}`);
+  assert(packets.length === targetSlugs.size, `Expected ${targetSlugs.size} target packets, received ${packets.length}`);
 
   const projectRefs: any[] = [];
 
@@ -305,7 +316,9 @@ function main() {
   const index: any = {
     protocol_version: '4.0',
     builder_version: '4.0.0-chunked',
-    project_selection: 'nine prospective oversize projects plus agentic-context-engine, logitune, and schematic controls',
+    project_selection: requestedSlugs
+      ? `selected frozen v4 projects: ${[...targetSlugs].sort().join(',')}`
+      : 'nine prospective oversize projects plus agentic-context-engine, logitune, and schematic controls',
     max_chunk_bytes: MAX_CHUNK_BYTES,
     projects: projectRefs,
     integrity: { canonical_json_sha256: '0'.repeat(64) },

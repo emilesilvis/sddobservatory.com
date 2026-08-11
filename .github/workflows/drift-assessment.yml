@@ -1,0 +1,92 @@
+name: Assess project drift
+
+# Scheduling remains intentionally disabled until the incremental task-budget
+# gate passes. This workflow provides a fully automated, review-only manual run.
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Frozen v4 project slug
+        required: true
+        default: schematic
+        type: string
+      model:
+        description: OpenAI model used for both isolated runs
+        required: true
+        default: gpt-5.6
+        type: string
+      max_tasks_per_run:
+        description: Fail-closed semantic task budget per isolated run
+        required: true
+        default: '20'
+        type: string
+      publish_draft_pr:
+        description: Open a draft PR when the rating changes or evidence is incomplete
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: drift-assessment-${{ inputs.project }}
+  cancel-in-progress: false
+
+jobs:
+  assess:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run drift:evidence:test
+
+      - name: Build unbounded fallback when required
+        env:
+          PROJECT: ${{ inputs.project }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ ",desktop-cc-gui,growi,wukongim," == *",${PROJECT},"* ]]; then
+            npm run drift:evidence:prospective -- \
+              --manifest docs/research/drift-projects-prospective-2026-08-09.json \
+              --output-dir /tmp/sdd-drift-v4-raw \
+              --unbounded \
+              --slugs "${PROJECT}"
+          fi
+
+      - name: Compile selected project evidence
+        env:
+          PROJECT: ${{ inputs.project }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npm run drift:evidence:prospective -- \
+            --manifest docs/research/drift-projects-prospective-2026-08-09.json \
+            --slugs "${PROJECT}"
+          npm run drift:evidence:v4 -- --slugs "${PROJECT}"
+          npm run drift:evidence:v4:validate
+
+      - name: Run two isolated assessments
+        env:
+          PROJECT: ${{ inputs.project }}
+          MODEL: ${{ inputs.model }}
+          MAX_TASKS: ${{ inputs.max_tasks_per_run }}
+          PUBLISH: ${{ inputs.publish_draft_pr }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          args=(
+            --project "${PROJECT}"
+            --model "${MODEL}"
+            --max-tasks-per-run "${MAX_TASKS}"
+            --skip-evidence-validation
+          )
+          if [[ "${PUBLISH}" == "true" ]]; then
+            args+=(--publish-draft-pr --repo "${GITHUB_REPOSITORY}")
+          fi
+          npm run drift:assess:v4 -- "${args[@]}"

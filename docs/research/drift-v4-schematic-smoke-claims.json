@@ -1,0 +1,207 @@
+{
+  "protocol_version": "4.0",
+  "chunk_id": "schematic-corpus-claims-0001",
+  "assessments": [
+    {
+      "segment_id": "s0001-g0001",
+      "claims": [
+        {
+          "claim_id": "s0001-g0001/c01",
+          "statement": "Adding Schematic as a single Maven dependency auto-configures the database UI without additional setup.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c02",
+          "statement": "The UI exposes all tables and their columns in the connected database.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c03",
+          "statement": "The UI previews the first rows of a table.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c04",
+          "statement": "The UI executes ad-hoc SQL queries.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c05",
+          "statement": "Dropping a table through the UI requires confirmation.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c06",
+          "statement": "Truncating a table through the UI requires confirmation.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c07",
+          "statement": "The UI provides an auto-generated entity-relationship diagram.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c08",
+          "statement": "The UI can copy the Mermaid source of the entity-relationship diagram to the clipboard.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c09",
+          "statement": "The URL path where the Schematic UI is mounted is configurable.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c10",
+          "statement": "The table listing can be sorted and filtered by name.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c11",
+          "statement": "Entity-relationship diagram generation works with databases other than PostgreSQL.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c12",
+          "statement": "A host-application bean controls which tables are visible and which operations are permitted.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c13",
+          "statement": "Previously executed SQL queries are stored locally and available from a dropdown.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c14",
+          "statement": "The maximum number of rows shown in a table preview is configurable.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c15",
+          "statement": "Every UI page completes its initial render within two seconds on a developer workstation using a local database.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Non-Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c16",
+          "statement": "All read operations work after adding the Maven dependency without mandatory application configuration.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Non-Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c17",
+          "statement": "Schematic runs entirely within the host Spring Boot process without opening another network port.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Non-Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c18",
+          "statement": "The library introduces no transitive dependency conflicts in standard Spring Boot 3.x or 4.x applications.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Non-Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c19",
+          "statement": "Every DROP TABLE and TRUNCATE TABLE operation displays an explicit confirmation dialog before execution.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Non-Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c20",
+          "statement": "The web interface avoids horizontal scrolling at screen widths from 768 to 1920 pixels.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Non-Functional Requirements"
+        },
+        {
+          "claim_id": "s0001-g0001/c21",
+          "statement": "The library is distributed as a JAR artifact on Maven Central.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c22",
+          "statement": "The library targets Java 21 LTS as its primary runtime.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c23",
+          "statement": "Host integration uses only Spring Boot auto-configuration and requires no changes to the host main class or bean definitions.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c24",
+          "statement": "Database operations use JdbcClient or JdbcTemplate without a JPA or ORM dependency.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c25",
+          "statement": "Schematic reuses the host application's configured datasource and requires no secondary datasource.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c26",
+          "statement": "In the current release, entity-relationship diagrams are limited to PostgreSQL and other JDBC databases show no diagram.",
+          "lifecycle": "live",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c27",
+          "statement": "Schema introspection and basic table operations rely only on standard INFORMATION_SCHEMA views.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        },
+        {
+          "claim_id": "s0001-g0001/c28",
+          "statement": "The UI requires no Node.js or npm build pipeline and serves frontend assets as WebJars or from a CDN.",
+          "lifecycle": "future",
+          "core_claim": false,
+          "scope_anchor_name": "Constraints"
+        }
+      ]
+    }
+  ]
+}
