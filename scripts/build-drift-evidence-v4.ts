@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
+import { compileClaimTaskItem } from './drift-claim-candidates-v4.ts';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const DEFAULT_PRIMARY_DIR = resolve(ROOT, 'docs/research/drift-evidence-prospective-v1');
@@ -221,14 +222,20 @@ function main() {
       .map((segment: any) => {
         const artifact: any = artifactBySource.get(segment.source_id);
         assert(artifact, `${slug}:${segment.segment_id}: corpus source lacks artifact`);
-        return { artifact_id: artifact.artifact_id, path: artifact.path, segment_id: segment.segment_id, evidence_segment: segment };
+        return compileClaimTaskItem(segment, artifact, packet.corpus.scope_anchors);
       });
     writeChunks('corpus-claims', claimItems, 8, {
       output: [{
         segment_id: 'existing source segment ID',
-        claims: [{ claim_id: 'locally unique ID', statement: 'neutral atomic claim', lifecycle: 'live | future | historical', core_claim: 'boolean', scope_anchor_name: 'string | null' }],
+        classifications: [{
+          candidate_id: 'existing compiler-owned candidate ID',
+          disposition: 'claim | not_claim',
+          lifecycle: 'live | future | historical | null',
+          core_claim: 'boolean',
+          scope_anchor_name: 'allowed source anchor name | null',
+        }],
       }],
-      coverage: 'Every segment_id in the chunk exactly once. Use only the attached evidence_segment.',
+      coverage: 'Every segment_id and compiler-owned claim candidate exactly once and in order. Candidate statements and IDs are immutable input.',
     });
 
     const materialityItems = packet.material_behavior_candidates.map((candidate: any) => ({
@@ -289,6 +296,7 @@ function main() {
         source_records: packet.sources.length,
         source_segments: segments.length,
         corpus_claim_segments: claimItems.length,
+        corpus_claim_candidates: claimItems.reduce((sum: number, item: any) => sum + item.claim_candidates.length, 0),
         first_parent_commits_90d: packet.first_parent_commits_90d.length,
         raw_candidates: materialityItems.length,
         exclusions: exclusionItems.length,
@@ -297,7 +305,7 @@ function main() {
       },
       chunks: chunkRefs,
       rollup_contract: {
-        claim_stage: 'Merge claim outputs by source segment ID; duplicate claim IDs are invalid.',
+        claim_stage: 'Join assessor classifications to compiler-owned candidates by source segment and candidate ID; candidate text and IDs are never model-authored.',
         materiality_stage: 'Merge materiality outputs by candidate ID; only material atomic behaviors advance.',
         drift_stage: 'Assess every material atomic behavior against the complete merged live-claim index and every pinned-state check.',
         rating_tree: ['H1 core contradiction', 'H2 stale spec plus drift from at least three distinct commits', 'M1 any omission or contradiction', 'L1 minor gaps only', 'N1 all covered'],
@@ -315,7 +323,7 @@ function main() {
 
   const index: any = {
     protocol_version: '4.0',
-    builder_version: '4.0.0-chunked',
+    builder_version: '4.1.0-deterministic-claims',
     project_selection: requestedSlugs
       ? `selected frozen v4 projects: ${[...targetSlugs].sort().join(',')}`
       : 'nine prospective oversize projects plus agentic-context-engine, logitune, and schematic controls',

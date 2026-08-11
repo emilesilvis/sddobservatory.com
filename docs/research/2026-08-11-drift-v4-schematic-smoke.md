@@ -10,7 +10,7 @@ embedded evidence. It is not a protocol-complete blind rerating because no isola
 
 | Stage | Output | SHA-256 | Result |
 |---|---|---|---|
-| Corpus claims | [`drift-v4-schematic-smoke-claims.json`](drift-v4-schematic-smoke-claims.json) | `cc91728fe8a432b41e36e77b4fece534b2706adf78ac1fac5e482da574b16f6b` | Valid: 28 claims, comprising 15 live and 13 future claims. |
+| Corpus claims | [`drift-v4-schematic-smoke-claims.json`](drift-v4-schematic-smoke-claims.json) | `334416a4a7be2492bf9b4425e2b5512db946f07a283c45217f8c707b848bea2b` | Valid: all 28 compiler-owned candidates classified as claims, comprising 15 live and 13 future classifications. |
 | Materiality | [`drift-v4-schematic-smoke-materiality.json`](drift-v4-schematic-smoke-materiality.json) | `4580bbb82cd8e7a0ca8647056aa4422a2b0aadbed93d72c9ed3bba050ae4ad26` | Valid: the Spring Boot parent-version change is non-material because its attached diff demonstrates no observable or corpus-governed behavior change. |
 | Pinned state | [`drift-v4-schematic-smoke-pinned-checks.json`](drift-v4-schematic-smoke-pinned-checks.json) | `bd1304890d41141672c38dfb46dcd74f853c96dc3c5c942f1633a45d23f9ddee` | Valid: one non-core contradiction. |
 
@@ -36,5 +36,6 @@ accepted. Nothing in this smoke test should update the published Schematic asses
 
 The missing orchestration exposed by this smoke test is implemented in
 [`2026-08-11-drift-assessment-automation.md`](2026-08-11-drift-assessment-automation.md). A live protocol-complete run
-still requires an OpenAI API credential and a second independently generated output; these manually authored smoke
-outputs are retained only as evidence that the stage contracts work.
+on 2026-08-11 showed that free-form claim atomization could vary between isolated runs. Stage A now compiles the 28
+source-preserving requirement rows and asks assessors only to classify their fixed IDs. These manually authored smoke
+outputs are retained as evidence that the amended stage contracts work.

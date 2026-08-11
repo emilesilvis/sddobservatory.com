@@ -1,0 +1,16 @@
+{
+  "source_pr": 63,
+  "input_sha256": "16a02cb4110ddcf1eaa27dc8ef175cd4d6b5b564ada8e99de20be77a6a36c7d9",
+  "segment_id": "s0001-g0001",
+  "source_markdown": "# Requirements\n\n## Functional Requirements\n\n| ID | Title | User Story |\n| --- | --- | --- |\n| FR-002 | Browse database schema                    | As a developer, I want to view all tables and their columns in the connected database so that I can understand the schema without a separate database client.                                                                                         |",
+  "source_statement": "| FR-002 | Browse database schema                    | As a developer, I want to view all tables and their columns in the connected database so that I can understand the schema without a separate database client.                                                                                         |",
+  "observed_outputs": {
+    "run_1": [
+      "The UI displays all tables in the connected database.",
+      "The UI displays the columns of tables in the connected database."
+    ],
+    "run_2": [
+      "The UI displays all tables and their columns in the connected database."
+    ]
+  }
+}

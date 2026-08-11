@@ -19,15 +19,15 @@ const DEFAULT_PACKET_DIR = resolve(ROOT, 'docs/research/drift-evidence-v4');
 const RUBRIC_PATH = resolve(ROOT, 'docs/research/drift-rubric-v4.md');
 const BLIND_PROMPT_PATH = resolve(ROOT, 'docs/research/drift-v4-blind-run-prompt.md');
 
-const ClaimStageSchema = z.object({
+export const ClaimStageSchema = z.object({
   protocol_version: z.literal('4.0'),
   chunk_id: z.string(),
   assessments: z.array(z.object({
     segment_id: z.string(),
-    claims: z.array(z.object({
-      claim_id: z.string(),
-      statement: z.string(),
-      lifecycle: z.enum(['live', 'future', 'historical']),
+    classifications: z.array(z.object({
+      candidate_id: z.string(),
+      disposition: z.enum(['claim', 'not_claim']),
+      lifecycle: z.enum(['live', 'future', 'historical']).nullable(),
       core_claim: z.boolean(),
       scope_anchor_name: z.string().nullable(),
     }).strict()),
@@ -97,7 +97,13 @@ function integerOption(name: string, fallback: number): number {
 
 function stageInstructions(kind: ModelStageKind): string {
   if (kind === 'corpus-claims') {
-    return 'Extract every segment in order. Emit only affirmative claims grounded in the attached segment. Do not infer unstated requirements.';
+    return [
+      'Classify every compiler-owned claim candidate exactly once and in order.',
+      'Do not add, remove, split, merge, reorder, or paraphrase candidates; their IDs and statements are immutable input.',
+      'Use claim only for an affirmative governed property stated by the candidate and not_claim otherwise.',
+      'For not_claim return lifecycle=null, core_claim=false, and scope_anchor_name=null.',
+      'For a claim choose only an allowed_scope_anchor_name from that segment, or null. Do not infer unstated requirements.',
+    ].join(' ');
   }
   if (kind === 'materiality') {
     return 'Assess every candidate in order. Treat a dependency-only diff as non-material unless the attached diff itself demonstrates an observable or governed effect.';

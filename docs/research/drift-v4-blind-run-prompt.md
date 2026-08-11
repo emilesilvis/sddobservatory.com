@@ -16,11 +16,11 @@ For a chunk whose `kind` is `corpus-claims`, return only:
   "assessments": [
     {
       "segment_id": "existing segment ID",
-      "claims": [
+      "classifications": [
         {
-          "claim_id": "segment ID plus /cNN",
-          "statement": "neutral atomic claim",
-          "lifecycle": "live | future | historical",
+          "candidate_id": "existing compiler-owned candidate ID",
+          "disposition": "claim | not_claim",
+          "lifecycle": "live | future | historical | null",
           "core_claim": false,
           "scope_anchor_name": null
         }
@@ -30,11 +30,14 @@ For a chunk whose `kind` is `corpus-claims`, return only:
 }
 ```
 
-Assess every segment exactly once and in chunk order. Claims must be affirmative properties stated in that segment;
-do not infer unstated requirements. Split independently testable claims. Use `live` for current requirements or
-descriptions, `future` for explicitly planned/not-yet-current behavior, and `historical` for superseded or completed
-change narrative. `core_claim` is true only when violating the claim defeats the project's explicitly stated primary
-purpose. Return an empty `claims` array when the segment contains no governed claim.
+Assess every segment and every supplied `claim_candidate` exactly once and in input order. Candidate IDs, source
+statements, source ranges, unit kinds, and section paths are immutable compiler output. Do not add, remove, split,
+merge, reorder, or paraphrase candidates. Return `claim` only when the candidate states an affirmative governed
+property; otherwise return `not_claim` with `lifecycle: null`, `core_claim: false`, and `scope_anchor_name: null`.
+For claims, use `live` for current requirements or descriptions, `future` for explicitly planned/not-yet-current
+behavior, and `historical` for superseded or completed change narrative. `core_claim` is true only when violating the
+candidate defeats the project's explicitly stated primary purpose. Select only a name listed in the segment's
+`allowed_scope_anchor_names`, or return null. Do not infer unstated requirements.
 
 ## Materiality task
 
@@ -71,5 +74,6 @@ proof when the diff disagrees.
 ## Isolation and agreement
 
 Do not read another assessor's output. A run is valid only when every assigned chunk has exactly one schema-valid
-output. Two isolated runs must agree on claim coverage, materiality, and atomic behavior count before drift matching
-begins. Any disagreement is surfaced for editorial review; it is never resolved by silently choosing one run.
+output. Two isolated runs must agree on candidate classifications, materiality, and atomic behavior count before
+drift matching begins. Any disagreement is surfaced for editorial review; it is never resolved by silently choosing
+one run.

@@ -5,12 +5,13 @@
 The v4 evidence protocol now has an executable assessment runner. For one selected frozen project it:
 
 1. validates the content-addressed evidence set;
-2. dispatches two independent OpenAI Responses API calls for every corpus-claim and materiality chunk;
-3. validates every structured response against both a JSON schema and the existing fail-closed stage validator;
-4. stops as `unknown` when claim extraction, materiality, model identity, or task-budget gates fail;
-5. runs pinned-state checks and, when material behaviors exist, drift matching against the complete merged live-claim index;
-6. compares the isolated runs and derives the final rating mechanically; and
-7. optionally opens a draft PR containing the complete assessment record when a rating changes or evidence is incomplete.
+2. compiles source-preserving claim candidates with stable IDs before any model call;
+3. dispatches two independent OpenAI Responses API calls to classify those candidates and assess every materiality chunk;
+4. validates every structured response against both a JSON schema and the existing fail-closed stage validator;
+5. stops as `unknown` when claim classification, materiality, model identity, or task-budget gates fail;
+6. runs pinned-state checks and, when material behaviors exist, drift matching against the complete merged live-claim index;
+7. compares the isolated runs and derives the final rating mechanically; and
+8. optionally opens a draft PR containing the complete assessment record when a rating changes or evidence is incomplete.
 
 The runner never edits published project content. A maintainer must review the draft assessment and make any public
 content change separately.
@@ -27,9 +28,10 @@ npm run drift:assess:v4 -- \
   --max-tasks-per-run 20
 ```
 
-The official OpenAI Structured Outputs interface is used through `responses.parse` with Zod schemas. Every call is
-stateless (`store: false`), receives no tools, and gets only the frozen rubric and current task JSON. See the
-[OpenAI Structured Outputs documentation](https://developers.openai.com/api/docs/guides/structured-outputs).
+The official OpenAI Structured Outputs interface is used through `responses.parse` with Zod schemas. The claim
+schema contains classifications only, so the model cannot add, split, merge, or paraphrase compiler-owned claim
+candidates. Every call is stateless (`store: false`), receives no tools, and gets only the frozen rubric and current
+task JSON. See the [OpenAI Structured Outputs documentation](https://developers.openai.com/api/docs/guides/structured-outputs).
 
 Local run bundles are written under `.drift-runs/` and ignored by git. Add `--publish-draft-pr` only when the current
 GitHub credentials may create branches and draft pull requests.
@@ -47,7 +49,7 @@ and delta-only evidence compiler keep all nine formerly oversized projects withi
 
 - More than the configured semantic task budget returns `unknown` without starting model calls when known upfront.
 - Invalid, refused, missing, or schema-incompatible model output returns `unknown` with the error retained.
-- Corpus claims must match exactly between isolated runs.
+- Classifications over the same compiler-owned claim IDs must match exactly between isolated runs.
 - Materiality and atomic behavior counts must match before drift matching starts.
 - Response IDs must be unique and every response must report the same model.
 - Pinned-state and drift-matching dispositions must match between runs.

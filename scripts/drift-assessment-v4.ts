@@ -81,7 +81,7 @@ export type RunRollup = {
 
 export type AssessmentBundle = {
   protocol_version: '4.0';
-  automation_version: '1.0.0';
+  automation_version: '1.1.0';
   mode: 'live' | 'fixture';
   created_at_utc: string;
   project: {
@@ -237,21 +237,35 @@ function materialityAgreement(records: CallRecord[]): boolean {
   return canonicalize(normalize('run-1')) === canonicalize(normalize('run-2'));
 }
 
-function mergeLiveClaims(records: CallRecord[], runId: RunId): DriftTask['live_claims'] {
+function mergeLiveClaims(records: CallRecord[], chunks: any[], runId: RunId): DriftTask['live_claims'] {
+  const candidates = new Map<string, { segment_id: string; statement: string }>();
+  for (const chunk of chunks.filter((item) => item.kind === 'corpus-claims')) {
+    for (const item of chunk.items) {
+      for (const candidate of item.claim_candidates) {
+        assert(!candidates.has(candidate.candidate_id), `duplicate compiler claim candidate ${candidate.candidate_id}`);
+        candidates.set(candidate.candidate_id, {
+          segment_id: item.segment_id,
+          statement: candidate.statement,
+        });
+      }
+    }
+  }
   const claims: DriftTask['live_claims'] = [];
   const seen = new Set<string>();
   for (const output of outputsFor(records, runId, 'corpus-claims')) {
     for (const assessment of output.assessments) {
-      for (const claim of assessment.claims) {
-        assert(!seen.has(claim.claim_id), `${runId}: duplicate claim ${claim.claim_id}`);
-        seen.add(claim.claim_id);
-        if (claim.lifecycle === 'live') {
+      for (const classification of assessment.classifications) {
+        assert(!seen.has(classification.candidate_id), `${runId}: duplicate claim classification ${classification.candidate_id}`);
+        seen.add(classification.candidate_id);
+        if (classification.disposition === 'claim' && classification.lifecycle === 'live') {
+          const candidate = candidates.get(classification.candidate_id);
+          assert(candidate, `${runId}: unknown compiler claim candidate ${classification.candidate_id}`);
           claims.push({
-            claim_id: claim.claim_id,
-            segment_id: assessment.segment_id,
-            statement: claim.statement,
-            core_claim: claim.core_claim,
-            scope_anchor_name: claim.scope_anchor_name,
+            claim_id: classification.candidate_id,
+            segment_id: candidate.segment_id,
+            statement: candidate.statement,
+            core_claim: classification.core_claim,
+            scope_anchor_name: classification.scope_anchor_name,
           });
         }
       }
@@ -388,7 +402,7 @@ function baseBundle(options: RunOptions, calls: CallRecord[], projectedPerRun: n
   const previousRating = options.previousRating ?? null;
   return {
     protocol_version: '4.0',
-    automation_version: '1.0.0',
+    automation_version: '1.1.0',
     mode: options.mode ?? 'live',
     created_at_utc: (options.now ?? (() => new Date()))().toISOString(),
     project: {
@@ -447,7 +461,7 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
   calls.push(...claimCalls);
   if (failed(claimCalls).length) return unknown(options, calls, baseTasksPerRun, failed(claimCalls));
   const claimsAgree = exactAgreement(claimCalls, 'corpus-claims');
-  if (!claimsAgree) return unknown(options, calls, baseTasksPerRun, ['corpus_claim_disagreement'], { corpus_claims: false });
+  if (!claimsAgree) return unknown(options, calls, baseTasksPerRun, ['corpus_claim_classification_disagreement'], { corpus_claims: false });
 
   const materialCalls = await assessTasks(stageTasks(options.chunks, 'materiality'), options.assessor, concurrency);
   calls.push(...materialCalls);
@@ -458,7 +472,7 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
   }
 
   const stageRecords = [...claimCalls, ...materialCalls];
-  const claimsByRun = new Map(RUN_IDS.map((runId) => [runId, mergeLiveClaims(stageRecords, runId)]));
+  const claimsByRun = new Map(RUN_IDS.map((runId) => [runId, mergeLiveClaims(stageRecords, options.chunks, runId)]));
   const behaviorsByRun = new Map(RUN_IDS.map((runId) => [runId, mergeMaterialBehaviors(stageRecords, options.chunks, runId)]));
   const driftTasks = RUN_IDS.map((runId) => buildDriftTask(options.project, claimsByRun.get(runId)!, behaviorsByRun.get(runId)!));
   const needsDriftCall = driftTasks.some((task) => task.behaviors.length > 0);

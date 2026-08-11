@@ -18,10 +18,15 @@ Missing, duplicated, stale, oversized, or unreferenced evidence invalidates the 
 
 ## Stage A: corpus claims
 
-For every non-archived corpus source segment, emit the segment ID exactly once and zero or more neutral atomic
-claims. Each claim has a locally unique ID, statement, lifecycle (`live`, `future`, or `historical`), `core_claim`
-boolean, and optional scope-anchor name. Extraction disagreement or incomplete coverage makes the project
-`unknown`; claims are never silently selected between runs.
+The evidence compiler deterministically divides every non-archived corpus source segment into source-preserving
+claim candidates. Markdown table rows remain whole units; prose remains in source-order paragraph units. Candidate
+IDs, statements, source ranges, hashes, unit kinds, and section paths are fixed before either assessor runs.
+
+For every candidate, emit exactly one `claim` or `not_claim` classification. Claims receive a lifecycle (`live`,
+`future`, or `historical`), `core_claim` boolean, and optional name selected from the segment's supplied scope
+anchors. Non-claims receive null lifecycle/anchor and `core_claim: false`. Assessors may not add, remove, split,
+merge, reorder, or paraphrase candidates. Classification disagreement or incomplete coverage makes the project
+`unknown`; classifications are never silently selected between runs.
 
 ## Stage B: materiality
 
