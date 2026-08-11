@@ -1,0 +1,299 @@
+{
+  "run": 2,
+  "model": "OpenAI Codex (GPT-5)",
+  "rubric": {
+    "none": "specs are updated alongside code; spot checks find no divergence.",
+    "low": "minor gaps; specs trail code slightly but remain a reliable guide.",
+    "moderate": "specs noticeably lag; parts of codebase are no longer described.",
+    "high": "specs are stale or abandoned while code moves on.",
+    "unknown": "evidence is insufficient to assess."
+  },
+  "ratings": [
+    {
+      "slug": "agentic-context-engine",
+      "repo": "kayba-ai/agentic-context-engine",
+      "pin": "96f7c9cfea1d7cae74994c391ad7791e6cbf7f6a",
+      "rating": "high",
+      "confidence": "high",
+      "rationale": "The specs tree contains only the OpenClaw and ACE MCP slices and was last touched 155 commits before the pin. The intervening history includes a PydanticAI migration, restored and expanded CLI/integrations, provenance models, and runtime/sub-agent work with no corresponding specs entries.",
+      "sources": [
+        "https://github.com/kayba-ai/agentic-context-engine/tree/96f7c9cfea1d7cae74994c391ad7791e6cbf7f6a/specs",
+        "https://github.com/kayba-ai/agentic-context-engine/compare/66ef492541aff7a303e49173f027a150000f2587...96f7c9cfea1d7cae74994c391ad7791e6cbf7f6a",
+        "https://github.com/kayba-ai/agentic-context-engine/commit/96f7c9cfea1d7cae74994c391ad7791e6cbf7f6a"
+      ]
+    },
+    {
+      "slug": "akka-net",
+      "repo": "akkadotnet/akka.net",
+      "pin": "464d75766b9ecf195395981c77fc1b1d6c7c6e22",
+      "rating": "none",
+      "confidence": "high",
+      "rationale": "OpenSpec is active and was updated two commits before the pin. The only later changes are narrowly scoped test de-flaking fixes, so spot checks show no product behavior moving beyond the current specs.",
+      "sources": [
+        "https://github.com/akkadotnet/akka.net/tree/464d75766b9ecf195395981c77fc1b1d6c7c6e22/openspec",
+        "https://github.com/akkadotnet/akka.net/compare/67db58022cd7dc682fe36316a4a7fca7049d790e...464d75766b9ecf195395981c77fc1b1d6c7c6e22",
+        "https://github.com/akkadotnet/akka.net/commit/464d75766b9ecf195395981c77fc1b1d6c7c6e22"
+      ]
+    },
+    {
+      "slug": "arcreel",
+      "repo": "ArcReel/ArcReel",
+      "pin": "4270c404d65389c521bc80115e11df87005c0d8e",
+      "rating": "high",
+      "confidence": "high",
+      "rationale": "The superpowers specs stopped changing 335 commits before the pin. Subsequent code adds advertising projects, narration, screenplay-source workflows, and MiniMax and Kling providers, while the pinned spec filenames contain none of those major capabilities.",
+      "sources": [
+        "https://github.com/ArcReel/ArcReel/tree/4270c404d65389c521bc80115e11df87005c0d8e/docs/superpowers",
+        "https://github.com/ArcReel/ArcReel/compare/4b17958b6afb3b34002352a450629c69eab17d22...4270c404d65389c521bc80115e11df87005c0d8e",
+        "https://github.com/ArcReel/ArcReel/commit/4270c404d65389c521bc80115e11df87005c0d8e"
+      ]
+    },
+    {
+      "slug": "banana-slides",
+      "repo": "Anionex/banana-slides",
+      "pin": "7b948fb6f2b630b4b9a07b6efa0c1266d298c91e",
+      "rating": "high",
+      "confidence": "medium",
+      "rationale": "Only two April feature designs are present, while 108 later commits add image quality control, per-page templates, provider overrides, batch import behavior, and substantial desktop packaging/export behavior. Large areas of the newer product are not represented by the specs.",
+      "sources": [
+        "https://github.com/Anionex/banana-slides/tree/7b948fb6f2b630b4b9a07b6efa0c1266d298c91e/docs/superpowers",
+        "https://github.com/Anionex/banana-slides/compare/1348d5150e7dfd41cc2b8e461555bc1e5595212a...7b948fb6f2b630b4b9a07b6efa0c1266d298c91e",
+        "https://github.com/Anionex/banana-slides/commit/7b948fb6f2b630b4b9a07b6efa0c1266d298c91e"
+      ]
+    },
+    {
+      "slug": "debrief",
+      "repo": "debrief/debrief",
+      "pin": "0696b105cf91c08466562a2ea03e3975034b5d6a",
+      "rating": "none",
+      "confidence": "medium",
+      "rationale": "After the latest feature spec, the pinned branch adds documentation and capability-audit material only; the comparison shows no code files changing. With code stationary and the documentation becoming more detailed, spot checks found no divergence.",
+      "sources": [
+        "https://github.com/debrief/debrief/tree/0696b105cf91c08466562a2ea03e3975034b5d6a/specs",
+        "https://github.com/debrief/debrief/compare/95f27d7228930405efa443691f4914db0ae5f37d...0696b105cf91c08466562a2ea03e3975034b5d6a",
+        "https://github.com/debrief/debrief/blob/0696b105cf91c08466562a2ea03e3975034b5d6a/CAPABILITY_AUDIT.md"
+      ]
+    },
+    {
+      "slug": "desktop-cc-gui",
+      "repo": "zhukunpenglinyutong/desktop-cc-gui",
+      "pin": "c1544f8f3f5d7ac1034c4a9276ab44164d56b0f6",
+      "rating": "none",
+      "confidence": "high",
+      "rationale": "This repository has an extensive active OpenSpec corpus, and the pin itself updates OpenSpec while converging Kimi session identity and UI workflows. Matching Kimi, Kanban, and session change/spec areas are present at the exact pin.",
+      "sources": [
+        "https://github.com/zhukunpenglinyutong/desktop-cc-gui/tree/c1544f8f3f5d7ac1034c4a9276ab44164d56b0f6/openspec",
+        "https://github.com/zhukunpenglinyutong/desktop-cc-gui/tree/c1544f8f3f5d7ac1034c4a9276ab44164d56b0f6/openspec/changes/add-kimi-engine",
+        "https://github.com/zhukunpenglinyutong/desktop-cc-gui/commit/c1544f8f3f5d7ac1034c4a9276ab44164d56b0f6"
+      ]
+    },
+    {
+      "slug": "evalai",
+      "repo": "Cloud-CV/EvalAI",
+      "pin": "d43da66bab66d7bb526058487fc9fb294ca5740f",
+      "rating": "low",
+      "confidence": "medium",
+      "rationale": "The Scout designs remain recognizable and the later Scout changes are small sender and migration corrections. Twenty-one post-spec commits also contain unrelated security, deployment, and worker fixes, creating minor undocumented gaps without invalidating the feature specs.",
+      "sources": [
+        "https://github.com/Cloud-CV/EvalAI/tree/d43da66bab66d7bb526058487fc9fb294ca5740f/docs/superpowers",
+        "https://github.com/Cloud-CV/EvalAI/compare/bf07b3ec4c71d8ae5559093e0372a667b27738fc...d43da66bab66d7bb526058487fc9fb294ca5740f",
+        "https://github.com/Cloud-CV/EvalAI/tree/d43da66bab66d7bb526058487fc9fb294ca5740f/apps/scout"
+      ]
+    },
+    {
+      "slug": "folo",
+      "repo": "RSSNext/Folo",
+      "pin": "773f1bfe218ac349b9fb9b5cbd982c320f6b414f",
+      "rating": "low",
+      "confidence": "medium",
+      "rationale": "The two OTA designs are older than 30 mostly release, build, and corrective commits. Those changes introduce small mobile and desktop behavior gaps, but there is no broad post-spec architecture replacement and the OTA material remains usable.",
+      "sources": [
+        "https://github.com/RSSNext/Folo/tree/773f1bfe218ac349b9fb9b5cbd982c320f6b414f/docs/superpowers",
+        "https://github.com/RSSNext/Folo/compare/1158281f59b93cfa600f8ad0dd56d661bb8e7f07...773f1bfe218ac349b9fb9b5cbd982c320f6b414f",
+        "https://github.com/RSSNext/Folo/commit/773f1bfe218ac349b9fb9b5cbd982c320f6b414f"
+      ]
+    },
+    {
+      "slug": "growi",
+      "repo": "growilabs/growi",
+      "pin": "01bfdd3e44675fcb9dbe34a07f3c68171c2adf4c",
+      "rating": "moderate",
+      "confidence": "medium",
+      "rationale": "The large Kiro corpus is recent, but 79 subsequent commits implement audit-log index management and fuzzy username suggestions without matching feature specs in the pinned spec tree. Existing specs are substantial, yet the active branch has noticeable undescribed product work.",
+      "sources": [
+        "https://github.com/growilabs/growi/tree/01bfdd3e44675fcb9dbe34a07f3c68171c2adf4c/.kiro/specs",
+        "https://github.com/growilabs/growi/compare/250a9e0abd3e721fcdecad5e105b9ccae3e6e407...01bfdd3e44675fcb9dbe34a07f3c68171c2adf4c",
+        "https://github.com/growilabs/growi/commit/01bfdd3e44675fcb9dbe34a07f3c68171c2adf4c"
+      ]
+    },
+    {
+      "slug": "logitune",
+      "repo": "mmaher88/logitune",
+      "pin": "3232e817eeb8ff0791b6718df6cc822fabd6a3b9",
+      "rating": "none",
+      "confidence": "high",
+      "rationale": "The specification and plan collection is broad, and the pin itself updates it while adding an explicit CI and pre-push drift gate for Debian QML dependencies. There are no later commits to create divergence.",
+      "sources": [
+        "https://github.com/mmaher88/logitune/tree/3232e817eeb8ff0791b6718df6cc822fabd6a3b9/docs/superpowers",
+        "https://github.com/mmaher88/logitune/commit/3232e817eeb8ff0791b6718df6cc822fabd6a3b9",
+        "https://github.com/mmaher88/logitune/tree/3232e817eeb8ff0791b6718df6cc822fabd6a3b9/docs/superpowers/plans"
+      ]
+    },
+    {
+      "slug": "miosub",
+      "repo": "corvo007/MioSub",
+      "pin": "9c6fee25dd20a88edd8173bdeffbfa1d9b9e2d79",
+      "rating": "high",
+      "confidence": "high",
+      "rationale": "OpenSpec was last changed roughly six months and 309 commits before the pin. The code subsequently gained a new alignment service, audio-only UI, search/replace, logging, native-service refactors, and a v3 documentation structure, none represented in the small pinned OpenSpec set.",
+      "sources": [
+        "https://github.com/corvo007/MioSub/tree/9c6fee25dd20a88edd8173bdeffbfa1d9b9e2d79/openspec",
+        "https://github.com/corvo007/MioSub/compare/83fa7b19ae11cc56e54d337579b2c1e92bb6933f...9c6fee25dd20a88edd8173bdeffbfa1d9b9e2d79",
+        "https://github.com/corvo007/MioSub/commit/9c6fee25dd20a88edd8173bdeffbfa1d9b9e2d79"
+      ]
+    },
+    {
+      "slug": "mos",
+      "repo": "Caldis/Mos",
+      "pin": "5dfb2363331cf63f529fdafa27962c41f91feff4",
+      "rating": "low",
+      "confidence": "medium",
+      "rationale": "Only ten commits follow the latest superpowers update, mostly targeted refactors and fixes in areas already covered by recent Logitech and input plans. A haptic debug control and receiver handoff create minor gaps, while architecture documentation is also refreshed.",
+      "sources": [
+        "https://github.com/Caldis/Mos/tree/5dfb2363331cf63f529fdafa27962c41f91feff4/docs/superpowers",
+        "https://github.com/Caldis/Mos/compare/aa5d47c2479eaa8abec0a270f70b56c578c75401...5dfb2363331cf63f529fdafa27962c41f91feff4",
+        "https://github.com/Caldis/Mos/blob/5dfb2363331cf63f529fdafa27962c41f91feff4/docs/architecture.html"
+      ]
+    },
+    {
+      "slug": "openspec",
+      "repo": "Fission-AI/OpenSpec",
+      "pin": "46a4d782229ebb104268130a16e85cb7662a2281",
+      "rating": "low",
+      "confidence": "high",
+      "rationale": "The extensive OpenSpec corpus was current until four commits before the pin. ZCode, CodeArts Agent, Qwen command-format, and skills.sh publication then changed code and documentation without corresponding pinned OpenSpec changes, a small but concrete lag.",
+      "sources": [
+        "https://github.com/Fission-AI/OpenSpec/tree/46a4d782229ebb104268130a16e85cb7662a2281/openspec",
+        "https://github.com/Fission-AI/OpenSpec/compare/4a0f15d3b2f53b3c3fadf12bc8662af644397bb7...46a4d782229ebb104268130a16e85cb7662a2281",
+        "https://github.com/Fission-AI/OpenSpec/blob/46a4d782229ebb104268130a16e85cb7662a2281/docs/supported-tools.md"
+      ]
+    },
+    {
+      "slug": "schematic",
+      "repo": "BjoernKW/Schematic",
+      "pin": "79e3285716b2d1a0a5845c2208861db4d4799c20",
+      "rating": "none",
+      "confidence": "high",
+      "rationale": "All fourteen use cases were updated together before the pin. The ten later commits are grammar, dependency, workflow, and requirements-document updates rather than application behavior, so no use-case/code divergence was found.",
+      "sources": [
+        "https://github.com/BjoernKW/Schematic/tree/79e3285716b2d1a0a5845c2208861db4d4799c20/docs/use_cases",
+        "https://github.com/BjoernKW/Schematic/compare/12b0ef254d5bd925cad2fd6eb2da34097743720c...79e3285716b2d1a0a5845c2208861db4d4799c20",
+        "https://github.com/BjoernKW/Schematic/blob/79e3285716b2d1a0a5845c2208861db4d4799c20/docs/requirements.md"
+      ]
+    },
+    {
+      "slug": "sesh",
+      "repo": "joshmedeski/sesh",
+      "pin": "bf5adc733ebf755a0dc47719b8eb79d71568efb5",
+      "rating": "none",
+      "confidence": "high",
+      "rationale": "The three current feature designs were updated three days before the pin. The sole later commit is a narrow wildcard-window bug fix in tmux code and does not contradict the status, cache, or enriched-session-name specs.",
+      "sources": [
+        "https://github.com/joshmedeski/sesh/tree/bf5adc733ebf755a0dc47719b8eb79d71568efb5/docs/superpowers",
+        "https://github.com/joshmedeski/sesh/compare/77a2f69e5a31d60d24b86c456cc6b137971101ab...bf5adc733ebf755a0dc47719b8eb79d71568efb5",
+        "https://github.com/joshmedeski/sesh/commit/bf5adc733ebf755a0dc47719b8eb79d71568efb5"
+      ]
+    },
+    {
+      "slug": "sokuji",
+      "repo": "kizuna-ai-lab/sokuji",
+      "pin": "7c738d6158e1b3cac2615ba3fa78aaa22e4d1f57",
+      "rating": "low",
+      "confidence": "high",
+      "rationale": "A Soniox design and same-day follow-up plan cover the principal new provider work. Nine later commits refine validation, setup links, branding, and detected-language display, leaving slight implementation detail lag but not making the design unreliable.",
+      "sources": [
+        "https://github.com/kizuna-ai-lab/sokuji/tree/7c738d6158e1b3cac2615ba3fa78aaa22e4d1f57/docs/superpowers",
+        "https://github.com/kizuna-ai-lab/sokuji/compare/a53ec68149b9c05b656fb10dc3d87dc2f0d2ddcf...7c738d6158e1b3cac2615ba3fa78aaa22e4d1f57",
+        "https://github.com/kizuna-ai-lab/sokuji/blob/7c738d6158e1b3cac2615ba3fa78aaa22e4d1f57/docs/superpowers/specs/2026-07-18-soniox-provider-design.md"
+      ]
+    },
+    {
+      "slug": "spirit-of-kiro",
+      "repo": "kirodotdev/spirit-of-kiro",
+      "pin": "ff0c8c22cb4026f83df5aa9155e9b7f410809f30",
+      "rating": "moderate",
+      "confidence": "medium",
+      "rationale": "The three steering documents have not changed for more than a year, while the later history migrates Bedrock models and changes hosted item-image deployment and server configuration. The small codebase limits the scope, but portions of its current runtime and deployment are no longer captured by steering.",
+      "sources": [
+        "https://github.com/kirodotdev/spirit-of-kiro/tree/ff0c8c22cb4026f83df5aa9155e9b7f410809f30/.kiro",
+        "https://github.com/kirodotdev/spirit-of-kiro/compare/4929512e9b5796f6a55c6412cf9e76f9c850eeae...ff0c8c22cb4026f83df5aa9155e9b7f410809f30",
+        "https://github.com/kirodotdev/spirit-of-kiro/blob/ff0c8c22cb4026f83df5aa9155e9b7f410809f30/server/config.ts"
+      ]
+    },
+    {
+      "slug": "the-edge-agent",
+      "repo": "fabceolin/the_edge_agent",
+      "pin": "14b64873fdebd1b7fea6b3c2ef185a89cbaa0963",
+      "rating": "low",
+      "confidence": "medium",
+      "rationale": "The documentation is broad and was updated eight commits before the pin. Later core work is one dynamic-parallel tracing fix, while the large file delta is dominated by BMAD assets and new examples; those additions create minor coverage gaps without displacing the documented framework capabilities.",
+      "sources": [
+        "https://github.com/fabceolin/the_edge_agent/tree/14b64873fdebd1b7fea6b3c2ef185a89cbaa0963/docs",
+        "https://github.com/fabceolin/the_edge_agent/compare/8189ce22d5cdb500e4a346b66880d2073f09ab18...14b64873fdebd1b7fea6b3c2ef185a89cbaa0963",
+        "https://github.com/fabceolin/the_edge_agent/tree/14b64873fdebd1b7fea6b3c2ef185a89cbaa0963/docs/capabilities"
+      ]
+    },
+    {
+      "slug": "understand-anything",
+      "repo": "Egonex-AI/Understand-Anything",
+      "pin": "5c3bc1b7fdefd17b19b44420e89d279ded21dce8",
+      "rating": "moderate",
+      "confidence": "medium",
+      "rationale": "The specs are recent and still cover most major product slices, but twelve later commits add an end-to-end stale-knowledge-graph warning and broaden Rust ignore behavior without a corresponding stale-graph design. That is a noticeable new behavior area beyond the pinned specs.",
+      "sources": [
+        "https://github.com/Egonex-AI/Understand-Anything/tree/5c3bc1b7fdefd17b19b44420e89d279ded21dce8/docs/superpowers",
+        "https://github.com/Egonex-AI/Understand-Anything/compare/48b4fe474b0b5acf993616c38e350da535185001...5c3bc1b7fdefd17b19b44420e89d279ded21dce8",
+        "https://github.com/Egonex-AI/Understand-Anything/blob/5c3bc1b7fdefd17b19b44420e89d279ded21dce8/understand-anything-plugin/packages/core/src/staleness.ts"
+      ]
+    },
+    {
+      "slug": "uniclipboard",
+      "repo": "UniClipboard/UniClipboard",
+      "pin": "1c229e9e19d25839e63300ce75bcde547bb0ad61",
+      "rating": "none",
+      "confidence": "high",
+      "rationale": "The planning system is extensive and the exact pin updates it alongside durable inbound receive attempts and cancellation behavior. Current implementation plans for that state machine and receive-attempt slice are present at the pin, with no later code to diverge.",
+      "sources": [
+        "https://github.com/UniClipboard/UniClipboard/tree/1c229e9e19d25839e63300ce75bcde547bb0ad61/.planning",
+        "https://github.com/UniClipboard/UniClipboard/blob/1c229e9e19d25839e63300ce75bcde547bb0ad61/.planning/2026-07-17-t3-receive-attempt-statemachine-impl.md",
+        "https://github.com/UniClipboard/UniClipboard/commit/1c229e9e19d25839e63300ce75bcde547bb0ad61"
+      ]
+    },
+    {
+      "slug": "wukongim",
+      "repo": "WuKongIM/WuKongIM",
+      "pin": "462caf0cefdd3e7778b8d6daee93f09eae3fcc15",
+      "rating": "low",
+      "confidence": "high",
+      "rationale": "The repository has recent cloud-simulation and wkbench designs, plans, and runbooks. Twenty-seven subsequent commits harden queues, budgets, evidence, readiness, and warmup behavior within those described systems, producing detailed lag but no major undescribed subsystem.",
+      "sources": [
+        "https://github.com/WuKongIM/WuKongIM/tree/462caf0cefdd3e7778b8d6daee93f09eae3fcc15/docs/superpowers",
+        "https://github.com/WuKongIM/WuKongIM/compare/153deb19bd1aef05815691f2a7b9cf6ed4532aeb...462caf0cefdd3e7778b8d6daee93f09eae3fcc15",
+        "https://github.com/WuKongIM/WuKongIM/blob/462caf0cefdd3e7778b8d6daee93f09eae3fcc15/docs/superpowers/specs/2026-07-14-cloud-simulation-github-actions-design.md"
+      ]
+    },
+    {
+      "slug": "yserver",
+      "repo": "joske/yserver",
+      "pin": "055debc4b583e44de865d073a4caa27cbf9b1b3c",
+      "rating": "low",
+      "confidence": "medium",
+      "rationale": "The large superpowers corpus was updated one day before the pin. Only a Justfile fix and a GLX-pbuffer implementation revert follow it; the revert can leave a small mismatch with recent rendering plans, but the rest of the specifications remain current.",
+      "sources": [
+        "https://github.com/joske/yserver/tree/055debc4b583e44de865d073a4caa27cbf9b1b3c/docs/superpowers",
+        "https://github.com/joske/yserver/compare/9418628a7b2d94cb8d5f05c94b9134ecf59efef3...055debc4b583e44de865d073a4caa27cbf9b1b3c",
+        "https://github.com/joske/yserver/commit/055debc4b583e44de865d073a4caa27cbf9b1b3c"
+      ]
+    }
+  ]
+}

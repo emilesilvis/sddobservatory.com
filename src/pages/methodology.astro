@@ -36,8 +36,10 @@ const statusScale = [
     <p>
       The observatory evaluates how well spec-driven development approaches work in practice by watching real
       projects over time — not by quoting marketing pages. Everything on the site comes from one of two places: an
-      automated metrics pipeline that humans never edit, or a curated human assessment that bots never edit. This
-      page explains what we track, where each number comes from, and how to read the ratings.
+      automated metrics pipeline that humans never edit, or a curated editorial assessment. Assessments may be
+      researched and drafted with AI assistance, but they are published through the same reviewable git workflow as
+      any other content change. This page explains what we track, where each number comes from, and how to read the
+      ratings.
     </p>
   </header>
 
@@ -94,8 +96,8 @@ const statusScale = [
       floor as unmet.
     </li>
     <li>
-      <strong>Human review.</strong> A maintainer researches each surviving candidate and writes the curated
-      assessment. Nothing is published unreviewed.
+      <strong>Editorial review.</strong> A maintainer reviews each surviving candidate and its evidence. The
+      assessment may be researched and drafted manually or with AI assistance; nothing is published unreviewed.
     </li>
   </ol>
   <p>
@@ -123,7 +125,7 @@ const statusScale = [
     </div>
     <div class="card">
       <h3>Curated assessments</h3>
-      <p class="rule">Written by people. Bots never edit them.</p>
+      <p class="rule">Editorial judgments, published through review.</p>
       <dl>
         <dt>What</dt>
         <dd>
@@ -132,8 +134,8 @@ const statusScale = [
         </dd>
         <dt>Source</dt>
         <dd>
-          Maintainers and contributors, drawing on framework documentation, release notes, maintainer submissions,
-          and manually verified case studies.
+          Maintainers and contributors, sometimes using AI assistants, drawing on framework documentation, release
+          notes, maintainer submissions, and verified case studies.
         </dd>
         <dt>Lives in</dt>
         <dd><code>src/content/</code></dd>
@@ -155,7 +157,7 @@ const statusScale = [
 
   <h2>How to read the ratings</h2>
   <p>
-    Three rating scales appear on cards and pages across the site. All three are curated human judgments, not
+    Three rating scales appear on cards and pages across the site. All three are curated editorial judgments, not
     computed values; the badges below are the exact ones you'll see.
   </p>
 
@@ -216,7 +218,10 @@ const statusScale = [
   <h2>Limitations</h2>
   <ul>
     <li>Stars and commit counts measure attention and activity, not quality or productivity.</li>
-    <li>Drift ratings are informed human judgment, not a computed diff, and can lag reality between reviews.</li>
+    <li>
+      Drift ratings are informed editorial judgments, which may be AI-assisted; they are not computed diffs and can
+      lag reality between reviews.
+    </li>
     <li>
       The sample is small and skewed: submitted projects come from teams proud of their process, and discovery
       sweeps only find frameworks whose tooling leaves public fingerprints in the repo.

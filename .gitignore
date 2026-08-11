@@ -3,3 +3,9 @@ dist/
 .astro/
 .env
 .DS_Store
+
+# Generated drift-research evidence. Keep the compact manifests, rubrics,
+# assessor outputs, and reports in git; rebuild these content-addressed packets.
+docs/research/drift-evidence-v3/
+docs/research/drift-evidence-prospective-v1/
+docs/research/drift-evidence-v4/

@@ -1,0 +1,240 @@
+{
+  "schema_version": "1",
+  "snapshot_time_utc": "2026-08-09T17:38:49.783Z",
+  "projects": [
+    {
+      "slug": "agentic-context-engine",
+      "repository": "kayba-ai/agentic-context-engine",
+      "pin_sha": "96f7c9cfea1d7cae74994c391ad7791e6cbf7f6a",
+      "pin_time_utc": "2026-06-09T18:06:15Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        ".specify/",
+        "specs/"
+      ]
+    },
+    {
+      "slug": "akka-net",
+      "repository": "akkadotnet/akka.net",
+      "pin_sha": "b2cff22b81530a72b3e769707575afa44e335689",
+      "pin_time_utc": "2026-08-08T19:37:51Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "openspec/"
+      ]
+    },
+    {
+      "slug": "arcreel",
+      "repository": "ArcReel/ArcReel",
+      "pin_sha": "9a7b01c72ff86b5f8ff91c825730a6e0d8d81908",
+      "pin_time_utc": "2026-08-09T14:36:05Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/",
+        "openspec/"
+      ]
+    },
+    {
+      "slug": "banana-slides",
+      "repository": "Anionex/banana-slides",
+      "pin_sha": "9ed08bf2cd2cfcfd1b4f85649fb7398609abcfb5",
+      "pin_time_utc": "2026-08-08T02:26:25Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/specs/",
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "debrief",
+      "repository": "debrief/debrief",
+      "pin_sha": "0696b105cf91c08466562a2ea03e3975034b5d6a",
+      "pin_time_utc": "2026-06-21T18:57:05Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        ".specify/",
+        "specs/"
+      ]
+    },
+    {
+      "slug": "desktop-cc-gui",
+      "repository": "zhukunpenglinyutong/desktop-cc-gui",
+      "pin_sha": "37219d9de6616c751b9b0f43715430687a6e0871",
+      "pin_time_utc": "2026-08-09T14:52:35Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        ".trellis/spec/",
+        "openspec/",
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "evalai",
+      "repository": "Cloud-CV/EvalAI",
+      "pin_sha": "91455cca9d82d0eb0e691e5262da2118cb8e7cca",
+      "pin_time_utc": "2026-08-09T05:26:24Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/",
+        "docs/superpowers/plans/"
+      ]
+    },
+    {
+      "slug": "folo",
+      "repository": "RSSNext/Folo",
+      "pin_sha": "3846c90b67da351b6017cd4fe9d0992b8077224e",
+      "pin_time_utc": "2026-08-01T15:14:33Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/",
+        "docs/superpowers/plans/"
+      ]
+    },
+    {
+      "slug": "growi",
+      "repository": "growilabs/growi",
+      "pin_sha": "6b27bac1eccf24913b96ad7ccbd257d8d3f54e4f",
+      "pin_time_utc": "2026-08-07T12:13:51Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        ".kiro/specs/",
+        ".kiro/settings/"
+      ]
+    },
+    {
+      "slug": "logitune",
+      "repository": "mmaher88/logitune",
+      "pin_sha": "6c1d66fc4fded7d22883145657178f2b1ecc8b63",
+      "pin_time_utc": "2026-07-31T16:10:17Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "miosub",
+      "repository": "corvo007/MioSub",
+      "pin_sha": "9c6fee25dd20a88edd8173bdeffbfa1d9b9e2d79",
+      "pin_time_utc": "2026-07-18T17:31:59Z",
+      "scope": "canonical",
+      "entry_points": [
+        "openspec/specs/",
+        "openspec/changes/"
+      ]
+    },
+    {
+      "slug": "mos",
+      "repository": "Caldis/Mos",
+      "pin_sha": "e5565f3fb2a90881d8d6b3b2c492ed2a36a469e3",
+      "pin_time_utc": "2026-08-04T16:20:49Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "openspec",
+      "repository": "Fission-AI/OpenSpec",
+      "pin_sha": "e50bd0983dc8dc48250e3181f36e28450542f2ab",
+      "pin_time_utc": "2026-08-07T13:10:54Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "openspec/changes/"
+      ]
+    },
+    {
+      "slug": "schematic",
+      "repository": "BjoernKW/Schematic",
+      "pin_sha": "d37d893a02dfff586aa0a329752603f2477f4234",
+      "pin_time_utc": "2026-08-08T09:55:47Z",
+      "scope": "canonical",
+      "entry_points": [
+        "docs/requirements.md"
+      ]
+    },
+    {
+      "slug": "sesh",
+      "repository": "joshmedeski/sesh",
+      "pin_sha": "0d09aed6fb0b70c655043a6d30d32a3475d743b2",
+      "pin_time_utc": "2026-08-04T20:43:19Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/specs/",
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "sokuji",
+      "repository": "kizuna-ai-lab/sokuji",
+      "pin_sha": "b57f24d6962cbb435ae9ee865d24f88e91c4eac5",
+      "pin_time_utc": "2026-08-09T17:14:19Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "spirit-of-kiro",
+      "repository": "kirodotdev/spirit-of-kiro",
+      "pin_sha": "ff0c8c22cb4026f83df5aa9155e9b7f410809f30",
+      "pin_time_utc": "2026-07-15T20:52:08Z",
+      "scope": "canonical",
+      "entry_points": [
+        ".kiro/steering/",
+        "docs/ROADMAP.md"
+      ]
+    },
+    {
+      "slug": "the-edge-agent",
+      "repository": "fabceolin/the_edge_agent",
+      "pin_sha": "14b64873fdebd1b7fea6b3c2ef185a89cbaa0963",
+      "pin_time_utc": "2026-05-17T02:27:39Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "_bmad-output/implementation-artifacts/",
+        "rust/src/engine/a2a/design.md"
+      ]
+    },
+    {
+      "slug": "understand-anything",
+      "repository": "Egonex-AI/Understand-Anything",
+      "pin_sha": "fe8c5bc591716aafd79b4765549328f08ef5a52e",
+      "pin_time_utc": "2026-07-30T02:54:18Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "uniclipboard",
+      "repository": "UniClipboard/UniClipboard",
+      "pin_sha": "d1445c2254cd92eed3e91c462d3ac1d2deb133ed",
+      "pin_time_utc": "2026-08-08T03:25:36Z",
+      "scope": "canonical",
+      "entry_points": [
+        ".planning/REQUIREMENTS.md",
+        ".planning/ROADMAP.md"
+      ]
+    },
+    {
+      "slug": "wukongim",
+      "repository": "WuKongIM/WuKongIM",
+      "pin_sha": "3047182698843ffdd355afbefeaaffcca311f189",
+      "pin_time_utc": "2026-08-09T15:25:47Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/"
+      ]
+    },
+    {
+      "slug": "yserver",
+      "repository": "joske/yserver",
+      "pin_sha": "3191535d8a2380dd3aad768481533755708d5844",
+      "pin_time_utc": "2026-08-08T07:41:52Z",
+      "scope": "change-scoped",
+      "entry_points": [
+        "docs/superpowers/specs/"
+      ]
+    }
+  ]
+}
