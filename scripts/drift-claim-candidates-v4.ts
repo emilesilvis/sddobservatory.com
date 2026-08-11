@@ -19,6 +19,7 @@ type SourceSegment = {
 type CorpusArtifact = {
   artifact_id: string;
   path: string;
+  git_blob_sha: string;
 };
 
 type ScopeAnchor = {
@@ -130,6 +131,7 @@ export function compileClaimTaskItem(
   return {
     artifact_id: artifact.artifact_id,
     path: artifact.path,
+    git_blob_sha: artifact.git_blob_sha,
     segment_id: segment.segment_id,
     evidence_segment: segment,
     allowed_scope_anchor_names: scopeAnchors

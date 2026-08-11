@@ -1,15 +1,28 @@
 name: Assess project drift
 
-# Scheduling remains intentionally disabled until the incremental task-budget
-# gate passes. This workflow provides a fully automated, review-only manual run.
 on:
+  schedule:
+    - cron: '17 4 * * 1'
   workflow_dispatch:
     inputs:
       project:
-        description: Frozen v4 project slug
+        description: Project to assess (large projects need a one-time raised budget)
         required: true
         default: schematic
-        type: string
+        type: choice
+        options:
+          - agentic-context-engine
+          - akka-net
+          - arcreel
+          - desktop-cc-gui
+          - growi
+          - logitune
+          - openspec
+          - schematic
+          - sokuji
+          - uniclipboard
+          - wukongim
+          - yserver
       model:
         description: OpenAI model used for both isolated runs
         required: true
@@ -20,73 +33,122 @@ on:
         required: true
         default: '20'
         type: string
-      publish_draft_pr:
-        description: Open a draft PR when the rating changes or evidence is incomplete
+      force_baseline:
+        description: Ignore existing state and rebuild a complete baseline
         required: true
-        default: true
+        default: false
         type: boolean
 
 permissions:
   contents: write
   pull-requests: write
 
-concurrency:
-  group: drift-assessment-${{ inputs.project }}
-  cancel-in-progress: false
-
 jobs:
   assess:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJSON(github.event_name == 'workflow_dispatch' && format('["{0}"]', inputs.project) || '["agentic-context-engine","akka-net","arcreel","desktop-cc-gui","growi","logitune","openspec","schematic","sokuji","uniclipboard","wukongim","yserver"]') }}
+    concurrency:
+      group: drift-assessment-${{ matrix.project }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+
+      - name: Check scheduled baseline readiness
+        id: readiness
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PROJECT: ${{ matrix.project }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          baseline_safe=',agentic-context-engine,akka-net,logitune,schematic,sokuji,yserver,'
+          if [[ "${EVENT_NAME}" == 'workflow_dispatch' || "${baseline_safe}" == *",${PROJECT},"* ]]; then
+            echo 'ready=true' >> "${GITHUB_OUTPUT}"
+          elif gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/automation/drift-state-${PROJECT}" >/dev/null 2>&1; then
+            echo 'ready=true' >> "${GITHUB_OUTPUT}"
+          else
+            echo 'ready=false' >> "${GITHUB_OUTPUT}"
+            echo "::notice::${PROJECT} needs one manual baseline before joining scheduled assessments"
+          fi
+
+      - if: steps.readiness.outputs.ready == 'true'
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run drift:evidence:test
+      - if: steps.readiness.outputs.ready == 'true'
+        run: npm ci
+      - if: steps.readiness.outputs.ready == 'true'
+        run: npm run drift:evidence:test
+      - if: steps.readiness.outputs.ready == 'true'
+        run: npm run drift:assess:v4:test
+
+      - name: Snapshot current project head
+        if: steps.readiness.outputs.ready == 'true'
+        env:
+          PROJECT: ${{ matrix.project }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          npm run drift:snapshot -- \
+            --manifest docs/research/drift-projects-prospective-2026-08-09.json \
+            --slugs "${PROJECT}" \
+            --output /tmp/drift-manifest.json
 
       - name: Build unbounded fallback when required
+        if: steps.readiness.outputs.ready == 'true'
         env:
-          PROJECT: ${{ inputs.project }}
+          PROJECT: ${{ matrix.project }}
           GH_TOKEN: ${{ github.token }}
         run: |
           if [[ ",desktop-cc-gui,growi,wukongim," == *",${PROJECT},"* ]]; then
             npm run drift:evidence:prospective -- \
-              --manifest docs/research/drift-projects-prospective-2026-08-09.json \
+              --manifest /tmp/drift-manifest.json \
               --output-dir /tmp/sdd-drift-v4-raw \
               --unbounded \
               --slugs "${PROJECT}"
           fi
 
       - name: Compile selected project evidence
+        if: steps.readiness.outputs.ready == 'true'
         env:
-          PROJECT: ${{ inputs.project }}
+          PROJECT: ${{ matrix.project }}
           GH_TOKEN: ${{ github.token }}
         run: |
           npm run drift:evidence:prospective -- \
-            --manifest docs/research/drift-projects-prospective-2026-08-09.json \
+            --manifest /tmp/drift-manifest.json \
+            --output-dir /tmp/sdd-drift-v4-primary \
             --slugs "${PROJECT}"
-          npm run drift:evidence:v4 -- --slugs "${PROJECT}"
-          npm run drift:evidence:v4:validate
+          npm run drift:evidence:v4 -- \
+            --primary-dir /tmp/sdd-drift-v4-primary \
+            --fallback-dir /tmp/sdd-drift-v4-raw \
+            --output-dir /tmp/sdd-drift-v4-packet \
+            --slugs "${PROJECT}"
+          npm run drift:evidence:v4:validate -- --packet-dir /tmp/sdd-drift-v4-packet
 
       - name: Run two isolated assessments
+        if: steps.readiness.outputs.ready == 'true'
         env:
-          PROJECT: ${{ inputs.project }}
-          MODEL: ${{ inputs.model }}
-          MAX_TASKS: ${{ inputs.max_tasks_per_run }}
-          PUBLISH: ${{ inputs.publish_draft_pr }}
+          PROJECT: ${{ matrix.project }}
+          MODEL: ${{ inputs.model || 'gpt-5.6' }}
+          MAX_TASKS: ${{ inputs.max_tasks_per_run || '20' }}
+          FORCE_BASELINE: ${{ inputs.force_baseline || false }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GH_TOKEN: ${{ github.token }}
         run: |
           args=(
             --project "${PROJECT}"
+            --packet-dir /tmp/sdd-drift-v4-packet
             --model "${MODEL}"
             --max-tasks-per-run "${MAX_TASKS}"
             --skip-evidence-validation
+            --publish-state
+            --publish-draft-pr
+            --repo "${GITHUB_REPOSITORY}"
           )
-          if [[ "${PUBLISH}" == "true" ]]; then
-            args+=(--publish-draft-pr --repo "${GITHUB_REPOSITORY}")
+          if [[ "${FORCE_BASELINE}" == 'true' ]]; then
+            args+=(--force-baseline)
           fi
           npm run drift:assess:v4 -- "${args[@]}"

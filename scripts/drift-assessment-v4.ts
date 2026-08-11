@@ -51,6 +51,7 @@ export type DriftTask = {
     behavior_id: string;
     candidate_id: string;
     commit_id: string;
+    commit_sha: string;
     behavior: string;
     affected_paths: string[];
   }>;
@@ -81,7 +82,7 @@ export type RunRollup = {
 
 export type AssessmentBundle = {
   protocol_version: '4.0';
-  automation_version: '1.1.0';
+  automation_version: '1.2.0';
   mode: 'live' | 'fixture';
   created_at_utc: string;
   project: {
@@ -111,6 +112,10 @@ export type AssessmentBundle = {
   };
   run_rollups: RunRollup[];
   calls: CallRecord[];
+  resolved_drift: {
+    behaviors: DriftTask['behaviors'];
+    assessments: DriftOutput['assessments'];
+  };
   publication: {
     draft_pr_required: boolean;
     reason: 'rating_changed' | 'evidence_incomplete' | 'none';
@@ -123,6 +128,12 @@ type RunOptions = {
   assessor: ModelAssessor;
   requestedModel: string;
   previousRating?: DriftRating | null;
+  baselineLiveClaims?: DriftTask['live_claims'];
+  baselineBehaviors?: DriftTask['behaviors'];
+  baselineDriftAssessments?: DriftOutput['assessments'];
+  reassessBaselineBehaviors?: boolean;
+  preflightReasons?: string[];
+  preflightProjectedPerRun?: number;
   maxTasksPerRun?: number;
   concurrency?: number;
   mode?: 'live' | 'fixture';
@@ -237,7 +248,12 @@ function materialityAgreement(records: CallRecord[]): boolean {
   return canonicalize(normalize('run-1')) === canonicalize(normalize('run-2'));
 }
 
-function mergeLiveClaims(records: CallRecord[], chunks: any[], runId: RunId): DriftTask['live_claims'] {
+function mergeLiveClaims(
+  records: CallRecord[],
+  chunks: any[],
+  runId: RunId,
+  baselineLiveClaims: DriftTask['live_claims'],
+): DriftTask['live_claims'] {
   const candidates = new Map<string, { segment_id: string; statement: string }>();
   for (const chunk of chunks.filter((item) => item.kind === 'corpus-claims')) {
     for (const item of chunk.items) {
@@ -250,8 +266,12 @@ function mergeLiveClaims(records: CallRecord[], chunks: any[], runId: RunId): Dr
       }
     }
   }
-  const claims: DriftTask['live_claims'] = [];
+  const claims: DriftTask['live_claims'] = baselineLiveClaims.map((claim) => ({ ...claim }));
   const seen = new Set<string>();
+  for (const claim of claims) {
+    assert(!seen.has(claim.claim_id), `${runId}: duplicate baseline claim ${claim.claim_id}`);
+    seen.add(claim.claim_id);
+  }
   for (const output of outputsFor(records, runId, 'corpus-claims')) {
     for (const assessment of output.assessments) {
       for (const classification of assessment.classifications) {
@@ -290,6 +310,7 @@ function mergeMaterialBehaviors(records: CallRecord[], chunks: any[], runId: Run
           behavior_id: behavior.behavior_id,
           candidate_id: assessment.candidate_id,
           commit_id: item.candidate.commit_id,
+          commit_sha: item.commit.sha,
           behavior: behavior.behavior,
           affected_paths: behavior.affected_paths,
         });
@@ -402,7 +423,7 @@ function baseBundle(options: RunOptions, calls: CallRecord[], projectedPerRun: n
   const previousRating = options.previousRating ?? null;
   return {
     protocol_version: '4.0',
-    automation_version: '1.1.0',
+    automation_version: '1.2.0',
     mode: options.mode ?? 'live',
     created_at_utc: (options.now ?? (() => new Date()))().toISOString(),
     project: {
@@ -432,6 +453,7 @@ function baseBundle(options: RunOptions, calls: CallRecord[], projectedPerRun: n
     },
     run_rollups: [],
     calls,
+    resolved_drift: { behaviors: [], assessments: [] },
     publication: publication('unknown', 'unknown', previousRating),
   };
 }
@@ -452,8 +474,29 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
   const materialityChunks = options.chunks.filter((chunk) => chunk.kind === 'materiality');
   const pinnedChunks = options.chunks.filter((chunk) => chunk.kind === 'pinned-checks');
   const baseTasksPerRun = claimsChunks.length + materialityChunks.length + pinnedChunks.length;
+  if (options.preflightReasons?.length) {
+    return unknown(
+      options,
+      [],
+      Math.max(baseTasksPerRun, options.preflightProjectedPerRun ?? 0),
+      [...options.preflightReasons],
+    );
+  }
   if (baseTasksPerRun > maxTasksPerRun) {
     return unknown(options, [], baseTasksPerRun, [`task_budget_exceeded:${baseTasksPerRun}>${maxTasksPerRun}`]);
+  }
+  const baselineBehaviors = options.baselineBehaviors ?? [];
+  const baselineDriftAssessments = options.baselineDriftAssessments ?? [];
+  const baselineBehaviorIds = baselineBehaviors.map((behavior) => behavior.behavior_id);
+  const baselineAssessmentIds = baselineDriftAssessments.map((assessment) => assessment.behavior_id);
+  if (canonicalize(baselineBehaviorIds) !== canonicalize(baselineAssessmentIds)) {
+    return unknown(options, [], baseTasksPerRun, ['incremental_drift_state_coverage_mismatch']);
+  }
+  const couldNeedDriftCall = materialityChunks.length > 0
+    || (options.reassessBaselineBehaviors === true && baselineBehaviors.length > 0);
+  const maximumProjectedPerRun = baseTasksPerRun + (couldNeedDriftCall ? 1 : 0);
+  if (maximumProjectedPerRun > maxTasksPerRun) {
+    return unknown(options, [], maximumProjectedPerRun, [`task_budget_exceeded:${maximumProjectedPerRun}>${maxTasksPerRun}`]);
   }
 
   const calls: CallRecord[] = [];
@@ -472,9 +515,20 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
   }
 
   const stageRecords = [...claimCalls, ...materialCalls];
-  const claimsByRun = new Map(RUN_IDS.map((runId) => [runId, mergeLiveClaims(stageRecords, options.chunks, runId)]));
-  const behaviorsByRun = new Map(RUN_IDS.map((runId) => [runId, mergeMaterialBehaviors(stageRecords, options.chunks, runId)]));
-  const driftTasks = RUN_IDS.map((runId) => buildDriftTask(options.project, claimsByRun.get(runId)!, behaviorsByRun.get(runId)!));
+  const claimsByRun = new Map(RUN_IDS.map((runId) => [
+    runId,
+    mergeLiveClaims(stageRecords, options.chunks, runId, options.baselineLiveClaims ?? []),
+  ]));
+  const newBehaviorsByRun = new Map(RUN_IDS.map((runId) => [runId, mergeMaterialBehaviors(stageRecords, options.chunks, runId)]));
+  const behaviorsByRun = new Map(RUN_IDS.map((runId) => [
+    runId,
+    [...baselineBehaviors.map((behavior) => ({ ...behavior, affected_paths: [...behavior.affected_paths] })), ...newBehaviorsByRun.get(runId)!],
+  ]));
+  const driftTasks = RUN_IDS.map((runId) => buildDriftTask(
+    options.project,
+    claimsByRun.get(runId)!,
+    options.reassessBaselineBehaviors ? behaviorsByRun.get(runId)! : newBehaviorsByRun.get(runId)!,
+  ));
   const needsDriftCall = driftTasks.some((task) => task.behaviors.length > 0);
   const projectedPerRun = baseTasksPerRun + (needsDriftCall ? 1 : 0);
   if (projectedPerRun > maxTasksPerRun) {
@@ -542,7 +596,7 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
   const actualModels = new Set(successfulCalls.map((call) => call.model).filter((model): model is string => Boolean(model)));
   const isolationReasons = [
     new Set(responseIds).size !== responseIds.length ? 'response_reuse_detected' : null,
-    actualModels.size !== 1 ? 'model_mismatch_between_calls' : null,
+    successfulCalls.length > 0 && actualModels.size !== 1 ? 'model_mismatch_between_calls' : null,
   ].filter((reason): reason is string => Boolean(reason));
   if (isolationReasons.length) {
     return unknown(
@@ -555,9 +609,16 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
   }
 
   const rollups = RUN_IDS.map((runId) => {
-    const driftOutput: DriftOutput = needsDriftCall
+    const currentDriftOutput: DriftOutput = needsDriftCall
       ? outputsFor(driftCalls, runId, 'drift-matching')[0]
       : { protocol_version: '4.0', project_slug: options.project.identity.slug, assessments: [] };
+    const driftOutput: DriftOutput = {
+      ...currentDriftOutput,
+      assessments: [
+        ...(options.reassessBaselineBehaviors ? [] : baselineDriftAssessments.map((assessment) => ({ ...assessment }))),
+        ...currentDriftOutput.assessments,
+      ],
+    };
     return rollupRun(
       options.project,
       runId,
@@ -593,6 +654,16 @@ export async function runAutomatedAssessment(options: RunOptions): Promise<Asses
     rating: true,
   };
   bundle.run_rollups = rollups;
+  const runOneCurrentDrift: DriftOutput = needsDriftCall
+    ? outputsFor(driftCalls, 'run-1', 'drift-matching')[0]
+    : { protocol_version: '4.0', project_slug: options.project.identity.slug, assessments: [] };
+  bundle.resolved_drift = {
+    behaviors: behaviorsByRun.get('run-1')!,
+    assessments: [
+      ...(options.reassessBaselineBehaviors ? [] : baselineDriftAssessments.map((assessment) => ({ ...assessment }))),
+      ...runOneCurrentDrift.assessments,
+    ],
+  };
   bundle.task_budget.actual_model_calls = calls.filter((call) => call.status === 'ok').length;
   bundle.publication = publication(bundle.status, bundle.rating, bundle.previous_rating);
   return bundle;

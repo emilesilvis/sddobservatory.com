@@ -323,7 +323,7 @@ function main() {
 
   const index: any = {
     protocol_version: '4.0',
-    builder_version: '4.1.0-deterministic-claims',
+    builder_version: '4.2.0-incremental-state',
     project_selection: requestedSlugs
       ? `selected frozen v4 projects: ${[...targetSlugs].sort().join(',')}`
       : 'nine prospective oversize projects plus agentic-context-engine, logitune, and schematic controls',

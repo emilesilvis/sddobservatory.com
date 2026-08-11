@@ -112,7 +112,7 @@ test('builds a claim task item with source-valid scope anchors', () => {
 
   const item = compileClaimTaskItem(
     segment,
-    { artifact_id: 'f0001', path: 'docs/requirements.md' },
+    { artifact_id: 'f0001', path: 'docs/requirements.md', git_blob_sha: 'a'.repeat(40) },
     [
       { name: 'Requirements', source_ids: ['s0001'] },
       { name: 'Other component', source_ids: ['s0002'] },
@@ -122,12 +122,14 @@ test('builds a claim task item with source-valid scope anchors', () => {
   assert.deepEqual({
     artifact_id: item.artifact_id,
     path: item.path,
+    git_blob_sha: item.git_blob_sha,
     segment_id: item.segment_id,
     allowed_scope_anchor_names: item.allowed_scope_anchor_names,
     candidate_ids: item.claim_candidates.map((candidate) => candidate.candidate_id),
   }, {
     artifact_id: 'f0001',
     path: 'docs/requirements.md',
+    git_blob_sha: 'a'.repeat(40),
     segment_id: 's0001-g0001',
     allowed_scope_anchor_names: ['Requirements'],
     candidate_ids: ['s0001-g0001/q0001'],

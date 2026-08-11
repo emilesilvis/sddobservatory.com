@@ -18,7 +18,7 @@ specStructure:
     Success Scenario, and Alternative Flows. Sibling AI-UP artifacts sit in
     `docs/`: `vision.md`, `requirements.md`, `entity_model.md`, and a
     `use_cases.puml` diagram.
-drift: low
+drift: moderate
 timeline:
   - date: 2026-04-24
     title: AI Unified Process adopted
@@ -29,16 +29,17 @@ timeline:
     title: Use-case set completed
     description: "Latest spec commit: `Implementing UC-012 to UC-014`."
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-08-11
 ---
 
 ## Spec-to-code drift
 
-Low. The specs were retrofitted in just over a week (2026-04-24 to 2026-05-02, five commits) and have been untouched
-since, while the repository kept receiving pushes for roughly two more months. The mitigating signal is that the
-use cases carry explicit lifecycle `Status` fields and the final spec commit was `Implementing UC-012 to UC-014` —
-the spec set reads as completed for its scope rather than abandoned mid-flight. Whether the post-May commits are
-feature work that bypassed the use cases has not been verified.
+Moderate (`M1`). Both isolated runs agreed that the pinned check “Do the live non-PostgreSQL ER-diagram statements
+agree with each other and with the pinned generic INFORMATION_SCHEMA implementation?” is contradicted. The finding
+is non-core, so M1 applies.
+
+The automated v4 assessment used 28 live claims and completed all two-run agreement gates. See the
+[complete assessment record](https://github.com/emilesilvis/sddobservatory.com/blob/main/docs/research/drift-assessments/2026-08-11-schematic-d37d893a02df.json).
 
 ## Defects and rework
 
