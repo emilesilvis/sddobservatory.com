@@ -1,5 +1,10 @@
 # Automated drift monitoring handover — 2026-08-09
 
+> **Implemented on 2026-08-11:** the incremental claim state, delta planner, scheduled workflow, and single-PR
+> publication proposal described below now exist. See
+> [`2026-08-11-drift-assessment-automation.md`](2026-08-11-drift-assessment-automation.md) for the current operating
+> model and one-time baseline boundary.
+
 This note preserves the outcome of [issue #60](https://github.com/emilesilvis/sddobservatory.com/issues/60) and the
 smallest useful continuation point. The work answers whether unchanged repository states can be re-rated reliably;
 it does not ship an automated publisher.

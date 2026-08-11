@@ -13,6 +13,13 @@ import {
   type ModelStageKind,
   type ModelTask,
 } from './drift-assessment-v4.ts';
+import {
+  buildReviewState,
+  parseReviewState,
+  planIncrementalAssessment,
+  type DriftReviewStateV1,
+} from './drift-incremental-v4.ts';
+import { buildPublicationProposal } from './drift-publication-v4.ts';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const DEFAULT_PACKET_DIR = resolve(ROOT, 'docs/research/drift-evidence-v4');
@@ -210,8 +217,8 @@ function runGh(args: string[]): string {
   return execFileSync('gh', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }).trim();
 }
 
-function runGhJson(endpoint: string, payload: unknown, jq: string): string {
-  return execFileSync('gh', ['api', '--method', 'POST', endpoint, '--input', '-', '--jq', jq], {
+function runGhJson(endpoint: string, payload: unknown, jq: string, method = 'POST'): string {
+  return execFileSync('gh', ['api', '--method', method, endpoint, '--input', '-', '--jq', jq], {
     cwd: ROOT,
     encoding: 'utf8',
     input: JSON.stringify(payload),
@@ -228,48 +235,130 @@ function defaultRepository(): string {
   return repository;
 }
 
-function publishDraftProposal(bundle: AssessmentBundle, repository: string, base: string): string | null {
-  assert(bundle.mode === 'live', 'Fixture assessments cannot be published');
-  if (!bundle.publication.draft_pr_required) return null;
-  const stamp = bundle.created_at_utc.replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
-  const branch = `automation/drift-${bundle.project.slug}-${stamp.toLowerCase()}`;
-  const reportPath = `docs/research/drift-assessments/${bundle.created_at_utc.slice(0, 10)}-${bundle.project.slug}-${bundle.project.pin_sha.slice(0, 12)}.json`;
+function stateBranch(slug: string): string {
+  return `automation/drift-state-${slug}`;
+}
+
+function statePath(slug: string): string {
+  return `docs/research/drift-state-v1/${slug}.json`;
+}
+
+function isGitHubNotFound(error: unknown): boolean {
+  const details = [
+    error instanceof Error ? error.message : String(error),
+    typeof error === 'object' && error !== null && 'stderr' in error ? String(error.stderr) : '',
+    typeof error === 'object' && error !== null && 'stdout' in error ? String(error.stdout) : '',
+  ].join('\n');
+  return /(?:HTTP\s+404|\b404\b|Not Found)/i.test(details);
+}
+
+function loadRemoteReviewState(repository: string, slug: string): DriftReviewStateV1 | null {
+  const branch = stateBranch(slug);
+  try {
+    runGh(['api', `repos/${repository}/git/ref/heads/${branch}`, '--jq', '.object.sha']);
+  } catch (error) {
+    if (isGitHubNotFound(error)) return null;
+    throw error;
+  }
+  const serialized = runGh([
+    'api',
+    '--method',
+    'GET',
+    '--header',
+    'Accept: application/vnd.github.raw+json',
+    `repos/${repository}/contents/${statePath(slug)}?ref=${encodeURIComponent(branch)}`,
+  ]);
+  assert(serialized.length > 0, `${slug}: remote drift state is empty`);
+  return parseReviewState(serialized);
+}
+
+function publishReviewState(state: DriftReviewStateV1, repository: string, base: string): string {
+  const branch = stateBranch(state.project_slug);
+  let parentSha: string;
+  let branchExists = true;
+  try {
+    parentSha = runGh(['api', `repos/${repository}/git/ref/heads/${branch}`, '--jq', '.object.sha']);
+  } catch (error) {
+    if (!isGitHubNotFound(error)) throw error;
+    branchExists = false;
+    parentSha = runGh(['api', `repos/${repository}/git/ref/heads/${base}`, '--jq', '.object.sha']);
+  }
+  assert(/^[0-9a-f]{40}$/.test(parentSha), 'GitHub returned an invalid state parent SHA');
+  const parentTreeSha = runGh(['api', `repos/${repository}/git/commits/${parentSha}`, '--jq', '.tree.sha']);
+  assert(/^[0-9a-f]{40}$/.test(parentTreeSha), 'GitHub returned an invalid state parent tree SHA');
+  const content = `${JSON.stringify(state, null, 2)}\n`;
+  const blobSha = runGhJson(`repos/${repository}/git/blobs`, { content, encoding: 'utf-8' }, '.sha');
+  assert(/^[0-9a-f]{40}$/.test(blobSha), 'GitHub returned an invalid state blob SHA');
+  const treeSha = runGhJson(`repos/${repository}/git/trees`, {
+    base_tree: parentTreeSha,
+    tree: [{ path: statePath(state.project_slug), mode: '100644', type: 'blob', sha: blobSha }],
+  }, '.sha');
+  assert(/^[0-9a-f]{40}$/.test(treeSha), 'GitHub returned an invalid state tree SHA');
+  const commitSha = runGhJson(`repos/${repository}/git/commits`, {
+    message: `advance automated drift state for ${state.project_slug}`,
+    tree: treeSha,
+    parents: [parentSha],
+  }, '.sha');
+  assert(/^[0-9a-f]{40}$/.test(commitSha), 'GitHub returned an invalid state commit SHA');
+  if (branchExists) {
+    runGhJson(`repos/${repository}/git/refs/heads/${branch}`, { sha: commitSha, force: false }, '.ref', 'PATCH');
+  } else {
+    runGhJson(`repos/${repository}/git/refs`, { ref: `refs/heads/${branch}`, sha: commitSha }, '.ref');
+  }
+  return branch;
+}
+
+function publishDraftProposal(bundle: AssessmentBundle, chunks: any[], repository: string, base: string): string | null {
+  const projectPath = resolve(ROOT, 'src/content/projects', `${bundle.project.slug}.md`);
+  const proposal = buildPublicationProposal({
+    bundle,
+    chunks,
+    projectMarkdown: existsSync(projectPath) ? readFileSync(projectPath, 'utf8') : null,
+    repository,
+  });
+  if (!proposal) return null;
   const baseSha = runGh(['api', `repos/${repository}/git/ref/heads/${base}`, '--jq', '.object.sha']);
   assert(/^[0-9a-f]{40}$/.test(baseSha), 'GitHub returned an invalid base SHA');
   const baseTreeSha = runGh(['api', `repos/${repository}/git/commits/${baseSha}`, '--jq', '.tree.sha']);
   assert(/^[0-9a-f]{40}$/.test(baseTreeSha), 'GitHub returned an invalid base tree SHA');
-  const content = `${JSON.stringify(bundle, null, 2)}\n`;
-  const blobSha = runGhJson(`repos/${repository}/git/blobs`, { content, encoding: 'utf-8' }, '.sha');
-  assert(/^[0-9a-f]{40}$/.test(blobSha), 'GitHub returned an invalid assessment blob SHA');
+  const tree = proposal.files.map((file) => {
+    const sha = runGhJson(`repos/${repository}/git/blobs`, { content: file.content, encoding: 'utf-8' }, '.sha');
+    assert(/^[0-9a-f]{40}$/.test(sha), `GitHub returned an invalid blob SHA for ${file.path}`);
+    return { path: file.path, mode: '100644', type: 'blob', sha };
+  });
   const treeSha = runGhJson(`repos/${repository}/git/trees`, {
     base_tree: baseTreeSha,
-    tree: [{ path: reportPath, mode: '100644', type: 'blob', sha: blobSha }],
+    tree,
   }, '.sha');
   assert(/^[0-9a-f]{40}$/.test(treeSha), 'GitHub returned an invalid assessment tree SHA');
   const commitSha = runGhJson(`repos/${repository}/git/commits`, {
-    message: `record automated drift assessment for ${bundle.project.slug}`,
+    message: `propose automated drift assessment for ${bundle.project.slug}`,
     tree: treeSha,
     parents: [baseSha],
   }, '.sha');
   assert(/^[0-9a-f]{40}$/.test(commitSha), 'GitHub returned an invalid assessment commit SHA');
-  runGhJson(`repos/${repository}/git/refs`, { ref: `refs/heads/${branch}`, sha: commitSha }, '.ref');
-  const title = bundle.status === 'accepted'
-    ? `Review drift assessment: ${bundle.project.slug} → ${bundle.rating}`
-    : `Review incomplete drift assessment: ${bundle.project.slug}`;
-  const body = [
-    '## Automated assessment',
-    '',
-    `- Project: \`${bundle.project.slug}\``,
-    `- Pin: \`${bundle.project.pin_sha}\``,
-    `- Model: \`${bundle.requested_model}\``,
-    `- Result: \`${bundle.status}\``,
-    `- Proposed rating: \`${bundle.rating}\``,
-    `- Previous rating: \`${bundle.previous_rating ?? 'unknown'}\``,
-    `- Agreement gates: \`${JSON.stringify(bundle.agreement)}\``,
-    '',
-    `The complete reviewable assessment record is in \`${reportPath}\`. This draft does not directly edit published project content.`,
-  ].join('\n');
-  return runGh(['pr', 'create', '--repo', repository, '--base', base, '--head', branch, '--draft', '--title', title, '--body', body]);
+  let branchExists = true;
+  try {
+    runGh(['api', `repos/${repository}/git/ref/heads/${proposal.branch}`, '--jq', '.object.sha']);
+  } catch (error) {
+    if (!isGitHubNotFound(error)) throw error;
+    branchExists = false;
+  }
+  if (branchExists) {
+    runGhJson(`repos/${repository}/git/refs/heads/${proposal.branch}`, { sha: commitSha, force: true }, '.ref', 'PATCH');
+  } else {
+    runGhJson(`repos/${repository}/git/refs`, { ref: `refs/heads/${proposal.branch}`, sha: commitSha }, '.ref');
+  }
+  const existing = runGh([
+    'pr', 'list', '--repo', repository, '--head', proposal.branch, '--state', 'open', '--json', 'url', '--jq', '.[0].url // ""',
+  ]);
+  if (existing) {
+    runGh(['pr', 'edit', existing, '--repo', repository, '--title', proposal.title, '--body', proposal.body]);
+    return existing;
+  }
+  return runGh([
+    'pr', 'create', '--repo', repository, '--base', base, '--head', proposal.branch, '--draft', '--title', proposal.title, '--body', proposal.body,
+  ]);
 }
 
 async function main() {
@@ -284,6 +373,10 @@ async function main() {
   const concurrency = integerOption('--concurrency', 2);
   const maxOutputTokens = integerOption('--max-output-tokens', 32_768);
   const retries = integerOption('--retries', 2);
+  const publishDraft = process.argv.includes('--publish-draft-pr');
+  const publishState = process.argv.includes('--publish-state');
+  const forceBaseline = process.argv.includes('--force-baseline');
+  const repository = publishDraft || publishState ? option('--repo') ?? defaultRepository() : null;
   const skipEvidenceValidation = process.argv.includes('--skip-evidence-validation');
   if (!skipEvidenceValidation) {
     execFileSync('npm', ['run', 'drift:evidence:v4:validate', '--', '--packet-dir', packetDir], {
@@ -292,14 +385,36 @@ async function main() {
     });
   }
   const { project, chunks } = loadProject(packetDir, slug);
+  const stateFile = option('--state-file');
+  assert(!(forceBaseline && stateFile), '--force-baseline cannot be combined with --state-file');
+  let previousState: DriftReviewStateV1 | null = null;
+  const statePreflightReasons: string[] = [];
+  try {
+    if (!forceBaseline && stateFile) {
+      previousState = parseReviewState(readFileSync(resolve(process.cwd(), stateFile), 'utf8'));
+    } else if (!forceBaseline && publishState) {
+      previousState = loadRemoteReviewState(repository!, slug);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (!(error instanceof SyntaxError) && !/drift review state/i.test(message)) throw error;
+    statePreflightReasons.push(`incremental_state_invalid:${message}`);
+  }
+  const plan = planIncrementalAssessment({ project, chunks, state: previousState, maxTasksPerRun });
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const assessor = createOpenAiAssessor({ client, model, reasoningEffort: effort, maxOutputTokens, retries });
   const bundle = await runAutomatedAssessment({
     project,
-    chunks,
+    chunks: plan.chunks,
     assessor,
     requestedModel: model,
     previousRating: currentRating(slug),
+    baselineLiveClaims: plan.baseline_live_claims,
+    baselineBehaviors: plan.baseline_behaviors,
+    baselineDriftAssessments: plan.baseline_drift_assessments,
+    reassessBaselineBehaviors: plan.reassess_baseline_behaviors,
+    preflightReasons: [...statePreflightReasons, ...plan.preflight_reasons],
+    preflightProjectedPerRun: plan.projected_tasks_per_run,
     maxTasksPerRun,
     concurrency,
     mode: 'live',
@@ -312,9 +427,19 @@ async function main() {
   const resultPath = join(outputDir, 'assessment.json');
   writeFileSync(resultPath, `${JSON.stringify(bundle, null, 2)}\n`);
 
+  let reviewState: DriftReviewStateV1 | null = null;
+  let reviewStatePath: string | null = null;
+  let reviewStateBranch: string | null = null;
+  if (bundle.status === 'accepted') {
+    reviewState = buildReviewState({ bundle, project, chunks, previousState });
+    reviewStatePath = join(outputDir, 'review-state.json');
+    writeFileSync(reviewStatePath, `${JSON.stringify(reviewState, null, 2)}\n`);
+    if (publishState) reviewStateBranch = publishReviewState(reviewState, repository!, option('--base') ?? 'main');
+  }
+
   let draftPr: string | null = null;
-  if (process.argv.includes('--publish-draft-pr')) {
-    draftPr = publishDraftProposal(bundle, option('--repo') ?? defaultRepository(), option('--base') ?? 'main');
+  if (publishDraft) {
+    draftPr = publishDraftProposal(bundle, chunks, repository!, option('--base') ?? 'main');
   }
   console.log(JSON.stringify({
     project: slug,
@@ -322,7 +447,14 @@ async function main() {
     rating: bundle.rating,
     rule: bundle.rule,
     calls: bundle.task_budget.actual_model_calls,
+    incremental: {
+      mode: plan.mode,
+      forced_baseline: forceBaseline,
+      ...plan.accounting,
+    },
     result: resultPath,
+    review_state: reviewStatePath,
+    review_state_branch: reviewStateBranch,
     draft_pr: draftPr,
   }, null, 2));
 }

@@ -43,7 +43,7 @@ function verifyHash(value: any, label: string): string {
 
 const packetDir = readOption('--packet-dir', resolve(ROOT, 'docs/research/drift-evidence-v4'));
 const index = JSON.parse(readFileSync(resolve(packetDir, 'index.json'), 'utf8'));
-assert(index.protocol_version === '4.0' && index.builder_version === '4.1.0-deterministic-claims', 'Invalid v4 index');
+assert(index.protocol_version === '4.0' && index.builder_version === '4.2.0-incremental-state', 'Invalid v4 index');
 verifyHash(index, 'index');
 assert(index.projects.length > 0, 'V4 index must contain at least one project');
 assert(new Set(index.projects.map((project: any) => project.slug)).size === index.projects.length, 'V4 index has duplicate projects');
@@ -99,6 +99,8 @@ for (const indexed of index.projects) {
     } else if (chunk.kind === 'corpus-claims') {
       assert(chunk.items.length <= 8 && chunk.assessment_contract?.coverage, `${chunkRef.chunk_id}: corpus-claim contract`);
       for (const item of chunk.items) {
+        const artifact = artifacts.get(item.artifact_id);
+        assert(artifact && item.path === artifact.path && item.git_blob_sha === artifact.git_blob_sha, `${item.segment_id}: claim artifact identity`);
         assert(item.segment_id === item.evidence_segment.segment_id, `${chunkRef.chunk_id}: claim evidence mismatch`);
         assert(!claimSegments.has(item.segment_id), `${indexed.slug}: duplicate claim segment ${item.segment_id}`);
         assert(item.evidence_segment.content_sha256 === sha256(item.evidence_segment.content), `${item.segment_id}: inline claim evidence hash`);

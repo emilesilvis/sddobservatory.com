@@ -38,6 +38,7 @@ function fixture() {
       kind: 'materiality',
       items: [{
         candidate_id: 'm0001',
+        commit: { sha: '3'.repeat(40) },
         candidate: { commit_id: 'c0001', affected_paths: ['src/feature.ts'] },
       }],
     },
@@ -113,14 +114,14 @@ function answer(task: ModelTask, overrides: {
   return {
     protocol_version: '4.0',
     project_slug: 'fixture',
-    assessments: [{
-      behavior_id: 'm0001/b01',
+    assessments: task.task.behaviors.map((behavior: any) => ({
+      behavior_id: behavior.behavior_id,
       scope: 'in_scope',
       scope_anchor_names: ['Requirements'],
       status,
       claim_ids: status === 'omitted' ? [] : ['s0001-g0001/q0001'],
       core_claim: false,
-    }],
+    })),
   };
 }
 
@@ -197,6 +198,22 @@ test('fails closed without model calls when the precommitted task budget is exce
   assert.equal(fake.calls(), 0);
 });
 
+test('reserves the possible drift-matching call before spending the task budget', async () => {
+  const input = fixture();
+  const fake = assessorFor(() => ({ material: true }));
+  const result = await runAutomatedAssessment({
+    ...input,
+    assessor: fake.assessor,
+    requestedModel: 'fixture-model',
+    maxTasksPerRun: 3,
+    mode: 'fixture',
+  });
+
+  assert.equal(result.status, 'unknown');
+  assert.deepEqual(result.reasons, ['task_budget_exceeded:4>3']);
+  assert.equal(fake.calls(), 0);
+});
+
 test('runs drift matching for material behaviors and rolls complete coverage to none', async () => {
   const input = fixture();
   const fake = assessorFor(() => ({ material: true, pinnedStatus: 'covered', driftStatus: 'covered' }));
@@ -212,6 +229,8 @@ test('runs drift matching for material behaviors and rolls complete coverage to 
   assert.equal(result.rule, 'N1');
   assert.equal(result.publication.draft_pr_required, false);
   assert.equal(result.task_budget.projected_per_run, 4);
+  assert.equal(result.resolved_drift.behaviors[0].commit_sha, '3'.repeat(40));
+  assert.equal(result.resolved_drift.assessments[0].status, 'covered');
   assert.equal(fake.calls(), 8);
 });
 
@@ -237,6 +256,120 @@ test('uses compiler-owned claim IDs and source statements for drift matching', a
       scope_anchor_name: 'Requirements',
     }]);
   }
+});
+
+test('uses persisted live claims when unchanged corpus needs no model call', async () => {
+  const input = fixture();
+  input.chunks = input.chunks.filter((chunk) => chunk.kind !== 'corpus-claims');
+  const fake = assessorFor(() => ({ pinnedStatus: 'covered' }));
+  const result = await runAutomatedAssessment({
+    ...input,
+    assessor: fake.assessor,
+    requestedModel: 'fixture-model',
+    previousRating: 'none',
+    baselineLiveClaims: [{
+      claim_id: 'qv1-111111111111111111111111',
+      segment_id: 'qv1-source-11111111111111111111',
+      statement: 'The feature is available.',
+      core_claim: false,
+      scope_anchor_name: 'Requirements',
+    }],
+    mode: 'fixture',
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.rating, 'none');
+  assert.equal(result.run_rollups[0].live_claims, 1);
+  assert.equal(fake.calls(), 4);
+});
+
+test('carries persisted drift findings into an unchanged incremental rating', async () => {
+  const input = fixture();
+  input.chunks = [];
+  const fake = assessorFor();
+  const baselineBehaviors = [{
+    behavior_id: 'bv1-111111111111111111111111',
+    candidate_id: 'm0001',
+    commit_id: 'c0001',
+    commit_sha: '3'.repeat(40),
+    behavior: 'The implementation exposes an undocumented feature.',
+    affected_paths: ['src/feature.ts'],
+  }];
+  const result = await runAutomatedAssessment({
+    ...input,
+    assessor: fake.assessor,
+    requestedModel: 'fixture-model',
+    previousRating: 'moderate',
+    baselineBehaviors,
+    baselineDriftAssessments: [{
+      behavior_id: baselineBehaviors[0].behavior_id,
+      scope: 'in_scope',
+      scope_anchor_names: ['Requirements'],
+      status: 'omitted',
+      claim_ids: [],
+      core_claim: false,
+    }],
+    mode: 'fixture',
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.rating, 'moderate');
+  assert.equal(result.rule, 'M1');
+  assert.equal(result.run_rollups[0].material_behaviors, 1);
+  assert.equal(result.resolved_drift.assessments[0].status, 'omitted');
+  assert.equal(fake.calls(), 0);
+});
+
+test('reassesses persisted behaviors when corpus evidence changes', async () => {
+  const input = fixture();
+  input.chunks = input.chunks.filter((chunk) => chunk.kind === 'corpus-claims');
+  const fake = assessorFor(() => ({ driftStatus: 'covered' }));
+  const baselineBehaviors = [{
+    behavior_id: 'bv1-111111111111111111111111',
+    candidate_id: 'm0001',
+    commit_id: 'c0001',
+    commit_sha: '3'.repeat(40),
+    behavior: 'The feature is available.',
+    affected_paths: ['src/feature.ts'],
+  }];
+  const result = await runAutomatedAssessment({
+    ...input,
+    assessor: fake.assessor,
+    requestedModel: 'fixture-model',
+    previousRating: 'moderate',
+    baselineBehaviors,
+    baselineDriftAssessments: [{
+      behavior_id: baselineBehaviors[0].behavior_id,
+      scope: 'in_scope',
+      scope_anchor_names: ['Requirements'],
+      status: 'omitted',
+      claim_ids: [],
+      core_claim: false,
+    }],
+    reassessBaselineBehaviors: true,
+    mode: 'fixture',
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.rating, 'none');
+  assert.equal(fake.tasks().filter((task) => task.kind === 'drift-matching').length, 2);
+  assert.equal(fake.calls(), 4);
+});
+
+test('fails closed before model calls when incremental state cannot prove complete coverage', async () => {
+  const input = fixture();
+  const fake = assessorFor();
+  const result = await runAutomatedAssessment({
+    ...input,
+    assessor: fake.assessor,
+    requestedModel: 'fixture-model',
+    preflightReasons: ['incremental_base_not_in_first_parent_window'],
+    mode: 'fixture',
+  });
+
+  assert.equal(result.status, 'unknown');
+  assert.deepEqual(result.reasons, ['incremental_base_not_in_first_parent_window']);
+  assert.equal(fake.calls(), 0);
 });
 
 test('rolls a core pinned contradiction to high', async () => {
@@ -294,6 +427,7 @@ test('applies the stale-spec three-commit rule before the moderate rule', () => 
     behavior_id: `m${id}/b01`,
     candidate_id: `m${id}`,
     commit_id: `c${id}`,
+    commit_sha: id.repeat(40),
     behavior: `Behavior ${id}`,
     affected_paths: [`src/${id}.ts`],
   }));
