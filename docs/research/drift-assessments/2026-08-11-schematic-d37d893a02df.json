@@ -1,0 +1,783 @@
+{
+  "protocol_version": "4.0",
+  "automation_version": "1.0.0",
+  "mode": "live",
+  "created_at_utc": "2026-08-11T13:31:44.548Z",
+  "project": {
+    "slug": "schematic",
+    "repository": "BjoernKW/Schematic",
+    "pin_sha": "d37d893a02dfff586aa0a329752603f2477f4234",
+    "pin_time_utc": "2026-08-08T09:55:47Z",
+    "project_manifest_sha256": "2e17bc0029858c6b5097d4087b034c17947e982388d957b15da606164eb3b90d"
+  },
+  "requested_model": "gpt-5.6",
+  "previous_rating": "low",
+  "status": "unknown",
+  "rating": "unknown",
+  "rule": "U1",
+  "reasons": [
+    "corpus_claim_disagreement"
+  ],
+  "agreement": {
+    "corpus_claims": false,
+    "materiality": null,
+    "pinned_checks": null,
+    "drift_matching": null,
+    "rating": null
+  },
+  "task_budget": {
+    "maximum_per_run": 20,
+    "projected_per_run": 3,
+    "actual_model_calls": 2
+  },
+  "run_rollups": [],
+  "calls": [
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "schematic-corpus-claims-0001",
+      "input_sha256": "16a02cb4110ddcf1eaa27dc8ef175cd4d6b5b564ada8e99de20be77a6a36c7d9",
+      "status": "ok",
+      "output": {
+        "protocol_version": "4.0",
+        "chunk_id": "schematic-corpus-claims-0001",
+        "assessments": [
+          {
+            "segment_id": "s0001-g0001",
+            "claims": [
+              {
+                "claim_id": "s0001-g0001/c01",
+                "statement": "Schematic can be added as a single Maven dependency.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-001 Add as Maven dependency"
+              },
+              {
+                "claim_id": "s0001-g0001/c02",
+                "statement": "Adding the Maven dependency auto-configures the database UI without additional setup.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-001 Add as Maven dependency"
+              },
+              {
+                "claim_id": "s0001-g0001/c03",
+                "statement": "The UI displays all tables in the connected database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-002 Browse database schema"
+              },
+              {
+                "claim_id": "s0001-g0001/c04",
+                "statement": "The UI displays the columns of tables in the connected database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-002 Browse database schema"
+              },
+              {
+                "claim_id": "s0001-g0001/c05",
+                "statement": "The UI displays the first rows of a table as a data preview.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-003 Preview table data"
+              },
+              {
+                "claim_id": "s0001-g0001/c06",
+                "statement": "Developers can execute custom SQL queries through the UI.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-004 Execute ad-hoc SQL queries"
+              },
+              {
+                "claim_id": "s0001-g0001/c07",
+                "statement": "Operators can drop a table through Schematic.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-005 Drop a table"
+              },
+              {
+                "claim_id": "s0001-g0001/c08",
+                "statement": "Dropping a table requires confirmation of the operator's intent.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-005 Drop a table"
+              },
+              {
+                "claim_id": "s0001-g0001/c09",
+                "statement": "Operators can truncate a table through Schematic.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-006 Truncate a table"
+              },
+              {
+                "claim_id": "s0001-g0001/c10",
+                "statement": "Truncating a table requires confirmation of the operator's intent.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-006 Truncate a table"
+              },
+              {
+                "claim_id": "s0001-g0001/c11",
+                "statement": "The UI provides an auto-generated entity-relationship diagram.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-007 View ER diagram"
+              },
+              {
+                "claim_id": "s0001-g0001/c12",
+                "statement": "Developers can copy the Mermaid source of the ER diagram to the clipboard.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-008 Copy ER diagram source"
+              },
+              {
+                "claim_id": "s0001-g0001/c13",
+                "statement": "Developers can configure the URL path where the Schematic UI is mounted.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-009 Configure UI mount path"
+              },
+              {
+                "claim_id": "s0001-g0001/c14",
+                "statement": "Developers can sort the table list by name.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-010 Sort and filter table listings"
+              },
+              {
+                "claim_id": "s0001-g0001/c15",
+                "statement": "Developers can filter the table list by name.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-010 Sort and filter table listings"
+              },
+              {
+                "claim_id": "s0001-g0001/c16",
+                "statement": "ER diagram generation works with databases beyond PostgreSQL.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-011 ER diagram for non-PostgreSQL databases"
+              },
+              {
+                "claim_id": "s0001-g0001/c17",
+                "statement": "A host application can register a bean that controls Schematic access.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-012 Host application access control"
+              },
+              {
+                "claim_id": "s0001-g0001/c18",
+                "statement": "The host application's access-control bean can restrict which tables are visible.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-012 Host application access control"
+              },
+              {
+                "claim_id": "s0001-g0001/c19",
+                "statement": "The host application's access-control bean can restrict which operations are permitted.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-012 Host application access control"
+              },
+              {
+                "claim_id": "s0001-g0001/c20",
+                "statement": "Previously executed SQL queries are stored locally.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-013 Query history"
+              },
+              {
+                "claim_id": "s0001-g0001/c21",
+                "statement": "Previously executed SQL queries are accessible from a dropdown.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-013 Query history"
+              },
+              {
+                "claim_id": "s0001-g0001/c22",
+                "statement": "Developers can configure the maximum number of rows displayed in a table preview.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-014 Configurable row preview limit"
+              },
+              {
+                "claim_id": "s0001-g0001/c23",
+                "statement": "Every UI page must complete its initial render within two seconds on a developer workstation connected to a local database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-001 Page load performance"
+              },
+              {
+                "claim_id": "s0001-g0001/c24",
+                "statement": "All read operations must be fully operational after the Maven dependency is added.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-002 Zero required configuration"
+              },
+              {
+                "claim_id": "s0001-g0001/c25",
+                "statement": "No application.yml entries are mandatory for read operations.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-002 Zero required configuration"
+              },
+              {
+                "claim_id": "s0001-g0001/c26",
+                "statement": "Schematic must run entirely within the host Spring Boot process.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-003 In-process operation"
+              },
+              {
+                "claim_id": "s0001-g0001/c27",
+                "statement": "Schematic must not open additional network ports.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-003 In-process operation"
+              },
+              {
+                "claim_id": "s0001-g0001/c28",
+                "statement": "The library must not introduce transitive dependency conflicts with standard Spring Boot 3.x applications.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-004 Dependency footprint"
+              },
+              {
+                "claim_id": "s0001-g0001/c29",
+                "statement": "The library must not introduce transitive dependency conflicts with standard Spring Boot 4.x applications.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-004 Dependency footprint"
+              },
+              {
+                "claim_id": "s0001-g0001/c30",
+                "statement": "Every DROP TABLE operation must display an explicit confirmation dialog before execution.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-005 Destructive-operation safety"
+              },
+              {
+                "claim_id": "s0001-g0001/c31",
+                "statement": "Every TRUNCATE TABLE operation must display an explicit confirmation dialog before execution.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-005 Destructive-operation safety"
+              },
+              {
+                "claim_id": "s0001-g0001/c32",
+                "statement": "The web interface must be usable without horizontal scrolling at screen widths from 768 pixels through 1920 pixels.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-006 Responsive layout"
+              },
+              {
+                "claim_id": "s0001-g0001/c33",
+                "statement": "The library must be distributed as a JAR artifact on Maven Central.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-001 Distribution channel"
+              },
+              {
+                "claim_id": "s0001-g0001/c34",
+                "statement": "The library must target Java 21 LTS as its primary runtime.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-002 Java version"
+              },
+              {
+                "claim_id": "s0001-g0001/c35",
+                "statement": "The library must integrate exclusively through Spring Boot's auto-configuration mechanism.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-003 Host framework integration"
+              },
+              {
+                "claim_id": "s0001-g0001/c36",
+                "statement": "The library must not require changes to the host application's main class.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-003 Host framework integration"
+              },
+              {
+                "claim_id": "s0001-g0001/c37",
+                "statement": "The library must not require changes to the host application's bean definitions.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-003 Host framework integration"
+              },
+              {
+                "claim_id": "s0001-g0001/c38",
+                "statement": "All database operations must use Spring's JdbcClient or JdbcTemplate.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-004 Database access layer"
+              },
+              {
+                "claim_id": "s0001-g0001/c39",
+                "statement": "The library must not introduce a JPA dependency.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-004 Database access layer"
+              },
+              {
+                "claim_id": "s0001-g0001/c40",
+                "statement": "The library must not introduce an ORM dependency.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-004 Database access layer"
+              },
+              {
+                "claim_id": "s0001-g0001/c41",
+                "statement": "The library must use the host application's existing configured datasource.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-005 Datasource reuse"
+              },
+              {
+                "claim_id": "s0001-g0001/c42",
+                "statement": "The library must not require a dedicated secondary datasource.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-005 Datasource reuse"
+              },
+              {
+                "claim_id": "s0001-g0001/c43",
+                "statement": "ER diagram generation in the current release is limited to PostgreSQL databases.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-006 ER diagram scope"
+              },
+              {
+                "claim_id": "s0001-g0001/c44",
+                "statement": "JDBC databases other than PostgreSQL show no ER diagram in the current release.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-006 ER diagram scope"
+              },
+              {
+                "claim_id": "s0001-g0001/c45",
+                "statement": "Schema introspection must rely solely on standard INFORMATION_SCHEMA views.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-007 INFORMATION_SCHEMA reliance"
+              },
+              {
+                "claim_id": "s0001-g0001/c46",
+                "statement": "Basic table operations must rely solely on standard INFORMATION_SCHEMA views.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-007 INFORMATION_SCHEMA reliance"
+              },
+              {
+                "claim_id": "s0001-g0001/c47",
+                "statement": "Schema introspection and basic table operations must work with any JDBC-compatible database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-007 INFORMATION_SCHEMA reliance"
+              },
+              {
+                "claim_id": "s0001-g0001/c48",
+                "statement": "The UI must not require a Node.js build pipeline.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-008 No frontend build step"
+              },
+              {
+                "claim_id": "s0001-g0001/c49",
+                "statement": "The UI must not require an npm build pipeline.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-008 No frontend build step"
+              },
+              {
+                "claim_id": "s0001-g0001/c50",
+                "statement": "All frontend assets must be served as WebJars or loaded from a CDN within the Spring Boot application.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-008 No frontend build step"
+              }
+            ]
+          }
+        ]
+      },
+      "response_id": "resp_0283b12f41aa15c0016a7b2410c9c4819397cc58c5a7b0bc3a",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "input_tokens": 3463,
+        "input_tokens_details": {
+          "cache_write_tokens": 3460,
+          "cached_tokens": 0
+        },
+        "output_tokens": 3320,
+        "output_tokens_details": {
+          "reasoning_tokens": 841
+        },
+        "total_tokens": 6783
+      }
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "schematic-corpus-claims-0001",
+      "input_sha256": "16a02cb4110ddcf1eaa27dc8ef175cd4d6b5b564ada8e99de20be77a6a36c7d9",
+      "status": "ok",
+      "output": {
+        "protocol_version": "4.0",
+        "chunk_id": "schematic-corpus-claims-0001",
+        "assessments": [
+          {
+            "segment_id": "s0001-g0001",
+            "claims": [
+              {
+                "claim_id": "s0001-g0001/c01",
+                "statement": "Schematic can be added as a single Maven dependency.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-001"
+              },
+              {
+                "claim_id": "s0001-g0001/c02",
+                "statement": "Adding the Schematic Maven dependency auto-configures the database UI without additional setup.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-001"
+              },
+              {
+                "claim_id": "s0001-g0001/c03",
+                "statement": "The UI displays all tables in the connected database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-002"
+              },
+              {
+                "claim_id": "s0001-g0001/c04",
+                "statement": "The UI displays the columns of tables in the connected database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-002"
+              },
+              {
+                "claim_id": "s0001-g0001/c05",
+                "statement": "The UI provides a preview of the first rows of a table.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-003"
+              },
+              {
+                "claim_id": "s0001-g0001/c06",
+                "statement": "The UI allows users to execute custom SQL queries.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-004"
+              },
+              {
+                "claim_id": "s0001-g0001/c07",
+                "statement": "An operator can drop a table through Schematic.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-005"
+              },
+              {
+                "claim_id": "s0001-g0001/c08",
+                "statement": "Dropping a table requires confirmation of the operator's intent.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-005"
+              },
+              {
+                "claim_id": "s0001-g0001/c09",
+                "statement": "An operator can truncate a table through Schematic.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-006"
+              },
+              {
+                "claim_id": "s0001-g0001/c10",
+                "statement": "Truncating a table requires confirmation of the operator's intent.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-006"
+              },
+              {
+                "claim_id": "s0001-g0001/c11",
+                "statement": "The UI displays an auto-generated entity-relationship diagram.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-007"
+              },
+              {
+                "claim_id": "s0001-g0001/c12",
+                "statement": "The Mermaid source of the entity-relationship diagram can be copied to the clipboard.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-008"
+              },
+              {
+                "claim_id": "s0001-g0001/c13",
+                "statement": "The URL path at which the Schematic UI is mounted is configurable.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-009"
+              },
+              {
+                "claim_id": "s0001-g0001/c14",
+                "statement": "The table listing can be sorted by table name.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-010"
+              },
+              {
+                "claim_id": "s0001-g0001/c15",
+                "statement": "The table listing can be filtered by table name.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-010"
+              },
+              {
+                "claim_id": "s0001-g0001/c16",
+                "statement": "Entity-relationship diagram generation works with databases other than PostgreSQL.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-011"
+              },
+              {
+                "claim_id": "s0001-g0001/c17",
+                "statement": "A host application can register a bean that restricts which tables are visible in Schematic.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-012"
+              },
+              {
+                "claim_id": "s0001-g0001/c18",
+                "statement": "A host application can register a bean that restricts which Schematic operations are permitted.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-012"
+              },
+              {
+                "claim_id": "s0001-g0001/c19",
+                "statement": "Previously executed SQL queries are stored locally.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-013"
+              },
+              {
+                "claim_id": "s0001-g0001/c20",
+                "statement": "Previously executed SQL queries are accessible from a dropdown.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-013"
+              },
+              {
+                "claim_id": "s0001-g0001/c21",
+                "statement": "The maximum number of rows displayed in a table preview is configurable.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "FR-014"
+              },
+              {
+                "claim_id": "s0001-g0001/c22",
+                "statement": "All UI pages must complete their initial render within two seconds on a developer workstation connected to a local database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-001"
+              },
+              {
+                "claim_id": "s0001-g0001/c23",
+                "statement": "All read operations must be fully operational after adding the Maven dependency without mandatory application.yml entries.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-002"
+              },
+              {
+                "claim_id": "s0001-g0001/c24",
+                "statement": "Schematic must run entirely within the host Spring Boot process.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-003"
+              },
+              {
+                "claim_id": "s0001-g0001/c25",
+                "statement": "Schematic must not open additional network ports.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-003"
+              },
+              {
+                "claim_id": "s0001-g0001/c26",
+                "statement": "The library must not introduce transitive dependency conflicts with a standard Spring Boot 3.x application.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-004"
+              },
+              {
+                "claim_id": "s0001-g0001/c27",
+                "statement": "The library must not introduce transitive dependency conflicts with a standard Spring Boot 4.x application.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-004"
+              },
+              {
+                "claim_id": "s0001-g0001/c28",
+                "statement": "Every DROP TABLE operation must display an explicit confirmation dialog before execution.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-005"
+              },
+              {
+                "claim_id": "s0001-g0001/c29",
+                "statement": "Every TRUNCATE TABLE operation must display an explicit confirmation dialog before execution.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-005"
+              },
+              {
+                "claim_id": "s0001-g0001/c30",
+                "statement": "The web interface must be usable without horizontal scrolling at screen widths from 768 pixels through 1920 pixels.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "NFR-006"
+              },
+              {
+                "claim_id": "s0001-g0001/c31",
+                "statement": "The library must be distributed as a JAR artifact on Maven Central.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-001"
+              },
+              {
+                "claim_id": "s0001-g0001/c32",
+                "statement": "The library must target Java 21 LTS as its primary runtime.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-002"
+              },
+              {
+                "claim_id": "s0001-g0001/c33",
+                "statement": "The library must integrate exclusively through Spring Boot's auto-configuration mechanism.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-003"
+              },
+              {
+                "claim_id": "s0001-g0001/c34",
+                "statement": "The library must not require changes to the host application's main class.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-003"
+              },
+              {
+                "claim_id": "s0001-g0001/c35",
+                "statement": "The library must not require changes to the host application's bean definitions.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-003"
+              },
+              {
+                "claim_id": "s0001-g0001/c36",
+                "statement": "All database operations must use Spring's JdbcClient or JdbcTemplate.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-004"
+              },
+              {
+                "claim_id": "s0001-g0001/c37",
+                "statement": "The library must not introduce a JPA or ORM dependency.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-004"
+              },
+              {
+                "claim_id": "s0001-g0001/c38",
+                "statement": "The library must use the host application's existing configured datasource.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-005"
+              },
+              {
+                "claim_id": "s0001-g0001/c39",
+                "statement": "The library must not require a dedicated secondary datasource.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-005"
+              },
+              {
+                "claim_id": "s0001-g0001/c40",
+                "statement": "Entity-relationship diagram generation in the current release is limited to PostgreSQL databases.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-006"
+              },
+              {
+                "claim_id": "s0001-g0001/c41",
+                "statement": "Other JDBC databases show no entity-relationship diagram in the current release.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-006"
+              },
+              {
+                "claim_id": "s0001-g0001/c42",
+                "statement": "Schema introspection must rely solely on standard INFORMATION_SCHEMA views.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-007"
+              },
+              {
+                "claim_id": "s0001-g0001/c43",
+                "statement": "Basic table operations must rely solely on standard INFORMATION_SCHEMA views.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-007"
+              },
+              {
+                "claim_id": "s0001-g0001/c44",
+                "statement": "Schema introspection and basic table operations must work with any JDBC-compatible database.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-007"
+              },
+              {
+                "claim_id": "s0001-g0001/c45",
+                "statement": "The UI must not require a Node.js build pipeline.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-008"
+              },
+              {
+                "claim_id": "s0001-g0001/c46",
+                "statement": "The UI must not require an npm build pipeline.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-008"
+              },
+              {
+                "claim_id": "s0001-g0001/c47",
+                "statement": "All frontend assets must be served as WebJars or loaded from a CDN within the Spring Boot application.",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": "C-008"
+              }
+            ]
+          }
+        ]
+      },
+      "response_id": "resp_0cba37b776bc84f8016a7b2410df348190a1edd175e9d51ca2",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "input_tokens": 3463,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 3460
+        },
+        "output_tokens": 2495,
+        "output_tokens_details": {
+          "reasoning_tokens": 297
+        },
+        "total_tokens": 5958
+      }
+    }
+  ],
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "evidence_incomplete"
+  }
+}
