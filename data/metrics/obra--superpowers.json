@@ -1,18 +1,18 @@
 {
   "contributors": 44,
   "createdAt": "2025-10-09T19:45:18Z",
-  "fetchedAt": "2026-08-10T05:50:28.787Z",
-  "forks": 24121,
+  "fetchedAt": "2026-08-12T05:50:51.700Z",
+  "forks": 24198,
   "latestRelease": {
     "publishedAt": "2026-07-24T00:28:17Z",
     "tag": "v6.2.0"
   },
   "license": "MIT",
-  "openIssues": 326,
-  "pushedAt": "2026-08-08T01:45:49Z",
+  "openIssues": 336,
+  "pushedAt": "2026-08-12T05:08:28Z",
   "repo": "obra/superpowers",
-  "sizeKB": 4435,
-  "stars": 269838,
+  "sizeKB": 4399,
+  "stars": 270864,
   "weeklyCommits": [
     0,
     0,
