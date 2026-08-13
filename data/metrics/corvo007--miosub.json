@@ -1,18 +1,18 @@
 {
   "contributors": 1,
   "createdAt": "2025-11-22T16:42:33Z",
-  "fetchedAt": "2026-08-09T05:36:44.680Z",
+  "fetchedAt": "2026-08-13T05:51:13.716Z",
   "forks": 52,
   "latestRelease": {
     "publishedAt": "2026-07-18T17:46:30Z",
     "tag": "v3.1.9"
   },
   "license": "AGPL-3.0",
-  "openIssues": 6,
+  "openIssues": 5,
   "pushedAt": "2026-07-18T17:32:46Z",
   "repo": "corvo007/MioSub",
   "sizeKB": 142293,
-  "stars": 793,
+  "stars": 796,
   "weeklyCommits": [
     0,
     0,
