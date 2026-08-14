@@ -1,14 +1,14 @@
 {
   "contributors": 307,
   "createdAt": "2013-12-29T14:17:38Z",
-  "fetchedAt": "2026-08-12T05:49:52.453Z",
-  "forks": 1063,
+  "fetchedAt": "2026-08-14T05:49:54.145Z",
+  "forks": 1062,
   "latestRelease": {
     "publishedAt": "2026-07-03T01:54:51Z",
     "tag": "1.5.70"
   },
   "license": "NOASSERTION",
-  "openIssues": 458,
+  "openIssues": 460,
   "pushedAt": "2026-08-11T20:36:11Z",
   "repo": "akkadotnet/akka.net",
   "sizeKB": 101246,
