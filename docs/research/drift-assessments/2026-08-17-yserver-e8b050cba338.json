@@ -1,0 +1,4103 @@
+{
+  "protocol_version": "4.0",
+  "automation_version": "1.2.0",
+  "mode": "live",
+  "created_at_utc": "2026-08-17T04:37:22.323Z",
+  "project": {
+    "slug": "yserver",
+    "repository": "joske/yserver",
+    "pin_sha": "e8b050cba338ec21d0dbc5e7042c493c4f49a5a5",
+    "pin_time_utc": "2026-08-13T22:03:24Z",
+    "project_manifest_sha256": "6d8618868be908e86317c0a215a4af20c1e4863ab43553e7be02dff9545b9c8a"
+  },
+  "requested_model": "gpt-5.6",
+  "previous_rating": "low",
+  "status": "unknown",
+  "rating": "unknown",
+  "rule": "U1",
+  "reasons": [
+    "run-1:yserver-corpus-claims-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0003: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0004: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0005: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0006: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0007: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0008: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0009: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:yserver-corpus-claims-0010: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0002: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0003: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0004: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0005: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0006: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0007: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0008: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0009: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:yserver-corpus-claims-0010: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+  ],
+  "agreement": {
+    "corpus_claims": null,
+    "materiality": null,
+    "pinned_checks": null,
+    "drift_matching": null,
+    "rating": null
+  },
+  "task_budget": {
+    "maximum_per_run": 20,
+    "projected_per_run": 11,
+    "actual_model_calls": 1
+  },
+  "run_rollups": [],
+  "calls": [
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0001",
+      "input_sha256": "d2ede5489ad5e1be3f15fd2251e59205acf005db61c7352f72dd8fd9a66b107c",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0002",
+      "input_sha256": "d7432b728faa12e14309a94b6e1d15925f2ce2b15c1bec88f2e226eb806e081e",
+      "status": "ok",
+      "output": {
+        "protocol_version": "4.0",
+        "chunk_id": "yserver-corpus-claims-0002",
+        "assessments": [
+          {
+            "segment_id": "s0009-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0009-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0003",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0005",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0010",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0011",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0012",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0014",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0018",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0022",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0023",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0024",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0025",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0028",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0032",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0036",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0037",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0038",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0039",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0040",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0041",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0042",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0043",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0044",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0045",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0046",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0047",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0048",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0049",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0050",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0051",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0052",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0053",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0054",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0055",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0056",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0057",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0058",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0059",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0060",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0061",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0062",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0063",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0064",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0065",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0066",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0067",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0068",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0009-g0001/q0069",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0010-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0010-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0003",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0005",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0010",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0012",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0014",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0018",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0022",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0023",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0024",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0025",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0028",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0032",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0036",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0037",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0038",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0039",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0040",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0041",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0042",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0043",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0044",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0045",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0046",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0047",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0048",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0049",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0050",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0051",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0052",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0053",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0054",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0055",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0056",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0057",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0058",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0059",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0060",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0061",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0062",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0063",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0064",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0065",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0066",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0067",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0068",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0069",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0070",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0071",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0072",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0073",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0074",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0075",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0076",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0077",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0078",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0010-g0001/q0079",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0011-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0011-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0003",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0005",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0010",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0012",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0014",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0018",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0020",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0022",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0023",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0024",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0025",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0028",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0032",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0036",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0037",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0038",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0039",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0040",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0041",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0042",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0043",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0044",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0045",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0046",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0047",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0048",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0049",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0050",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0051",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0052",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0053",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0054",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0055",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0056",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0057",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0058",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0059",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0060",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0061",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0062",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0063",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0064",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0065",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0066",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0067",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0068",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0069",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0070",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0071",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0072",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0073",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0074",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0075",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0076",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0077",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0078",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0079",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0011-g0001/q0080",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0012-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0012-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0003",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0005",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0009",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0010",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0012",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0013",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0014",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0018",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0019",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0022",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0023",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0024",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0025",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0028",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0032",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0036",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0037",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0038",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0039",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0040",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0041",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0042",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0043",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0044",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0045",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0046",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0047",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0048",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0049",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0050",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0051",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0052",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0053",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0054",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0055",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0012-g0001/q0056",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0013-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0013-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0003",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0005",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0010",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0012",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0014",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0018",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0022",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0023",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0024",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0025",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0028",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0032",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0036",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0037",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0038",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0039",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0040",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0041",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0042",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0043",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0044",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0045",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0046",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0047",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0048",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0049",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0050",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0051",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0052",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0053",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0054",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0055",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0056",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0057",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0058",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0059",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0060",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0061",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0062",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0063",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0064",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0065",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0066",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0067",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0068",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0069",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0070",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0071",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0072",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0073",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0074",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0075",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0076",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0077",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0078",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0079",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0080",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0081",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0082",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0083",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0084",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0085",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0086",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0087",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0088",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0089",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0090",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0013-g0001/q0091",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0014-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0014-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0003",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0005",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0010",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0012",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0014",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0018",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0022",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0023",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0024",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0025",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0028",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0032",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0036",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0037",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0038",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0039",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0040",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0041",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0042",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0043",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0044",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0045",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0046",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0047",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0048",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0049",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0050",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0051",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0052",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0053",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0054",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0055",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0056",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0057",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0058",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0059",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0060",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0061",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0062",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0063",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0064",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0065",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0066",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0067",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0068",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0069",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0070",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0071",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0072",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0073",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0074",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0075",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0076",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0077",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0078",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0079",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0080",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0081",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0082",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0083",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0084",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0085",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0086",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0087",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0088",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0089",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0090",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0091",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0092",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0093",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0094",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0095",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0096",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0097",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0098",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0099",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0100",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0101",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0102",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0103",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0104",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0105",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0106",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0107",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0108",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0109",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0110",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0111",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0112",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0113",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0114",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0014-g0001/q0115",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0015-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0015-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0003",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0005",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0010",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0012",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0014",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0018",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0015-g0001/q0021",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              }
+            ]
+          },
+          {
+            "segment_id": "s0016-g0001",
+            "classifications": [
+              {
+                "candidate_id": "s0016-g0001/q0001",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": true,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0002",
+                "disposition": "claim",
+                "lifecycle": "historical",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0003",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0004",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0005",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0006",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0007",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0008",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0009",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0010",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0011",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0012",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0013",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0014",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0015",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0016",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0017",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0018",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0019",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0020",
+                "disposition": "claim",
+                "lifecycle": "live",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0021",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0022",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0023",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0024",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0025",
+                "disposition": "not_claim",
+                "lifecycle": null,
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0026",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0027",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0028",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0029",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0030",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0031",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0032",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0033",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0034",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              },
+              {
+                "candidate_id": "s0016-g0001/q0035",
+                "disposition": "claim",
+                "lifecycle": "future",
+                "core_claim": false,
+                "scope_anchor_name": null
+              }
+            ]
+          }
+        ]
+      },
+      "response_id": "resp_0d8275c54215acd9016a828f3c93b48190bd628ed4bce7077a",
+      "model": "gpt-5.6-sol",
+      "usage": {
+        "input_tokens": 147235,
+        "input_tokens_details": {
+          "cache_write_tokens": 145385,
+          "cached_tokens": 1847
+        },
+        "output_tokens": 19099,
+        "output_tokens_details": {
+          "reasoning_tokens": 297
+        },
+        "total_tokens": 166334
+      }
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0003",
+      "input_sha256": "e67eff091a0a9a1b43f3e56d1831ac463a62c7aaac403659dcc40cd803f0c0ad",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0004",
+      "input_sha256": "ab7c3e7da8229e8cecd57c29005c01d3c8ff179620ed3456af5394957f437315",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0005",
+      "input_sha256": "1c03b2a3732ff9468aab5df7e261d0c73f217793d2580bbea9cca31ed1a45ecf",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0006",
+      "input_sha256": "1430909f9708cc2575915028f2e38281fd72f67365c78bff01aba36d9291d902",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0007",
+      "input_sha256": "22dbf5a42d43d8a88400a44fa240897650b079d9a0a444a65fa6426d06662a3c",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0008",
+      "input_sha256": "8b2d6d1f9a6bc01fd778a60a8ff1940cdca55ce28eab67d58cf350e77b0243c5",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0009",
+      "input_sha256": "dcc2012f1f7501df0fc8363c5c0115465d70a346069b9b34028c28edccdbf6a1",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0010",
+      "input_sha256": "00f05217ea0ec2b46c3ca0046fa87e30ec71e078914ea17e4e5e92209ac814ab",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0001",
+      "input_sha256": "d2ede5489ad5e1be3f15fd2251e59205acf005db61c7352f72dd8fd9a66b107c",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0002",
+      "input_sha256": "d7432b728faa12e14309a94b6e1d15925f2ce2b15c1bec88f2e226eb806e081e",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0003",
+      "input_sha256": "e67eff091a0a9a1b43f3e56d1831ac463a62c7aaac403659dcc40cd803f0c0ad",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0004",
+      "input_sha256": "ab7c3e7da8229e8cecd57c29005c01d3c8ff179620ed3456af5394957f437315",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0005",
+      "input_sha256": "1c03b2a3732ff9468aab5df7e261d0c73f217793d2580bbea9cca31ed1a45ecf",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0006",
+      "input_sha256": "1430909f9708cc2575915028f2e38281fd72f67365c78bff01aba36d9291d902",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0007",
+      "input_sha256": "22dbf5a42d43d8a88400a44fa240897650b079d9a0a444a65fa6426d06662a3c",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0008",
+      "input_sha256": "8b2d6d1f9a6bc01fd778a60a8ff1940cdca55ce28eab67d58cf350e77b0243c5",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0009",
+      "input_sha256": "dcc2012f1f7501df0fc8363c5c0115465d70a346069b9b34028c28edccdbf6a1",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "yserver-corpus-claims-0010",
+      "input_sha256": "00f05217ea0ec2b46c3ca0046fa87e30ec71e078914ea17e4e5e92209ac814ab",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    }
+  ],
+  "resolved_drift": {
+    "behaviors": [],
+    "assessments": []
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "evidence_incomplete"
+  }
+}
