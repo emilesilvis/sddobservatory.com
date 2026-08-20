@@ -1,7 +1,7 @@
 {
   "contributors": 307,
   "createdAt": "2013-12-29T14:17:38Z",
-  "fetchedAt": "2026-08-18T05:30:11.147Z",
+  "fetchedAt": "2026-08-20T05:30:10.611Z",
   "forks": 1062,
   "latestRelease": {
     "publishedAt": "2026-07-03T01:54:51Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-11T20:36:11Z",
   "repo": "akkadotnet/akka.net",
   "sizeKB": 101246,
-  "stars": 5076,
+  "stars": 5078,
   "weeklyCommits": [
     4,
     9,

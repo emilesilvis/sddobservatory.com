@@ -1,7 +1,7 @@
 {
   "contributors": 4,
   "createdAt": "2024-09-03T00:16:49Z",
-  "fetchedAt": "2026-08-19T05:32:37.690Z",
+  "fetchedAt": "2026-08-20T05:30:24.021Z",
   "forks": 4,
   "latestRelease": {
     "publishedAt": "2026-05-07T23:41:13Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-18T18:44:43Z",
   "repo": "fabceolin/the_edge_agent",
   "sizeKB": 33604,
-  "stars": 28,
+  "stars": 29,
   "weeklyCommits": [
     0,
     0,
