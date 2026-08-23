@@ -1,7 +1,7 @@
 {
   "contributors": 224,
   "createdAt": "2017-02-16T17:15:47Z",
-  "fetchedAt": "2026-08-22T05:30:06.398Z",
+  "fetchedAt": "2026-08-23T05:30:23.906Z",
   "forks": 242,
   "latestRelease": {
     "publishedAt": "2026-08-10T11:39:26Z",
@@ -14,7 +14,6 @@
   "sizeKB": 186799,
   "stars": 1464,
   "weeklyCommits": [
-    94,
     180,
     110,
     46,
@@ -65,6 +64,7 @@
     91,
     173,
     126,
-    28
+    28,
+    0
   ]
 }
