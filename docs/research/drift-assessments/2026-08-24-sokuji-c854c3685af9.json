@@ -1,0 +1,313 @@
+{
+  "protocol_version": "4.0",
+  "automation_version": "1.2.0",
+  "mode": "live",
+  "created_at_utc": "2026-08-24T04:35:49.306Z",
+  "project": {
+    "slug": "sokuji",
+    "repository": "kizuna-ai-lab/sokuji",
+    "pin_sha": "c854c3685af952ebb9a3e4b39ae1fbd052debe0a",
+    "pin_time_utc": "2026-08-24T02:59:13Z",
+    "project_manifest_sha256": "780ffab15ce66ce73fa0d2d9417c66f481fa6bcdac60df176d4ee80ad7badcc5"
+  },
+  "requested_model": "gpt-5.6",
+  "previous_rating": "none",
+  "status": "unknown",
+  "rating": "unknown",
+  "rule": "U1",
+  "reasons": [
+    "run-1:sokuji-corpus-claims-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0002: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0003: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0004: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0005: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0006: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0007: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0008: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0009: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0010: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0011: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0012: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0013: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0014: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:sokuji-corpus-claims-0015: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0002: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0003: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0004: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0005: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0006: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0007: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0008: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0009: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0010: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0011: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0012: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0013: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0014: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:sokuji-corpus-claims-0015: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+  ],
+  "agreement": {
+    "corpus_claims": null,
+    "materiality": null,
+    "pinned_checks": null,
+    "drift_matching": null,
+    "rating": null
+  },
+  "task_budget": {
+    "maximum_per_run": 20,
+    "projected_per_run": 15,
+    "actual_model_calls": 0
+  },
+  "run_rollups": [],
+  "calls": [
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0001",
+      "input_sha256": "c237356d02a6c6a99d575508ac8eaa59782f26c516c10240ee5e3e433c060283",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0002",
+      "input_sha256": "dbc7349f23b150295d23765bb446a52601d7e731ab6b07a1e584785ef40ed1d0",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0003",
+      "input_sha256": "e722fb9351ab296b17c366a6ca6675c7e2d50a24545ae74d56b4fc488f53881c",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0004",
+      "input_sha256": "546e99e350fe010962bf04a710dc188b4062133f45780905d4b66d0537f49681",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0005",
+      "input_sha256": "6d010c574d6d3f36a49c3c32f282ee8c6f3ab4b2ca98e4379bac27c7677e31e7",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0006",
+      "input_sha256": "cdf30b78bd745dcba1950ad773ae1ed5df52acc5942970cbf4b5ec0b4d5eabbf",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0007",
+      "input_sha256": "4e5e0e95e64f44f265373dc75b98232a1d63a6c1f4e888609478689c23140c19",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0008",
+      "input_sha256": "60fe74a43b844ce8dad080caaa2b65f02b6e2bba7e122f4efc8b7a09d3c089e8",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0009",
+      "input_sha256": "1fde9dfdce9105750b22bea4497d333f15a31109c64ed33d4cf02f7e8948bd60",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0010",
+      "input_sha256": "45d43a2a741dfcf02da9bededa6d7b60a3aa9ffebf7a14ea974f72794bbbd80f",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0011",
+      "input_sha256": "03fe7b9c19ab7b5053e90da13408641ee264b71fe8f93630c5381b0cbcad08d0",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0012",
+      "input_sha256": "affee5b2d2b7dc1fadad1b7f98c6375a292b96d396e3bf1e16f5ccd736978b4f",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0013",
+      "input_sha256": "ccf03587dc76a1c4515cbdc03a784e9257bfeadd2eee3099c043c1a94ee2bbd3",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0014",
+      "input_sha256": "1339605cc463449479a85d5a1e4a10d7bfbfdbe381915821e67e8e059db29cf9",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0015",
+      "input_sha256": "48f463a623cef1385e09aa9283830beb064821fb5e45066f6ac6943813d60fb8",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0001",
+      "input_sha256": "c237356d02a6c6a99d575508ac8eaa59782f26c516c10240ee5e3e433c060283",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0002",
+      "input_sha256": "dbc7349f23b150295d23765bb446a52601d7e731ab6b07a1e584785ef40ed1d0",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0003",
+      "input_sha256": "e722fb9351ab296b17c366a6ca6675c7e2d50a24545ae74d56b4fc488f53881c",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0004",
+      "input_sha256": "546e99e350fe010962bf04a710dc188b4062133f45780905d4b66d0537f49681",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0005",
+      "input_sha256": "6d010c574d6d3f36a49c3c32f282ee8c6f3ab4b2ca98e4379bac27c7677e31e7",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0006",
+      "input_sha256": "cdf30b78bd745dcba1950ad773ae1ed5df52acc5942970cbf4b5ec0b4d5eabbf",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0007",
+      "input_sha256": "4e5e0e95e64f44f265373dc75b98232a1d63a6c1f4e888609478689c23140c19",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0008",
+      "input_sha256": "60fe74a43b844ce8dad080caaa2b65f02b6e2bba7e122f4efc8b7a09d3c089e8",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0009",
+      "input_sha256": "1fde9dfdce9105750b22bea4497d333f15a31109c64ed33d4cf02f7e8948bd60",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0010",
+      "input_sha256": "45d43a2a741dfcf02da9bededa6d7b60a3aa9ffebf7a14ea974f72794bbbd80f",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0011",
+      "input_sha256": "03fe7b9c19ab7b5053e90da13408641ee264b71fe8f93630c5381b0cbcad08d0",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0012",
+      "input_sha256": "affee5b2d2b7dc1fadad1b7f98c6375a292b96d396e3bf1e16f5ccd736978b4f",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0013",
+      "input_sha256": "ccf03587dc76a1c4515cbdc03a784e9257bfeadd2eee3099c043c1a94ee2bbd3",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0014",
+      "input_sha256": "1339605cc463449479a85d5a1e4a10d7bfbfdbe381915821e67e8e059db29cf9",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "sokuji-corpus-claims-0015",
+      "input_sha256": "48f463a623cef1385e09aa9283830beb064821fb5e45066f6ac6943813d60fb8",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    }
+  ],
+  "resolved_drift": {
+    "behaviors": [],
+    "assessments": []
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "evidence_incomplete"
+  }
+}
