@@ -1,8 +1,8 @@
 {
   "contributors": 65,
   "createdAt": "2026-03-15T02:30:51Z",
-  "fetchedAt": "2026-08-24T05:31:36.074Z",
-  "forks": 6738,
+  "fetchedAt": "2026-08-25T05:30:08.316Z",
+  "forks": 6763,
   "latestRelease": {
     "publishedAt": "2026-07-10T09:36:42Z",
     "tag": "v2.9.0"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-11T14:13:37Z",
   "repo": "Egonex-AI/Understand-Anything",
   "sizeKB": 34225,
-  "stars": 80243,
+  "stars": 80379,
   "weeklyCommits": [
     0,
     0,
