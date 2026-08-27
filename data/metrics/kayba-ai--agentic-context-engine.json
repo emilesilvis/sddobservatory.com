@@ -1,18 +1,18 @@
 {
   "contributors": 29,
   "createdAt": "2025-10-15T15:36:20Z",
-  "fetchedAt": "2026-08-26T05:31:10.211Z",
-  "forks": 302,
+  "fetchedAt": "2026-08-27T08:00:16.154Z",
+  "forks": 304,
   "latestRelease": {
     "publishedAt": "2026-05-07T18:05:29Z",
     "tag": "v0.12.0"
   },
   "license": "Apache-2.0",
-  "openIssues": 13,
+  "openIssues": 14,
   "pushedAt": "2026-07-08T23:36:10Z",
   "repo": "kayba-ai/agentic-context-engine",
   "sizeKB": 39255,
-  "stars": 2557,
+  "stars": 2559,
   "weeklyCommits": [
     0,
     0,
