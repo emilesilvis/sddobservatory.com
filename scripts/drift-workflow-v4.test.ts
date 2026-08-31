@@ -27,6 +27,16 @@ test('refreshes the selected pin and runs the incremental state path under the h
   assert.match(workflow, /args\+?=\(--force-baseline\)/);
 });
 
+test('checks OpenAI credit availability before starting assessment runners', () => {
+  assert.match(workflow, /^  openai-credit-preflight:\s*$/m);
+  assert.match(workflow, /https:\/\/api\.openai\.com\/v1\/responses/);
+  assert.match(workflow, /credit_balance_exhausted/);
+  assert.match(workflow, /insufficient_quota/);
+  assert.match(workflow, /organization_spend_limit_exceeded/);
+  assert.match(workflow, /^    needs: openai-credit-preflight$/m);
+  assert.match(workflow, /^    if: needs\.openai-credit-preflight\.outputs\.available == 'true'$/m);
+});
+
 test('can propose changes but never merges them', () => {
   assert.match(workflow, /^\s{2}contents: write$/m);
   assert.match(workflow, /^\s{2}pull-requests: write$/m);

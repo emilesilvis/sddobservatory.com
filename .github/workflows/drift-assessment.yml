@@ -44,7 +44,55 @@ permissions:
   pull-requests: write
 
 jobs:
+  openai-credit-preflight:
+    name: Check OpenAI credit availability
+    runs-on: ubuntu-latest
+    outputs:
+      available: ${{ steps.probe.outputs.available }}
+    steps:
+      - name: Probe the Responses API
+        id: probe
+        env:
+          MODEL: ${{ inputs.model || 'gpt-5.6' }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          response_file=$(mktemp)
+          trap 'rm -f "${response_file}"' EXIT
+          payload=$(jq -nc --arg model "${MODEL}" '{model: $model, input: "Reply with OK.", max_output_tokens: 16, store: false}')
+          status=$(curl --silent --show-error \
+            --output "${response_file}" \
+            --write-out '%{http_code}' \
+            --header "Authorization: Bearer ${OPENAI_API_KEY}" \
+            --header 'Content-Type: application/json' \
+            --data "${payload}" \
+            https://api.openai.com/v1/responses)
+          error_code=$(jq -r '.error.code // empty' "${response_file}")
+          error_type=$(jq -r '.error.type // empty' "${response_file}")
+
+          if [[ "${status}" == '200' ]]; then
+            echo 'available=true' >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          case "${error_code}" in
+            credit_balance_exhausted|organization_spend_limit_exceeded|project_spend_limit_exceeded|organization_usage_limit_exceeded)
+              echo 'available=false' >> "${GITHUB_OUTPUT}"
+              echo "::notice::Skipping drift assessments because OpenAI rejected the preflight with ${error_code}."
+              ;;
+            *)
+              if [[ "${error_type}" == 'insufficient_quota' ]]; then
+                echo 'available=false' >> "${GITHUB_OUTPUT}"
+                echo '::notice::Skipping drift assessments because OpenAI reported insufficient quota.'
+                exit 0
+              fi
+              echo "::error::OpenAI preflight failed with HTTP ${status} (${error_code:-unknown_error})."
+              exit 1
+              ;;
+          esac
+
   assess:
+    needs: openai-credit-preflight
+    if: needs.openai-credit-preflight.outputs.available == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 180
     strategy:
