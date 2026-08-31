@@ -16,11 +16,13 @@ const featured = frameworks
   .filter((f) => f.data.featured)
   .sort((a, b) => (getMetrics(b.data.repo)?.stars ?? 0) - (getMetrics(a.data.repo)?.stars ?? 0));
 
-const lastActivity = (project: (typeof projects)[number]): number => {
-  const pushedAt = getMetrics(project.data.repo)?.pushedAt;
-  return pushedAt ? new Date(pushedAt).getTime() : project.data.added.getTime();
-};
-const recentProjects = [...projects].sort((a, b) => lastActivity(b) - lastActivity(a)).slice(0, 3);
+const recentlyReviewedProjects = [...projects]
+  .sort(
+    (a, b) =>
+      b.data.lastReviewed.getTime() - a.data.lastReviewed.getTime() ||
+      a.data.name.localeCompare(b.data.name),
+  )
+  .slice(0, 3);
 
 const recentAdditions = [
   ...frameworks.map((f) => ({ kind: 'Framework', href: `/frameworks/${f.id}/`, name: f.data.name, added: f.data.added })),
@@ -59,11 +61,11 @@ const recentAdditions = [
   }
 
   {
-    recentProjects.length > 0 && (
+    recentlyReviewedProjects.length > 0 && (
       <section>
-        <h2>Recently active tracked projects</h2>
+        <h2>Recently reviewed projects</h2>
         <ul class="card-grid">
-          {recentProjects.map((project) => (
+          {recentlyReviewedProjects.map((project) => (
             <li>
               <ProjectCard
                 project={project}
