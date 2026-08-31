@@ -1,0 +1,97 @@
+{
+  "protocol_version": "4.0",
+  "automation_version": "1.2.0",
+  "mode": "live",
+  "created_at_utc": "2026-08-31T03:35:14.303Z",
+  "project": {
+    "slug": "agentic-context-engine",
+    "repository": "kayba-ai/agentic-context-engine",
+    "pin_sha": "321d430e520f369315bad512cd2d90f1fa14a596",
+    "pin_time_utc": "2026-08-29T01:24:12Z",
+    "project_manifest_sha256": "23ad1178deaa35e615d59e850e30b5c4ee1b2214bd4b0f0084c8a8bcb2447876"
+  },
+  "requested_model": "gpt-5.6",
+  "previous_rating": "moderate",
+  "status": "unknown",
+  "rating": "unknown",
+  "rule": "U1",
+  "reasons": [
+    "run-1:agentic-context-engine-corpus-claims-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:agentic-context-engine-corpus-claims-0002: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-1:agentic-context-engine-corpus-claims-0003: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:agentic-context-engine-corpus-claims-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:agentic-context-engine-corpus-claims-0002: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:agentic-context-engine-corpus-claims-0003: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+  ],
+  "agreement": {
+    "corpus_claims": null,
+    "materiality": null,
+    "pinned_checks": null,
+    "drift_matching": null,
+    "rating": null
+  },
+  "task_budget": {
+    "maximum_per_run": 20,
+    "projected_per_run": 4,
+    "actual_model_calls": 0
+  },
+  "run_rollups": [],
+  "calls": [
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "agentic-context-engine-corpus-claims-0001",
+      "input_sha256": "2a9790a221cbc359ca98e8a9cf4f91193bd818d1f09ef0465513b4087e19b231",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "agentic-context-engine-corpus-claims-0002",
+      "input_sha256": "092589737ee5e0697c5f5fbf56c3d57ebe8089305cf272398e830e067f250e59",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-1",
+      "kind": "corpus-claims",
+      "task_id": "agentic-context-engine-corpus-claims-0003",
+      "input_sha256": "4d558394ddba5a80943394cbe4b33b59bf970420f1c9a99381dae8710d967a65",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "agentic-context-engine-corpus-claims-0001",
+      "input_sha256": "2a9790a221cbc359ca98e8a9cf4f91193bd818d1f09ef0465513b4087e19b231",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "agentic-context-engine-corpus-claims-0002",
+      "input_sha256": "092589737ee5e0697c5f5fbf56c3d57ebe8089305cf272398e830e067f250e59",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "corpus-claims",
+      "task_id": "agentic-context-engine-corpus-claims-0003",
+      "input_sha256": "4d558394ddba5a80943394cbe4b33b59bf970420f1c9a99381dae8710d967a65",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    }
+  ],
+  "resolved_drift": {
+    "behaviors": [],
+    "assessments": []
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "evidence_incomplete"
+  }
+}
