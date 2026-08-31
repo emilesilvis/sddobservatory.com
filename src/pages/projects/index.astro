@@ -10,11 +10,11 @@ import { DRIFT_LEVELS, PROJECT_STATUSES } from '../../content.config';
 const frameworks = await getCollection('frameworks');
 const frameworkNames = new Map(frameworks.map((f) => [f.id, f.data.name]));
 
-const projects = (await getCollection('projects')).sort((a, b) => {
-  const aPush = getMetrics(a.data.repo)?.pushedAt;
-  const bPush = getMetrics(b.data.repo)?.pushedAt;
-  return (bPush ? new Date(bPush).getTime() : 0) - (aPush ? new Date(aPush).getTime() : 0);
-});
+const projects = (await getCollection('projects')).sort(
+  (a, b) =>
+    b.data.lastReviewed.getTime() - a.data.lastReviewed.getTime() ||
+    a.data.name.localeCompare(b.data.name),
+);
 ---
 
 <BaseLayout
@@ -38,11 +38,11 @@ const projects = (await getCollection('projects')).sort((a, b) => {
       { key: 'review', label: 'Review state', options: [{ value: 'due', label: 'Review due' }, { value: 'current', label: 'Current' }] },
     ]}
     sorts={[
-      { value: 'activity', label: 'Recently active' },
       { value: 'reviewed', label: 'Recently reviewed' },
+      { value: 'activity', label: 'Recently active' },
       { value: 'name', label: 'Name' },
     ]}
-    defaultSort="activity"
+    defaultSort="reviewed"
   />
 
   <ul class="card-grid" data-directory-grid data-singular="project" data-plural="projects">
