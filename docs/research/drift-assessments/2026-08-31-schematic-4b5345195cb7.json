@@ -1,0 +1,61 @@
+{
+  "protocol_version": "4.0",
+  "automation_version": "1.2.0",
+  "mode": "live",
+  "created_at_utc": "2026-08-31T03:33:40.069Z",
+  "project": {
+    "slug": "schematic",
+    "repository": "BjoernKW/Schematic",
+    "pin_sha": "4b5345195cb7f47642fe4095ade13f35cd95f37c",
+    "pin_time_utc": "2026-08-27T15:50:42Z",
+    "project_manifest_sha256": "12cbf15a2e3794caf4e836f9836e60f7d1e281679c89e7b8063fee04d2503cbc"
+  },
+  "requested_model": "gpt-5.6",
+  "previous_rating": "moderate",
+  "status": "unknown",
+  "rating": "unknown",
+  "rule": "U1",
+  "reasons": [
+    "run-1:schematic-materiality-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "run-2:schematic-materiality-0001: 429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+  ],
+  "agreement": {
+    "corpus_claims": true,
+    "materiality": null,
+    "pinned_checks": null,
+    "drift_matching": null,
+    "rating": null
+  },
+  "task_budget": {
+    "maximum_per_run": 20,
+    "projected_per_run": 2,
+    "actual_model_calls": 0
+  },
+  "run_rollups": [],
+  "calls": [
+    {
+      "run_id": "run-1",
+      "kind": "materiality",
+      "task_id": "schematic-materiality-0001",
+      "input_sha256": "49bf06e0e09e28c959cb42567f3bce7b4b082bbdf5a8be8aac5dee8fe08ec24b",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    },
+    {
+      "run_id": "run-2",
+      "kind": "materiality",
+      "task_id": "schematic-materiality-0001",
+      "input_sha256": "49bf06e0e09e28c959cb42567f3bce7b4b082bbdf5a8be8aac5dee8fe08ec24b",
+      "status": "error",
+      "error": "429 You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/."
+    }
+  ],
+  "resolved_drift": {
+    "behaviors": [],
+    "assessments": []
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "evidence_incomplete"
+  }
+}
