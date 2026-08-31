@@ -1,7 +1,7 @@
 {
   "contributors": 6,
   "createdAt": "2026-04-27T13:46:20Z",
-  "fetchedAt": "2026-08-30T05:26:23.308Z",
+  "fetchedAt": "2026-08-31T05:29:44.930Z",
   "forks": 32,
   "latestRelease": {
     "publishedAt": "2026-07-29T06:54:56Z",
@@ -12,9 +12,8 @@
   "pushedAt": "2026-08-28T12:32:48Z",
   "repo": "joske/yserver",
   "sizeKB": 25566,
-  "stars": 549,
+  "stars": 550,
   "weeklyCommits": [
-    0,
     0,
     0,
     0,
@@ -65,6 +64,7 @@
     15,
     12,
     0,
-    6
+    6,
+    0
   ]
 }

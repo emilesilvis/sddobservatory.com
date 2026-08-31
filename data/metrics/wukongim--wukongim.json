@@ -1,7 +1,7 @@
 {
   "contributors": 23,
   "createdAt": "2023-05-09T01:46:51Z",
-  "fetchedAt": "2026-08-30T05:25:55.801Z",
+  "fetchedAt": "2026-08-31T05:29:07.283Z",
   "forks": 705,
   "latestRelease": {
     "publishedAt": "2026-04-22T10:44:43Z",
@@ -9,10 +9,10 @@
   },
   "license": null,
   "openIssues": 97,
-  "pushedAt": "2026-08-29T03:45:34Z",
+  "pushedAt": "2026-08-30T05:52:04Z",
   "repo": "WuKongIM/WuKongIM",
-  "sizeKB": 152878,
-  "stars": 4928,
+  "sizeKB": 153083,
+  "stars": 4927,
   "weeklyCommits": [
     2,
     0,
@@ -64,7 +64,7 @@
     205,
     124,
     51,
-    132,
-    0
+    134,
+    4
   ]
 }
