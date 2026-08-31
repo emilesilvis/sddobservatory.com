@@ -15,7 +15,7 @@ specStructure:
     `artery-tcp-remoting`, `modernize-akka-io-tcp`,
     `internal-serializers-messagepack-v2`) plus an archive, an
     `IMPLEMENTATION_ORDER.md`, and a milestone-runner automation file.
-drift: none
+drift: moderate
 timeline:
   - date: 2026-05-10
     title: OpenSpec adopted
@@ -24,15 +24,20 @@ timeline:
     title: Latest spec proposal merged
     description: "OpenSpec: propose internal-serializers-messagepack-v2 (#8402)"
 added: 2026-07-18
-lastReviewed: 2026-07-18
+lastReviewed: 2026-08-31
 ---
 
 ## Spec-to-code drift
 
-None observed so far — spec commits land through normal PR review on the same days as code, and proposals were
-still flowing on the day of our first assessment. The caveat is that adoption is only about two months old, so
-there has been little time for drift to accumulate; this is the project to watch for how SDD holds up in a large,
-old codebase.
+Moderate (`M1`). The live Akka.IO TLS design anchors hostname validation and SAN/CN matching, but never states its
+material security direction: validate the outbound server against the intended connection target, do not infer an
+inbound client hostname, and require custom policy for inbound identity. The pinned implementation now makes those
+observable semantics explicit. The Artery remote-deploy ordering fix remains covered because it satisfies the live
+G3 correctness gate without adding `DaemonMsgCreate` to reliable ACK/NACK/resend delivery.
+
+The editorial v4 review covered all 41 nominated OpenSpec artifacts, 857 compiler-owned claim candidates, and the
+complete 90-day first-parent window without using the OpenAI API. See the
+[manual assessment record](https://github.com/emilesilvis/sddobservatory.com/blob/main/docs/research/drift-assessments/2026-08-31-akka-net-b2cff22b8153-manual.json).
 
 ## Defects and rework
 

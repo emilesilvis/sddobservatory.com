@@ -1,0 +1,77 @@
+{
+  "protocol_version": "4.0",
+  "review_kind": "manual_editorial",
+  "created_at_utc": "2026-08-31T04:03:57Z",
+  "project": {
+    "slug": "akka-net",
+    "repository": "akkadotnet/akka.net",
+    "pin_sha": "b2cff22b81530a72b3e769707575afa44e335689",
+    "pin_time_utc": "2026-08-08T19:37:51Z",
+    "scope": "change-scoped",
+    "project_manifest_sha256": "2de2905fb0c563e6d8188ce2c62ab29d2f9553f179b0f1ca7a0f743d5d62f517"
+  },
+  "review_boundary": {
+    "rubric": "docs/research/drift-rubric-v4.md",
+    "primary_sources_only": true,
+    "openai_api_used": false,
+    "github_actions_used": false,
+    "automated_blind_runs_completed": false
+  },
+  "evidence_inventory": {
+    "corpus_artifacts": 41,
+    "corpus_claim_candidates": 857,
+    "first_parent_commits_90d": 140,
+    "raw_change_candidates": 11,
+    "mechanical_exclusions": 129,
+    "pinned_checks": 0
+  },
+  "previous_rating": "none",
+  "status": "accepted",
+  "rating": "moderate",
+  "rule": "M1",
+  "findings": [
+    {
+      "behavior": "Validate the outbound server certificate against the intended connection target without inferring an inbound client hostname.",
+      "source_commit": "b2cff22b81530a72b3e769707575afa44e335689",
+      "scope": "in_scope",
+      "status": "omitted",
+      "core_claim": false,
+      "spec_evidence": [
+        "openspec/changes/akka-io-tls-support/design.md",
+        "openspec/changes/akka-io-tls-support/specs/tls-stream-provider/spec.md"
+      ],
+      "implementation_evidence": [
+        "src/core/Akka.Remote/Transport/DotNetty/DotNettyTransportSettings.cs",
+        "docs/articles/remoting/security.md"
+      ],
+      "reason": "The live TLS design concretely anchors hostname validation and SAN/CN matching, but does not state its material outbound-only security direction or the custom-policy requirement for inbound identity."
+    },
+    {
+      "behavior": "Order remote deployment's DaemonMsgCreate ahead of Watch and retry early ordinary-message recipient resolution without adding DaemonMsgCreate to reliable system-message delivery.",
+      "source_commit": "010e0fd6c88d938794c8dbb6cde42be45c3bdc9c",
+      "scope": "in_scope",
+      "status": "covered",
+      "core_claim": false,
+      "spec_evidence": [
+        "openspec/changes/artery-tcp-remoting/design.md",
+        "openspec/changes/artery-tcp-remoting/specs/artery-tcp-remoting/spec.md"
+      ],
+      "implementation_evidence": [
+        "src/core/Akka.Remote/Artery/ArteryRemoting.cs"
+      ],
+      "reason": "The implementation satisfies the live G3 remote-deploy correctness outcome while keeping DaemonMsgCreate outside the ACK/NACK/resend wrapper reserved for reliable system messages."
+    }
+  ],
+  "rollup": {
+    "core_live_claim_contradicted": false,
+    "stale_corpus_with_three_drift_source_commits": false,
+    "has_in_scope_omission_or_contradiction": true,
+    "minor_gaps_only": false,
+    "result": "moderate",
+    "rule": "M1"
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "rating_changed"
+  }
+}
