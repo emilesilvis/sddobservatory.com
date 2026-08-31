@@ -16,7 +16,7 @@ specStructure:
     `2026-04-24-semantic-action-presets.md`, `2026-04-15-editor-mode.md`) and `specs/` holds 21
     design documents suffixed `-design.md` (e.g. `2026-04-13-optionsplus-extractor-design.md`).
     Everything is Markdown with `YYYY-MM-DD-topic.md` naming; the largest plans run past 90 KB.
-drift: low
+drift: moderate
 timeline:
   - date: 2026-03-29
     title: Superpowers adopted
@@ -28,17 +28,20 @@ timeline:
     title: Latest spec activity
     description: "`ci: derive Debian QML deps from code, gate drift in CI + pre-push (#138)` — a spec-and-plan-backed fix for a shipped packaging defect, landed in the same push as the repository's latest activity."
 added: 2026-07-19
-lastReviewed: 2026-07-19
+lastReviewed: 2026-08-31
 ---
 
 ## Spec-to-code drift
 
-Low. The newest of the 22 commits touching `docs/superpowers/` lands in the very same push as the repository's
-latest activity, and every substantive feature since adoption arrives with a paired design spec and implementation
-plan in the same PR. Two caveats keep this from "none": a late-April burst of CI and packaging fixes went in
-code-only, and completed plans are point-in-time documents that are not revised when later refactors supersede
-them (the `AppController` to `AppRoot` extraction, for example, renames classes that earlier plans still describe)
-— though dated, immutable plans are how the Superpowers model is meant to work.
+Moderate (`M1`). Manual review found one in-scope behavior absent from the live spec corpus: after a KVM or
+other-host round trip, Logitune now forces the main wheel's diversion target back to hardware/native mode so
+scrolling does not silently stop. The corpus governs high-resolution wheel behavior and the exact scroll test
+surface, but it does not state that target-bit invariant or the observable post-KVM outcome. Other retained changes
+— Hyprland integration and active-profile DPI/SmartShift persistence — follow affirmative live design contracts.
+
+The editorial v4 review covered all 21 nominated spec artifacts, 1,081 compiler-owned claim candidates, and the
+complete 90-day first-parent window without using the OpenAI API. See the
+[manual assessment record](https://github.com/emilesilvis/sddobservatory.com/blob/main/docs/research/drift-assessments/2026-08-31-logitune-6c1d66fc4fde-manual.json).
 
 ## Defects and rework
 

@@ -1,0 +1,90 @@
+{
+  "protocol_version": "4.0",
+  "review_kind": "manual_editorial",
+  "created_at_utc": "2026-08-31T04:03:57Z",
+  "project": {
+    "slug": "logitune",
+    "repository": "mmaher88/logitune",
+    "pin_sha": "6c1d66fc4fded7d22883145657178f2b1ecc8b63",
+    "pin_time_utc": "2026-07-31T16:10:17Z",
+    "scope": "change-scoped",
+    "project_manifest_sha256": "e51ed65e3edff3685378a85852c52f7aa9d1375ba49baba53b3df53138af5cc4"
+  },
+  "review_boundary": {
+    "rubric": "docs/research/drift-rubric-v4.md",
+    "primary_sources_only": true,
+    "openai_api_used": false,
+    "github_actions_used": false,
+    "automated_blind_runs_completed": false
+  },
+  "evidence_inventory": {
+    "corpus_artifacts": 21,
+    "corpus_claim_candidates": 1081,
+    "first_parent_commits_90d": 10,
+    "raw_change_candidates": 5,
+    "mechanical_exclusions": 5,
+    "pinned_checks": 0
+  },
+  "previous_rating": "low",
+  "status": "accepted",
+  "rating": "moderate",
+  "rule": "M1",
+  "findings": [
+    {
+      "behavior": "Keep the main wheel in hardware/native mode so scrolling survives a KVM or other-host round trip.",
+      "source_commit": "ab79e6f4971facc5f1d2e711625594a0bbd2df6d",
+      "scope": "in_scope",
+      "status": "omitted",
+      "core_claim": false,
+      "spec_evidence": [
+        "docs/superpowers/specs/2026-03-29-comprehensive-test-plan.md",
+        "docs/superpowers/specs/2026-04-18-dpi-cycle-design.md"
+      ],
+      "implementation_evidence": [
+        "src/core/hidpp/features/HiResWheel.cpp"
+      ],
+      "reason": "The live corpus governs high-resolution wheel behavior and its scroll test surface, but does not state the diversion-target invariant or the observable post-KVM scrolling outcome."
+    },
+    {
+      "behavior": "Add Hyprland desktop action resolution through the existing pluggable desktop integration.",
+      "source_commit": "4c3a82aa5393b04906e2cf2a3a7c7addf0b30876",
+      "scope": "in_scope",
+      "status": "covered",
+      "core_claim": false,
+      "spec_evidence": [
+        "docs/superpowers/specs/2026-04-24-semantic-action-presets-design.md"
+      ],
+      "implementation_evidence": [
+        "src/core/desktop/HyprlandDesktop.cpp"
+      ],
+      "reason": "The additive desktop-integration contract covers the new implementation, variant key, and named-action resolution shape."
+    },
+    {
+      "behavior": "Persist hardware-originated DPI and SmartShift changes to the active profile without overwriting the displayed inactive profile.",
+      "source_commit": "6a7bb6cf6010681c22aa2fb36f246a20db7d1f17",
+      "scope": "in_scope",
+      "status": "covered",
+      "core_claim": false,
+      "spec_evidence": [
+        "docs/superpowers/specs/2026-03-29-comprehensive-test-plan.md",
+        "docs/superpowers/specs/2026-04-19-stale-property-notifys-design.md"
+      ],
+      "implementation_evidence": [
+        "src/app/services/ProfileOrchestrator.h"
+      ],
+      "reason": "The live claims require hardware-originated UI propagation and correct-profile persistence while allowing displayed and hardware profiles to differ."
+    }
+  ],
+  "rollup": {
+    "core_live_claim_contradicted": false,
+    "stale_corpus_with_three_drift_source_commits": false,
+    "has_in_scope_omission_or_contradiction": true,
+    "minor_gaps_only": false,
+    "result": "moderate",
+    "rule": "M1"
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "rating_changed"
+  }
+}
