@@ -1,0 +1,91 @@
+{
+  "protocol_version": "4.0",
+  "review_kind": "manual_editorial",
+  "created_at_utc": "2026-08-31T04:03:57Z",
+  "project": {
+    "slug": "yserver",
+    "repository": "joske/yserver",
+    "pin_sha": "e8b050cba338ec21d0dbc5e7042c493c4f49a5a5",
+    "pin_time_utc": "2026-08-13T22:03:24Z",
+    "scope": "change-scoped",
+    "project_manifest_sha256": "6d8618868be908e86317c0a215a4af20c1e4863ab43553e7be02dff9545b9c8a"
+  },
+  "review_boundary": {
+    "rubric": "docs/research/drift-rubric-v4.md",
+    "primary_sources_only": true,
+    "openai_api_used": false,
+    "github_actions_used": false,
+    "automated_blind_runs_completed": false
+  },
+  "evidence_inventory": {
+    "corpus_artifacts": 67,
+    "corpus_claim_candidates": 4476,
+    "first_parent_commits_90d": 1141,
+    "raw_change_candidates": 7,
+    "mechanical_exclusions": 1134,
+    "pinned_checks": 0
+  },
+  "previous_rating": "low",
+  "status": "accepted",
+  "rating": "high",
+  "rule": "H1",
+  "findings": [
+    {
+      "behavior": "Allow an explicitly tagged absolute sequence event to advance Present completion while a page flip is active.",
+      "source_commit": "c913e5f469ff97e30ef46eeb700a82838a529c61",
+      "scope": "in_scope",
+      "status": "contradicted",
+      "core_claim": true,
+      "spec_evidence": [
+        "docs/superpowers/specs/2026-07-28-present-completion-clock-provenance-design.md"
+      ],
+      "implementation_evidence": [
+        "crates/yserver/src/kms/render/backend.rs"
+      ],
+      "reason": "The live design labels as invariants that active sequence events cannot release Pixmap completions and only an idle-observed sequence may advance the completion clock. The pinned code implements tagged || present_completion_is_idle(), reversing that core pacing rule."
+    },
+    {
+      "behavior": "Publish the submitted GPU completion fence directly into the client's syncobj release point and skip the host signal wake after successful publication.",
+      "source_commit": "be034c2fc348f58c5e0725b8c51d3f8b8448ad3a",
+      "scope": "in_scope",
+      "status": "contradicted",
+      "core_claim": false,
+      "spec_evidence": [
+        "docs/superpowers/specs/2026-07-28-present-completion-clock-provenance-design.md",
+        "docs/superpowers/specs/2026-08-08-dri3-syncobj-drm-signal-design.md"
+      ],
+      "implementation_evidence": [
+        "crates/yserver/src/kms/render/present_completion.rs",
+        "crates/yserver/src/kms/render/engine.rs",
+        "crates/yserver/src/kms/render/backend.rs"
+      ],
+      "reason": "The live corpus claims a sole post-copy host wake using syncobj_timeline_signal; the pinned implementation instead makes the release point GPU-fence-backed at submission."
+    },
+    {
+      "behavior": "Resolve the render node on split display/render systems without guessing on ambiguous multi-GPU hosts.",
+      "source_commit": "e8b050cba338ec21d0dbc5e7042c493c4f49a5a5",
+      "scope": "in_scope",
+      "status": "covered",
+      "core_claim": false,
+      "spec_evidence": [
+        "docs/superpowers/specs/2026-08-08-dri3-syncobj-drm-signal-design.md"
+      ],
+      "implementation_evidence": [
+        "crates/yserver/src/kms/render_node.rs"
+      ],
+      "reason": "The implementation directly enforces the live one-render-node invariant for Raspberry Pi and Asahi-shaped systems while preserving ambiguity refusal."
+    }
+  ],
+  "rollup": {
+    "core_live_claim_contradicted": true,
+    "stale_corpus_with_three_drift_source_commits": false,
+    "has_in_scope_omission_or_contradiction": true,
+    "minor_gaps_only": false,
+    "result": "high",
+    "rule": "H1"
+  },
+  "publication": {
+    "draft_pr_required": true,
+    "reason": "rating_changed"
+  }
+}
