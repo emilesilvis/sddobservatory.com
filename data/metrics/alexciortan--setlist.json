@@ -1,7 +1,7 @@
 {
   "contributors": 1,
   "createdAt": "2026-07-08T20:02:36Z",
-  "fetchedAt": "2026-08-31T05:28:32.192Z",
+  "fetchedAt": "2026-09-01T05:28:42.811Z",
   "forks": 0,
   "latestRelease": {
     "publishedAt": "2026-08-30T01:08:36Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-30T01:07:52Z",
   "repo": "AlexCiortan/setlist",
   "sizeKB": 3114,
-  "stars": 0,
+  "stars": 1,
   "weeklyCommits": [
     0,
     0,
