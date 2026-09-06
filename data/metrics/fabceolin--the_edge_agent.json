@@ -1,7 +1,7 @@
 {
   "contributors": 4,
   "createdAt": "2024-09-03T00:16:49Z",
-  "fetchedAt": "2026-08-30T05:26:11.552Z",
+  "fetchedAt": "2026-09-06T05:26:25.274Z",
   "forks": 4,
   "latestRelease": {
     "publishedAt": "2026-05-07T23:41:13Z",
@@ -9,12 +9,11 @@
   },
   "license": "MIT",
   "openIssues": 2,
-  "pushedAt": "2026-08-26T17:25:07Z",
+  "pushedAt": "2026-09-05T19:49:35Z",
   "repo": "fabceolin/the_edge_agent",
-  "sizeKB": 35400,
+  "sizeKB": 35492,
   "stars": 29,
   "weeklyCommits": [
-    0,
     0,
     0,
     0,
@@ -50,6 +49,7 @@
     14,
     7,
     6,
+    0,
     0,
     0,
     0,
