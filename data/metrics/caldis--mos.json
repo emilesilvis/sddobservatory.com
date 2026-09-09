@@ -1,7 +1,7 @@
 {
   "contributors": 47,
   "createdAt": "2017-01-27T12:12:48Z",
-  "fetchedAt": "2026-09-08T05:28:35.318Z",
+  "fetchedAt": "2026-09-09T05:28:30.020Z",
   "forks": 685,
   "latestRelease": {
     "publishedAt": "2026-05-31T14:49:55Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-20T16:42:32Z",
   "repo": "Caldis/Mos",
   "sizeKB": 83540,
-  "stars": 21343,
+  "stars": 21350,
   "weeklyCommits": [
     10,
     15,

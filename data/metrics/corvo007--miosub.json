@@ -1,7 +1,7 @@
 {
   "contributors": 1,
   "createdAt": "2025-11-22T16:42:33Z",
-  "fetchedAt": "2026-09-07T05:29:49.520Z",
+  "fetchedAt": "2026-09-09T05:29:06.758Z",
   "forks": 55,
   "latestRelease": {
     "publishedAt": "2026-07-18T17:46:30Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-07-18T17:32:46Z",
   "repo": "corvo007/MioSub",
   "sizeKB": 142293,
-  "stars": 810,
+  "stars": 811,
   "weeklyCommits": [
     0,
     0,
