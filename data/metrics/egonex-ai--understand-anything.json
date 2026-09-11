@@ -1,18 +1,18 @@
 {
   "contributors": 68,
   "createdAt": "2026-03-15T02:30:51Z",
-  "fetchedAt": "2026-09-10T05:28:11.599Z",
-  "forks": 6890,
+  "fetchedAt": "2026-09-11T05:27:57.728Z",
+  "forks": 6898,
   "latestRelease": {
     "publishedAt": "2026-07-10T09:36:42Z",
     "tag": "v2.9.0"
   },
   "license": "MIT",
-  "openIssues": 302,
+  "openIssues": 304,
   "pushedAt": "2026-09-08T03:31:40Z",
   "repo": "Egonex-AI/Understand-Anything",
   "sizeKB": 35334,
-  "stars": 81926,
+  "stars": 82014,
   "weeklyCommits": [
     0,
     0,
