@@ -1,20 +1,19 @@
 {
   "contributors": 294,
   "createdAt": "2025-08-21T22:54:31Z",
-  "fetchedAt": "2026-09-13T05:27:01.196Z",
-  "forks": 12230,
+  "fetchedAt": "2026-09-14T05:29:55.833Z",
+  "forks": 12256,
   "latestRelease": {
     "publishedAt": "2026-09-10T13:27:05Z",
     "tag": "v1.0.6"
   },
   "license": "MIT",
-  "openIssues": 312,
+  "openIssues": 322,
   "pushedAt": "2026-09-12T02:40:58Z",
   "repo": "github/spec-kit",
   "sizeKB": 17565,
-  "stars": 136098,
+  "stars": 136505,
   "weeklyCommits": [
-    70,
     57,
     13,
     42,
@@ -65,6 +64,7 @@
     58,
     18,
     55,
-    42
+    42,
+    0
   ]
 }

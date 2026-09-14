@@ -1,17 +1,17 @@
 {
   "contributors": 23,
   "createdAt": "2023-05-09T01:46:51Z",
-  "fetchedAt": "2026-09-13T05:26:38.125Z",
+  "fetchedAt": "2026-09-14T05:29:39.897Z",
   "forks": 709,
   "latestRelease": {
     "publishedAt": "2026-04-22T10:44:43Z",
     "tag": "v2.2.5-20260422"
   },
   "license": "Apache-2.0",
-  "openIssues": 79,
-  "pushedAt": "2026-09-13T04:46:07Z",
+  "openIssues": 78,
+  "pushedAt": "2026-09-14T04:54:27Z",
   "repo": "WuKongIM/WuKongIM",
-  "sizeKB": 160064,
+  "sizeKB": 161507,
   "stars": 4940,
   "weeklyCommits": [
     0,
@@ -65,6 +65,6 @@
     134,
     109,
     185,
-    11
+    24
   ]
 }
