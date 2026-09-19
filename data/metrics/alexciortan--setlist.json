@@ -1,17 +1,17 @@
 {
   "contributors": 1,
   "createdAt": "2026-07-08T20:02:36Z",
-  "fetchedAt": "2026-09-17T05:29:05.785Z",
+  "fetchedAt": "2026-09-19T05:26:50.945Z",
   "forks": 0,
   "latestRelease": {
-    "publishedAt": "2026-09-16T12:14:31Z",
-    "tag": "v2.8.0"
+    "publishedAt": "2026-09-18T12:29:57Z",
+    "tag": "v2.9.0"
   },
   "license": "CC-BY-4.0",
   "openIssues": 0,
-  "pushedAt": "2026-09-16T12:14:36Z",
+  "pushedAt": "2026-09-18T12:30:01Z",
   "repo": "AlexCiortan/setlist",
-  "sizeKB": 3642,
+  "sizeKB": 3794,
   "stars": 2,
   "weeklyCommits": [
     0,
@@ -65,6 +65,6 @@
     3,
     3,
     3,
-    2
+    3
   ]
 }

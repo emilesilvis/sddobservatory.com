@@ -1,15 +1,15 @@
 {
   "contributors": 7,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-09-17T05:29:01.362Z",
+  "fetchedAt": "2026-09-19T05:26:46.905Z",
   "forks": 25,
   "latestRelease": null,
   "license": "Apache-2.0",
-  "openIssues": 0,
+  "openIssues": 1,
   "pushedAt": "2026-08-29T07:59:37Z",
   "repo": "AI-Unified-Process/marketplace",
   "sizeKB": 965,
-  "stars": 130,
+  "stars": 131,
   "weeklyCommits": [
     0,
     0,
