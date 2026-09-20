@@ -1,7 +1,7 @@
 {
   "contributors": 225,
   "createdAt": "2017-02-16T17:15:47Z",
-  "fetchedAt": "2026-09-19T05:27:35.147Z",
+  "fetchedAt": "2026-09-20T05:27:38.012Z",
   "forks": 243,
   "latestRelease": {
     "publishedAt": "2026-09-14T10:12:36Z",
@@ -9,12 +9,11 @@
   },
   "license": "MIT",
   "openIssues": 98,
-  "pushedAt": "2026-09-19T00:17:52Z",
+  "pushedAt": "2026-09-19T22:42:54Z",
   "repo": "growilabs/growi",
-  "sizeKB": 198600,
+  "sizeKB": 198601,
   "stars": 1470,
   "weeklyCommits": [
-    91,
     70,
     75,
     153,
@@ -65,6 +64,7 @@
     138,
     112,
     411,
-    258
+    258,
+    0
   ]
 }
