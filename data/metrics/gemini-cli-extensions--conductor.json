@@ -1,18 +1,18 @@
 {
   "contributors": 18,
   "createdAt": "2025-12-17T03:25:48Z",
-  "fetchedAt": "2026-09-21T05:31:01.215Z",
+  "fetchedAt": "2026-09-22T05:30:13.805Z",
   "forks": 295,
   "latestRelease": {
     "publishedAt": "2026-03-11T15:33:13Z",
     "tag": "conductor-v0.4.1"
   },
   "license": "Apache-2.0",
-  "openIssues": 79,
+  "openIssues": 78,
   "pushedAt": "2026-09-01T22:58:24Z",
   "repo": "gemini-cli-extensions/conductor",
   "sizeKB": 630,
-  "stars": 3745,
+  "stars": 3744,
   "weeklyCommits": [
     0,
     0,
