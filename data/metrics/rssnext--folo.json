@@ -1,8 +1,8 @@
 {
   "contributors": 157,
   "createdAt": "2024-04-08T03:23:35Z",
-  "fetchedAt": "2026-09-23T05:29:29.526Z",
-  "forks": 2130,
+  "fetchedAt": "2026-09-24T05:29:55.693Z",
+  "forks": 2131,
   "latestRelease": {
     "publishedAt": "2026-09-18T11:50:59Z",
     "tag": "desktop/v1.14.0"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-09-22T08:43:31Z",
   "repo": "RSSNext/Folo",
   "sizeKB": 75178,
-  "stars": 39007,
+  "stars": 39011,
   "weeklyCommits": [
     18,
     30,
