@@ -1,18 +1,18 @@
 {
   "contributors": 8,
   "createdAt": "2026-02-03T11:15:53Z",
-  "fetchedAt": "2026-09-24T05:31:03.396Z",
-  "forks": 22645,
+  "fetchedAt": "2026-09-25T05:30:53.567Z",
+  "forks": 22695,
   "latestRelease": {
     "publishedAt": "2026-08-06T14:05:28Z",
     "tag": "v1.2.3"
   },
   "license": "MIT",
-  "openIssues": 525,
-  "pushedAt": "2026-09-18T10:12:48Z",
+  "openIssues": 529,
+  "pushedAt": "2026-09-24T14:07:55Z",
   "repo": "mattpocock/skills",
-  "sizeKB": 1785,
-  "stars": 268604,
+  "sizeKB": 1827,
+  "stars": 269205,
   "weeklyCommits": [
     0,
     0,
