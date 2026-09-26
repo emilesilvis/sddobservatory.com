@@ -1,18 +1,18 @@
 {
   "contributors": 20,
   "createdAt": "2025-07-16T21:28:59Z",
-  "fetchedAt": "2026-09-25T05:30:19.793Z",
-  "forks": 830,
+  "fetchedAt": "2026-09-26T05:28:35.570Z",
+  "forks": 831,
   "latestRelease": {
     "publishedAt": "2026-01-20T17:26:20Z",
     "tag": "v3.0.0"
   },
   "license": "MIT",
-  "openIssues": 1,
+  "openIssues": 2,
   "pushedAt": "2026-08-29T15:11:00Z",
   "repo": "buildermethods/agent-os",
   "sizeKB": 414,
-  "stars": 5445,
+  "stars": 5450,
   "weeklyCommits": [
     0,
     22,
