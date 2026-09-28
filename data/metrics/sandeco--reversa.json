@@ -1,17 +1,16 @@
 {
   "contributors": 3,
   "createdAt": "2026-04-26T13:47:10Z",
-  "fetchedAt": "2026-09-27T05:30:11.550Z",
-  "forks": 421,
+  "fetchedAt": "2026-09-28T05:34:12.528Z",
+  "forks": 422,
   "latestRelease": null,
   "license": "MIT",
   "openIssues": 23,
   "pushedAt": "2026-09-25T17:05:46Z",
   "repo": "sandeco/reversa",
   "sizeKB": 4482,
-  "stars": 1642,
+  "stars": 1646,
   "weeklyCommits": [
-    0,
     0,
     0,
     0,
@@ -62,6 +61,7 @@
     8,
     1,
     0,
-    1
+    1,
+    0
   ]
 }
