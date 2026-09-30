@@ -1,18 +1,18 @@
 {
   "contributors": 31,
   "createdAt": "2026-02-03T15:08:25Z",
-  "fetchedAt": "2026-09-29T05:33:34.071Z",
-  "forks": 399,
+  "fetchedAt": "2026-09-30T05:34:13.633Z",
+  "forks": 400,
   "latestRelease": {
     "publishedAt": "2026-09-28T09:09:17Z",
     "tag": "v1.1.0"
   },
   "license": null,
-  "openIssues": 313,
-  "pushedAt": "2026-09-29T03:57:21Z",
+  "openIssues": 314,
+  "pushedAt": "2026-09-30T03:03:29Z",
   "repo": "zhukunpenglinyutong/desktop-cc-gui",
-  "sizeKB": 212618,
-  "stars": 4406,
+  "sizeKB": 213283,
+  "stars": 4410,
   "weeklyCommits": [
     0,
     0,
