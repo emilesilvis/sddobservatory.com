@@ -49,6 +49,7 @@ export const SUPPORTED_TOOLS = [
   'Vim/Neovim',
   'Windsurf',
   'Zed',
+  'Any AI coding agent',
   'Any MCP-compatible agent',
   'Any skills-compatible agent',
 ] as const;
