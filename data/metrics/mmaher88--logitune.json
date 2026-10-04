@@ -1,7 +1,7 @@
 {
   "contributors": 5,
   "createdAt": "2026-03-25T19:06:46Z",
-  "fetchedAt": "2026-10-03T05:39:56.136Z",
+  "fetchedAt": "2026-10-04T07:16:28.736Z",
   "forks": 37,
   "latestRelease": {
     "publishedAt": "2026-07-28T16:55:07Z",
@@ -12,9 +12,8 @@
   "pushedAt": "2026-07-31T16:10:18Z",
   "repo": "mmaher88/logitune",
   "sizeKB": 29147,
-  "stars": 663,
+  "stars": 662,
   "weeklyCommits": [
-    0,
     0,
     0,
     0,
@@ -57,6 +56,7 @@
     0,
     0,
     7,
+    0,
     0,
     0,
     0,
