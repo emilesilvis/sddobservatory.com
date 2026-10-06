@@ -1,7 +1,7 @@
 {
   "contributors": 158,
   "createdAt": "2024-04-08T03:23:35Z",
-  "fetchedAt": "2026-10-05T05:43:19.161Z",
+  "fetchedAt": "2026-10-06T05:32:52.904Z",
   "forks": 2133,
   "latestRelease": {
     "publishedAt": "2026-10-02T13:33:16Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-10-04T12:25:12Z",
   "repo": "RSSNext/Folo",
   "sizeKB": 78367,
-  "stars": 39059,
+  "stars": 39060,
   "weeklyCommits": [
     54,
     130,

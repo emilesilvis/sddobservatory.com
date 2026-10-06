@@ -1,18 +1,18 @@
 {
   "contributors": 7,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-10-05T05:43:01.100Z",
+  "fetchedAt": "2026-10-06T05:32:14.271Z",
   "forks": 25,
   "latestRelease": {
-    "publishedAt": "2026-10-01T16:58:45Z",
-    "tag": "aiup-vaadin-jooq-v2.20.0"
+    "publishedAt": "2026-10-05T08:03:42Z",
+    "tag": "aiup-core-v2.22.0"
   },
   "license": "Apache-2.0",
   "openIssues": 2,
-  "pushedAt": "2026-10-01T16:58:45Z",
+  "pushedAt": "2026-10-05T08:03:42Z",
   "repo": "AI-Unified-Process/marketplace",
-  "sizeKB": 1125,
-  "stars": 135,
+  "sizeKB": 1199,
+  "stars": 137,
   "weeklyCommits": [
     0,
     0,
@@ -65,6 +65,6 @@
     1,
     0,
     28,
-    0
+    3
   ]
 }

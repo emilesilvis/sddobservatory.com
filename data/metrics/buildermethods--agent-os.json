@@ -1,7 +1,7 @@
 {
   "contributors": 20,
   "createdAt": "2025-07-16T21:28:59Z",
-  "fetchedAt": "2026-10-05T05:43:41.731Z",
+  "fetchedAt": "2026-10-06T05:33:17.251Z",
   "forks": 831,
   "latestRelease": {
     "publishedAt": "2026-01-20T17:26:20Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-08-29T15:11:00Z",
   "repo": "buildermethods/agent-os",
   "sizeKB": 414,
-  "stars": 5470,
+  "stars": 5472,
   "weeklyCommits": [
     7,
     7,
