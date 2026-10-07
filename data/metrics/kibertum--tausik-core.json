@@ -1,7 +1,7 @@
 {
   "contributors": 3,
   "createdAt": "2026-04-07T21:00:54Z",
-  "fetchedAt": "2026-10-05T05:43:12.531Z",
+  "fetchedAt": "2026-10-07T05:33:42.533Z",
   "forks": 3,
   "latestRelease": {
     "publishedAt": "2026-10-04T15:09:38Z",
@@ -9,9 +9,9 @@
   },
   "license": "Apache-2.0",
   "openIssues": 1,
-  "pushedAt": "2026-10-04T15:09:32Z",
+  "pushedAt": "2026-10-06T20:56:35Z",
   "repo": "Kibertum/tausik-core",
-  "sizeKB": 14323,
+  "sizeKB": 15798,
   "stars": 18,
   "weeklyCommits": [
     0,
@@ -65,6 +65,6 @@
     1,
     0,
     6,
-    1
+    2
   ]
 }
