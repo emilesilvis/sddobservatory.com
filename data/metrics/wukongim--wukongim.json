@@ -1,7 +1,7 @@
 {
   "contributors": 23,
   "createdAt": "2023-05-09T01:46:51Z",
-  "fetchedAt": "2026-10-09T05:34:57.864Z",
+  "fetchedAt": "2026-10-10T05:31:41.974Z",
   "forks": 711,
   "latestRelease": {
     "publishedAt": "2026-04-22T10:44:43Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-10-05T12:38:54Z",
   "repo": "WuKongIM/WuKongIM",
   "sizeKB": 172274,
-  "stars": 4959,
+  "stars": 4958,
   "weeklyCommits": [
     5,
     0,

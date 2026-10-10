@@ -1,14 +1,14 @@
 {
   "contributors": 7,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-10-09T05:34:16.451Z",
+  "fetchedAt": "2026-10-10T05:30:53.345Z",
   "forks": 25,
   "latestRelease": {
     "publishedAt": "2026-10-05T08:03:42Z",
     "tag": "aiup-core-v2.22.0"
   },
   "license": "Apache-2.0",
-  "openIssues": 2,
+  "openIssues": 5,
   "pushedAt": "2026-10-05T08:03:42Z",
   "repo": "AI-Unified-Process/marketplace",
   "sizeKB": 1199,
