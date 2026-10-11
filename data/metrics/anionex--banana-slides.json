@@ -1,18 +1,18 @@
 {
   "contributors": 19,
   "createdAt": "2025-11-29T17:37:26Z",
-  "fetchedAt": "2026-10-10T05:31:02.030Z",
-  "forks": 1785,
+  "fetchedAt": "2026-10-11T05:31:34.581Z",
+  "forks": 1786,
   "latestRelease": {
     "publishedAt": "2026-02-09T11:28:10Z",
     "tag": "v0.4.0"
   },
   "license": "AGPL-3.0",
-  "openIssues": 65,
+  "openIssues": 66,
   "pushedAt": "2026-10-08T02:46:03Z",
   "repo": "Anionex/banana-slides",
   "sizeKB": 63672,
-  "stars": 15725,
+  "stars": 15732,
   "weeklyCommits": [
     0,
     0,
