@@ -1,7 +1,7 @@
 {
   "contributors": 6,
   "createdAt": "2025-05-03T05:00:37Z",
-  "fetchedAt": "2026-10-11T05:32:47.028Z",
+  "fetchedAt": "2026-10-15T05:31:15.727Z",
   "forks": 163,
   "latestRelease": null,
   "license": "MIT-0",
@@ -9,7 +9,7 @@
   "pushedAt": "2026-07-16T00:37:43Z",
   "repo": "kirodotdev/spirit-of-kiro",
   "sizeKB": 68714,
-  "stars": 945,
+  "stars": 944,
   "weeklyCommits": [
     0,
     0,
