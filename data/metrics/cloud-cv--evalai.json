@@ -1,7 +1,7 @@
 {
   "contributors": 162,
   "createdAt": "2016-10-21T00:51:45Z",
-  "fetchedAt": "2026-10-18T05:27:37.228Z",
+  "fetchedAt": "2026-10-19T05:31:19.945Z",
   "forks": 983,
   "latestRelease": {
     "publishedAt": "2018-04-13T19:42:46Z",
@@ -9,9 +9,9 @@
   },
   "license": "NOASSERTION",
   "openIssues": 483,
-  "pushedAt": "2026-10-08T16:09:42Z",
+  "pushedAt": "2026-10-18T16:19:39Z",
   "repo": "Cloud-CV/EvalAI",
-  "sizeKB": 68268,
+  "sizeKB": 68275,
   "stars": 2047,
   "weeklyCommits": [
     0,
