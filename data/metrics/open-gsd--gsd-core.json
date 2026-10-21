@@ -1,18 +1,18 @@
 {
-  "contributors": 184,
+  "contributors": 186,
   "createdAt": "2026-05-22T11:36:21Z",
-  "fetchedAt": "2026-10-20T05:32:31.356Z",
-  "forks": 764,
+  "fetchedAt": "2026-10-21T05:32:01.753Z",
+  "forks": 766,
   "latestRelease": {
     "publishedAt": "2026-10-19T00:04:03Z",
     "tag": "v1.18.0"
   },
   "license": "MIT",
-  "openIssues": 300,
-  "pushedAt": "2026-10-20T02:44:03Z",
+  "openIssues": 278,
+  "pushedAt": "2026-10-21T05:31:45Z",
   "repo": "open-gsd/gsd-core",
-  "sizeKB": 77788,
-  "stars": 10689,
+  "sizeKB": 80047,
+  "stars": 10726,
   "weeklyCommits": [
     0,
     0,
@@ -65,6 +65,6 @@
     96,
     32,
     131,
-    20
+    37
   ]
 }
