@@ -1,7 +1,7 @@
 {
   "contributors": 2,
   "createdAt": "2026-04-07T21:00:54Z",
-  "fetchedAt": "2026-10-24T05:29:06.596Z",
+  "fetchedAt": "2026-10-25T05:29:08.946Z",
   "forks": 3,
   "latestRelease": {
     "publishedAt": "2026-10-22T16:50:55Z",
@@ -63,8 +63,8 @@
     0,
     0,
     0,
-    0,
     6,
-    5
+    5,
+    0
   ]
 }
