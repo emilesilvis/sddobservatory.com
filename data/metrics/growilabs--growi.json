@@ -1,14 +1,14 @@
 {
   "contributors": 228,
   "createdAt": "2017-02-16T17:15:47Z",
-  "fetchedAt": "2026-10-25T05:29:45.372Z",
+  "fetchedAt": "2026-10-26T05:35:11.609Z",
   "forks": 249,
   "latestRelease": {
     "publishedAt": "2026-10-23T10:34:57Z",
     "tag": "@growi/pluginkit@1.2.11"
   },
   "license": "MIT",
-  "openIssues": 73,
+  "openIssues": 74,
   "pushedAt": "2026-10-23T11:05:42Z",
   "repo": "growilabs/growi",
   "sizeKB": 200469,
