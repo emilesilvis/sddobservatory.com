@@ -1,17 +1,17 @@
 {
   "contributors": 7,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-10-27T05:31:42.007Z",
+  "fetchedAt": "2026-10-28T05:23:53.797Z",
   "forks": 26,
   "latestRelease": {
-    "publishedAt": "2026-10-26T15:19:27Z",
-    "tag": "aiup-angular-v3.3.0"
+    "publishedAt": "2026-10-27T13:58:15Z",
+    "tag": "aiup-core-v3.10.0"
   },
   "license": "Apache-2.0",
-  "openIssues": 7,
-  "pushedAt": "2026-10-26T16:29:33Z",
+  "openIssues": 4,
+  "pushedAt": "2026-10-27T15:44:50Z",
   "repo": "AI-Unified-Process/marketplace",
-  "sizeKB": 3121,
+  "sizeKB": 3665,
   "stars": 151,
   "weeklyCommits": [
     0,
@@ -65,6 +65,6 @@
     3,
     16,
     6,
-    27
+    40
   ]
 }

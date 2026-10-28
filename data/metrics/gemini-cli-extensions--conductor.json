@@ -1,7 +1,7 @@
 {
   "contributors": 18,
   "createdAt": "2025-12-17T03:25:48Z",
-  "fetchedAt": "2026-10-26T05:35:02.434Z",
+  "fetchedAt": "2026-10-28T05:25:02.812Z",
   "forks": 301,
   "latestRelease": {
     "publishedAt": "2026-03-11T15:33:13Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-09-01T22:58:24Z",
   "repo": "gemini-cli-extensions/conductor",
   "sizeKB": 630,
-  "stars": 3773,
+  "stars": 3774,
   "weeklyCommits": [
     0,
     0,
