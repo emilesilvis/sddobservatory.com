@@ -1,18 +1,18 @@
 {
   "contributors": 47,
   "createdAt": "2017-01-27T12:12:48Z",
-  "fetchedAt": "2026-10-28T05:24:19.250Z",
+  "fetchedAt": "2026-10-29T05:24:26.529Z",
   "forks": 704,
   "latestRelease": {
     "publishedAt": "2026-05-31T14:49:55Z",
     "tag": "4.2.1"
   },
   "license": "NOASSERTION",
-  "openIssues": 424,
+  "openIssues": 425,
   "pushedAt": "2026-10-25T16:30:07Z",
   "repo": "Caldis/Mos",
   "sizeKB": 83129,
-  "stars": 21759,
+  "stars": 21770,
   "weeklyCommits": [
     10,
     1,
