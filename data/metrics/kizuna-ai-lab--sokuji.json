@@ -1,18 +1,18 @@
 {
   "contributors": 16,
   "createdAt": "2025-04-14T15:58:15Z",
-  "fetchedAt": "2026-10-31T05:22:55.815Z",
+  "fetchedAt": "2026-11-01T05:23:05.830Z",
   "forks": 208,
   "latestRelease": {
-    "publishedAt": "2026-10-30T07:22:32Z",
-    "tag": "v0.46.5"
+    "publishedAt": "2026-10-31T06:29:51Z",
+    "tag": "v0.47.0"
   },
   "license": "AGPL-3.0",
-  "openIssues": 38,
-  "pushedAt": "2026-10-31T03:28:32Z",
+  "openIssues": 37,
+  "pushedAt": "2026-11-01T05:14:10Z",
   "repo": "kizuna-ai-lab/sokuji",
-  "sizeKB": 189525,
-  "stars": 1456,
+  "sizeKB": 179722,
+  "stars": 1461,
   "weeklyCommits": [
     1,
     3,

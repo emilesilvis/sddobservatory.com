@@ -1,7 +1,7 @@
 {
   "contributors": 162,
   "createdAt": "2016-10-21T00:51:45Z",
-  "fetchedAt": "2026-10-30T05:24:10.668Z",
+  "fetchedAt": "2026-11-01T05:22:04.710Z",
   "forks": 983,
   "latestRelease": {
     "publishedAt": "2018-04-13T19:42:46Z",
@@ -12,9 +12,8 @@
   "pushedAt": "2026-10-29T16:38:03Z",
   "repo": "Cloud-CV/EvalAI",
   "sizeKB": 68284,
-  "stars": 2047,
+  "stars": 2048,
   "weeklyCommits": [
-    8,
     1,
     0,
     0,
@@ -65,6 +64,7 @@
     1,
     0,
     0,
-    1
+    1,
+    0
   ]
 }
