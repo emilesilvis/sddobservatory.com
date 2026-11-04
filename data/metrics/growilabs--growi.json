@@ -1,8 +1,8 @@
 {
   "contributors": 230,
   "createdAt": "2017-02-16T17:15:47Z",
-  "fetchedAt": "2026-11-03T05:23:33.763Z",
-  "forks": 250,
+  "fetchedAt": "2026-11-04T05:24:59.152Z",
+  "forks": 249,
   "latestRelease": {
     "publishedAt": "2026-10-30T12:11:40Z",
     "tag": "@growi/pluginkit@1.2.13"

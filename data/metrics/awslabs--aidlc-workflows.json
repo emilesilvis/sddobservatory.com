@@ -1,18 +1,18 @@
 {
   "contributors": 85,
   "createdAt": "2025-11-13T22:05:08Z",
-  "fetchedAt": "2026-11-03T05:23:13.642Z",
-  "forks": 1015,
+  "fetchedAt": "2026-11-04T05:24:42.406Z",
+  "forks": 1016,
   "latestRelease": {
     "publishedAt": "2026-10-28T09:01:17Z",
     "tag": "v2.11.2"
   },
   "license": "MIT-0",
-  "openIssues": 322,
-  "pushedAt": "2026-11-03T01:30:24Z",
+  "openIssues": 354,
+  "pushedAt": "2026-11-04T04:50:06Z",
   "repo": "awslabs/aidlc-workflows",
-  "sizeKB": 152789,
-  "stars": 5646,
+  "sizeKB": 153523,
+  "stars": 5663,
   "weeklyCommits": [
     3,
     2,
@@ -65,6 +65,6 @@
     332,
     321,
     189,
-    2
+    6
   ]
 }
