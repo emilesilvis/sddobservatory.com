@@ -1,18 +1,18 @@
 {
   "contributors": 7,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-11-04T05:23:52.056Z",
+  "fetchedAt": "2026-11-05T05:22:09.199Z",
   "forks": 26,
   "latestRelease": {
-    "publishedAt": "2026-10-28T13:15:07Z",
-    "tag": "aiup-nestjs-nextjs-v0.8.1"
+    "publishedAt": "2026-11-04T15:47:11Z",
+    "tag": "aiup-core-v3.13.0"
   },
   "license": "Apache-2.0",
   "openIssues": 4,
-  "pushedAt": "2026-10-29T10:06:14Z",
+  "pushedAt": "2026-11-04T15:47:11Z",
   "repo": "AI-Unified-Process/marketplace",
-  "sizeKB": 3630,
-  "stars": 155,
+  "sizeKB": 3703,
+  "stars": 158,
   "weeklyCommits": [
     0,
     0,
@@ -65,6 +65,6 @@
     16,
     6,
     43,
-    0
+    4
   ]
 }
