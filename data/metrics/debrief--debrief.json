@@ -1,20 +1,19 @@
 {
   "contributors": 31,
   "createdAt": "2014-05-19T19:27:32Z",
-  "fetchedAt": "2026-11-01T05:22:45.446Z",
+  "fetchedAt": "2026-11-08T05:22:52.234Z",
   "forks": 24,
   "latestRelease": {
     "publishedAt": "2026-10-06T06:33:20Z",
     "tag": "20261006_3_1_46"
   },
   "license": "EPL-1.0",
-  "openIssues": 637,
-  "pushedAt": "2026-10-06T06:26:29Z",
+  "openIssues": 641,
+  "pushedAt": "2026-11-07T19:32:19Z",
   "repo": "debrief/debrief",
-  "sizeKB": 1124333,
+  "sizeKB": 1124332,
   "stars": 27,
   "weeklyCommits": [
-    0,
     0,
     0,
     2,
@@ -65,6 +64,7 @@
     0,
     0,
     0,
+    31,
     0
   ]
 }
