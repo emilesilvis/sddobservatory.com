@@ -1,7 +1,7 @@
 {
   "contributors": 1,
   "createdAt": "2026-05-13T14:12:34Z",
-  "fetchedAt": "2026-11-08T05:22:21.231Z",
+  "fetchedAt": "2026-11-10T05:22:43.796Z",
   "forks": 0,
   "latestRelease": {
     "publishedAt": "2026-09-19T19:37:40Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-09-19T19:38:30Z",
   "repo": "Kibertum/RENAR",
   "sizeKB": 1226,
-  "stars": 1,
+  "stars": 2,
   "weeklyCommits": [
     0,
     0,
