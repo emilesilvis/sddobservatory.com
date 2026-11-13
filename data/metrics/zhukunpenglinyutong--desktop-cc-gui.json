@@ -1,8 +1,8 @@
 {
   "contributors": 43,
   "createdAt": "2026-02-03T15:08:25Z",
-  "fetchedAt": "2026-11-12T05:24:36.389Z",
-  "forks": 428,
+  "fetchedAt": "2026-11-13T05:23:52.248Z",
+  "forks": 427,
   "latestRelease": {
     "publishedAt": "2026-11-11T13:08:14Z",
     "tag": "v1.2.3"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-11-11T13:15:32Z",
   "repo": "zhukunpenglinyutong/desktop-cc-gui",
   "sizeKB": 217880,
-  "stars": 4597,
+  "stars": 4601,
   "weeklyCommits": [
     0,
     0,

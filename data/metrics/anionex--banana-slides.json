@@ -1,8 +1,8 @@
 {
   "contributors": 19,
   "createdAt": "2025-11-29T17:37:26Z",
-  "fetchedAt": "2026-11-12T05:22:37.160Z",
-  "forks": 1801,
+  "fetchedAt": "2026-11-13T05:22:36.007Z",
+  "forks": 1800,
   "latestRelease": {
     "publishedAt": "2026-02-09T11:28:10Z",
     "tag": "v0.4.0"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-11-08T16:10:01Z",
   "repo": "Anionex/banana-slides",
   "sizeKB": 89495,
-  "stars": 15987,
+  "stars": 15997,
   "weeklyCommits": [
     0,
     0,
