@@ -1,18 +1,18 @@
 {
   "contributors": 310,
   "createdAt": "2013-12-29T14:17:38Z",
-  "fetchedAt": "2026-11-13T05:23:06.927Z",
+  "fetchedAt": "2026-11-14T05:23:08.641Z",
   "forks": 1056,
   "latestRelease": {
     "publishedAt": "2026-11-05T04:17:40Z",
     "tag": "1.5.74"
   },
   "license": "NOASSERTION",
-  "openIssues": 462,
-  "pushedAt": "2026-11-13T04:26:34Z",
+  "openIssues": 466,
+  "pushedAt": "2026-11-14T00:35:49Z",
   "repo": "akkadotnet/akka.net",
-  "sizeKB": 106525,
-  "stars": 5101,
+  "sizeKB": 106695,
+  "stars": 5100,
   "weeklyCommits": [
     1,
     7,
@@ -65,6 +65,6 @@
     3,
     16,
     22,
-    15
+    16
   ]
 }

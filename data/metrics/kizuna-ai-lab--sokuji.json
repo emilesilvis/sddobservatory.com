@@ -1,7 +1,7 @@
 {
   "contributors": 17,
   "createdAt": "2025-04-14T15:58:15Z",
-  "fetchedAt": "2026-11-13T05:23:38.413Z",
+  "fetchedAt": "2026-11-14T05:23:43.193Z",
   "forks": 209,
   "latestRelease": {
     "publishedAt": "2026-11-11T07:17:42Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-11-11T06:49:05Z",
   "repo": "kizuna-ai-lab/sokuji",
   "sizeKB": 183564,
-  "stars": 1491,
+  "stars": 1493,
   "weeklyCommits": [
     4,
     18,

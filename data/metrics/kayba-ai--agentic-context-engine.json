@@ -1,7 +1,7 @@
 {
   "contributors": 33,
   "createdAt": "2025-10-15T15:36:20Z",
-  "fetchedAt": "2026-11-12T05:23:55.842Z",
+  "fetchedAt": "2026-11-14T05:23:37.783Z",
   "forks": 312,
   "latestRelease": {
     "publishedAt": "2026-09-23T14:10:51Z",
@@ -12,7 +12,7 @@
   "pushedAt": "2026-09-24T08:13:44Z",
   "repo": "kayba-ai/agentic-context-engine",
   "sizeKB": 40522,
-  "stars": 2612,
+  "stars": 2613,
   "weeklyCommits": [
     67,
     59,
