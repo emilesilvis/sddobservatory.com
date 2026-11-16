@@ -1,8 +1,8 @@
 {
   "contributors": 8,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-11-15T05:22:10.279Z",
-  "forks": 26,
+  "fetchedAt": "2026-11-16T05:24:42.750Z",
+  "forks": 25,
   "latestRelease": {
     "publishedAt": "2026-11-14T14:58:15Z",
     "tag": "aiup-core-v3.19.0"
