@@ -1,8 +1,8 @@
 {
   "contributors": 9,
   "createdAt": "2026-02-03T11:15:53Z",
-  "fetchedAt": "2026-11-16T05:26:19.566Z",
-  "forks": 27309,
+  "fetchedAt": "2026-11-17T05:23:38.834Z",
+  "forks": 27382,
   "latestRelease": {
     "publishedAt": "2026-10-29T10:27:41Z",
     "tag": "v1.3.2"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-11-13T12:30:31Z",
   "repo": "mattpocock/skills",
   "sizeKB": 2391,
-  "stars": 325339,
+  "stars": 326069,
   "weeklyCommits": [
     0,
     0,
