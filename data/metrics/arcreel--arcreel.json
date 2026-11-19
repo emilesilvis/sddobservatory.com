@@ -1,18 +1,18 @@
 {
   "contributors": 25,
   "createdAt": "2026-02-07T08:17:10Z",
-  "fetchedAt": "2026-11-18T05:23:13.068Z",
-  "forks": 1324,
+  "fetchedAt": "2026-11-19T05:22:52.792Z",
+  "forks": 1328,
   "latestRelease": {
     "publishedAt": "2026-11-16T04:48:44Z",
     "tag": "v0.37.0"
   },
   "license": "AGPL-3.0",
-  "openIssues": 88,
-  "pushedAt": "2026-11-18T03:07:34Z",
+  "openIssues": 84,
+  "pushedAt": "2026-11-19T04:54:54Z",
   "repo": "ArcReel/ArcReel",
-  "sizeKB": 232583,
-  "stars": 6628,
+  "sizeKB": 235174,
+  "stars": 6643,
   "weeklyCommits": [
     0,
     0,
@@ -65,6 +65,6 @@
     138,
     130,
     72,
-    40
+    44
   ]
 }
