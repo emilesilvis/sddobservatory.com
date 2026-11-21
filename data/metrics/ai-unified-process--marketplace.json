@@ -1,8 +1,8 @@
 {
   "contributors": 8,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-11-20T05:22:53.062Z",
-  "forks": 26,
+  "fetchedAt": "2026-11-21T05:22:33.310Z",
+  "forks": 27,
   "latestRelease": {
     "publishedAt": "2026-11-17T17:04:21Z",
     "tag": "aiup-core-v3.20.1"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-11-19T08:53:13Z",
   "repo": "AI-Unified-Process/marketplace",
   "sizeKB": 3969,
-  "stars": 167,
+  "stars": 168,
   "weeklyCommits": [
     0,
     3,

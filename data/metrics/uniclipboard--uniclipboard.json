@@ -1,7 +1,7 @@
 {
   "contributors": 13,
   "createdAt": "2025-03-13T16:03:43Z",
-  "fetchedAt": "2026-11-20T05:23:32.961Z",
+  "fetchedAt": "2026-11-21T05:23:08.500Z",
   "forks": 103,
   "latestRelease": {
     "publishedAt": "2026-11-12T09:37:46Z",
@@ -9,10 +9,10 @@
   },
   "license": "AGPL-3.0",
   "openIssues": 193,
-  "pushedAt": "2026-11-20T03:08:19Z",
+  "pushedAt": "2026-11-21T05:10:23Z",
   "repo": "UniClipboard/UniClipboard",
-  "sizeKB": 69642,
-  "stars": 2068,
+  "sizeKB": 71667,
+  "stars": 2071,
   "weeklyCommits": [
     0,
     0,
