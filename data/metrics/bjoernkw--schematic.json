@@ -1,7 +1,7 @@
 {
   "contributors": 4,
   "createdAt": "2022-12-15T16:57:06Z",
-  "fetchedAt": "2026-11-22T05:22:42.945Z",
+  "fetchedAt": "2026-11-24T05:23:17.948Z",
   "forks": 5,
   "latestRelease": {
     "publishedAt": "2026-05-02T20:53:11Z",
@@ -9,9 +9,9 @@
   },
   "license": "MIT",
   "openIssues": 0,
-  "pushedAt": "2026-11-16T16:02:56Z",
+  "pushedAt": "2026-11-23T17:02:51Z",
   "repo": "BjoernKW/Schematic",
-  "sizeKB": 889,
+  "sizeKB": 906,
   "stars": 33,
   "weeklyCommits": [
     2,
@@ -65,6 +65,6 @@
     3,
     1,
     1,
-    0
+    5
   ]
 }
