@@ -1,18 +1,18 @@
 {
   "contributors": 8,
   "createdAt": "2026-02-28T11:21:13Z",
-  "fetchedAt": "2026-11-24T05:23:03.479Z",
+  "fetchedAt": "2026-11-25T05:23:32.430Z",
   "forks": 27,
   "latestRelease": {
-    "publishedAt": "2026-11-22T16:06:13Z",
-    "tag": "aiup-core-v3.21.3"
+    "publishedAt": "2026-11-24T06:16:19Z",
+    "tag": "aiup-core-v3.21.4"
   },
   "license": "Apache-2.0",
   "openIssues": 4,
-  "pushedAt": "2026-11-23T20:57:10Z",
+  "pushedAt": "2026-11-24T20:57:28Z",
   "repo": "AI-Unified-Process/marketplace",
-  "sizeKB": 3999,
-  "stars": 168,
+  "sizeKB": 4300,
+  "stars": 171,
   "weeklyCommits": [
     3,
     23,
@@ -65,6 +65,6 @@
     6,
     26,
     6,
-    7
+    15
   ]
 }
