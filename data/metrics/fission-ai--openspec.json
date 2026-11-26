@@ -1,8 +1,8 @@
 {
   "contributors": 149,
   "createdAt": "2025-08-05T10:37:45Z",
-  "fetchedAt": "2026-11-25T05:23:59.678Z",
-  "forks": 5174,
+  "fetchedAt": "2026-11-26T05:23:37.624Z",
+  "forks": 5183,
   "latestRelease": {
     "publishedAt": "2026-11-24T19:55:16Z",
     "tag": "v2.2.0"
@@ -12,7 +12,7 @@
   "pushedAt": "2026-11-25T02:07:01Z",
   "repo": "Fission-AI/OpenSpec",
   "sizeKB": 13396,
-  "stars": 75660,
+  "stars": 75745,
   "weeklyCommits": [
     0,
     2,
