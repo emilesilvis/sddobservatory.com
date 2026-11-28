@@ -1,18 +1,18 @@
 {
   "contributors": 74,
   "createdAt": "2023-12-27T22:47:28Z",
-  "fetchedAt": "2026-11-26T05:24:27.431Z",
-  "forks": 141,
+  "fetchedAt": "2026-11-28T05:23:36.010Z",
+  "forks": 142,
   "latestRelease": {
     "publishedAt": "2026-10-25T15:38:43Z",
     "tag": "v2.34.0"
   },
   "license": "MIT",
-  "openIssues": 52,
+  "openIssues": 53,
   "pushedAt": "2026-11-23T16:29:57Z",
   "repo": "joshmedeski/sesh",
   "sizeKB": 31188,
-  "stars": 2942,
+  "stars": 2943,
   "weeklyCommits": [
     0,
     1,
